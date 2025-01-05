@@ -1,3 +1,7 @@
+---
+permalink: /intro/
+---
+
 # Networking
 
 Networking notes
