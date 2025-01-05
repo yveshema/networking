@@ -1,0 +1,23 @@
+# Actions workflow for generating slides using marp
+name: CI
+
+# trigger on push events on main
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: marp-action
+              env:
+                MARP_ARGS: "-I slides/ --output public/"
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                GITHUB_REPOSITORY: ${{ github.repository }}
+                PUBLISH_TO_BRANCH: gh-pages
+                BASE_URL: https://yveshema.github.io/networking/
+              uses: ralexander-phi/marp-action@0.2
