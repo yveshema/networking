@@ -14,3 +14,9 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Introduction](./slides/introduction.html) (<a href="./download/introduction.pdf" download>PDF</a>)
 * Week 2: 
   * [Network devices & topologies](./slides/devices_and_topologies.html) (<a href="./download/devices_and_topologies.pdf" download>PDF</a>)
+
+## Lab notes
+
+* Week 1:
+  * [Project Overview](./project-overview)
+  * [Packet Capture](./packet-capture)
