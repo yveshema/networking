@@ -4,8 +4,10 @@ theme: graph_paper
 footer: ACIT 2620 Principles of Enterprise Networking
 author: Yves Rene Shema
 ---
-
-![bg opacity:.2](../img/networking.jpg)
+<!--
+_color: tomato
+-->
+![bg opacity:.5](../img/networking.jpg)
 
 # ACIT 2620
 
@@ -44,7 +46,16 @@ Any device that can communicate over the network and is identified by a unique i
 
 ---
 
+<style scoped>
+  img {
+    background: transparent;
+    border: none;
+  }
+</style>
+
 ## Link
+
+
 
 ![transmission medium/link](../img/intro/link.png)
 
