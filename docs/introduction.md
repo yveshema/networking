@@ -11,7 +11,7 @@ footer: ACIT 2620 Principles of Enterprise Networking
 author: Yves Rene Shema
 ---
 
-![bg opacity:.16](../img/networking.jpg)
+![bg opacity:.3](../img/networking.jpg)
 
 # ACIT 2620
 
@@ -133,7 +133,7 @@ By: Yves Rene Shema
 
 ## Circuit Switching
 
-![circuit switching](../img/intro/circuit-switching.svg)
+![circuit switching](../img/intro/circuit-switching.png)
 
 ---
 
