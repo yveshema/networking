@@ -97,7 +97,7 @@ Any device that can communicate over the network and is identified by a unique i
 
 ## Circuit Switching
 
-![circuit switching](../img/intro/circuit-switching.png)
+![circuit switching](../img/intro/circuit-switching.svg)
 
 ---
 
