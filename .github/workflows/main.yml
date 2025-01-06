@@ -20,7 +20,7 @@ jobs:
               run: mkdir -p build
 
             - name: Copy static files
-              run: cp _config.yml README.md pages build/
+              run: cp -R _config.yml README.md pages build/
 
             - name: Copy images directory (if exists)
               run: if [[ -d img ]]; then cp -R img build/img; fi
