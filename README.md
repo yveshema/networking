@@ -20,3 +20,5 @@ The course assumes some familiarity with the Linux operating system and experien
 * Week 1:
   * [Project Overview](./project-overview)
   * [Packet Capture](./packet-capture)
+* Week 2:
+  * [Project setup](./project-setup)
