@@ -11,7 +11,10 @@ footer: ACIT 2620 Principles of Enterprise Networking
 author: Yves Rene Shema
 ---
 
-![bg opacity:.3](../img/networking.jpg)
+<!--
+_color: rebeccapurple
+-->
+![bg opacity:.5](../img/networking.jpg)
 
 # ACIT 2620
 
