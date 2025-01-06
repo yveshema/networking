@@ -7,7 +7,7 @@ author: Yves Rene Shema
 
 <style scoped>
   h1, h2, p, footer {
-    color: fuchsia
+    color: tomato
   }
 </style>
 
