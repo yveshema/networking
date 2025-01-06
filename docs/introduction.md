@@ -1,13 +1,17 @@
 ---
 marp: true
 theme: graph_paper
+style: |
+  img {
+    background: transparent;
+    border: none;
+    min-width: 500px;
+  }
 footer: ACIT 2620 Principles of Enterprise Networking
 author: Yves Rene Shema
 ---
-<!--
-_color: tomato
--->
-![bg opacity:.5](../img/networking.jpg)
+
+![bg opacity:.1](../img/networking.jpg)
 
 # ACIT 2620
 
@@ -46,16 +50,7 @@ Any device that can communicate over the network and is identified by a unique i
 
 ---
 
-<style scoped>
-  img {
-    background: transparent;
-    border: none;
-  }
-</style>
-
 ## Link
-
-
 
 ![transmission medium/link](../img/intro/link.png)
 
@@ -73,7 +68,7 @@ Any device that can communicate over the network and is identified by a unique i
 
 ## Client-server Networks
 
-![client-server network](../img/intro/client-server.png)
+![client-server network width:60%](../img/intro/client-server.png)
   
 ---
 
