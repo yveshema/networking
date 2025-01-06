@@ -8,62 +8,65 @@ Complete the following activities starting and stopping the packet capture as re
 
 <details>
     <summary>Capture 1</summary>
-    
-1. Issue command:
-    - Windows from Administrator Powershell: `Remove-NetNeighbor *`
-    - Linux: `sudo ip neigh flush all`
-    - MacOS: `sudo arp -a -d`
-2. Start Capture
-3. Issue command:
-    - Windows from Administrator CMD: `ping -n 5 www.google.ca`
-    - Windows from Administrator Powershell: `Test-Connection -Count 5 www.google.ca`
-    - Linux: `ping -c 5 www.google.ca`
-    - MacOS: `ping -c 5 www.google.ca`
-    - Stop Capture
-4. Save as **Capture1.pcap**
-
+    <ol>
+    <li>Issue command</li>
+        <ul>
+            <li>Windows from Administrator Powershell: <code>Remove-NetNeighbor *</code></li>
+            <li>Linux: <code>sudo ip neigh flush all</code></li>
+            <li>MacOS: <code>sudo arp -a -d</code></li>
+        </ul>
+    <li>Start Capture</li>
+    <li>Issue command:</li>
+        <ul>
+            <li>Windows from Administrator CMD: <code>ping -n 5 www.google.ca</code></li>
+            <li>Windows from Administrator Powershell: <code> Test-Connection -Count 5 www.google.ca</code></li>
+            <li>Linux: <code>ping -c 5 www.google.ca</code></li>
+            <li>MacOS: <code>ping -c 5 www.google.ca</code></li>
+            <li>Stop Capture</li>
+        </ul>
+    <li>Save as <b>Capture1.pcap</b></li>
+    </ol>
 </details>
 
 <details>
     <summary>Capture 2</summary>
-    
- 1. Clear the cache from firefox / chrome / edge (`<ctrl><shift><delete>`)
- 2. Start capture
- 3. Using a web browser visit `http://www.undeadly.org`
- 4. Stop Capture
- 5. Save as **Capture2.pcap**
-
+    <ol>
+    <li>Clear the cache from firefox / chrome / edge (<code>Ctrl+Shift+Delete</code>)</li>
+    <li>Start capture</li>
+    <li>Using a web browser visit <code>http://www.undeadly.org</code></li>
+    <li>Stop Capture</li>
+    <li>Save as <b>Capture2.pcap</b></li>
+    </ol>
 </details>
 
 <details>
     <summary>Capture 3</summary>
-    
- 1. Start capture
- 2. Issue command:
-    - Windows from Administrator Powershell: `ipconfig /renew`
-    - Linux: `sudo dhclient -r -pf /var/run/dhclient-em1.pid`
-    - Stop capture
- 3. Save as **Capture3.pcap**
-   
+    <ol>
+    </li> Start capture</li>
+    </li> Issue command:</li>
+        <ul>
+            <li> Windows from Administrator Powershell: <code>ipconfig /renew</code></li>
+            <li> Linux: <code>sudo dhclient -r -pf /var/run/dhclient-em1.pid</code></li>
+            <li> Stop capture</li>
+        </ul>
+    </li> Save as <b>Capture3.pcap</b></li>
+    </ol>
 </details>
 
 <details>
     <summary>Analysis</summary>
-    
- Reload each of the previous captures and filter to list only the protocol you are looking for, e.g. put arp in the filter box
-
- Apply this filter by selecting apply.
-
- Based on the filtered output above, draw up a three-column table in Microsoft Excel (or equivalent) containing the name, description and, position within the OSI Model of each of the following protocols:
-
- * DHCP (bootp)
- * ARP
- * DNS
- * Ethernet
- * HTTP
- * ICMP
- * IP
- * TCP
- * TLSv2 (SSL)
-
+    <p>Reload each of the previous captures and filter to list only the protocol you are looking for, e.g. put arp in the filter box</p>
+    <p>Apply this filter by selecting apply.</p>
+    <p>Based on the filtered output above, draw up a three-column table in Microsoft Excel (or equivalent) containing the name, description and, position within the OSI Model of each of the following protocols:</p>
+    <ul>
+    <li> DHCP (bootp)</li>
+    <li> ARP</li>
+    <li> DNS</li>
+    <li> Ethernet</li>
+    <li> HTTP</li>
+    <li> ICMP</li>
+    <li> IP</li>
+    <li> TCP</li>
+    <li> TLSv2 (SSL)</li>
+    </ul>
 </details>
