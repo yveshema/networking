@@ -4,4 +4,4 @@ relative_links:
   enabled: true
   collection: true
 exclude:
-  - slides
+  - docs
