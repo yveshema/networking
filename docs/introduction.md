@@ -11,7 +11,7 @@ footer: ACIT 2620 Principles of Enterprise Networking
 author: Yves Rene Shema
 ---
 
-![bg opacity:.1](../img/networking.jpg)
+![bg opacity:.16](../img/networking.jpg)
 
 # ACIT 2620
 
@@ -23,6 +23,7 @@ By: Yves Rene Shema
 
 ## Objectives
 
+- Course logistics
 - Overview of networking concepts and terminologies
 - Layered networking model 
 - Project introduction 
@@ -30,23 +31,53 @@ By: Yves Rene Shema
 
 ---
 
+## Course logistics
+
+### Software and equipment
+
+* Software: Python 3, Virtualbox, Wireshark
+* Equipment: 
+  * Windows 10 or higher, preferably Pro or Education editions
+  * Limited support for Mac, especially the new Apple Silicon generation (i.e. you may need to get a different computer for this course. Older Macs are fine.)
+  * Linux: I'll suppose you know what you're doing
+
+---
+
+### Assessment
+
+
+| Criteria | % | Comments |
+| --- | --- | --- |
+| Quizzes | 40 | Four equally weighted quizzes. No midterm |
+| Project | 20 | Cumulative. 5 milestones | 
+| Final exam | 40 | Practical, based on project |
+
+* Quizzes are in person. If you miss a quiz, it's gone; there are no makeovers!
+* Late project submissions (more than 1 week after deadline) will not be graded.
+  
+---
+
+
 ## What is the internet
 
 - What is it made of?
-- what is its purpuse?
+  - catalog the different components that make up the internet infrastructure and describe the role of each
+- what is its purpose?
 - How does it work?
+  - how do the different networking components interface with each other
+  - what governs communication between them
 
 ---
 
 ## Network
 
-Collection of `nodes` connected by some type of transmission media or `link`, for the purpose of sharing services, devices or data (i.e. networked `resources`)
+* Collection of `nodes` connected by some type of transmission media or `link`, for the purpose of sharing services, devices or data (i.e. networked `resources`)
 
 ---
 
 ## Node
 
-Any device that can communicate over the network and is identified by a unique identifying number, known as its `network address`.
+* Any device that can communicate over the network and is identified by a unique identifying number, known as its `network address`.
 
 ---
 
@@ -92,8 +123,7 @@ Any device that can communicate over the network and is identified by a unique i
 * SAN
 * EPN
 * VPN
-
-[Learn more](https://www.belden.com/blogs/network-types)
+* [Learn more](https://www.belden.com/blogs/network-types)
 
 ---
 
@@ -126,15 +156,16 @@ Any device that can communicate over the network and is identified by a unique i
 
 ---
 
-## Protocol Data Units (PDU)
-
-![protocol data units](../img/intro/layers-pdu.png)
-
----
-
 ## Encapsulation
 
 !['pdu encapsulation' w:900px](../img/intro/encapsulation.png)
+
+
+---
+
+## Protocol Data Units (PDU)
+
+![protocol data units](../img/intro/layers-pdu.png)
 
 ---
 
