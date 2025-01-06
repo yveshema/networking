@@ -9,47 +9,47 @@ Complete the following activities starting and stopping the packet capture as re
 <details>
     <summary>Capture 1</summary>
     <ol>
-    <li>Issue command</li>
-        <ul>
-            <li>Windows from Administrator Powershell: <code>Remove-NetNeighbor *</code></li>
-            <li>Linux: <code>sudo ip neigh flush all</code></li>
-            <li>MacOS: <code>sudo arp -a -d</code></li>
-        </ul>
-    <li>Start Capture</li>
-    <li>Issue command:</li>
-        <ul>
-            <li>Windows from Administrator CMD: <code>ping -n 5 www.google.ca</code></li>
-            <li>Windows from Administrator Powershell: <code> Test-Connection -Count 5 www.google.ca</code></li>
-            <li>Linux: <code>ping -c 5 www.google.ca</code></li>
-            <li>MacOS: <code>ping -c 5 www.google.ca</code></li>
-            <li>Stop Capture</li>
-        </ul>
-    <li>Save as <b>Capture1.pcap</b></li>
+        <li>Issue command</li>
+            <ul>
+                <li>Windows from Administrator Powershell: <code>Remove-NetNeighbor *</code></li>
+                <li>Linux: <code>sudo ip neigh flush all</code></li>
+                <li>MacOS: <code>sudo arp -a -d</code></li>
+            </ul>
+        <li>Start Capture</li>
+        <li>Issue command:</li>
+            <ul>
+                <li>Windows from Administrator CMD: <code>ping -n 5 www.google.ca</code></li>
+                <li>Windows from Administrator Powershell: <code> Test-Connection -Count 5 www.google.ca</code></li>
+                <li>Linux: <code>ping -c 5 www.google.ca</code></li>
+                <li>MacOS: <code>ping -c 5 www.google.ca</code></li>
+                <li>Stop Capture</li>
+            </ul>
+        <li>Save as <b>Capture1.pcap</b></li>
     </ol>
 </details>
 
 <details>
     <summary>Capture 2</summary>
     <ol>
-    <li>Clear the cache from firefox / chrome / edge (<code>Ctrl+Shift+Delete</code>)</li>
-    <li>Start capture</li>
-    <li>Using a web browser visit <code>http://www.undeadly.org</code></li>
-    <li>Stop Capture</li>
-    <li>Save as <b>Capture2.pcap</b></li>
+        <li>Clear the cache from firefox / chrome / edge (<code>Ctrl+Shift+Delete</code>)</li>
+        <li>Start capture</li>
+        <li>Using a web browser visit <code>http://www.undeadly.org</code></li>
+        <li>Stop Capture</li>
+        <li>Save as <b>Capture2.pcap</b></li>
     </ol>
 </details>
 
 <details>
     <summary>Capture 3</summary>
     <ol>
-    </li> Start capture</li>
-    </li> Issue command:</li>
-        <ul>
-            <li> Windows from Administrator Powershell: <code>ipconfig /renew</code></li>
-            <li> Linux: <code>sudo dhclient -r -pf /var/run/dhclient-em1.pid</code></li>
-            <li> Stop capture</li>
-        </ul>
-    </li> Save as <b>Capture3.pcap</b></li>
+        <li> Start capture</li>
+        <li> Issue command:</li>
+            <ul>
+                <li> Windows from Administrator Powershell: <code>ipconfig /renew</code></li>
+                <li> Linux: <code>sudo dhclient -r -pf /var/run/dhclient-em1.pid</code></li>
+                <li> Stop capture</li>
+            </ul>
+        <li> Save as <b>Capture3.pcap</b></li>
     </ol>
 </details>
 
