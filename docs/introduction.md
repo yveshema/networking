@@ -23,11 +23,11 @@ By: Yves Rene Shema
 
 ## Objectives
 
-- Course logistics
-- Overview of networking concepts and terminologies
-- Layered networking model 
-- Project introduction 
-- Packet capture
+* Course logistics
+* Overview of networking concepts and terminologies
+* Layered networking model 
+* Project introduction 
+* Packet capture
 
 ---
 
@@ -60,14 +60,13 @@ By: Yves Rene Shema
 
 ## What is the internet
 
-- What is it made of?
-  - catalog the different components that make up the internet infrastructure and describe the role of each
-- what is its purpose?
-- How does it work?
-  - how do the different networking components interface with each other
-  - what governs communication between them
-
----
+* What is it made of?
+  * catalog the different components that make up the internet infrastructure and describe the role of each
+* what is its purpose?
+* How does it work?
+  * how do the different networking components interface with each other
+  * what governs communication between them
+----
 
 ## Network
 
@@ -160,7 +159,6 @@ By: Yves Rene Shema
 
 !['pdu encapsulation' w:900px](../img/intro/encapsulation.png)
 
-
 ---
 
 ## Protocol Data Units (PDU)
@@ -175,9 +173,9 @@ By: Yves Rene Shema
 
 ---
 
-- Mutually agreed upon rules for communication
-- Define the format, order of messages sent and received among network entities, and actions taken upon transmission, receipt, and timeout
-- Govern all communication activity on the internet
+* Mutually agreed upon rules for communication
+* Define the format, order of messages sent and received among network entities, and actions taken upon transmission, receipt, and timeout
+* Govern all communication activity on the internet
 
 ---
 
@@ -196,19 +194,19 @@ By: Yves Rene Shema
 
 ## Reading list
 
-* This week
-  * [OSI Model](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_1_1_0_0/)
-  * Optional reading:
-    * [Wireshark: filtering while capturing]()
-    * [Capture filters]()
-    * [Display filters]()
+- This week
+  - [OSI Model](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_1_1_0_0/)
+  - Optional reading:
+    - [Wireshark: filtering while capturing]()
+    - [Capture filters]()
+    - [Display filters]()
 
 ---
 
-* Week Two (read/watch these before next class)
-  * [Common Network Infrastructure devices](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_2_2_0_0/)
-  * [Network devices](cisco_network_essentials_ch10_network_devices.pdf)
-  * [Network Topologies](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_3_0_0_0/)
-  * [Overview of networks](https://intronetworks.cs.luc.edu/current2/html/intro.html)
-  * Optional (but highly recommended):
-    * [Linux command line (recommended for beginners)](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
+- Week Two (read/watch these before next class)
+  - [Common Network Infrastructure devices](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_2_2_0_0/)
+  - [Network devices](cisco_network_essentials_ch10_network_devices.pdf)
+  - [Network Topologies](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_3_0_0_0/)
+  - [Overview of networks](https://intronetworks.cs.luc.edu/current2/html/intro.html)
+  - Optional (but highly recommended):
+    - [Linux command line (recommended for beginners)](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
