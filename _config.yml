@@ -1,3 +1,5 @@
+name: ACIT2620 Networking Notes
+title: null
 plugins:
   - jekyll-relative-links
 relative_links:
