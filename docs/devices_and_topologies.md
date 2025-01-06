@@ -7,11 +7,11 @@ author: Yves Rene Shema
 
 <style scoped>
   h1, h2, p, footer {
-    color: tomato
+    color: white
   }
 </style>
 
-![bg opacity:.8](../img/networking.jpg)
+![bg opacity:.9](../img/networking.jpg)
 
 # ACIT 2620
 
