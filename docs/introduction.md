@@ -16,7 +16,7 @@ author: Yves Rene Shema
   }
 </style>
 
-![bg opacity:.5](../img/networking.jpg)
+![bg opacity:.8](../img/networking.jpg)
 
 # ACIT 2620
 
