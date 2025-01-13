@@ -50,9 +50,6 @@ jobs:
       # build slides
       - name: Ensure build directory exists
         run: mkdir -p build
-      - name: Copy static files
-        run: cp -R _config.yml README.md pages build/
-
       - name: Copy images directory (if exists)
         run: if [[ -d img ]]; then cp -R img build/img; fi
 
