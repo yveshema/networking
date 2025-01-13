@@ -23,7 +23,7 @@ Each topic contains additional information to aid in the completion of the activ
 
 ## Deliverables
 
-![project diagram](../img/project-overview.png)
+![project diagram](../img/project/project-overview.png)
 
 Upon completion of the project you will have two functioning routers with various capabilities including network address translation and some filtering, and providing additional services such as dynamic host configuration to the rest of the network.
 
