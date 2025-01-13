@@ -8,3 +8,11 @@ relative_links:
   collection: true
 exclude:
   - docs
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
