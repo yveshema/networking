@@ -22,9 +22,9 @@ permissions:
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-# concurrency:
-#   group: "pages"
-#   cancel-in-progress: false
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   # Build job
@@ -47,6 +47,30 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      # build slides
+      - name: Ensure build directory exists
+        run: mkdir -p build
+      - name: Copy static files
+        run: cp -R _config.yml README.md pages build/
+
+      - name: Copy images directory (if exists)
+        run: if [[ -d img ]]; then cp -R img build/img; fi
+
+      - name: Marp Build (docs folder, html)
+        uses: docker://marpteam/marp-cli:v3.0.2
+        with:
+          args: --theme ./themes/graph_paper.css -I docs/ -o build/slides/
+        env:
+          MARP_USER: root:root
+
+      - name: Marp Build (docs folder, pdf)
+        uses: docker://marpteam/marp-cli:v3.0.2
+        with:
+          args: --theme ./themes/graph_paper.css  --pdf --allow-local-files -I docs/ -o build/download/
+        env:
+          MARP_USER: root:root
+      - name: Copy marp build to ./_site folder
+        run: cp -R build/* ./_site/
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
