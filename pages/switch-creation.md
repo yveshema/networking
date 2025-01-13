@@ -26,7 +26,6 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 > These adapters will be named **enp0s8** and **enp0s9** respectively (see Red Hat interface naming conventions below)
 
 > [!IMPORTANT]
-> :bulb:
 > Once we have configured the bridge, the two internal networks (**`net1a`** and **`net1b`**) together with the **`Host-Only network #2`** will be joined into a single broadcast domain.
 
 ### Step 2
@@ -47,7 +46,7 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 > The IP address assigned to the **br0** is used solely for administration of the machine, i.e. in order to connect **r1** via SSH (for example, if we need to transfer files). A bridge doesn't require an IP Address to function as a bridge.
 
 > [!TIP]
-> :memo: Explore your bridge
+> Explore your bridge
 >
 > - Show your interfaces (**r1**) <br /> `ip link show`
 >   - ensure that **r1**'s physical interfaces are now managed by the bridge
@@ -69,7 +68,6 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 - Ensure you are able to ping **ws1** from **web** and vice versa. You should also be able to ping **r1**, **r2** and the host from both **web** and **ws1**.
 
 > [!TIP]
-> :bulb:
 > <h3><a name="nmcli-command-reference">nmcli command reference</a></h3>
 > 
 > You can achieve everything we did above on the command line using the commands below (sometimes using the command line is faster, but it takes getting used to):

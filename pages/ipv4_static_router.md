@@ -45,7 +45,6 @@ Attached to the **net1b** network are the following VM's:
 - __ws1__
 
 > [!IMPORTANT]
-> :bulb:
 > Note that __net1a__ and __net1b__, though initially distinct networks, are now part of the same broadcast domain (i.e. same LAN) thanks to the bridge configured in __r1__.
 
 Attached to the __net2__ network are the following VM's:
@@ -57,7 +56,7 @@ Attached to the __net2__ network are the following VM's:
 ## Router Configuration
 
 > [!TIP]
-> :bulb: Configuration steps:
+> Configuration steps:
 >
 > 1. IP configuration of router interfaces: `enp0s3` and `br0` for __r1__, `enp0s3` and `enp0s8` for __r2__
 > 2. Enable IP forwarding
@@ -138,7 +137,6 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 
 
 > [!TIP]
-> :bulb:
 > <h3 name="nmcli-command-reference">nmcli command reference</h3>
 > 
 > Delete a connection:
