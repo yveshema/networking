@@ -18,7 +18,6 @@ Three distinct IP networks need to exist by the end of the activity.
 - __net1__ (`net1a` & `net1b` joined by the bridge in __r1__). Network Address: <u>192.168.100.0/24</u>
 - __net2__. Network Address: <u>192.168.200.0/24</u>
 
-
 The following VMs will need to exist:
 
 - __border_rtr__: imported as an appliance in the previous milestone
@@ -45,10 +44,9 @@ Attached to the **net1b** network are the following VM's:
 - __r1__
 - __ws1__
 
-::: info
-:bulb: 
-Note that __net1a__ and __net1b__, though initially distinct networks, are now part of the same broadcast domain (i.e. same LAN) thanks to the bridge configured in __r1__.
-:::
+> [!IMPORTANT]
+> :bulb:
+> Note that __net1a__ and __net1b__, though initially distinct networks, are now part of the same broadcast domain (i.e. same LAN) thanks to the bridge configured in __r1__.
 
 Attached to the __net2__ network are the following VM's:
 
@@ -58,14 +56,12 @@ Attached to the __net2__ network are the following VM's:
 
 ## Router Configuration
 
-::: info
-:bulb: Configuration steps:
-
-1. IP configuration of router interfaces: `enp0s3` and `br0` for __r1__, `enp0s3` and `enp0s8` for __r2__
-1. Enable IP forwarding
-1. Configure routes
-
-:::
+> [!TIP]
+> :bulb: Configuration steps:
+>
+> 1. IP configuration of router interfaces: `enp0s3` and `br0` for __r1__, `enp0s3` and `enp0s8` for __r2__
+> 2. Enable IP forwarding
+> 3. Configure routes
 
 You will need to use the __NetworkManager__ through the `nmcli/nmtui` tools to create permanent configuration in the two routers and associated hosts.
 
@@ -122,61 +118,60 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 5. Enable IP forwarding (**see the note at the end of this section**)
 
 
- ::: info
- ### Enabling IP Forwarding
+> [!IMPORTANT]
+> ### Enabling IP Forwarding
+> 
+> IP forwarding is the mechanism by which a host takes packets coming through one interface and forward them out through another interface. 
+> This is not enabled by default. To enable it, proceed as follows:
+> 
+> - Using a text editor such as __Vim__ or __nano__, open the following file: <u>/etc/sysctl.conf</u> and add the following line at the bottom of it (this requires root privileges, i.e. __sudo__):
+>
+>  ```text
+>  net.ipv4.ip_forward = 1
+>  ```
+>
+> Run the following command to activate the changes:
+>
+> ```bash
+> sudo sysctl --system
+> ```
 
- IP forwarding is the mechanism by which a host takes packets coming through one interface and forward them out through another interface. 
- This is not enabled by default. To enable it, proceed as follows:
 
- - Using a text editor such as __Vim__ or __nano__, open the following file: <u>/etc/sysctl.conf</u> and add the following line at the bottom of it (this requires root privileges, i.e. __sudo__):
-
-  ```
-  net.ipv4.ip_forward = 1
-  ```
-
- Run the following command to activate the changes:
-
- ```bash
- sudo sysctl --system
- ```
- :::
-
-::: info
-:bulb: 
-<h3 name="nmcli-command-reference">nmcli command reference</h3>
-
-Delete a connection:
-
-```bash
-sudo nmcli con delete [connection_name]
-```
-
-Create connection and configure IP: 
-
-```bash
-sudo nmcli con add type ethernet con-name [connection_name] ifname [interface_name] ipv4.addresses [IP]/[cidr] ipv4.method manual ipv4.gateway [GATEWAY_IP] +ipv4.routes "[network_id] [gateway]"
-```
-
-The previous command can be broken down into multiple steps using the nmcli con modify command:
-
-Configure default route: 
-
-```bash
-sudo nmcli con modify [connection_name]     ipv4.gateway [GATEWAY_IP]
-```
-
-Configure routes: 
-
-```bash
-sudo nmcli con modify [connection_name] +ipv4.routes "[network_id] [gateway]"
-```
-
-Save changes: 
-
-```bash
-sudo nmcli con reload
-```
-:::
+> [!TIP]
+> :bulb:
+> <h3 name="nmcli-command-reference">nmcli command reference</h3>
+> 
+> Delete a connection:
+> 
+> ```bash
+> sudo nmcli con delete [connection_name]
+> ```
+> 
+> Create connection and configure IP: 
+> 
+> ```bash
+> sudo nmcli con add type ethernet con-name [connection_name] ifname [interface_name] ipv4.addresses [IP]/[cidr] ipv4.method manual ipv4.gateway [GATEWAY_IP] +ipv4.routes "[network_id] [gateway]"
+> ```
+> 
+> The previous command can be broken down into multiple steps using the nmcli con modify command:
+> 
+> Configure default route: 
+> 
+> ```bash
+> sudo nmcli con modify [connection_name]     ipv4.gateway [GATEWAY_IP]
+> ```
+> 
+> Configure routes: 
+> 
+> ```bash
+> sudo nmcli con modify [connection_name] +ipv4.routes "[network_id] [gateway]"
+> ```
+> 
+> Save changes: 
+> 
+> ```bash
+> sudo nmcli con reload
+> ```
     
 ## Host Configuration
 
@@ -184,6 +179,7 @@ IP configuration for __web__, __ws1__, __ws2__, and optionally __ws3__ is done i
 
 1. Before going any further, ensure __ws2__ (and optionally __ws3__) exist and are attached to the __net2__ network as described in the setup note above.
 2. Using the `nmtui/nmcli` tools, edit the `enp0s3` IP configuration as follows:
+
 - Switch from __Automatic__ to __Manual__ configuration
 - In the IP Address field, enter: 
   - __web__: 192.168.100.10/24
@@ -194,7 +190,6 @@ IP configuration for __web__, __ws1__, __ws2__, and optionally __ws3__ is done i
   - __web__ and __ws1__:  192.168.100.1
   - __ws2__ and __ws3__:   192.168.200.1
 - Save the changes and re-activate the interface.
-
 
 ## Troubleshooting
 
