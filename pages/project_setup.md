@@ -4,6 +4,10 @@ permalink: project-setup
 
 # Project Setup
 
+{% assign date='2025-01-11' %}
+
+Published {{ date | timeago }}
+
 ## Virtualbox setup
 
 If you do not have Virtualbox already installed on your machine, grab the executable for your platform by visiting the link below:

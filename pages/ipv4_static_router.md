@@ -4,6 +4,10 @@ permalink: /project-ipv4-static-router
 
 # IPv4 Static Router
 
+{% assign date='2025-01-12' %}
+
+Published {{ date | timeago }}
+
 This activity creates statically configured routing in __`r1`__ and __`r2`__. These routers are placed in an inter-network hierarchy and traffic is observed as it is routed between the networks.
 
 ## Deliverable

@@ -4,6 +4,10 @@ permalink: /project-switch-creation
 
 # Create an Ethernet Switch/Bridge
 
+{% assign date='2025-01-12' %}
+
+Published {{ date | timeago }}
+
 This activity configures the **r1** VM as an Ethernet switch (aka. multi-port bridge) by adding additional Ethernet interfaces and creating a logical "Bridge" between them.
 
 This 'switch' is placed in a network hierarchy and traffic is observed passing 'through' the switch.

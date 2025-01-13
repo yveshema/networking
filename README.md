@@ -2,7 +2,7 @@
 
 {% assign date='2025-01-12' %}
 
-Last updated {{ date | timeago }}
+Published {{ date | timeago }}
 
 This is your one-stop shop for slides, lab notes, and other content for this course. Slides are available to view directly in your browser as well as downloadable PDF files.
 
@@ -22,6 +22,8 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Ethernet & Switching](./slides/ethernet.html) (<a href="./download/ethernet.pdf" download>PDF</a>)
 * Week 4:
   * [IP Version 4](./slides/ipv4.html) (<a href="./download/ipv4.pdf" download>PDF</a>)
+* Week 6:
+  * [IPv4 Subnetting](./slides/ipv4_subnetting.html) (<a href="./download/ipv4_subnetting.pdf" download>PDF</a>)
 * Week 10:
   * [IP Version 6](./slides/ipv6.html) (<a href="./download/ipv6.pdf" download>PDF</a>)
 * Week 11:

@@ -4,6 +4,10 @@ permalink: /project-overview
 
 # Router Project Overview
 
+{% assign date='2025-01-05' %}
+
+Published {{ date | timeago }}
+
 ## Introduction
 
 This project is an investigation into the foundations of computer networking through the construction of a router. This router will be functionally equivalent to common off the shelf SOHO routers.

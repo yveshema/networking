@@ -4,6 +4,10 @@ permalink: /packet-capture
 
 # Packet Capture
 
+{% assign date='2025-01-12' %}
+
+Published {{ date | timeago }}
+
 Complete the following activities starting and stopping the packet capture as requested. Steps prefaced with "Issue command" are executed in the terminal.
 
 <details>
