@@ -32,5 +32,6 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Project setup](./project-setup)
 * Week 3:
   * [Project Milestone 1: Switch Creation](./project-switch-creation)
+  * [Ethernet Frame Analysis](./ethernet-frame-analysis)
 * Week 4:
   * [Project Milestone 2: IPv4 Static Router](./project-ipv4-static-router)
