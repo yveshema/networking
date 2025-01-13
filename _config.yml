@@ -4,6 +4,7 @@ markdown: GFM
 plugins:
   - jekyll-relative-links
   - jekyll-gfm-admonitions
+  - jekyll-timeago
 relative_links:
   enabled: true
   collection: true
