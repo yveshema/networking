@@ -1,4 +1,5 @@
-name: ACIT2620 Networking Notes
+title: ACIT2620 Networking Notes
+repository: yveshema/networking
 markdown: GFM
 plugins:
   - jekyll-relative-links
