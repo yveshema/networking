@@ -14,6 +14,14 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Introduction](./slides/introduction.html) (<a href="./download/introduction.pdf" download>PDF</a>)
 * Week 2: 
   * [Network devices & topologies](./slides/devices_and_topologies.html) (<a href="./download/devices_and_topologies.pdf" download>PDF</a>)
+* Week 3:
+  * [Ethernet & Switching](./slides/ethernet.html) (<a href="./download/ethernet.pdf" download>PDF</a>)
+* Week 4:
+  * [IP Version 4](./slides/ipv4.html) (<a href="./download/ipv4.pdf" download>PDF</a>)
+* Week 10:
+  * [IP Version 6](./slides/ipv6.html) (<a href="./download/ipv6.pdf" download>PDF</a>)
+* Week 11:
+  * [Routing Protocols](./slides/routing_protocols.html) (<a href="./download/routing_protocols.pdf" download>PDF</a>)
 
 ## Lab notes
 
@@ -22,3 +30,7 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Packet Capture](./packet-capture)
 * Week 2:
   * [Project setup](./project-setup)
+* Week 3:
+  * [Project Milestone 1: Switch Creation](./project-switch-creation)
+* Week 4:
+  * [Project Milestone 2: IPv4 Static Router](./project-ipv4-static-router)
