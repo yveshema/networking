@@ -1,6 +1,8 @@
 name: ACIT2620 Networking Notes
+markdown: GFM
 plugins:
   - jekyll-relative-links
+  - jekyll-gfm-admonitions
 relative_links:
   enabled: true
   collection: true
