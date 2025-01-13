@@ -1,5 +1,9 @@
 # ACIT 2620 Principles of Enterprise Networking
 
+{% assign date='2025-01-12' %}
+
+Last updated {{ date | timeago }}
+
 This is your one-stop shop for slides, lab notes, and other content for this course. Slides are available to view directly in your browser as well as downloadable PDF files.
 
 ## About the course
