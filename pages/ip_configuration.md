@@ -17,29 +17,29 @@ On your Windows host, run the following commands to discover your network and IP
 Launch one of your virtual machines and run the following commands to find out its IP configuration
         - Display link-layer settings: `ip link show`
         - Display IP configuration: `ip addr show`
-    
+
    > [!TIP]
    > Based on the output from the commands above, what are the elements of IP configuration?
-   > 
+   >
    > What is the meaning of each IP configuration item?
-    
+
 1. IP route tracing:
 
     Run the following commands to trace the path an IP packet would traverse to each the following destinations:
     - globalnews.ca
     - 8.8.8.8
-    
-    > [!NOTE]
-    > The __$IP__ in the commands below refers to either the destination DNS name or IP address
+
+   > [!NOTE]
+   > The __$IP__ in the commands below refers to either the destination DNS name or IP address
 
     - On Windows, run: `Test-NetConnection $IP -traceroute`
     - Alternatively, you can run: `tracert -d $IP` (the -d option causes tracert not to resolve domain names, thus making it faster).
     - On Linux, run: `sudo traceroute -I $IP` (the -I option causes traceroute to use ICMP (the default is TCP) which is faster. You need root priviledges to use the option).
-    
+
    > [!TIP]
    > Run:
    > `Get-NetRoute -AddressFamily IPv4` on Windows, or
    > `ip route show` on Linux
    > to display the routing table. Are any of the intermediate routers listed in the tracert/traceroute output in the routing table?
-   > 
+   >
    > How did tracert/traceroute find out about all the intermediate routers between your computer and the packet destination?
