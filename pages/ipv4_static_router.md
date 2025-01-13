@@ -1,5 +1,5 @@
 ---
-permalink: /ipv4-static-router
+permalink: /project-ipv4-static-router
 ---
 
 # IPv4 Static Router
