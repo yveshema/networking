@@ -73,20 +73,19 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 
 > [!TIP]
 > <h3><a name="nmcli-command-reference">nmcli command reference</a></h3>
-> You can achieve everything we did above on the command line using the commands 
+> You can achieve everything we did above on the command line using the commands
 > below (sometimes using the command line is faster, but it takes getting used to):
 >
-> Connection/Configuration management:  
+> Connection/Configuration management:
 >
 > - Show connections: <br /> `nmcli connection show`
 > - Delete connection: <br /> `nmcli connection del connection_name`
 > - Bring up connection: <br /> `nmcli connection up connection_name`
 >
-> Bridge management:  
+> Bridge management:
 >
-> - Create bridge: <br /> `nmcli connection add type bridge con-name connection_name ifname bridge_name`
-> - Add link to bridge:  
-> <br /> `nmcli connection add type ethernet slave-type bridge con-name connection_name ifname interface_name master bridge_name`
+> - Create bridge: <br /> `nmcli con add type bridge con-name connection_name ifname bridge_name`
+> - Add link to bridge: <br /> `nmcli con add type ethernet slave-type bridge con-name connection_name ifname interface_name master bridge_name`
 > - Activate ports when bridge activated: <br /> `nmcli con modify bridge_name connection.autoconnect-slaves 1`
 > - Bring up bridge: <br /> `nmcli con up bridge_name`
 
