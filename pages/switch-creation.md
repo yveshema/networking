@@ -72,7 +72,9 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 - Ensure you are able to ping **ws1** from **web** and vice versa. You should also be able to ping **r1**, **r2** and the host from both **web** and **ws1**.
 
 > [!TIP]
-> <h3><a name="nmcli-command-reference">nmcli command reference</a></h3>
+> 
+> ### nmcli command reference
+> 
 > You can achieve everything we did above on the command line using the commands
 > below (sometimes using the command line is faster, but it takes getting used to):
 >
