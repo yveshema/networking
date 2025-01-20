@@ -58,14 +58,14 @@ jobs:
       - name: Marp Build (docs folder, html)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: --theme ./themes/graph_paper.css -I docs/ -o build/slides/
+          args: --theme ./themes/graph_paper.css --html -I docs/ -o build/slides/
         env:
           MARP_USER: root:root
 
       - name: Marp Build (docs folder, pdf)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: --theme ./themes/graph_paper.css  --pdf --allow-local-files -I docs/ -o build/download/
+          args: --theme ./themes/graph_paper.css  --html --pdf --allow-local-files -I docs/ -o build/download/
         env:
           MARP_USER: root:root
       
