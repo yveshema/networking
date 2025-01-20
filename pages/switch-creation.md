@@ -78,7 +78,7 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 > 
 > Connection/Configuration management:
 > 
-> - Show connections: <br />nmcli connection show`
+> - Show connections: <br />`nmcli connection show`
 > 
 > - Delete connection: <br />`nmcli connection del connection_name`
 > 

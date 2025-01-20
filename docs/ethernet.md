@@ -27,7 +27,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/ethernet-chart.png"
-         alt="layer 2" style="width: 60%; " />
+         alt="layer 2" style="width: 50%; " />
 </div>
 
 ---
@@ -116,7 +116,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/transparent-bridging.png"
-         alt="transparent bridging" style="width: 60%; " />
+         alt="transparent bridging" style="width: 40%; " />
 </div>
 
 ---
@@ -125,7 +125,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/broadcast-loop.png"
-         alt="broadcast loop" style="width: 60%; "/>
+         alt="broadcast loop" style="width: 80%; "/>
 </div>
 
 ---
@@ -134,7 +134,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/stp-redundancy.png"
-         alt="spanning tree protocol" style="width: 60%; "/>
+         alt="spanning tree protocol" style="width: 70%; "/>
 </div>
 
 ---
@@ -150,7 +150,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/vlan-topology.png"
-         alt="vlans" style="width: 60%;"/>
+         alt="vlans" style="width: 70%;"/>
 </div>
 
 ---
