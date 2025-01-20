@@ -27,7 +27,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/ethernet-chart.png"
-         alt="layer 2" style="width: 70%; " />
+         alt="layer 2" style="width: 60%; " />
 </div>
 
 ---
@@ -94,7 +94,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/mac-addr-structure.png"
-         alt="mac address" style="width: 80%; " />
+         alt="mac address" style="width: 60%; " />
 </div>
 
 ---
@@ -116,7 +116,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/transparent-bridging.png"
-         alt="transparent bridging" style="width: 70%; " />
+         alt="transparent bridging" style="width: 60%; " />
 </div>
 
 ---
@@ -125,7 +125,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/broadcast-loop.png"
-         alt="broadcast loop" style="width: 80%; "/>
+         alt="broadcast loop" style="width: 60%; "/>
 </div>
 
 ---
@@ -134,7 +134,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/stp-redundancy.png"
-         alt="spanning tree protocol" style="width: 80%; "/>
+         alt="spanning tree protocol" style="width: 60%; "/>
 </div>
 
 ---
@@ -150,7 +150,7 @@ By: Yves Rene Shema
 
 <div>
     <img src="../img/ethernet/vlan-topology.png"
-         alt="vlans" style="width: 80%;"/>
+         alt="vlans" style="width: 60%;"/>
 </div>
 
 ---
@@ -209,7 +209,7 @@ By: Yves Rene Shema
 
 <div style="height: 600px; text-align: center;">
     <img src="../img/ethernet/csma-ca-flowchart.png" 
-         alt="CSMA-CA" />
+         alt="CSMA-CA" width="60%" />
 <div>
 
 ---
