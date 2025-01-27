@@ -22,7 +22,6 @@ Published {{ date | timeago }}
 - Click on Start. The capture will begin. Let it run for about a minute, then stop the capture
 
 > [!TIP]
-> :bulb:
 > In the filter input box at the top of Wireshark window, type "stp" and press Enter
 >
 > - Select one of the filtered packets and examine it. Do you notice anything different in how Wireshark displays it?
@@ -46,7 +45,6 @@ Published {{ date | timeago }}
   - Alternatively, you may use __`sftp`__
 
 > [!TIP]
-> :bulb:
 > The three capture files each contain ARP packets even though the ping probes were only send to ws1 and google name server. Why?
 >
 > - Select one of the ARP packet and examine its contents.
