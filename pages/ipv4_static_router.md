@@ -141,7 +141,7 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 
 
 > [!TIP]
-> <h3 name="nmcli-command-reference">nmcli command reference</h3>
+> ### nmcli command reference
 > 
 > Delete a connection:
 > 
