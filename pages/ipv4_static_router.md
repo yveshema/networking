@@ -155,7 +155,7 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 > sudo nmcli con add type ethernet con-name [connection_name] ifname [interface_name] ipv4.addresses [IP]/[cidr] ipv4.method manual ipv4.gateway [GATEWAY_IP] +ipv4.routes "[network_id] [gateway]"
 > ```
 > 
-> The previous command can be broken down into multiple steps using the nmcli con modify command:
+> The previous command can be broken down into multiple steps using the nmcli con modify command:  
 > 
 > Configure default route: 
 > 

@@ -144,16 +144,16 @@ How many networks do you see?
 ## Special Addresses
 
 - Private IP Addresses
-  - 10.0.0.0 -> 10.255.255.255
-  - 172.16.0.0 -> 172.31.255.255
-  - 192.168.0.0 -> 192.168.255.255
+  - 10.0.0.0 - 10.255.255.255
+  - 172.16.0.0 - 172.31.255.255
+  - 192.168.0.0 - 192.168.255.255
 
 ---
 
 - Documentation IP Addresses
-  - 192.0.2.0 -> 192.0.2.255
+  - 192.0.2.0 - 192.0.2.255
 - Self-Configured IP Addresses (often DHCP Failure)
-  - 169.254.0.0 -> 169.254.255.255
+  - 169.254.0.0 - 169.254.255.255
 
 ---
 
@@ -170,7 +170,7 @@ How many networks do you see?
 
 - Limited Broadcast
   - 255.255.255.255
-  - Transmitted only on local segment -> not routed
+  - Transmitted only on local segment - not routed
 - Network Broadcast Address
   - Network Address + All host bits set to one
     - Network Address = 192.168.1.x
