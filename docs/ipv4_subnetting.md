@@ -56,11 +56,11 @@ By: Yves Rene Shema
 Network (network portion):
 
 * get allocated portion of ISP’s address space:
-  * ISP's block       11001000  00010111  00010000  00000000    200.23.16.0/20
-  * Organization 1    11001000  00010111  00010010  00000000    200.23.18.0/23
-  * Organization 2    11001000  00010111  00010100  00000000    200.23.20.0/23
+  * ISP's block&emsp;11001000  00010111  00010000  00000000&emsp;200.23.16.0/20
+  * Organization 1&emsp;11001000  00010111  00010010  00000000&emsp;200.23.18.0/23
+  * Organization 2&emsp;11001000  00010111  00010100  00000000&emsp;200.23.20.0/23
   * ...
-  * Organization 7    11001000  00010111  00011110  00000000    200.23.30.0/23
+  * Organization 7&emsp;11001000  00010111  00011110  00000000&emsp;200.23.30.0/23
 
 ---
 
@@ -137,6 +137,11 @@ Network (network portion):
     10.0.1.0/8          prefix: 10
     192.168.0.1/16		  prefix: 192.168
     10.0.15.20/24		    prefix: 10.0.15
+
+---
+
+### Subnet prefix
+
 * For classless subnets, the binary prefix does not always map to a decimal representation
 * Example:
     10.48.20.200/12 and 10.63.255.10/12 are both part of the same subnet (in this case, the network ID is 10.48.0.0/12 and the broadcast ID is 10.63.255.255/12)
@@ -247,7 +252,7 @@ Network (network portion):
 
 | Subnet | Broadcast | Subnet | Broadcast |
 | -------| ----------| -------| ----------|
-| 192.168.1.0/25 | 192.168.1.127 |  |  |
+| **192.168.1.0/25** | **192.168.1.127** |  |  |
 | 192.168.1.128/25 | 192.168.1.255 |  |  |
 
 
