@@ -29,7 +29,7 @@ Three distinct networks should already be in places from previous milestones, ar
 
 ## Router configuration
 
-> [!IMPORTANT]
+> [!IMPORTANT] Configuration steps
 >
 > ### Configuration steps
 > 
@@ -39,7 +39,7 @@ Three distinct networks should already be in places from previous milestones, ar
 
 ### r1 configuration
 
-> [!TIP]
+> [!TIP] Tools
 > You may use the **`nmtui`** tool to complete this task.
 >
 >If you prefer the **`nmcli`** command line tool, the command hints at the end of this section may be of help.
@@ -67,7 +67,7 @@ sudo sysctl --system
 
 ### r2 configuration
 
-> [!TIP]
+> [!TIP] Tools
 > You may use the **`nmtui`** tool to complete this task.
 >
 >If you prefer the **`nmcli`** command line tool, the command hints at the end of this section may be of help.
@@ -93,7 +93,7 @@ sudo sysctl --system
 
 ## Hosts configuration
 
-> [!TIP]
+> [!TIP] Tools
 > You may use the **`nmtui`** tool to complete this task.
 >
 >If you prefer the **`nmcli`** command line tool, the command hints at the end of this section may be of help.
@@ -109,7 +109,7 @@ sudo sysctl --system
   - gateway: `FD00:C0:A8:C8::1`
 
 
-> [!TIP]
+> [!TIP] Command hints
 > 
 > ### Command hints
 >
