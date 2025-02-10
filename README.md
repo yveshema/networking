@@ -42,5 +42,5 @@ The course assumes some familiarity with the Linux operating system and experien
 * Week 4:
   * [Find your IP configuration](./ip-configuration)
   * [Project Milestone 2: IPv4 Static Router](./project-ipv4-static-router)
-* Week 6:
+* Week 9:
   * [Project Milestone 3: IPv6 Static Router](./project-ipv6-static-router)
