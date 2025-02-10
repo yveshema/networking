@@ -611,7 +611,15 @@ Each destination node that receives the NS responds with an ICMPv6 message type 
 
 ---
 
-## Resources
+## Learn more
 
 - [IANA number resources](https://www.iana.org/numbers)
 - [North American IPv6 Rules](https://www.arin.net/participate/policy/nrpm/)
+
+---
+
+## Reading List
+
+- [Introduction to DHCP (video)](https://learning.oreilly.com/videos/building-linux-servers/9780137368495/9780137368495-BLS1_02_03_01/)
+- [What is a Routing Protocol](https://learning.oreilly.com/library/view/ospf-network-design/9781587140846/9781587140846_ch02lev1sec1.html)
+- [BIRD Internet Routing Daemon - Configuration](https://bird.network.cz/?get_doc&v=20&f=bird-3.html#ss3.1)

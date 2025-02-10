@@ -108,8 +108,9 @@ sudo sysctl --system
   - method: manual
   - gateway: `FD00:C0:A8:C8::1`
 
+
 > [!TIP]
->
+> 
 > ### Command hints
 >
 > Add IPv6 address to an interface:
