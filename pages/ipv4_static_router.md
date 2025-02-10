@@ -48,19 +48,18 @@ Attached to the **net1b** network are the following VM's:
 - __r1__
 - __ws1__
 
-> [!IMPORTANT]
+> [!IMPORTANT] net1
 > Note that __net1a__ and __net1b__, though initially distinct networks, are now part of the same broadcast domain (i.e. same LAN) thanks to the bridge configured in __r1__.
 
 Attached to the __net2__ network are the following VM's:
 
 - __r2__: An additional <u>Paravirtualized Network Adapter</u> (virtio-net)  will need to be added to this device. Ensure it is connected to an internal network named __net2__
-- :new: __ws2__: (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
-- :new: __ws3__ (Optional)  (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
+-  __ws2__: (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
+-  __ws3__ (Optional)  (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
 
 ## Router Configuration
 
-> [!TIP]
-> Configuration steps:
+> [!TIP] Configuration steps:
 >
 > 1. IP configuration of router interfaces: `enp0s3` and `br0` for __r1__, `enp0s3` and `enp0s8` for __r2__
 > 2. Enable IP forwarding
@@ -120,9 +119,10 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 4. Re-activate both the `enp0s3` and the `enp0s8` interfaces
 5. Enable IP forwarding (**see the note at the end of this section**)
 
+<br />
+<br />
 
-> [!IMPORTANT]
-> ### Enabling IP Forwarding
+> [!IMPORTANT] Enabling IP Forwarding
 > 
 > IP forwarding is the mechanism by which a host takes packets coming through one interface and forward them out through another interface. 
 > This is not enabled by default. To enable it, proceed as follows:
@@ -139,9 +139,10 @@ It is perhaps easier to complete the following steps using the `nmtui` tool, but
 > sudo sysctl --system
 > ```
 
+<br />
+<br />
 
-> [!TIP]
-> ### nmcli command reference
+> [!TIP] nmcli command reference
 > 
 > Delete a connection:
 > 

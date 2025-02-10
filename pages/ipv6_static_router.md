@@ -31,8 +31,6 @@ Three distinct networks should already be in places from previous milestones, ar
 
 > [!IMPORTANT] Configuration steps
 >
-> ### Configuration steps
-> 
 > 1. IPv6 configuration of router interfaces: enp0s3 and br0 for r1, enp0s3 and enp0s8 for r2
 > 2. Enable IPv6 forwarding
 > 3. Configure IPv6 routes
@@ -69,7 +67,7 @@ sudo sysctl --system
 
 > [!TIP] Tools
 > You may use the **`nmtui`** tool to complete this task.
->
+>  
 >If you prefer the **`nmcli`** command line tool, the command hints at the end of this section may be of help.
 
 - **`enp0s3`** IPv6 configuration is as follows:
@@ -95,7 +93,7 @@ sudo sysctl --system
 
 > [!TIP] Tools
 > You may use the **`nmtui`** tool to complete this task.
->
+>  
 >If you prefer the **`nmcli`** command line tool, the command hints at the end of this section may be of help.
 
 - **`web`** and **`ws1`** IPv6 configuration
@@ -108,10 +106,11 @@ sudo sysctl --system
   - method: manual
   - gateway: `FD00:C0:A8:C8::1`
 
+<br />
+<br />
 
 > [!TIP] Command hints
 > 
-> ### Command hints
 >
 > Add IPv6 address to an interface:
 >
