@@ -24,10 +24,16 @@ The course assumes some familiarity with the Linux operating system and experien
   * [IP Version 4](./slides/ipv4.html) (<a href="./download/ipv4.pdf" download>PDF</a>)
 * Week 6:
   * [IPv4 Subnetting](./slides/ipv4_subnetting.html) (<a href="./download/ipv4_subnetting.pdf" download>PDF</a>)
-* Week 10:
+* Week 9:
   * [IP Version 6](./slides/ipv6.html) (<a href="./download/ipv6.pdf" download>PDF</a>)
-* Week 11:
+* Week 10:
   * [Routing Protocols](./slides/routing_protocols.html) (<a href="./download/routing_protocols.pdf" download>PDF</a>)
+* Week 11:
+  * [Transport Layer Protocols: TCP & UDP](./slides/transport.html) (<a href="./download/transport.pdf" download>PDF</a>)
+* Week 12:
+  * [Netfilter, Packet filtering and NAT](./slides/netfilter.html) (<a href="./download/netfilter.pdf" download>PDF</a>)
+* Week 13:
+  * [Domain Name Service](./slides/dns.html) (<a href="./download/dnf.pdf" download>PDF</a>)
 
 ## Lab notes
 
@@ -44,3 +50,8 @@ The course assumes some familiarity with the Linux operating system and experien
   * [Project Milestone 2: IPv4 Static Router](./project-ipv4-static-router)
 * Week 9:
   * [Project Milestone 3: IPv6 Static Router](./project-ipv6-static-router)
+* Week 10:
+  * [Project Milestone 4: DHCP Server](./project-dhcp-server)
+  * [Project Milestone 4: Dynamic Routing](./project-dynamic-routing)
+* Week 12:
+  * [Project Milestone 5: Packet filtering & NAT](./project-packet-filtering)
