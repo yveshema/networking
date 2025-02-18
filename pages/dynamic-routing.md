@@ -31,7 +31,7 @@ The configuration file for `bird` is located at `/etc/bird.conf`. This file alre
 <details>
 <summary>Example <code>bird.conf</code> file</summary>
 
-```text title="/etc/bird.conf"
+<pre><code>
 # /etc/bird.conf
 
 log syslog all;             # Log all messages
@@ -58,9 +58,10 @@ protocol ospf {            # Activate OSPF
             stub;            # to be advertised to other routers. Don't send or
         };                   # receive link stat advertisements on this interface
                              # accomplished by the "stub" directive
-    };                             
+    };
 }
-```
+</code></pre>
+</details>
 
 ## Enable and start the service
 

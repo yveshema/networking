@@ -38,7 +38,7 @@ An example configuration is given below (this is only an example; your configura
 <details>
 <summary>Example <code>dhcpd.conf</code> file</summary>
 
-```text title="/etc/dhcp/dhcpd.conf"
+<pre><code>
 # /etc/dhcp/dhcpd.conf
 
 # DHCP Server Configuration file.
@@ -76,8 +76,7 @@ host host2 {
 		
 	fixed-address 192.168.15.2;
 }    
-```
-
+</code></pre>
 </details>
 
 ## Enable and start the service
