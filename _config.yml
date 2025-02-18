@@ -1,5 +1,6 @@
 title: ACIT2620 Networking Notes
 repository: yveshema/networking
+author: Yves Rene Shema
 markdown: GFM
 plugins:
   - jekyll-relative-links
