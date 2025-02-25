@@ -267,3 +267,7 @@ d) What is next hop destination of a datagram addressed to <span class="next-ho
 ---
 
 ## Reading List
+
+- [Transport Layer](https://intronetworks.cs.luc.edu/current/html/intro.html#transport)
+- [UDP](https://intronetworks.cs.luc.edu/current/html/udp.html#user-datagram-protocol-udp)
+- [TCP Basics](https://intronetworks.cs.luc.edu/current/html/tcpA.html#tcp-transport-basics)

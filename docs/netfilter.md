@@ -256,3 +256,5 @@ table ip nat {
 ---
 
 ## Reading List
+
+- [DNS (Read up to 10.1.2 nslookup and dig)](https://intronetworks.cs.luc.edu/current/html/intro.html#transport)

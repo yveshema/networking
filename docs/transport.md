@@ -272,3 +272,5 @@ ESTAB      0      0            	142.232.107.85:36948          	142.232.204.52:44
 ---
 
 ## Reading List
+
+- [Managing firewall with nftables](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/getting-started-with-nftables_configuring-and-managing-networking#getting-started-with-nftables_configuring-and-managing-networking)
