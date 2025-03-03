@@ -182,7 +182,7 @@ is really
 ## Interface Identifiers
 
 - IPv6 addresses on a link must be unique.
-- Using the link prefix length, IPv6 hosts can automatically create a unique IPv6 address. 
+- Using the link prefix, IPv6 hosts can automatically create a unique IPv6 address. 
 - The following Layer 2 protocols can dynamically create the IPv6 address interface ID:
   - Ethernet 
   - PPP
@@ -200,9 +200,9 @@ is really
 ## IPv6 Unicast Address Scopes
 
 - Address types have well-defined destination scopes: 
-  - Link-local address
-  - Unique-local addresses (replaced Site-local address)
-  - Global unicast address
+  - **Link-local** address
+  - **Unique-local** addresses (replaced Site-local address)
+  - **Global** unicast address
 - Determined by the leading digits of the subnet prefix
 
 ---
