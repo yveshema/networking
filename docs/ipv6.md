@@ -85,15 +85,13 @@ By: Yves Rene Shema
 
 ## IPv6 Address Space
 
-Two raised to the 128th power is an astronomical number. In decimal terms, it is roughly **340 billion billion billion billion**—or, as Martin Levy of Hurricane Electric likes to say, “more than four quadrillion addresses for every star in the observable universe.”
-
----
-
-## IPv6 Address Space
-
 - 2<sup>128</sup>  =  340,282,366,920,938,463,463,374,607,431,768,211,456 
 - Or about 3.4×10<sup>38</sup> 
 - 340 **undecillion**
+- How big is it?
+  
+> Two raised to the 128th power is an astronomical number. In decimal terms, it is roughly **340 billion billion billion billion**—or, as Martin Levy of Hurricane Electric likes to say, “more than four quadrillion addresses for every star in the observable universe.”
+> &mdash; [Astronomically inadequate - The Economist](https://www.economist.com/johnson/2011/01/31/astronomically-inadequate)
 
 ---
 
