@@ -63,6 +63,15 @@ net.ipv6.conf.all.forwarding = 1
 sudo sysctl --system
 ```
 
+> [!TIP] With single command
+> Alternatively, you can do all the above using a single command:
+> 
+> ```bash
+> echo "net.ipv6.conf.all.forwarding = 1" | sudo tee -a /etc/sysctl.conf && sudo sysctl --system
+> ```
+
+<br />
+
 ### r2 configuration
 
 > [!TIP] Tools
