@@ -22,6 +22,7 @@ We also use __Netfilter__ to configure the __r2__ router to perform Network Addr
 1. Allow all traffic into the loopback adapter of the router
 1. By default, deny all traffic entering the router
 1. Allow incoming `ssh`, `ospf`, `dns` and `icmp` traffic into the router when it enters through the `enp0s3` interface.
+1. Allow all traffic originating from __net1__ network
 1. Allow all return traffic into the router
 1. By default, deny all traffic into the __net1__ network
 1. Allow `icmp` traffic into the __net1__ network from anywhere
