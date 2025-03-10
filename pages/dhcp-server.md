@@ -114,7 +114,8 @@ where `$index` is the interface index of your __Host-Only Ethernet Adapter #2__ 
 For convenience, you may also update your `./ssh/config` file with login credentials for __web__ and __ws1__.
 
 > [!TIP] macOS users
-> If you are on a mac, you may need to do a bit of internet search to find out how to add routes permanently on your system. 
+> If you are on a mac, you may need to do a bit of internet search to find out how to add routes permanently on your system.  
+> 
 > This [blog post](https://www.analysisman.com/2020/11/macos-staticroutes.html) might provide answers (I can't guarantee that it works on all mac versions)
 
 ## Troubleshooting
