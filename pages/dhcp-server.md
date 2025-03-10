@@ -23,9 +23,9 @@ You will need to use the __nmtui__ tool to achieve this.
 > [!IMPORTANT] Configuration steps
 > In general, there are three steps involved in provisioning  a service on Linux:
 >
->Edit configuration file (typically located under the `/etc/` directory)
->Validate configuration file - check for any syntax errors
->Enable and start the service - often by leveraging the `systemd` framework
+> - Edit configuration file (typically located under the `/etc/` directory)
+> - Validate configuration file - check for any syntax errors
+> - Enable and start the service - often by leveraging the `systemd` framework
 
 <br />
 
@@ -106,7 +106,7 @@ To be able to log into your __net1__ and __net2__ hosts from your host, you need
 Run the following command in Powershell as administrator to add a route to __net1__:
 
 ```pwsh
-New-NetRoute -DestinationPrefix "172.16.1.0/27" -InterfaceIndex $index -NextHop 10.20.30.100
+New-NetRoute -DestinationPrefix "172.26.20.0/27" -InterfaceIndex $index -NextHop 10.20.30.100
 ```
 
 where `$index` is the interface index of your __Host-Only Ethernet Adapter #2__ (hint: run `Get-NetAdapter` to find out the index value)
