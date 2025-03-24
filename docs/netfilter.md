@@ -134,7 +134,7 @@ There are 5 default chains/hooks for IPv4 and IPv6 datagrams
 
 <div class="image">
 
-![packet flow through netfilter hooks](../img/netfilter/netfilter-hooks.png)
+![packet flow through netfilter hooks](../img/netfilter/hooks.png)
 
 </div>
 
@@ -201,10 +201,10 @@ table ip filter {
         policy drop;
 
         iifname "lo" counter accept 
-        iifname "enp0s3" tcp dport ssh counter accept 
-        iifname "enp0s3" ip protocol {icmp,ospf} counter accept		 
-        iifname "enp0s8" ip saddr 10.0.15.0/24 counter accept
-        iifname "enp0s8" ip daddr 255.255.255.255 udp sport 68 udp dport 67 counter accept
+        iifname "eth0" tcp dport ssh counter accept 
+        iifname "eth0" ip protocol {icmp,dns} counter accept		 
+        iifname "eth1" ip saddr 10.0.15.0/24 counter accept
+        iifname "eth1" ip daddr 255.255.255.255 udp sport 68 udp dport 67 counter accept
         ct state related,established counter accept
     }
 
@@ -212,9 +212,9 @@ table ip filter {
         type filter hook forward priority 0;
         policy drop;
 
-        iifname "enp0s8" ip saddr 10.0.15.0/24 counter accept
-        iifname "enp0s3" ip daddr 10.0.15.0/24 tcp dport 22 counter accept
-        iifname “enp0s3” ip protocol icmp ip daddr 10.0.15.0/24 counter accept		
+        iifname "eth1" ip saddr 10.0.15.0/24 counter accept
+        iifname "eth0" ip daddr 10.0.15.0/24 tcp dport 22 counter accept
+        iifname “eth0” ip protocol icmp ip daddr 10.0.15.0/24 counter accept		
         ct state related,established counter accept
     }
 
@@ -238,15 +238,14 @@ table ip nat {
         ##### Port Forwarding ######
 
         type nat hook prerouting priority -100;
-        iifname "enp0s3" tcp dport 52022 dnat 192.168.10.100:ssh
-        iifname "enp0s3" tcp dport 53022 dnat 192.168.10.67:ssh
+        iifname "eth0" tcp dport 8080 dnat 192.168.10.100:80
     }
 
     chain postrouting { 
         ##### Address translation #######
         
         type nat hook postrouting priority 100;
-        oifname "enp0s3" masquerade
+        oifname "eth0" masquerade
     }
 }
 ```
