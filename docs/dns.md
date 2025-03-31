@@ -32,7 +32,8 @@ By: Yves Rene Shema
 
 ## Domain Name System (DNS)
 
-- allow users to locate services by DNS name rather than having to remember IP addresses
+- allow users to locate services by domain name rather than having to remember IP addresses
+- like an address book for IP addresses
 - hierarchical name system
 - distributed database
   - each domain responsible for maintaining its own DNS servers (nowadays most domain registrars provide DNS services for their customers)
@@ -46,7 +47,7 @@ By: Yves Rene Shema
 - 7 original gTLD: **.com**, **.net**, **.org**, **.int**, **.edu**, **.mil**, **.gov**
 - country-code domains: **.us**, **.ca**, **.it**, ...
 - new generic TLDS (gTLD): **.biz**, **.info**, ...
-  - anyone can apply for for a subdomain
+  - anyone can apply for a subdomain
 
 ---
 
@@ -75,6 +76,8 @@ By: Yves Rene Shema
   - must have at least 2 nameservers for  redundancy
 
 ---
+
+## Zones
 
 - a single nameserver can manage multiple unrelated zones (e.g. domain registrars)
 - root zone (root of the DNS tree, represented by DNS name that is the empty string) is managed by root nameservers
@@ -136,12 +139,8 @@ By: Yves Rene Shema
 - forwards DNS queries to DNS resolvers configured for the client
 - also caches queries for quick retrieval
 
----
+## Tools
 
-## creating sub-domain zone AWS
-
-- delegation: creating a separate hosted zone for a subdomain
-  - create a hosted zone with the same name as the subdomain (type: public hosted zone)
-  - using the name servers provided for the new hosted zone, create NS record in parent zone
-    - the name of the NS record must be the same as the name of the subdomain
-  - create records in subdomain hosted zone
+- `nslookup`
+- `dig`
+- `whois`
