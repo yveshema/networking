@@ -10,3 +10,7 @@ permalink: /review/scenario-one
 
 ![scenario one](../img/review/network_config_scenario_one.png)
 
+
+## Clean-up
+
+Delete the new network and associated configuration.
