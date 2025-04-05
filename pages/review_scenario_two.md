@@ -4,7 +4,8 @@ permalink: /review/scenario-two
 
 # Network Configuration - Scenario II
 
-**Task**: Create a new router named **test_rtr1** and attach it to the same network as  **r1** and **r2**. Additionally, attach **test_rtr1** to a new network named **test_net2** and configure it such that hosts within the new network obtain their IP address dynamically and are able to communicate with any destination.
+- **Task**: 
+  - Create a new router named **test_rtr1** and attach it to the same network as  **r1** and **r2**. Additionally, attach **test_rtr1** to a new network named **test_net2** and configure it such that hosts within the new network obtain their IP address dynamically and are able to communicate with any destination.
 
 ## Diagram
 
