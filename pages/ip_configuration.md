@@ -4,9 +4,6 @@ permalink: /ip-configuration
 
 # Elements of a host's IP Configuration
 
-{% assign date='2025-01-12' %}
-
-Published {{ date | timeago }}
 
 In this activity you will explore the networking tools that let you discover IP configuration on both Windows and Linux. These tools give you information about your IP configuration and related settings which are key in troubleshooting IP networks.
 

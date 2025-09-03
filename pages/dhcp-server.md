@@ -1,6 +1,7 @@
 ---
 permalink: /project-dhcp-server
 ---
+
 # DHCP Server
 
 This activity configures a DHCP service in __r1__ and __r2__ which will handle IP configuration requests from __net1__ and __net2__ subnets respectively.

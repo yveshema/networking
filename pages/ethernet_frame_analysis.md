@@ -4,9 +4,6 @@ permalink: /ethernet-frame-analysis
 
 # Activity: Ethernet Frame Analysis
 
-{% assign date='2025-01-12' %}
-
-Published {{ date | timeago }}
 
 ## Part I
 

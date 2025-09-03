@@ -4,9 +4,6 @@ permalink: /project-overview
 
 # Router Project Overview
 
-{% assign date='2025-01-05' %}
-
-Published {{ date | timeago }}
 
 ## Introduction
 
