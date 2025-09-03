@@ -97,11 +97,24 @@ By: Yves Rene Shema
 
 ---
 
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
 ## Link
 
-![transmission medium/link](../img/intro/link.png)
+![bg right contain](../img/intro/link.png)
 
 ---
+
+<style scoped>
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
 
 ## Media concurrency and direction
 
@@ -113,15 +126,27 @@ By: Yves Rene Shema
 
 ---
 
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
 ## Client-server Networks
 
-![client-server network width:60%](../img/intro/client-server.png)
+![bg right contain](../img/intro/client-server.png)
   
 ---
 
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
 ## Peer-to-peer Networks
 
-![p2p network](../img/intro/peer-to-peer.png)
+![bg right contain](../img/intro/peer-to-peer.png)
 
 ---
 
