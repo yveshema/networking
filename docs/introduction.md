@@ -62,16 +62,28 @@ By: Yves Rene Shema
   
 ---
 
+## Examples of networks
 
-## What is the internet
+- Forget about computer networks for now
 
-* What is it made of?
-  * catalog the different components that make up the internet infrastructure and describe the role of each
-* what is its purpose?
-* How does it work?
-  * how do the different networking components interface with each other
-  * what governs communication between them
-----
+---
+
+## Attributes of networks
+
+- What attributes or characteristics make something a network
+
+---
+
+## What are computer networks made of
+
+- Example:
+  - The internet
+
+---
+
+# Definitions
+
+---
 
 ## Network
 
@@ -135,11 +147,25 @@ By: Yves Rene Shema
 
 ---
 
+<style scoped>
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
 ## Circuit Switching
 
 ![circuit switching](../img/intro/circuit-switching.png)
 
 ---
+
+<style scoped>
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
 
 ## Packet Switching
 
@@ -147,30 +173,12 @@ By: Yves Rene Shema
 
 ---
 
-## Layered networking model
-
-![TCP/IP vs OSI model](../img/intro/dod-vs-osi.png)
-
----
-
-## Layered why?
-
-- Managing complexity: explicit structure allows identification and makes explicit the relationship of complex system's pieces
-- Modularization: changing of an implementation of a specific layer's service is hidden from the rest of the system
-
----
-
-## Encapsulation
-
-!['pdu encapsulation' w:900px](../img/intro/encapsulation.png)
-
----
-
-## Protocol Data Units (PDU)
-
-![protocol data units](../img/intro/layers-pdu.png)
-
----
+<style scoped>
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
 
 ## Protocols
 
@@ -184,9 +192,52 @@ By: Yves Rene Shema
 
 ---
 
-## TCP/IP protocol suite
+## Example Protocols
 
-!['TCP/IP protocol suite' w:800px](../img/intro/dod-protocols.png)
+---
+
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
+## Layered networking model
+
+![bg right contain](../img/intro/dod-vs-osi.png)
+
+---
+
+## Layered why?
+
+- Managing complexity: explicit structure allows identification and makes explicit the relationship of complex system's pieces
+- Modularization: changing of an implementation of a specific layer's service is hidden from the rest of the system
+
+---
+
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
+## Encapsulation
+
+![bg right contain](../img/intro/encapsulation.png)
+
+---
+
+<style scoped>
+  section {
+    border: 1em solid transparent;
+  }
+</style>
+
+## Protocol Data Units (PDU)
+
+
+![bg right contain](../img/intro/layers-pdu.png)
+
 
 ---
 
@@ -202,9 +253,9 @@ By: Yves Rene Shema
 - This week
   - [OSI Model](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_1_1_0_0/)
   - Optional reading:
-    - [Wireshark: filtering while capturing]()
-    - [Capture filters]()
-    - [Display filters]()
+    - [Wireshark: filtering while capturing](https://www.wireshark.org/docs/wsug_html_chunked/ChCapCaptureFilterSection.html)
+    - [Capture filters](https://wiki.wireshark.org/CaptureFilters)
+    - [Display filters](https://wiki.wireshark.org/DisplayFilters)
 
 ---
 
@@ -214,4 +265,5 @@ By: Yves Rene Shema
   - [Network Topologies](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_3_0_0_0/)
   - [Overview of networks](https://intronetworks.cs.luc.edu/current2/html/intro.html)
   - Optional (but highly recommended):
+    - [Virtualbox Networking Modes](https://www.virtualbox.org/manual/ch06.html#networkingmodes)
     - [Linux command line (recommended for beginners)](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
