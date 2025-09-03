@@ -4,10 +4,6 @@ permalink: project-setup
 
 # Project Setup
 
-{% assign date='2025-01-11' %}
-
-Published {{ date | timeago }}
-
 ## Virtualbox setup
 
 If you do not have Virtualbox already installed on your machine, grab the executable for your platform by visiting the link below:
@@ -24,13 +20,13 @@ Finally, make sure you install the **Virtualbox Extension Pack** which you can f
 
 You will need the following virtual appliances for this project. Details on how to use them are given in the next section.
 
-[rocky_linux_base.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EZrscfRAfoFAljRE76-u_PwB7dtfB-qkoOyWZAd5YM_OUw?e=bdU0Rt)
+[centos_8_base.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EWZLaN11S8FFnBgUrCsDingBZo-5Qt7WDvWYST2ahfZVRA?e=4kDm0z)
 
-[border_rtr.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EbSI06Ik3kJBh4rLHQW14zsBzBNddWF0ssYWQm960GMAEA?e=1e30Rm)
+[border_rtr.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EXBH1x5E7P1HgMuamciHH8oBbtHmRHzFlvPIJ0MwRu_-aw?e=jcodgz)
 
 The _border router_ (`border_rtr`) provides some custom services which are needed for the project but cannot be configured directly on Virtualbox in-built NAT router
 
-Rocky Linux is Red Hat-compatible Linux distribution with the same networking capabilities provided by Red Hat Enterprise servers. The `rocky_linux_base.ova` will be used as the base image for all other virtual devices that we will create for this project.
+CentOS is Red Hat-compatible Linux distribution with the same networking capabilities provided by Red Hat Enterprise servers. The `centos_8_base.ova` will be used as the base image for all other virtual devices that we will create for this project.
 
 ## Create your first network
 
@@ -55,9 +51,9 @@ All the VM's in this project use the same login credentials:
      - Make sure its network adapters are configured as follows (this should already be the case except if you are on a Mac):
      - <ins>Adapter</ins> 1: Attached to **NAT**, adapter type (Paravirtualized), promiscuous mode (Allow all)
      - <ins>Adapter 2</ins>: Attached to **Virtualbox Host-Only Ethernet Adapter #2** (**vboxnet2** if you are on a Mac), adapter type (Paravirtualized), promiscuous mode (Allow all)
-   * `rocky_linux_base.ova`: No need to do anything. We will use it only to clone other VM's (see next step)
+   * `centos_8_base.ova`: No need to do anything. We will use it only to clone other VM's (see next step)
      * Never run this image directly. If you do it can potentially interfere with any running VM that was cloned based off it.
-4. Use the **rocky_linux_base.ova** image to clone two virtual machines and configure them as follows:
+4. Use the **centos_8_base.ova** image to clone two virtual machines and configure them as follows:
    - VM 1:
      - Name: **r1**
      - <ins>Adapter 1</ins>: Attached to **Virtualbox Host-Only Ethernet Adapter #2**, adapter type (Paravirtualized), promiscuous mode (Allow all), MAC address: **020000000001**
@@ -77,7 +73,7 @@ You should now be able to send ping probes between the VM's or between the VM's 
 
 SSH (Secure Shell) is a software utility that allows you to securely log into a running system remotely. By default, SSH will prompt you for the remote host's hostname (or IP address), username and password, but it is possible to enable password-less login using public key/private key pair.
 
-The **rocky_linux_base.ova** is already configured with a public key, so all we need is a private key which you can download from here:
+The **centos_8_base.ova** is already configured with a public key, so all we need is a private key which you can download from here:
 
 [acit_admin_id_rsa](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EV4oSICRu9FPrCKMKrdHoa4BAG_z8kFvz1SoYZzBuST8Qw?e=TFv7WA)
 

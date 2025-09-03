@@ -62,7 +62,7 @@ This 'switch' is placed in a network hierarchy and traffic is observed passing '
 
 ### Step 3
 
-- Clone a new VM named **web** (linked clone, reset MAC address) from the **rocky_linux_base** VM and configure its Network `Adapter 1` as follows:
+- Clone a new VM named **web** (linked clone, reset MAC address) from the **centos_8_base** VM and configure its Network `Adapter 1` as follows:
   - Connected to Internal Networking – **`net1a`** network
   - MAC address: 02:00:00:00:00:03
 - Clone another VM named **ws1** (workstation 1) as above and configure its Network `Adapter 1` as follows:

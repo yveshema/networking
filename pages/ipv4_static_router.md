@@ -29,8 +29,8 @@ The following VMs will need to exist:
 - __r2__: created in the previous milestone
 - __web__: created in the previous milestone
 - __ws1__: created in the previous milestone
-- __ws2__: newly created VM that is a linked clone of __rocky_linux_base__
-- __ws3__: (optional) newly created VM that is a linked clone of **rocky_linux_base**
+- __ws2__: newly created VM that is a linked clone of __centos_8_base__
+- __ws3__: (optional) newly created VM that is a linked clone of **centos_8_base**
 
 Attached to __Host-Only Network #2__ are the following VM's:
 
@@ -54,8 +54,8 @@ Attached to the **net1b** network are the following VM's:
 Attached to the __net2__ network are the following VM's:
 
 - __r2__: An additional <u>Paravirtualized Network Adapter</u> (virtio-net)  will need to be added to this device. Ensure it is connected to an internal network named __net2__
--  __ws2__: (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
--  __ws3__ (Optional)  (linked clone based on the __rocky_linux_base__ image; should have a single network adapter attached to __net2__ network)
+-  __ws2__: (linked clone based on the __centos_8_base__ image; should have a single network adapter attached to __net2__ network)
+-  __ws3__ (Optional)  (linked clone based on the __centos_8_base__ image; should have a single network adapter attached to __net2__ network)
 
 ## Router Configuration
 
