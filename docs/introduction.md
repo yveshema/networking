@@ -286,7 +286,7 @@ By: Yves Rene Shema
 
 - Week Two (read/watch these before next class)
   - [Common Network Infrastructure devices](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_2_2_0_0/)
-  - [Network devices](../img/cisco_network_essentials_ch10_network_devices.pdf)
+  - [Network devices](/cisco_network_essentials_ch10_network_devices.pdf)
   - [Network Topologies](https://www.oreilly.com/videos/networking-fundamentals/9780134645711/9780134645711-NETP_3_0_0_0/)
   - [Overview of networks](https://intronetworks.cs.luc.edu/current2/html/intro.html)
   - Optional (but highly recommended):
