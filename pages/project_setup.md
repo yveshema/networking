@@ -69,6 +69,28 @@ sudo hostnamectl set-hostname [vm_name]
 
 You should now be able to send ping probes between the VM's or between the VM's and the outside networks.
 
+## Verify your setup
+
+- Download this [Python script](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EW8RVYkxtaFNsCRv8Xjo0DsBRypcEXbev7xa3fQdRgoJ0A?e=8rIixT) and save it to a suitable location on your computer.
+
+> [!NOTE]
+> You will many of this kind of scripts throughout the term. Thus, it might be a good idea to create a folder for this course somewhere on you computer. Call it something like `**ACIT2620**`. Inside this folder, create another folder and name it `**project_scripts**` where you will keep all the scripts. That way it will be easier to find them.
+
+
+- Before you can run the script, you must ensure that `vboxmanage` (the VirtualBox CLI interface) is on your system path.
+- Open a terminal and navigate to the location where you saved the script.
+- Run the script to generate a report of your setup, like so:
+
+```
+python test_setup.py A0#####
+```
+
+where **A0#####** is your BCIT student ID number.
+
+- Open the report and examine its contents
+
+
+
 ## SSH setup
 
 SSH (Secure Shell) is a software utility that allows you to securely log into a running system remotely. By default, SSH will prompt you for the remote host's hostname (or IP address), username and password, but it is possible to enable password-less login using public key/private key pair.
