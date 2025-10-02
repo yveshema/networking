@@ -161,7 +161,7 @@ How many networks do you see?
   - 0.0.0.0
 - Loopback Address
   - 127.0.0.1 (actually, 127.0.0.0/8)
-- Network Address (All host bits set to 1)
+- Network Address (All host bits set to 0)
   - E.g: 192.168.1.0, Subnet Mask = 255.255.255.0 
 
 ---
