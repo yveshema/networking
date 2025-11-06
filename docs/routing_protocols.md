@@ -30,6 +30,99 @@ By: Yves Rene Shema
 
 ---
 
+# DHCP
+
+---
+
+## Purpose
+
+- Dynamic Host Configuration Protocol
+- Allows a host on a network to automatically be assigned an IP address
+- Addresses assigned from a pool of addresses set aside by the network admnistrator
+- Allows discovery of additional information about the network
+  - Default gateway
+  - DNS servers
+
+---
+
+## DORA
+
+- Discorver
+  - client sends a **broadcast** signal to find a DHCP server
+- Offer
+  - if found, the server responds with an IP lease offer
+- Request
+  - request sent by client to accept the IP lease offer
+- Acknowledgement
+  - server confirms the IP lease
+
+---
+
+## Configuring ISC DHCP server
+
+- Edit the `/etc/dhcp/dhcpd.conf` configuration file
+- Check for syntax errors:
+  - `sudo dhcpd -t`
+- enable and run the service
+  
+  ```bash
+  sudo systemctl enable dhcpd
+  sudo systemctl start dhcpd
+  ```
+
+---
+
+## Configuring ISC DHCP server
+
+- Define the subnet
+
+```ini
+subnet 10.0.1.0 netmask 255.255.255.0 {
+  range 10.0.1.2 10.0.1.240;
+}
+```
+
+- Address pool must:
+  - be in the specified subnet
+  - not include any addresses reserved for fixed allocation
+
+---
+
+## Configuring ISC DHCP server
+
+- Specify default gateways
+  
+```ini
+option routers 10.0.1.1;
+```
+
+- This option must match a subnet defined in the configuration
+
+---
+
+## Configuring ISC DHCP server
+
+- Specify DNS servers
+
+```ini
+option domain-name-servers 8.8.8.8, 1.1.1.1;
+```
+
+---
+
+## Configuring ISC DHCP server
+
+- Reserve a fixed address
+
+```ini
+host http_server {
+  hardware ethernet a2:1f:2f:3f:4f:5f;
+  fixed-address 10.0.1.241;
+}
+```
+
+---
+
 # Routing Protocols
 
 ---
