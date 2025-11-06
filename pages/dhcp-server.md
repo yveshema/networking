@@ -30,9 +30,20 @@ You will need to use the __nmtui__ tool to achieve this.
 
 <br />
 
+## Install ISC Kea
+
+- Enable the kea repository:
+  ```bash
+  curl -1sLf 'https://dl.cloudsmith.io/public/isc/kea-3-0/setup.rpm.sh' | sudo -E bash
+  ```
+- Install:
+  ```bash
+  sudo dnf install isc-kea
+  ```
+
 ## Edit configuration file
 
-The dhcpd service listens to requests based on the subnets declarations inside the `/etc/dhcp/dhcpd.conf` file. In both __r1__ and __r2__, find this file and open it using your preferred text editor, and add configuration options to allocate addresses as described in the diagram.
+The dhcpd service listens to requests based on the subnets declarations inside the `/etc/kea/kea-dhcp4.conf` file. In both __r1__ and __r2__, find this file and open it using your preferred text editor, and add configuration options to allocate addresses as described in the diagram.
 
 An example configuration is given below (this is only an example; your configuration must use the IP subnets specified in the diagram):
 
@@ -40,43 +51,42 @@ An example configuration is given below (this is only an example; your configura
 <summary>Example <code>dhcpd.conf</code> file</summary>
 
 <pre><code>
-# /etc/dhcp/dhcpd.conf
+# /etc/kea/kea-dhcp4.conf
 
-# DHCP Server Configuration file.
-#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
-#   see dhcpd.conf(5) man page
-# Global options
-# option domain-name "2620.acit";
-option domain-name-servers 8.8.8.8, 10.20.30.254;
-
-subnet 192.168.15.0 netmask 255.255.255.128 {
-	# routers option defines the default gateway for clients
-	option routers 192.168.15.126;
-
-	# range specifies the start and end of address range
-        # this will provision a range of 40 addresses
-	range 192.168.15.10 192.168.15.50;	
+{
+  "Dhcp4": {
+        "interfaces-config": {
+          "interfaces": ["enp0s8"]
+        },
+        "option-data": [
+          {
+            "name": "routers",
+            "data": "10.0.1.1"
+          },
+          {
+            "name": "domain-name-servers",
+            "data": "8.8.8.8, 1.1.1.1"
+          }
+        ],
+        "reservations": [
+          {
+            "hw-address": "a2:1f:1f:1f:1f:1f",
+            "ip-address": "10.0.1.2"
+		  }
+        ],
+        "subnet4": [
+          {
+            "subnet": "10.0.1.0/24",
+            "pools": [
+              {
+                "pool": "10.0.1.10-10.0.1.99"
+              }
+            ],
+            "id": 1
+          }
+        ]
+  }
 }
-
-# the host declaration is a container for the configuration
-# of a specific host. The name is arbitrary but generally
-# the same as the hostname.
-
-host host1 {
-	# the hardware statement is used to match the MAC address
-	# of a particular host 
-	hardware ethernet 02:00:00:00:00:03;
-
-	# fixed address is used to consistently assign an IP address
-	# to the host specified by the MAC address given above.
-	fixed-address 192.168.15.1;
-}
-
-host host2 {
-	hardware ethernet 02:00:00:00:00:04;
-		
-	fixed-address 192.168.15.2;
-}    
 </code></pre>
 </details>
 
@@ -85,19 +95,19 @@ host host2 {
 1. Check syntax errors: 
 
 ```bash 
-sudo dhcpd -t
+sudo kea-dhcp4 -t /etc/kea/kea-dhcp4.conf
 ```
 
 2. Start the service: 
 
 ```bash
-sudo systemctl start dhcpd.service
+sudo systemctl start kea-dhcp4
 ```
 
 3. Enable the service to always start at boot: 
 
 ```bash
-sudo systemctl enable dhcpd.service
+sudo systemctl enable kea-dhcp4
 ```
 
 ## Add routes on your Windows workstation
@@ -121,7 +131,7 @@ For convenience, you may also update your `./ssh/config` file with login credent
 
 ## Troubleshooting
 
-- Before starting the service, ensure there are not syntax errors by running: `sudo dhcpd -t`.
+- Before starting the service, ensure there are not syntax errors by running: `sudo kea-dhcp4 -t /etc/kea/kea-dhcp4.conf`.
 - Ensure the subnet declarations in your configuration files match those in your topology.
-- Check service status: `systemctl status dhcpd.service`
-- To check logs messages while the service is running: `journalctl -u dhcpd`
+- Check service status: `systemctl status kea-dhcp4`
+- To check logs messages while the service is running: `journalctl -u kea-dhcp4`

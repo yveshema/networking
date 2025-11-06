@@ -58,16 +58,16 @@ By: Yves Rene Shema
 
 ---
 
-## Configuring ISC DHCP server
+## Configuring ISC Kea
 
-- Edit the `/etc/dhcp/dhcpd.conf` configuration file
+- Edit the `/etc/kea/kea-dhcp4.conf` configuration file
 - Check for syntax errors:
-  - `sudo dhcpd -t`
+  - `sudo kea-dhcp4 -t /etc/kea/kea-dhcp4.conf`
 - enable and run the service
   
   ```bash
-  sudo systemctl enable dhcpd
-  sudo systemctl start dhcpd
+  sudo systemctl enable kea-dhcp4
+  sudo systemctl start kea-dhcp4
   ```
 
 ---
@@ -77,9 +77,17 @@ By: Yves Rene Shema
 - Define the subnet
 
 ```ini
-subnet 10.0.1.0 netmask 255.255.255.0 {
-  range 10.0.1.2 10.0.1.240;
-}
+"subnet4": [
+    {
+      "subnet": "10.0.1.0/24",
+      "pools": [
+        {
+          "pool": "10.0.1.10-10.0.1.99"
+        }
+      ],
+      "id": 1
+    }
+  ]
 ```
 
 - Address pool must:
@@ -93,7 +101,12 @@ subnet 10.0.1.0 netmask 255.255.255.0 {
 - Specify default gateways
   
 ```ini
-option routers 10.0.1.1;
+"option-data": [
+  {
+    "name": "routers",
+    "data": "10.0.1.1"
+  }
+]
 ```
 
 - This option must match a subnet defined in the configuration
@@ -105,7 +118,13 @@ option routers 10.0.1.1;
 - Specify DNS servers
 
 ```ini
-option domain-name-servers 8.8.8.8, 1.1.1.1;
+"option-data": [
+  ...
+  {
+    "name": "domain-name-servers",
+    "data": "8.8.8.8, 1.1.1.1"
+  }
+]
 ```
 
 ---
@@ -115,10 +134,12 @@ option domain-name-servers 8.8.8.8, 1.1.1.1;
 - Reserve a fixed address
 
 ```ini
-host http_server {
-  hardware ethernet a2:1f:2f:3f:4f:5f;
-  fixed-address 10.0.1.241;
-}
+"reservations": [
+  {
+    "hw-address": "a2:1f:1f:1f:1f:1f",
+    "ip-address": "10.0.1.2"
+  }
+]
 ```
 
 ---
