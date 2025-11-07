@@ -32,11 +32,17 @@ You will need to use the __nmtui__ tool to achieve this.
 
 ## Install ISC Kea
 
+> [!NOTE]
+> Run `border-rtr` before proceeding.
+
 - Enable the kea repository:
+
   ```bash
   curl -1sLf 'https://dl.cloudsmith.io/public/isc/kea-3-0/setup.rpm.sh' | sudo -E bash
   ```
+
 - Install:
+
   ```bash
   sudo dnf install isc-kea
   ```
@@ -55,34 +61,45 @@ An example configuration is given below (this is only an example; your configura
 
 {
   "Dhcp4": {
+        "multi-threading": {
+          "enable-multi-threading": false
+        },
         "interfaces-config": {
-          "interfaces": ["enp0s8"]
+          "interfaces": ["enp0s8"],
+          "dhcp-socket-type": "raw"
+        },
+        "lease-database": {
+          "type": "memfile"
         },
         "option-data": [
           {
             "name": "routers",
-            "data": "10.0.1.1"
+            "data": "172.26.20.33"
           },
           {
             "name": "domain-name-servers",
-            "data": "8.8.8.8, 1.1.1.1"
+            "data": "10.26.20.254,8.8.8.8"
           }
-        ],
-        "reservations": [
-          {
-            "hw-address": "a2:1f:1f:1f:1f:1f",
-            "ip-address": "10.0.1.2"
-		  }
         ],
         "subnet4": [
           {
-            "subnet": "10.0.1.0/24",
+			"id": 1,
+            "subnet": "172.26.20.32/27",
             "pools": [
               {
-                "pool": "10.0.1.10-10.0.1.99"
+                "pool": "172.26.20.40-172.26.20.49"
               }
             ],
-            "id": 1
+            "reservations": [
+              {
+                "hw-address": "02:00:00:00:00:05",
+                "ip-address": "172.26.20.34"
+              },
+              {
+                "hw-address": "02:00:00:00:00:06",
+                "ip-address": "172.26.20.35"
+              }
+            ]
           }
         ]
   }
