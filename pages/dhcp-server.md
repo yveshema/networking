@@ -61,43 +61,32 @@ An example configuration is given below (this is only an example; your configura
 
 {
   "Dhcp4": {
-        "multi-threading": {
-          "enable-multi-threading": false
-        },
         "interfaces-config": {
-          "interfaces": ["enp0s8"],
-          "dhcp-socket-type": "raw"
-        },
-        "lease-database": {
-          "type": "memfile"
+          "interfaces": ["enp0s8"]
         },
         "option-data": [
           {
             "name": "routers",
-            "data": "172.26.20.33"
+            "data": "10.0.2.1"
           },
           {
             "name": "domain-name-servers",
-            "data": "10.26.20.254,8.8.8.8"
+            "data": "8.8.8.8, 1.1.1.1"
           }
         ],
         "subnet4": [
           {
-			"id": 1,
-            "subnet": "172.26.20.32/27",
+            "id": 1,
+            "subnet": "10.0.2.0/24",
             "pools": [
               {
-                "pool": "172.26.20.40-172.26.20.49"
+                "pool": "10.0.2.100-10.0.2.199"
               }
             ],
             "reservations": [
               {
-                "hw-address": "02:00:00:00:00:05",
-                "ip-address": "172.26.20.34"
-              },
-              {
-                "hw-address": "02:00:00:00:00:06",
-                "ip-address": "172.26.20.35"
+                "hw-address": "d2:d1:de:ed:ff:1f",
+                "ip-address": "10.0.2.10"
               }
             ]
           }
