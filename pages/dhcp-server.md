@@ -54,7 +54,7 @@ The dhcpd service listens to requests based on the subnets declarations inside t
 An example configuration is given below (this is only an example; your configuration must use the IP subnets specified in the diagram):
 
 <details>
-<summary>Example <code>dhcpd.conf</code> file</summary>
+<summary>Example <code>kea-dhcp4.conf</code> file</summary>
 
 <pre><code>
 # /etc/kea/kea-dhcp4.conf
