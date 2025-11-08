@@ -47,6 +47,16 @@ You will need to use the __nmtui__ tool to achieve this.
   sudo dnf install isc-kea
   ```
 
+> [!TIP]
+> If the above commands fail, you may need to refresh the DNS settings of `r1` and `r2`. Running the following commands should fix it (run both in `r1` and `r2`):
+
+```bash
+sudo nmcli con modify enp0s3 ipv4.method auto
+sudo nmcli con up enp0s3
+```
+
+After installation, restore manual configuration.
+
 ## Edit configuration file
 
 The dhcpd service listens to requests based on the subnets declarations inside the `/etc/kea/kea-dhcp4.conf` file. In both __r1__ and __r2__, find this file and open it using your preferred text editor, and add configuration options to allocate addresses as described in the diagram.
