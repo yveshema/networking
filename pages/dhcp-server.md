@@ -50,7 +50,8 @@ You will need to use the __nmtui__ tool to achieve this.
 > [!TIP]
 > If the above commands fail, you may need to refresh the DNS settings of `r1` and `r2`. Running the following commands should fix it (run both in `r1` and `r2`):
 
-
+- Switch to auto configuration
+  
 ```bash
 sudo nmcli con modify enp0s3 ipv4.method auto
 sudo nmcli con up enp0s3
