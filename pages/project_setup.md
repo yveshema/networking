@@ -20,9 +20,9 @@ Finally, make sure you install the **Virtualbox Extension Pack** which you can f
 
 You will need the following virtual appliances for this project. Details on how to use them are given in the next section.
 
-[centos_8_base.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EWZLaN11S8FFnBgUrCsDingBZo-5Qt7WDvWYST2ahfZVRA?e=4kDm0z)
+[centos_8_base.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/IQC_Rju6akvoSaSVitJyRZp9ARsG2w2PpdXmeAO8604EXlk?e=nM9CAE)
 
-[border_rtr.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EXBH1x5E7P1HgMuamciHH8oBbtHmRHzFlvPIJ0MwRu_-aw?e=jcodgz)
+[border_rtr.ova](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/IQDJOsIs8w3HR5gAaPhGKcQrAcu1uwAS4UTO75QBaPLGddI?e=AcfaKR)
 
 The _border router_ (`border_rtr`) provides some custom services which are needed for the project but cannot be configured directly on Virtualbox in-built NAT router
 
@@ -71,7 +71,7 @@ You should now be able to send ping probes between the VM's or between the VM's 
 
 ## Verify your setup
 
-- Download this [Python script](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EW8RVYkxtaFNsCRv8Xjo0DsBRypcEXbev7xa3fQdRgoJ0A?e=8rIixT) and save it to a suitable location on your computer.
+- Download this [Python script](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/IQAMKuCkk7jxRKqN5TWeF74yAYLtk4Qjh9kP5mWasidNjg8?e=ou3Lnw) and save it to a suitable location on your computer.
 
 > [!NOTE]
 > You will many of this kind of scripts throughout the term. Thus, it might be a good idea to create a folder for this course somewhere on you computer. Call it something like `**ACIT2620**`. Inside this folder, create another folder and name it `**project_scripts**` where you will keep all the scripts. That way it will be easier to find them.
@@ -97,7 +97,7 @@ SSH (Secure Shell) is a software utility that allows you to securely log into a 
 
 The **centos_8_base.ova** is already configured with a public key, so all we need is a private key which you can download from here:
 
-[acit_admin_id_rsa](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/EV4oSICRu9FPrCKMKrdHoa4BAG_z8kFvz1SoYZzBuST8Qw?e=TFv7WA)
+[acit_admin_id_rsa](https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/IQAdaj_UvbbtQb7UXBF-LSHCAWJxi1hbaBQSQe5s2YzOXjg?e=S2M4hu)
 
 Next, complete the following steps:
 

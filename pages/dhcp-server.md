@@ -28,36 +28,7 @@ You will need to use the __nmtui__ tool to achieve this.
 > - Validate configuration file - check for any syntax errors
 > - Enable and start the service - often by leveraging the `systemd` framework
 
-<br />
 
-## Install ISC Kea
-
-> [!NOTE]
-> Run `border-rtr` before proceeding.
-
-- Enable the kea repository:
-
-  ```bash
-  curl -1sLf 'https://dl.cloudsmith.io/public/isc/kea-3-0/setup.rpm.sh' | sudo -E bash
-  ```
-
-- Install:
-
-  ```bash
-  sudo dnf install isc-kea
-  ```
-
-> [!TIP]
-> If the above commands fail, you may need to refresh the DNS settings of `r1` and `r2`. Running the following commands should fix it (run both in `r1` and `r2`):
-
-- Switch to auto configuration
-  
-```bash
-sudo nmcli con modify enp0s3 ipv4.method auto
-sudo nmcli con up enp0s3
-```
-
-After installation, restore manual configuration.
 
 ## Edit configuration file
 
@@ -78,12 +49,8 @@ An example configuration is given below (this is only an example; your configura
         },
         "option-data": [
           {
-            "name": "routers",
-            "data": "10.0.2.1"
-          },
-          {
             "name": "domain-name-servers",
-            "data": "8.8.8.8, 1.1.1.1"
+            "data": "10.26.20.254, 8.8.8.8, 1.1.1.1"
           }
         ],
         "subnet4": [
@@ -95,10 +62,16 @@ An example configuration is given below (this is only an example; your configura
                 "pool": "10.0.2.100-10.0.2.199"
               }
             ],
-            "reservations": [
+            "reservations": [ # for fixed host IP allocations
               {
                 "hw-address": "d2:d1:de:ed:ff:1f",
                 "ip-address": "10.0.2.10"
+              }
+            ],
+            "option-data": [
+              {
+                "name": "routers",
+                "data": "10.0.2.1"
               }
             ]
           }
