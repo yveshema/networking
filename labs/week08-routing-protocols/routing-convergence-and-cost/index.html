@@ -1,0 +1,1154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week08-routing-protocols/routing-convergence-and-cost/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Routing — Convergence, and choosing which way round - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#routing-convergence-and-choosing-which-way-round" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Routing — Convergence, and choosing which way round
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-everyone-knows-everything" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — everyone knows everything
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — everyone knows everything">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-break-the-ring-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — break the ring again
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — break the ring again">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-two-speeds-of-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the two speeds of failure
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the two speeds of failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-where-the-path-preference-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — where the path preference comes from
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — where the path preference comes from">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-take-control-of-the-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — take control of the path
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — take control of the path">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="routing-convergence-and-choosing-which-way-round">Routing — Convergence, and choosing which way round</h1>
+<p><strong>Time:</strong> 55 min · <strong>Needs:</strong> the ring, with OSPF running on all four routers · <strong>GNS3 project:</strong>
+<code>rp-a1-static-limits</code> (continue in it)</p>
+<p><strong>The question:</strong> the first activity ended with a broken ring, an idle spare path, and a stopwatch
+running while you retyped routes. Do it again with OSPF on, and find out what changed. Then take
+control of <em>which</em> path the network picks, because "it works" and "it goes the way you intended" are
+different claims.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>The <code>R1</code>↔<code>R2</code> link fails. How long until <code>PC1</code> can reach <code>PC3</code> again? <strong><em>_</em></strong></li>
+<li>What decides whether traffic goes clockwise or anticlockwise around the ring? <strong><em>_</em></strong></li>
+<li>Two paths of identical length. Which is used? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="do-this-everyone-knows-everything">Do this — everyone knows everything</h2>
+<p>Before breaking anything, look at what the four routers are holding:</p>
+<div class="highlight"><pre><span></span><code># on R1, then on R3
+birdc show ospf state
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>The two outputs describe <strong>the same network</strong>. Not similar — the same. Every router in an area holds
+  an identical database of who is connected to what, because each one floods a description of its own
+  links to everybody and relays what it receives.</li>
+<li>Each router then computes its <strong>own</strong> routes from that shared picture, by working out the shortest
+  path from itself to everywhere. That is why the protocol family is called <em>link-state</em>: what gets
+  distributed is the state of the links, not a list of routes.</li>
+<li>This is the structural difference from static routing. You never described the topology to any
+  router. They described themselves to each other, and every one of them derived the answer.</li>
+</ul>
+<hr />
+<h2 id="do-this-break-the-ring-again">Do this — break the ring again</h2>
+<p>Continuous ping from <code>PC1</code> to <code>PC3</code>, then:</p>
+<div class="highlight"><pre><span></span><code># on R1
+ip link set &lt;the R2-facing interface&gt; down
+</code></pre></div>
+<p>Count the lost packets. Then bring it back and count again.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><strong>It recovered on its own, in about a second.</strong> Compare that with the number you wrote down in the
+  first activity, where recovery was measured in minutes and required you to be present, awake and
+  correct.</li>
+<li><code>traceroute</code> from <code>PC1</code> to <code>PC3</code> now and you will see the traffic going the other way round the
+  ring, through <code>R4</code>. Nobody chose that. Every router recomputed, arrived at a consistent answer, and
+  installed it.</li>
+<li><strong>You have seen this shape before.</strong> W3·A5 ended with a blocked port taking over automatically when
+  a cable failed, and the argument was identical: the redundancy was already paid for, and the
+  protocol removes the human from the recovery. This is the same bargain one layer up.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-two-speeds-of-failure">Do this — the two speeds of failure</h2>
+<p>The recovery above was fast because the interface went <strong>down</strong> and the router noticed instantly.
+That is not the only way a link fails. Simulate the other kind — the link stays up, but the router at
+the far end stops answering:</p>
+<div class="highlight"><pre><span></span><code># on R2
+systemctl stop bird
+</code></pre></div>
+<p>Time it again.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>This took far longer — around <strong>40 seconds</strong>, not one. The link never went down, so <code>R1</code> had no
+  event to react to. It had to wait until it had heard no hello from <code>R2</code> for the <strong>dead interval</strong>,
+  which defaults to four times the hello interval.</li>
+<li>These are the two failure modes every network has, and they behave completely differently:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What the router sees</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cable pulled, interface down</td>
+<td>carrier loss, immediately</td>
+<td>~1 second</td>
+</tr>
+<tr>
+<td>Far end silent, link still up</td>
+<td>nothing — only the absence of hellos</td>
+<td>up to the dead interval</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The second is why "the link is up" is not evidence that anything works, and why lowering hello and
+  dead intervals is a normal tuning decision on links that matter. It is not free: shorter timers mean
+  more hellos and a greater chance of declaring a neighbour dead during a brief hiccup.</li>
+</ul>
+<p>Start BIRD on <code>R2</code> again.</p>
+<hr />
+<h2 id="do-this-where-the-path-preference-comes-from">Do this — where the path preference comes from</h2>
+<div class="highlight"><pre><span></span><code># on R1
+birdc show ospf interface
+</code></pre></div>
+<p>Find the <strong>cost</strong> of each interface.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>Each interface carries a number, derived by default from its bandwidth: a fast link gets a low cost,
+  a slow link a high one. OSPF adds these up along each candidate path and picks the <strong>lowest total</strong>.</li>
+<li><strong>This is exactly the mechanism from W3·A5.</strong> There, each link had a cost from its speed, costs were
+  summed along the path to the root, and the lowest total won. Same idea, same direction — lower is
+  better — implemented independently at a different layer for a different purpose. Two protocols
+  built decades apart reached for the same tool.</li>
+<li>The difference is what the number is measured <em>to</em>. Spanning tree measures distance to one elected
+  root. OSPF measures distance from each router to every destination, separately, which is why there
+  is no root here and no blocked links.</li>
+</ul>
+<hr />
+<h2 id="do-this-take-control-of-the-path">Do this — take control of the path</h2>
+<p>Right now <code>PC1</code> → <code>PC3</code> goes one way round. Make it go the other way, without unplugging anything.</p>
+<p>On <code>R1</code>, raise the cost of the interface facing <code>R2</code>:</p>
+<div class="highlight"><pre><span></span><code>    area 0 {
+        interface "eth1" { cost 500; };
+        ...
+    };
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># on R1
+birdc configure
+traceroute 10.3.0.10        # from PC1
+</code></pre></div>
+<h3 id="what-just-happened_4">What just happened</h3>
+<ul>
+<li>The path moved, and every router agreed about it, because you changed a number that all of them
+  were told about. You did not configure a route anywhere.</li>
+<li><strong>This is the layer-3 twin of setting the bridge priority in W3·A5.</strong> Left alone, the path is
+  whatever the default costs happen to produce — which is to say, an accident of interface speeds.
+  Set deliberately, it is a decision you can point at in a design document.</li>
+<li>Real reasons to do this: one path is metered and the other is not; one crosses a link you are
+  paying for by the gigabyte; one goes through a firewall you want traffic to pass. None of those are
+  visible to a protocol that only knows bandwidth.</li>
+<li>Set the two paths to <strong>equal</strong> cost instead and look at <code>ip route show</code>. You will get both
+  next-hops in one route — <em>equal-cost multipath</em> — and traffic is shared between them. Note that
+  this is a thing spanning tree specifically cannot do: at layer 2 the second path must be blocked,
+  and at layer 3 it can be used. That is a real advantage of routing over bridging, and a reason
+  large networks push the layer-3 boundary as close to the edge as they can.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Are two routers' <code>show ospf state</code> outputs the same or different?</td>
+<td></td>
+</tr>
+<tr>
+<td>Packets lost when the interface went down</td>
+<td></td>
+</tr>
+<tr>
+<td>Packets lost when the far end went silent</td>
+<td></td>
+</tr>
+<tr>
+<td>Why the two differ, and the timer responsible</td>
+<td></td>
+</tr>
+<tr>
+<td>Default cost of your interfaces, and where it comes from</td>
+<td></td>
+</tr>
+<tr>
+<td>Cost you set, and the path it produced</td>
+<td></td>
+</tr>
+<tr>
+<td>What equal-cost paths do at layer 3 that blocked ports cannot at layer 2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Two sentences: compare this activity's recovery with the manual recovery you timed in the first
+activity. What exactly did the protocol replace?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No recovery at all</td>
+<td>the other side of the ring was never adjacent</td>
+<td><code>birdc show ospf neighbors</code> on all four — you need <code>Full</code> all the way round</td>
+</tr>
+<tr>
+<td>Recovery takes 40 s even for a cable pull</td>
+<td>the interface did not actually go down</td>
+<td>in GNS3, <code>ip link set … down</code> on the router is reliable; suspending the link may not be</td>
+</tr>
+<tr>
+<td><code>birdc configure</code> reports no change</td>
+<td>you edited the file on the wrong router</td>
+<td>check the <code>router id</code> in the file you edited</td>
+</tr>
+<tr>
+<td>Cost change has no effect</td>
+<td>the other path is still cheaper</td>
+<td>raise it further, or read the totals with <code>birdc show route all</code></td>
+</tr>
+<tr>
+<td>Equal-cost paths do not appear</td>
+<td>kernel multipath, or costs not actually equal</td>
+<td><code>birdc show ospf interface</code> on both; the totals must match exactly</td>
+</tr>
+<tr>
+<td>Routes vanish after <code>birdc configure</code></td>
+<td>a syntax error left the protocol down</td>
+<td><code>birdc show protocols</code>, then <code>bird -p -c /etc/bird.conf</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

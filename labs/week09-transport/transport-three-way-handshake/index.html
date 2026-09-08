@@ -1,0 +1,1172 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week09-transport/transport-three-way-handshake/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Transport — The three-way handshake, and what a connection actually is - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-the-three-way-handshake-and-what-a-connection-actually-is" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport — The three-way handshake, and what a connection actually is
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-a-connection-begin" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch a connection begin
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch a connection begin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-the-state-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch the state change
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch the state change">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-it-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch it end
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch it end">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-refused-versus-filtered" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — refused versus filtered
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — refused versus filtered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="transport-the-three-way-handshake-and-what-a-connection-actually-is">Transport — The three-way handshake, and what a connection actually is</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> one <strong>OL9 PC</strong>, one <strong>OL9 Server</strong>, one Ethernet switch (or one <strong>OL9
+PC</strong> + week 4's <code>w04-base</code>) · <strong>GNS3 project:</strong> <code>tr-a1-handshake</code></p>
+<p><strong>The question:</strong> IP delivers packets and forgets them. TCP is described as "connection-oriented" —
+but no wire changes, no router is told anything, and nothing in the network remembers you. So where
+does the connection exist?</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>Before any data is sent, how many packets cross the wire to establish a TCP connection? <strong><em>_</em></strong></li>
+<li>Where does the connection live — in the network, or somewhere else? <strong><em>_</em></strong></li>
+<li>You connect to a port nothing is listening on. What comes back? <strong><em>_</em></strong></li>
+<li>Same, but a firewall is dropping it. What comes back? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>        10.10.0.0/24
+
+  CLIENT ─── SW1 ─── SERVER
+   .10                 .20
+</code></pre></div>
+<p><code>CLIENT</code> is an <strong>OL9 PC</strong>, <code>SERVER</code> an <strong>OL9 Server</strong>. Capture the <code>CLIENT</code>↔<code>SW1</code> link for
+everything below.</p>
+<hr />
+<h2 id="do-this-watch-a-connection-begin">Do this — watch a connection begin</h2>
+<div class="highlight"><pre><span></span><code># on SERVER
+python3 -m http.server 8080
+
+# on CLIENT — start the capture first
+curl -s -o /dev/null http://10.10.0.20:8080/
+</code></pre></div>
+<p>Filter the capture to <code>tcp.port == 8080</code> and read the first three packets.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Flags</th>
+<th>Seq</th>
+<th>Ack</th>
+<th>From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><strong>SYN → SYN/ACK → ACK.</strong> Three packets, no data in any of them, before a single byte of your
+  request moved.</li>
+<li>Each side chose an <strong>initial sequence number</strong> and told the other. Each side acknowledged the
+  other's. That is the entire ceremony: <em>I will start counting here</em> — <em>understood, and I will start
+  counting here</em> — <em>understood</em>.</li>
+<li>Nothing in the middle was consulted. No router was told a connection exists. <strong>The connection is
+  two matching sets of numbers held in memory at the two ends</strong>, and nowhere else.</li>
+<li>Wireshark shows relative sequence numbers by default. Turn that off
+  (<strong>Preferences → Protocols → TCP → Relative sequence numbers</strong>) to see the real values, which are
+  large and random — deliberately, so an outsider cannot guess them and inject data.</li>
+</ul>
+<hr />
+<h2 id="do-this-watch-the-state-change">Do this — watch the state change</h2>
+<div class="highlight"><pre><span></span><code># on CLIENT, in a second terminal
+watch -n0.2 'ss -tan state all "( dport = :8080 or sport = :8080 )"'
+
+# then, on CLIENT
+curl -s -o /dev/null http://10.10.0.20:8080/
+</code></pre></div>
+<p>States you managed to catch: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><code>ESTAB</code> is the state everyone knows. The interesting ones are the ones that flash past:
+  <code>SYN-SENT</code>, <code>SYN-RECV</code>, and after closing, <code>FIN-WAIT</code>, <code>TIME-WAIT</code>.</li>
+<li><code>ss</code> is reading the kernel's socket table — the same memory that <em>is</em> the connection. You are
+  looking directly at the thing the network does not have.</li>
+</ul>
+<hr />
+<h2 id="do-this-watch-it-end">Do this — watch it end</h2>
+<p>Keep the capture running and let the <code>curl</code> finish, then look at the last four packets.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flags on the closing packets</td>
+<td></td>
+</tr>
+<tr>
+<td>How many packets to close</td>
+<td></td>
+</tr>
+<tr>
+<td>Final state on CLIENT, and how long it lasts</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>Closing is <strong>FIN → ACK → FIN → ACK</strong>: each direction is shut down separately, because a TCP
+  connection is really two independent streams that happen to share a socket. One side can stop
+  sending while still receiving.</li>
+<li>The side that closes first sits in <strong><code>TIME-WAIT</code></strong> for a couple of minutes. That is not a bug and
+  not a leak: it is the socket refusing to be reused while a delayed duplicate packet from the old
+  connection might still arrive and be mistaken for part of a new one.</li>
+<li>This is why a server you restart may report "address already in use" for a minute or two.</li>
+</ul>
+<hr />
+<h2 id="do-this-refused-versus-filtered">Do this — refused versus filtered</h2>
+<div class="highlight"><pre><span></span><code># on CLIENT
+curl -m5 http://10.10.0.20:9999/          # nothing listening
+
+# on SERVER
+nft add table inet f
+nft add chain inet f in '{ type filter hook input priority 0; policy accept; }'
+nft add rule inet f in tcp dport 9999 drop
+
+# on CLIENT
+curl -m5 http://10.10.0.20:9999/          # dropped instead
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Nothing listening</th>
+<th>Dropped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What came back</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>How long it took</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>curl</code>'s error message</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Clean up: <code>nft flush ruleset</code> on <code>SERVER</code>.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li><strong>Nothing listening → <code>RST</code>.</strong> The server's TCP stack answers immediately: <em>there is no such
+  socket here</em>. <code>curl</code> fails instantly with "connection refused".</li>
+<li><strong>Dropped → nothing.</strong> <code>curl</code> retransmits its SYN and eventually gives up. The delay <em>is</em> the
+  signal.</li>
+<li>Same outcome for the user, completely different evidence for you. <strong>An instant failure means
+  something answered; a slow failure means nothing did.</strong> That single distinction resolves a large
+  share of real connectivity complaints, and it is the transport-layer twin of <code>reject</code> versus <code>drop</code>
+  from W4·A6.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packets to open a connection / to close one</td>
+<td></td>
+</tr>
+<tr>
+<td>What each side announces in the handshake</td>
+<td></td>
+</tr>
+<tr>
+<td>Where the connection physically exists</td>
+<td></td>
+</tr>
+<tr>
+<td>Why initial sequence numbers are random</td>
+<td></td>
+</tr>
+<tr>
+<td>What <code>TIME-WAIT</code> is protecting against</td>
+<td></td>
+</tr>
+<tr>
+<td>Refused vs filtered: evidence and timing</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No handshake in the capture</td>
+<td>capture started after <code>curl</code></td>
+<td>start the capture first; TCP setup is over in milliseconds</td>
+</tr>
+<tr>
+<td>Sequence numbers all start at 0</td>
+<td>Wireshark relative sequence numbers</td>
+<td>turn them off in TCP preferences</td>
+</tr>
+<tr>
+<td><code>ss</code> shows nothing</td>
+<td>connection finished before <code>watch</code> refreshed</td>
+<td>use <code>-n0.2</code>, or fetch a larger file</td>
+</tr>
+<tr>
+<td>No <code>RST</code> for the closed port</td>
+<td><code>firewalld</code> is dropping it, so you are testing the second case twice</td>
+<td><code>systemctl stop firewalld</code> on <code>SERVER</code></td>
+</tr>
+<tr>
+<td><code>TIME-WAIT</code> not visible</td>
+<td>you watched the wrong end</td>
+<td>it appears on whichever side closed first — usually <code>CLIENT</code></td>
+</tr>
+<tr>
+<td>Port 8080 refused</td>
+<td><code>python3 -m http.server</code> died with its terminal</td>
+<td>restart it, background it with <code>&amp;</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

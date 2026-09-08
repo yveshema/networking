@@ -1,0 +1,1140 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week06-ipv6-routing/ipv6-slaac-builds-its-own-address/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>IPv6 — The host that addresses itself - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ipv6-the-host-that-addresses-itself" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IPv6 — The host that addresses itself
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-before-the-router-speaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — before the router speaks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-give-the-router-something-to-announce" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — give the router something to announce
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — give the router something to announce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-read-the-message-that-caused-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — read the message that caused it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — read the message that caused it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-find-the-lease" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — find the lease
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — find the lease">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-take-it-away-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — take it away again
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — take it away again">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="ipv6-the-host-that-addresses-itself">IPv6 — The host that addresses itself</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> one <strong>OL9 Router</strong>, one <strong>OL9 PC</strong>, one Ethernet switch, Wireshark ·
+<strong>GNS3 project:</strong> <code>v6-a3-slaac</code></p>
+<p><strong>The question:</strong> the previous two activities gave you an address that works on one wire and goes no
+further. Getting a <em>routable</em> address in IPv4 means either typing one or running a DHCP server. IPv6
+has a third answer that needs neither. Watch a host build its own address out of thin air, and work
+out who told it what.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>A host with no IPv6 configuration is plugged into a network with a router on it. Does it end up
+   with a routable address? ☐ yes ☐ no</li>
+<li>If it does, does a server anywhere record that it handed that address out? ☐ yes ☐ no</li>
+<li>Where does its default route come from? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>       fd00:10::/64
+
+   R1 ───────── SW ───────── CLIENT
+   ::1                       (configure nothing)
+</code></pre></div>
+<p><code>R1</code> is an <strong>OL9 Router</strong>. <code>CLIENT</code> is an <strong>OL9 PC</strong> you will <strong>not configure at all</strong> —
+that is the entire point. Leave it running with its automatic link-local address and nothing else.</p>
+<hr />
+<h2 id="do-this-before-the-router-speaks">Do this — before the router speaks</h2>
+<div class="highlight"><pre><span></span><code># on CLIENT
+ip -6 addr show dev eth0
+ip -6 route show
+</code></pre></div>
+<p>Write down what is there: one <code>fe80::</code> address, and a route for <code>fe80::/64</code> and nothing else. No way
+off this wire.</p>
+<hr />
+<h2 id="do-this-give-the-router-something-to-announce">Do this — give the router something to announce</h2>
+<div class="highlight"><pre><span></span><code># on R1
+nmcli con modify &lt;connection&gt; ipv6.method manual \
+      ipv6.addresses fd00:10::1/64
+nmcli con up &lt;connection&gt;
+
+sysctl -w net.ipv6.conf.all.forwarding=1
+</code></pre></div>
+<p>Forwarding matters here for a reason beyond routing: <strong>a Linux box will not send router
+advertisements unless it believes it is a router</strong>, and this is the switch that decides.</p>
+<p>Now start a capture on the link, and turn on advertisements:</p>
+<div class="highlight"><pre><span></span><code># on R1
+nmcli con modify &lt;connection&gt; ipv6.method shared
+nmcli con up &lt;connection&gt;
+</code></pre></div>
+<p>Watch <code>CLIENT</code> — without touching it:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+ip -6 addr show dev eth0
+ip -6 route show
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>CLIENT</code> now has a <strong>second IPv6 address</strong>, a routable one, and a <strong>default route</strong>. Nobody logged
+  into it. Nobody configured it. Nothing was requested from a server.</li>
+<li>This is <strong>SLAAC</strong> — stateless address autoconfiguration — and the word doing the work is
+  <em>stateless</em>.</li>
+</ul>
+<hr />
+<h2 id="do-this-read-the-message-that-caused-it">Do this — read the message that caused it</h2>
+<p>Find the ICMPv6 messages in the capture:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ICMPv6 type</th>
+<th>Sent by</th>
+<th>Says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Router Solicitation</strong></td>
+<td>133</td>
+<td>the host</td>
+<td>is there a router here?</td>
+</tr>
+<tr>
+<td><strong>Router Advertisement</strong></td>
+<td>134</td>
+<td>the router</td>
+<td>yes, I am one, and this link uses this prefix</td>
+</tr>
+</tbody>
+</table>
+<p>Expand the Router Advertisement and find the <strong>Prefix Information</strong> option inside it.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>The router announced a <strong>prefix</strong> — the first 64 bits — and its own presence. That is all it said.
+  It did not name <code>CLIENT</code>, did not choose an address for it, and does not know what address
+  <code>CLIENT</code> ended up with.</li>
+<li>Compare the prefix in the capture with <code>CLIENT</code>'s new address. <strong>The first half is the router's
+  prefix; the second half is the interface ID <code>CLIENT</code> already had.</strong> The host did the arithmetic
+  itself: <em>here is the network, and I already know who I am, so here is my address.</em></li>
+<li>The default route came from the RA too — specifically from the fact that a router sent it. The
+  source address of the advertisement, a link-local address, is what <code>CLIENT</code> installed as its
+  gateway. Check with <code>ip -6 route show</code> and note that your default route points at an <code>fe80::</code>
+  address, which is why link-local had to exist first.</li>
+<li>Routers send these unsolicited, every few minutes. The Router <em>Solicitation</em> exists so a host that
+  has just booted does not have to wait for the next one.</li>
+</ul>
+<hr />
+<h2 id="do-this-find-the-lease">Do this — find the lease</h2>
+<p>Try to find, anywhere on <code>R1</code>, a record of the address <code>CLIENT</code> is using.</p>
+<div class="highlight"><pre><span></span><code># on R1
+ip -6 neigh show
+</code></pre></div>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>The neighbour table knows <code>CLIENT</code> exists, because they have spoken — that is NDP from the previous
+  activity, not SLAAC. <strong>There is no lease, no database, no allocation record, and no server.</strong></li>
+<li>That is the trade. DHCP knows exactly which machine holds which address, when it expires, and can
+  hand out a different answer per client — at the cost of running a server that must be available,
+  backed up, and made redundant. SLAAC needs nothing but a router that already had to be there, and
+  in exchange nobody can tell you who has which address.</li>
+<li>Neither is better. Real networks frequently run <strong>both</strong>: SLAAC for addressing, and DHCPv6 for the
+  things an RA cannot express. The RA has flag bits (<code>M</code> and <code>O</code> in the capture) whose entire job is
+  to tell hosts which combination this network expects.</li>
+<li>Notice also that <code>CLIENT</code> kept its link-local address. A host does not swap one address for
+  another; it accumulates them, and normal IPv6 machines have several at once.</li>
+</ul>
+<hr />
+<h2 id="do-this-take-it-away-again">Do this — take it away again</h2>
+<div class="highlight"><pre><span></span><code># on R1
+nmcli con modify &lt;connection&gt; ipv6.method manual ipv6.addresses fd00:10::1/64
+nmcli con up &lt;connection&gt;
+</code></pre></div>
+<p>Wait, then check <code>CLIENT</code> again.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>The address does not vanish immediately. Every prefix in an RA carries a <strong>valid lifetime</strong> and a
+  <strong>preferred lifetime</strong>, and the host holds the address until those run down.</li>
+<li>So SLAAC is stateless but not timeless. The router controls how long its announcements are trusted,
+  which is the only lever it has over addresses it never assigned.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLIENT</code>'s addresses before / after</td>
+<td></td>
+</tr>
+<tr>
+<td>ICMPv6 types for solicitation / advertisement</td>
+<td></td>
+</tr>
+<tr>
+<td>Which half of the address came from the router</td>
+<td></td>
+</tr>
+<tr>
+<td>Which half came from the host</td>
+<td></td>
+</tr>
+<tr>
+<td>Where the default route came from, and what kind of address it points at</td>
+<td></td>
+</tr>
+<tr>
+<td>Where the allocation is recorded</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Two sentences: what does SLAAC cost an administrator, and what does DHCP buy that it cannot?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No RA in the capture</td>
+<td>forwarding off, so the box does not consider itself a router</td>
+<td><code>sysctl net.ipv6.conf.all.forwarding=1</code> <strong>before</strong> enabling advertisements</td>
+</tr>
+<tr>
+<td><code>ipv6.method shared</code> not supported</td>
+<td>older NetworkManager</td>
+<td>install and configure <code>radvd</code> with a <code>prefix fd00:10::/64</code> block on that interface — the observations are identical</td>
+</tr>
+<tr>
+<td><code>CLIENT</code> gets no address</td>
+<td>RAs are being ignored</td>
+<td><code>sysctl net.ipv6.conf.eth0.accept_ra</code> must be <code>1</code>; on a forwarding host it defaults to <code>0</code>, so check <code>CLIENT</code> is not itself set up as a router</td>
+</tr>
+<tr>
+<td>Address appears but no default route</td>
+<td><code>accept_ra</code> is <code>1</code> but <code>accept_ra_defrtr</code> is <code>0</code></td>
+<td>check both sysctls</td>
+</tr>
+<tr>
+<td>Two addresses from the same prefix</td>
+<td>temporary privacy addresses are enabled</td>
+<td>that is correct behaviour — <code>ip -6 addr</code> marks one <code>temporary</code>; it is a third scheme worth reading about</td>
+</tr>
+<tr>
+<td>Address never expires after removing the RA</td>
+<td>lifetimes not yet elapsed</td>
+<td>they are minutes, not seconds; check <code>ip -6 addr</code> for the countdown</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

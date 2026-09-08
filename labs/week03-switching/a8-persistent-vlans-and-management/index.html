@@ -1,0 +1,1459 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a8-persistent-vlans-and-management/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W3·A8 — Configuration that survives, and a switch you can log into ★ - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w3a8-configuration-that-survives-and-a-switch-you-can-log-into" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W3·A8 — Configuration that survives, and a switch you can log into ★
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-same-bridge-written-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 1 — The same bridge, written down
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — The same bridge, written down">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-giving-a-switch-an-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 2 — Giving a switch an address
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Giving a switch an address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-path-those-pings-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The path those pings take
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-actually-managing-something" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 3 — Actually managing something
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Actually managing something">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-changing-the-network-from-somewhere-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 4 — Changing the network from somewhere else
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4 — Changing the network from somewhere else">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-the-only-test-that-counts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 5 — The only test that counts
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5 — The only test that counts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w3a8-configuration-that-survives-and-a-switch-you-can-log-into">W3·A8 — Configuration that survives, and a switch you can log into ★</h1>
+<p><strong>Time:</strong> 80 min · <strong>Needs:</strong> two <strong>OL9 Switches</strong> (<code>SW1</code>, <code>SW2</code>), two <strong>OL9 PCs</strong> (<code>PC1</code>, <code>PC-MGMT</code>),
+1 VPCS · <strong>GNS3 project:</strong> <code>w03-a8-persistent</code></p>
+<p><strong>The question:</strong> everything you have built this week disappears when the node restarts, and none of
+it can be administered from anywhere except the console. Both of those are unacceptable in a
+building you do not want to visit. Fix both.</p>
+<blockquote>
+<p>This activity is milestone 1 in miniature — VLANs, a trunk, redundancy, a management network and
+persistence, on two switches instead of three. Nothing here is a new idea. What is new is writing
+it so it stays written.</p>
+</blockquote>
+<hr />
+<h2 id="build-it">Build it</h2>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Type</th>
+<th>Attaches to</th>
+<th>VLAN</th>
+<th>Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SW1</code></td>
+<td>OL9 Switch</td>
+<td>—</td>
+<td>—</td>
+<td><code>192.168.10.201</code> in VLAN 99</td>
+</tr>
+<tr>
+<td><code>SW2</code></td>
+<td>OL9 Switch</td>
+<td>—</td>
+<td>—</td>
+<td><code>192.168.10.202</code> in VLAN 99</td>
+</tr>
+<tr>
+<td><code>PC1</code></td>
+<td>OL9</td>
+<td><code>SW1:eth0</code></td>
+<td>10</td>
+<td><code>192.168.10.11/24</code></td>
+</tr>
+<tr>
+<td><code>PC2</code></td>
+<td>VPCS</td>
+<td><code>SW2:eth0</code></td>
+<td>10</td>
+<td><code>192.168.10.12/24</code></td>
+</tr>
+<tr>
+<td><code>PC-MGMT</code></td>
+<td>OL9</td>
+<td><code>SW2:eth1</code></td>
+<td>99</td>
+<td><code>192.168.10.200/24</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two inter-switch links: <code>SW1:eth2</code>↔<code>SW2:eth2</code> and <code>SW1:eth3</code>↔<code>SW2:eth3</code>. Yes, that is a loop — A5
+taught you what to do about it, and this time it will be configured to stay done.</p>
+<p><code>PC1</code> and <code>PC-MGMT</code> are OL9 rather than VPCS because both need to run <code>ssh</code>, which VPCS cannot.</p>
+<p>Everything is in <code>192.168.10.0/24</code>, management included. That is deliberate and it is the same
+arrangement milestone 1 uses: it makes the point that <strong>the switch defines the segment, not the
+addressing</strong> — VLAN 99 is a separate broadcast domain even though its addresses look like everyone
+else's.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>You configure everything with <code>ip</code> and <code>bridge</code> as in A4 and A5, then restart the node. What is
+   left?</li>
+<li><code>PC-MGMT</code> is plugged into <code>SW2</code>. Can it administer <code>SW1</code>, which it has no cable to?</li>
+<li>Can <code>PC1</code>, in VLAN 10, log into a switch?</li>
+<li><code>SW1</code> is the root of the spanning tree. Does that make it the switch you manage?</li>
+</ol>
+<hr />
+<h2 id="part-1-the-same-bridge-written-down">Part 1 — The same bridge, written down</h2>
+<blockquote>
+<p><strong>Running state, and stored configuration.</strong> Both kinds of command change the machine, so the
+difference is not that one is real and the other is pretend.</p>
+<p><code>ip</code> and <code>bridge</code> change the machine <strong>as it is running now</strong>. The change is in the kernel's
+memory, it takes effect the instant you press return, and it is gone when the node restarts.
+Nothing anywhere records that you wanted it.</p>
+<p><code>nmcli con add</code> writes a <strong>stored configuration</strong> — a statement of what this machine's networking
+should be. NetworkManager then keeps the running state matching it: at boot, when a cable is
+plugged in, and whenever else it decides to re-apply.</p>
+<p>That second half matters beyond surviving a restart. If a card has stored configuration saying
+"ask the network for an address", and you set an address by hand, yours exists only in running
+state — and the stored one wins the moment NetworkManager acts on it. Nothing warns you. Any
+activity where something on the wire hands out addresses is an activity where the difference
+stops being academic.</p>
+</blockquote>
+<p>On <code>SW1</code>, build the bridge — but this time as configuration on disk rather than as commands to a
+running kernel:</p>
+<div class="highlight"><pre><span></span><code># on SW1
+nmcli con add type bridge ifname br0 con-name br0 \
+      bridge.vlan-filtering yes \
+      bridge.vlan-default-pvid 0 \
+      bridge.stp yes \
+      bridge.priority 4096 \
+      ipv4.method disabled ipv6.method disabled
+</code></pre></div>
+<p>Six settings, and each one is something you did by hand earlier in the week:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>The A4/A5 command it replaces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bridge.vlan-filtering yes</code></td>
+<td><code>ip link set dev br0 type bridge vlan_filtering 1</code></td>
+</tr>
+<tr>
+<td><code>bridge.vlan-default-pvid 0</code></td>
+<td>the mandatory <code>for</code> loop deleting <code>vid 1</code> from every port</td>
+</tr>
+<tr>
+<td><code>bridge.stp yes</code></td>
+<td><code>ip link set dev br0 type bridge stp_state 1</code></td>
+</tr>
+<tr>
+<td><code>bridge.priority 4096</code></td>
+<td><code>ip link set dev br0 type bridge priority 4096</code></td>
+</tr>
+<tr>
+<td><code>ipv4.method disabled</code></td>
+<td>not putting an address on the bridge — A2's whole point</td>
+</tr>
+</tbody>
+</table>
+<p><code>bridge.vlan-default-pvid 0</code> deserves a second look. In A4 you had to delete <code>vid 1</code> from every port
+or nothing was separated, and the activity appeared not to work. That default is what put it there.
+Setting it to <code>0</code> means new ports get no automatic VLAN at all, so the only VLANs a port has are the
+ones you gave it — which is the behaviour you wanted in the first place.</p>
+<p>Now the ports. An access port in VLAN 10, and the management port:</p>
+<div class="highlight"><pre><span></span><code># on SW1
+nmcli con add type bridge-slave ifname eth0 master br0 con-name p-eth0 \
+      bridge-port.vlans "10 pvid untagged"
+</code></pre></div>
+<p>And the two trunks, tagged members of both VLANs:</p>
+<div class="highlight"><pre><span></span><code># on SW1
+nmcli con add type bridge-slave ifname eth2 master br0 con-name p-eth2 \
+      bridge-port.vlans "10,99"
+nmcli con add type bridge-slave ifname eth3 master br0 con-name p-eth3 \
+      bridge-port.vlans "10,99"
+
+nmcli con up br0
+bridge vlan show
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>bridge-port.vlans</code> is the whole of A4 in one property. <strong><code>"10 pvid untagged"</code></strong> is an access
+  port — frames arriving here belong to VLAN 10, and frames leaving here have the tag stripped.
+  <strong><code>"10,99"</code></strong> with no <code>pvid untagged</code> is a trunk — a tagged member of both VLANs.</li>
+<li>Compare <code>bridge vlan show</code> with what you got in A4. It is the same kernel state. NetworkManager is
+  not a different mechanism; it is the same mechanism with a file behind it.</li>
+<li><strong>VLAN 99 is on the trunks.</strong> It has to be: <code>PC-MGMT</code> is attached to <code>SW2</code> and has to reach <code>SW1</code>,
+  and the only path between them is the trunk. A management VLAN that stops at each switch manages
+  nothing.</li>
+</ul>
+<p>Repeat all of it on <code>SW2</code>, with two changes — <code>eth1</code> is an access port in VLAN 99 for <code>PC-MGMT</code>, and
+<code>SW2</code> is not the root, so leave its priority alone:</p>
+<div class="highlight"><pre><span></span><code># on SW2
+nmcli con add type bridge ifname br0 con-name br0 \
+      bridge.vlan-filtering yes bridge.vlan-default-pvid 0 bridge.stp yes \
+      ipv4.method disabled ipv6.method disabled
+
+nmcli con add type bridge-slave ifname eth0 master br0 con-name p-eth0 \
+      bridge-port.vlans "10 pvid untagged"
+nmcli con add type bridge-slave ifname eth1 master br0 con-name p-eth1 \
+      bridge-port.vlans "99 pvid untagged"
+nmcli con add type bridge-slave ifname eth2 master br0 con-name p-eth2 \
+      bridge-port.vlans "10,99"
+nmcli con add type bridge-slave ifname eth3 master br0 con-name p-eth3 \
+      bridge-port.vlans "10,99"
+
+nmcli con up br0
+bridge link
+</code></pre></div>
+<p><code>PC1</code> and <code>PC2</code> get their addresses as usual. Confirm <code>PC1</code> can ping <code>PC2</code> — VLAN 10 across the
+trunk — and check <code>bridge link</code> on both switches: one port blocking, no storm, exactly as A5
+predicted.</p>
+<hr />
+<h2 id="part-2-giving-a-switch-an-address">Part 2 — Giving a switch an address</h2>
+<p>Your bridges have deliberately had no IP address all week. A2 explained why: a switch is not a host
+on the segment, it <em>is</em> the segment, and a port carrying an IP is a router leg rather than a bridge
+port.</p>
+<p>So where does a management address go? Not on a port — that would put it in whichever VLAN the port
+belongs to and make it a host there. It goes on <strong>an interface attached to the bridge from the
+inside, inside one VLAN</strong>. The bridge is a switch with many VLANs; you are plugging a small
+management host into one of them, and that host happens to be the switch's own IP stack.</p>
+<p>Two steps. First tell the bridge that it is itself a member of VLAN 99 — not a port, the bridge:</p>
+<div class="highlight"><pre><span></span><code># on SW1 and SW2
+nmcli con modify br0 bridge.vlans "99"
+nmcli con up br0
+bridge vlan show          # note the new line for br0 itself, not for any ethN
+</code></pre></div>
+<p>Then create the interface that lives in that VLAN and carries the address:</p>
+<div class="highlight"><pre><span></span><code># on SW1
+nmcli con add type vlan ifname br0.99 con-name mgmt dev br0 id 99 \
+      ipv4.method manual ipv4.addresses 192.168.10.201/24 \
+      ipv6.method disabled
+nmcli con up mgmt
+
+# on SW2 — same, with .202
+</code></pre></div>
+<p>On <code>PC-MGMT</code>, which is an ordinary host on an access port and therefore needs no tagging at all:</p>
+<div class="highlight"><pre><span></span><code># on PC-MGMT
+nmcli con add type ethernet ifname eth0 con-name mgmt0 \
+      ipv4.method manual ipv4.addresses 192.168.10.200/24 ipv6.method disabled
+nmcli con up mgmt0
+
+ping -c2 192.168.10.202      # the switch it is plugged into
+ping -c2 192.168.10.201      # the switch it is not
+</code></pre></div>
+<h3 id="the-path-those-pings-take">The path those pings take</h3>
+<div class="highlight"><pre><span></span><code>                        ┌───────────────────────────────────┐
+                        │ SW1 IP stack  192.168.10.201/24   │
+                        └───────────────────────────────────┘
+                                          │                                 no tag — an ordinary interface
+                        ┌───────────────────────────────────┐
+                        │ br0.99        8021q VLAN device   │
+                        └───────────────────────────────────┘
+                                          │                                 tag 99 popped up / pushed down
+                        ┌───────────────────────────────────┐
+                        │ br0           the CPU port        │
+                        └───────────────────────────────────┘
+                                          │
+      ────────────────────────────────────┴─────────────────────────────    self: vid 99 tagged
+                                          │
+      ┌────────────────────────────────────────────────────────────────┐
+      │ SW1   bridge forwarding · per-VLAN FDB · VLAN filter           │
+      └─────┬─────────────────────────────────────────┬─────────┬──────┘
+            │eth0  10 untagged                        │eth2     │eth3
+            │                                         │         │
+       PC1 ─┘                                         │         │           two inter-switch links,
+                                                      │         │           both tagged members of 10 and 99
+                                                      │         ╳ one blocked by STP
+                                                      │         │           tag 99 rides the forwarding one
+                         PC-MGMT ─┐                   │         │
+                                  │                   │         │
+       PC2 ─┐                     │                   │         │
+            │                     │                   │         │
+            │eth0  10 untagged    │eth1  99 untagged  │eth2     │eth3
+      ┌─────┬─────────────────────┬───────────────────┬─────────┬──────┐
+      │ SW2   bridge forwarding · per-VLAN FDB · VLAN filter           │
+      └────────────────────────────────────────────────────────────────┘
+                                          │
+      ────────────────────────────────────┬─────────────────────────────    self: vid 99 tagged
+                                          │
+                        ┌───────────────────────────────────┐
+                        │ br0           the CPU port        │
+                        └───────────────────────────────────┘
+                                          │
+                        ┌───────────────────────────────────┐
+                        │ br0.99        8021q VLAN device   │
+                        └───────────────────────────────────┘
+                                          │
+                        ┌───────────────────────────────────┐
+                        │ SW2 IP stack  192.168.10.202/24   │
+                        └───────────────────────────────────┘
+</code></pre></div>
+<p><em>(Rendered version for slides or print:
+<a href="../topologies/a8-management-path.svg"><code>topologies/a8-management-path.svg</code></a>.)</em></p>
+<p>Each switch is drawn with its ports facing the other and its own IP stack facing away — because that
+is what a management interface is: an attachment to the bridge from the inside, not one of the ports.
+<code>PC-MGMT</code> is in VLAN 99 on <code>SW2:eth1</code>, and your two pings take quite different journeys.</p>
+<p><strong><code>.202</code>, the switch it is plugged into.</strong> Untagged into <code>eth1</code>, so it takes that port's PVID and
+becomes a VLAN 99 frame. FDB lookup happens inside VLAN 99, the destination MAC is the bridge's own,
+so the result is not "out a port" but "deliver locally" — egress toward <code>br0</code>, which VLAN filtering
+checks like any other port. <code>br0</code> is a member of 99 and the entry is <em>tagged</em>, so the frame arrives
+at <code>br0.99</code> still carrying its header, and <code>br0.99</code> pops it. The frame never leaves <code>SW2</code>.</p>
+<p><strong><code>.201</code>, the switch it has no cable to.</strong> Identical until the FDB, which this time points out the
+forwarding trunk — tagged, because <code>eth2</code> is a tagged member. <code>SW1</code> classifies it on ingress <em>by that
+tag</em>, looks up VLAN 99, finds its own MAC, and hands it up its own <code>br0</code> → <code>br0.99</code>. This is the
+concrete reason VLAN 99 has to be on the trunks: without it the frame is dropped by ingress
+filtering at <code>SW1:eth2</code> and <code>SW1</code> is unreachable, cable or no cable.</p>
+<p>Both replies retrace the same steps in the other direction, <code>br0.99</code> pushing the tag back on.</p>
+<p>And <code>PC1</code>, in VLAN 10, gets as far as the FDB and no further: neither bridge has a vid 10 <code>self</code>
+entry, so there is no path from VLAN 10 to either IP stack. That is prediction 3, and the isolation
+is one line of VLAN membership enforced at one place.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><strong><code>bridge vlan show</code> now has a line for <code>br0</code> itself.</strong> Every other line is a port — a way into the
+  switch from outside. This one is the switch's own way in, from inside. That is the difference
+  between a bridge port and a management interface, and it is the thing milestone 1 makes you work
+  out.</li>
+<li><code>PC-MGMT</code> reached <code>SW1</code>, which it has no cable to, <strong>through <code>SW2</code> and across a trunk</strong>. That is what
+  makes this a management <em>network</em> rather than a management <em>port</em>.</li>
+<li><code>SW1</code> and <code>SW2</code> are still not hosts in VLAN 10, 20 or 30. They have exactly one address each,
+  reachable from exactly one VLAN.</li>
+</ul>
+<hr />
+<h2 id="part-3-actually-managing-something">Part 3 — Actually managing something</h2>
+<p>A ping proves a switch is alive. It does not administer anything. From <code>PC-MGMT</code>:</p>
+<div class="highlight"><pre><span></span><code>ssh admin@192.168.10.201
+bridge vlan show
+exit
+</code></pre></div>
+<p>Now do it to the whole fleet from one chair, without logging into anything:</p>
+<div class="highlight"><pre><span></span><code># on PC-MGMT
+for s in 201 202; do
+    echo "=== switch at .$s ==="
+    ssh admin@192.168.10.$s 'bridge link'
+done
+</code></pre></div>
+<p>And from <code>PC1</code>, in VLAN 10, try exactly the same thing:</p>
+<div class="highlight"><pre><span></span><code># on PC1
+ssh admin@192.168.10.201
+</code></pre></div>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><strong>That is the answer to "why does a switch need an address."</strong> Not to be pinged — to be read,
+  audited and changed from somewhere other than a chair in front of it. Two switches is already too
+  many consoles to walk to; a building has forty.</li>
+<li>The loop over <code>.201</code> and <code>.202</code> is a real operations task — collecting the state of every device to
+  compare it against what you think you deployed. It is also how you find the one switch somebody
+  changed by hand at 2am.</li>
+<li><strong><code>PC1</code> hung and failed</strong>, and the reason matters. Nothing blocked it. There is no firewall rule and
+  no password involved — VLAN 10 and VLAN 99 are separate broadcast domains with no router between
+  them, so the packet had nowhere to go. It is the same reason <code>PC1</code> cannot reach a host in VLAN 20:
+  not <em>forbidden</em>, <strong>unreachable</strong>.</li>
+<li>Notice what that means for milestone 2. Once a router arrives and VLANs can reach each other,
+  <code>PC1</code> <em>will</em> be able to reach the switches, and keeping it out stops being a happy accident of
+  topology and becomes a decision somebody has to make and configure.</li>
+</ul>
+<hr />
+<h2 id="part-4-changing-the-network-from-somewhere-else">Part 4 — Changing the network from somewhere else</h2>
+<p><code>SW1</code> is currently root, and <code>PC-MGMT</code> is plugged into <code>SW2</code>. Confirm both facts from <code>PC-MGMT</code> without
+touching a console:</p>
+<div class="highlight"><pre><span></span><code># on PC-MGMT
+for s in 201 202; do ssh admin@192.168.10.$s 'cat /sys/class/net/br0/bridge/root_id'; done
+</code></pre></div>
+<p>Both should print <code>SW1</code>'s bridge ID. Now move the root to <code>SW2</code> — from <code>PC-MGMT</code>, over the network:</p>
+<div class="highlight"><pre><span></span><code># on PC-MGMT
+ssh admin@192.168.10.202 'sudo ip link set dev br0 type bridge priority 2048'
+</code></pre></div>
+<p>Wait about 30 seconds, then re-run the loop above, and check <code>bridge link</code> on both.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li><strong>The root moved, and your management did not care.</strong> You reached both switches before, and you
+  reach both switches now. The root is a spanning-tree decision about which way frames travel; the
+  management address is a host interface in a VLAN. They have nothing to do with each other, and
+  nothing about being root makes a switch more or less administrable.</li>
+<li>Read that against the two states you have now seen: at the start the root was <code>SW1</code>, a switch
+  <code>PC-MGMT</code> has no cable to. Now it is <code>SW2</code>, the switch <code>PC-MGMT</code> is plugged into. <strong>Neither arrangement
+  is more correct</strong>, and neither changed how you administer anything.</li>
+<li>The blocked port moved too. Re-run the reasoning from A5 §5 and check that the port now blocking
+  is the one the rules say should block.</li>
+<li>If your session stalled for a few seconds before returning — that is STP reconverging, and you
+  watched a live outage from inside a management session. It is exactly what a topology change feels
+  like from the chair.</li>
+</ul>
+<blockquote>
+<p><strong>You can cut yourself off this way.</strong> You have just changed, over the network, the thing that
+decides how the network forwards. A worse change — putting <code>SW2:eth1</code> in the wrong VLAN, say —
+would strand <code>PC-MGMT</code> with no path to anything, and the only recovery is the GNS3 console. That is
+not a lab artefact. Being locked out of a device you are configuring is a standard hazard with a
+standard answer: keep console access, and do not change the thing you are reaching the device
+through.</p>
+</blockquote>
+<p>Put the root back where you meant it, and this time <strong>persistently</strong>, so it is still true after a
+restart:</p>
+<div class="highlight"><pre><span></span><code># on SW2, via ssh from PC-MGMT
+sudo nmcli con modify br0 bridge.priority 32768
+sudo nmcli con up br0
+</code></pre></div>
+<p><code>SW1</code> already carries <code>bridge.priority 4096</code> from Part 1, so it takes the root back.</p>
+<hr />
+<h2 id="part-5-the-only-test-that-counts">Part 5 — The only test that counts</h2>
+<p>Stop <strong>both</strong> switches from the GNS3 toolbar. Start them again. Wait for them to boot, touch
+nothing, and from <code>PC-MGMT</code>:</p>
+<div class="highlight"><pre><span></span><code># on PC-MGMT
+for s in 201 202; do
+    echo "=== switch at .$s ==="
+    ssh admin@192.168.10.$s 'bridge vlan show; bridge link; cat /sys/class/net/br0/bridge/root_id'
+done
+</code></pre></div>
+<p>Then ping <code>PC2</code> from <code>PC1</code>.</p>
+<h3 id="what-just-happened_4">What just happened</h3>
+<ul>
+<li>Everything came back: the bridge, VLAN filtering, every port's VLAN membership, both trunks, STP,
+  the chosen root, and the management address. <strong>You typed nothing after the reboot.</strong></li>
+<li>Do the same experiment mentally for A4 and A5, which built the identical network with <code>ip</code> and
+  <code>bridge</code>. After that reboot there is no <code>br0</code> at all. Those commands were never wrong — they are
+  for exploring, and they let you undo a mistake by restarting the node. They simply do not persist,
+  and were never meant to.</li>
+<li>Milestone 1 will be <strong>restarted during marking</strong>. This part is the one that decides whether it
+  still works when it is.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bridge-port.vlans</code> value for an access port / for a trunk</td>
+<td></td>
+</tr>
+<tr>
+<td>What <code>bridge.vlan-default-pvid 0</code> replaced from A4</td>
+<td></td>
+</tr>
+<tr>
+<td>Where the management address attaches, and why not on a port</td>
+<td></td>
+</tr>
+<tr>
+<td>Which VLANs the trunk carries, and why 99 has to be one of them</td>
+<td></td>
+</tr>
+<tr>
+<td><code>PC-MGMT</code> → <code>SW1</code>: how many switches did the traffic cross?</td>
+<td></td>
+</tr>
+<tr>
+<td><code>PC1</code> → <code>SW1</code> over ssh: what happened, and why <em>exactly</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Root before and after Part 4; what changed about management</td>
+<td></td>
+</tr>
+<tr>
+<td>After the reboot: what survived</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>One sentence: what is a management VLAN <em>for</em>, given that a console cable also works?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Everything mutually reachable, VLANs ignored</td>
+<td><code>bridge.vlan-filtering</code> not set, or set after the ports</td>
+<td><code>nmcli con show br0 \| grep vlan</code>; re-run <code>nmcli con up br0</code></td>
+</tr>
+<tr>
+<td>Hosts in the same VLAN cannot reach each other</td>
+<td>access port missing <code>pvid untagged</code></td>
+<td><code>bridge vlan show</code> — access ports must show <code>PVID Egress Untagged</code></td>
+</tr>
+<tr>
+<td>Ports still in VLAN 1</td>
+<td><code>bridge.vlan-default-pvid</code> left at 1</td>
+<td>set it to <code>0</code> on the bridge, then <code>nmcli con up br0</code></td>
+</tr>
+<tr>
+<td><code>PC-MGMT</code> reaches its own switch but not the other</td>
+<td>VLAN 99 missing from a trunk port</td>
+<td><code>bridge-port.vlans "10,99"</code> on <strong>all four</strong> trunk ports</td>
+</tr>
+<tr>
+<td><code>ping</code> to a switch fails, no obvious reason</td>
+<td><code>bridge.vlans "99"</code> missing — the bridge itself is not in the VLAN</td>
+<td><code>bridge vlan show</code>; there must be a line for <code>br0</code>, not just for <code>ethN</code></td>
+</tr>
+<tr>
+<td><code>br0.99</code> exists but has no carrier</td>
+<td>the parent bridge is down or has no ports up</td>
+<td><code>nmcli con up br0</code> first, then <code>nmcli con up mgmt</code></td>
+</tr>
+<tr>
+<td><code>ssh</code> refused rather than hanging</td>
+<td>you reached the switch — this is a credentials problem, not a network one</td>
+<td><code>admin</code> / <code>P@ssw0rd</code></td>
+</tr>
+<tr>
+<td><code>ssh</code> hangs from <code>PC-MGMT</code> too</td>
+<td>firewalld on the switch</td>
+<td><code>systemctl status firewalld</code>; ssh is permitted in the default zone, so check the zone of <code>br0.99</code></td>
+</tr>
+<tr>
+<td>Host key warnings on every connection</td>
+<td>the fleet loop reconnects each time</td>
+<td><code>ssh -o StrictHostKeyChecking=accept-new</code> for the loop</td>
+</tr>
+<tr>
+<td>Nothing survives the reboot</td>
+<td>you built it with <code>ip</code>/<code>bridge</code> out of habit</td>
+<td><code>nmcli con show</code> — if the connections are not listed, they were never written</td>
+</tr>
+<tr>
+<td>Locked out after a change in Part 4</td>
+<td>you changed the path you were using</td>
+<td>console in from the GNS3 toolbar and undo it; then read the sidebar again</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

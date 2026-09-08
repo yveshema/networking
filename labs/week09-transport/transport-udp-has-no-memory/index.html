@@ -1,0 +1,1097 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week09-transport/transport-udp-has-no-memory/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Transport — UDP has no memory - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-udp-has-no-memory" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport — UDP has no memory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-a-baseline-both-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — a baseline, both protocols
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-break-the-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — break the link
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — break the link">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-where-does-udp-keep-its-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — where does UDP keep its state?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — where does UDP keep its state?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-why-anyone-chooses-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — why anyone chooses it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — why anyone chooses it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="transport-udp-has-no-memory">Transport — UDP has no memory</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> the previous activity's topology · <strong>GNS3 project:</strong>
+<code>tr-a2-udp</code> (continue from <code>tr-a1-handshake</code>)</p>
+<p><strong>The question:</strong> TCP and UDP sit in the same place, in the same slot of the same IP header, carrying
+the same bytes over the same wire. Textbooks say one is "reliable" and one is not. Break the link
+and find out what that word actually buys you — and what it costs.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>Send 1000 lines over TCP with 20% of packets dropped. How many arrive? <strong><em>_</em></strong></li>
+<li>The same over UDP? <strong><em>_</em></strong></li>
+<li>Which transfer finishes sooner? <strong><em>_</em></strong></li>
+<li>Does the sender <em>know</em>, in either case? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="do-this-a-baseline-both-protocols">Do this — a baseline, both protocols</h2>
+<div class="highlight"><pre><span></span><code># on SERVER
+ncat -l 9000       &gt; /tmp/tcp.out &amp;
+ncat -u -l 9000    &gt; /tmp/udp.out &amp;
+
+# on CLIENT
+seq 1 1000 | ncat    -w2 10.10.0.20 9000
+seq 1 1000 | ncat -u -w2 10.10.0.20 9000
+
+# on SERVER
+wc -l /tmp/tcp.out /tmp/udp.out
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines received</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Both should arrive complete. A healthy link hides the entire difference between these protocols,
+which is exactly why the difference is hard to teach.</p>
+<hr />
+<h2 id="do-this-break-the-link">Do this — break the link</h2>
+<div class="highlight"><pre><span></span><code># on SERVER — 20% of inbound packets discarded
+tc qdisc add dev eth0 root netem loss 20%
+</code></pre></div>
+<p>Truncate the output files, then repeat both transfers.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines received</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Time taken</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Lines in order?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Any error reported to the sender?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><strong>TCP delivered everything.</strong> Every gap was noticed by the receiver, the missing segment was
+  retransmitted, and the application never learned any of it happened. Look at the capture: you can
+  count the duplicate sequence numbers.</li>
+<li><strong>UDP delivered roughly 800 lines</strong> and neither end mentioned it. The sender believes it sent 1000.
+  The receiver believes it received everything there was.</li>
+<li><strong>TCP was slower</strong>, and not by a little. Reliability is paid for in latency: every loss costs at
+  least one round trip, and TCP also slows itself down on the assumption that loss means congestion.</li>
+<li><strong>Ordering came free with TCP and not at all with UDP.</strong> Sequence numbers are what make both
+  retransmission and reordering possible; UDP has no such field because it has no such ambition.</li>
+</ul>
+<hr />
+<h2 id="do-this-where-does-udp-keep-its-state">Do this — where does UDP keep its state?</h2>
+<div class="highlight"><pre><span></span><code># on SERVER
+ss -uan
+ss -tan
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>The TCP socket has a <strong>state</strong> — <code>ESTAB</code>, <code>TIME-WAIT</code>, something. The UDP socket has none to show.</li>
+<li>There is nothing to be in a state <em>about</em>. UDP has no handshake, no acknowledgement, no sequence
+  numbers, no teardown. A UDP socket is an address the kernel will deliver datagrams to, and nothing
+  more.</li>
+<li>Which means the <em>only</em> thing UDP adds to bare IP is <strong>ports</strong> — the ability to have more than one
+  conversation per host — plus an optional checksum. That is the whole protocol. Everything else you
+  associate with "transport" is TCP's contribution, not the layer's.</li>
+</ul>
+<hr />
+<h2 id="do-this-why-anyone-chooses-it">Do this — why anyone chooses it</h2>
+<div class="highlight"><pre><span></span><code># on SERVER
+tc qdisc change dev eth0 root netem loss 5% delay 100ms
+
+# on CLIENT — time a small exchange each way
+time (echo ping | ncat    -w3 10.10.0.20 9000)
+time (echo ping | ncat -u -w3 10.10.0.20 9000)
+</code></pre></div>
+<p>Clean up: <code>tc qdisc del dev eth0 root</code> on <code>SERVER</code>.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>TCP paid three round trips before the first byte moved — the handshake — and pays again for every
+  loss. UDP paid nothing and sent immediately.</li>
+<li>For a voice call, a game, or a DNS lookup, a packet that arrives late is worth <strong>less than nothing</strong>:
+  the moment it described has passed, and waiting for it delayed everything behind it. Retransmission
+  is actively harmful there.</li>
+<li>So the choice is not "reliable versus unreliable". It is <strong>who handles loss</strong> — the transport, or
+  the application. UDP does not lack reliability; it <em>declines</em> to provide it, so that the
+  application can decide what loss means.</li>
+<li>That is why the newest web transport protocols are built on UDP and implement their own recovery
+  on top. They wanted TCP's guarantees without TCP's fixed opinions about how to deliver them — and,
+  as W4's reading describes, they wanted a shape the network would carry without asking questions.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP / UDP lines delivered under 20% loss</td>
+<td></td>
+</tr>
+<tr>
+<td>Which was faster, and why</td>
+<td></td>
+</tr>
+<tr>
+<td>What the UDP sender was told about the loss</td>
+<td></td>
+</tr>
+<tr>
+<td>What <code>ss</code> shows for a UDP socket, and why</td>
+<td></td>
+</tr>
+<tr>
+<td>The only thing UDP adds to bare IP</td>
+<td></td>
+</tr>
+<tr>
+<td>One application where retransmission is harmful</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>netem</code> has no effect</td>
+<td>applied to the wrong node or interface</td>
+<td>it is on <code>SERVER</code>'s <code>eth0</code>; <code>tc qdisc show dev eth0</code></td>
+</tr>
+<tr>
+<td>UDP delivers 1000/1000 anyway</td>
+<td>loss rule not active, or too little traffic to sample</td>
+<td>check <code>tc qdisc show</code>; raise to <code>loss 40%</code></td>
+</tr>
+<tr>
+<td>UDP receives nothing at all</td>
+<td><code>ncat -u</code> server not started, or <code>firewalld</code></td>
+<td>restart it; <code>systemctl stop firewalld</code></td>
+</tr>
+<tr>
+<td>TCP transfer hangs forever</td>
+<td>loss too high for recovery</td>
+<td>expected above ~40%; lower it and say why</td>
+</tr>
+<tr>
+<td>Output files keep growing</td>
+<td>previous <code>ncat</code> still running</td>
+<td><code>pkill ncat</code> on <code>SERVER</code> between runs</td>
+</tr>
+<tr>
+<td><code>tc qdisc del</code> errors at the end</td>
+<td>already removed</td>
+<td>harmless</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

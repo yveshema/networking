@@ -1,0 +1,1274 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/gns3/install-cloud-gns3-server/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../install-local-gns3-server/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Install a cloud server (recommended) - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-google-cloud-account" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Install a cloud server (recommended)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../labs/" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../labs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  GNS3
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Install a cloud server (recommended)
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Install a cloud server (recommended)
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-google-cloud-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Google Cloud account
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-the-wrapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Install the wrapper
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-your-cloud-gns3-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Create your cloud GNS3 server
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-install-the-gns3-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Install the GNS3 desktop client
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-start-your-lab-each-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Start your lab, each session
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-stop-when-youre-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. Stop when you're done
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-on-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Checking on things
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-much-will-this-cost-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How much will this cost you
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-local-gns3-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Install GNS3 server locally
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-gns3-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Install GNS3 client
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-google-cloud-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. Google Cloud account
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-the-wrapper" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. Install the wrapper
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-create-your-cloud-gns3-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. Create your cloud GNS3 server
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-install-the-gns3-desktop-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. Install the GNS3 desktop client
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-start-your-lab-each-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. Start your lab, each session
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-stop-when-youre-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. Stop when you're done
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-on-things" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Checking on things
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-much-will-this-cost-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How much will this cost you
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+  
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <h1 id="__skip">Install a cloud server (recommended)</h1>
+
+<h2 id="1-google-cloud-account">1. Google Cloud account</h2>
+<ol>
+<li>
+<p>Create a Google Cloud account and (optionally) redeem the <strong>$300 / 90-day free
+   trial</strong>: <a href="https://cloud.google.com/free">https://cloud.google.com/free</a></p>
+<div class="admonition info">
+<p class="admonition-title">$300 credit</p>
+<ul>
+<li>The 90 days runs from signup, not from first use. </li>
+<li>Eligibility requires never having had a Google Cloud trial before.</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Install the <a href="https://cloud.google.com/sdk/docs/install">Google Cloud CLI</a>.</p>
+</li>
+<li>Initialize and authorize the <code>gcloud</code> CLI:
+    <div class="highlight"><pre><span></span><code>gcloud init
+</code></pre></div></li>
+<li>Create a project if you haven't yet:
+    <div class="highlight"><pre><span></span><code>gcloud projects create acit-2620-lab
+</code></pre></div>
+    If you would like a human-readable name for your project, do this:
+    <div class="highlight"><pre><span></span><code>gcloud projects update acit-2620-lab --name="ACIT 2620 Networking Lab"
+</code></pre></div></li>
+<li>
+<p>Create a named gcloud configuration and log in:
+    <div class="highlight"><pre><span></span><code>gcloud config configurations create acit-2620 
+gcloud auth login
+gcloud config set project acit-2620-lab
+gcloud config set compute/zone us-west1-b
+</code></pre></div></p>
+<div class="admonition info">
+<p class="admonition-title">Configuration bundle</p>
+<p>A configuration bundles account + project + zone under one name, 
+so this won't interfere with any other Google Cloud projects you may have.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Naming resources</p>
+<p>You don't necessarily have to use the names <strong>acit-2620-lab</strong> and <strong>acit-2620</strong> 
+for your project and configuration respectively. You are free to use any 
+names you like. That being said, it is good engineering practice to choose
+names that clearly express the purpose of the things being named.</p>
+</div>
+</li>
+</ol>
+<h2 id="2-install-the-wrapper">2. Install the wrapper</h2>
+<p>This will allow you to easily create, provision and manage a Google Cloud VM with a simple
+user interface. </p>
+<p>The wrapper's primary value proposition lies in provisioning and configuring your cloud
+GNS3 server, but it has other useful features:</p>
+<ul>
+<li>it handles configuration for you</li>
+<li>it lets you turn off you VM when you're not using it, saving you unnecessary costs</li>
+<li>it makes it easy to refresh you connection when you move into a different network</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/yveshema/gns3-cloud-lab.git
+cd gns3-cloud-lab
+python install.py
+</code></pre></div>
+<p><code>install.py</code> bootstraps <a href="https://docs.astral.sh/uv/">uv</a> automatically if
+it isn't already on your machine, then installs the <code>gns3-cloud-lab</code>
+command with five subcommands: <code>scan</code>, <code>create</code>, <code>enroll</code>,
+<code>start</code>/<code>refresh</code>, <code>upgrade</code>, <code>stop</code>, <code>status</code>. To uninstall later, run
+<code>python uninstall.py</code> from the same checkout.</p>
+<p>If nothing on your machine is already called <code>gclab</code>, install also sets it
+up as a shorter alias for <code>gns3-cloud-lab</code> — same command, less typing.
+(If something's already using that name, it's left alone and only the full
+<code>gns3-cloud-lab</code> command is installed.)</p>
+<h2 id="3-create-your-cloud-gns3-server">3. Create your cloud GNS3 server</h2>
+<div class="highlight"><pre><span></span><code>gns3-cloud-lab create
+</code></pre></div>
+<p>This creates a firewall rule scoped to your current public IP address and a
+<code>n2-standard-4</code> VM (4 vCPU, 16 GB RAM) then installs and configures GNS3 on
+first boot. It takes a few minutes to finish booting and provisioning —
+<code>gns3-cloud-lab status</code> will show you where it's at. You only need to do this once
+; re-running it later is safe and just confirms the VM is
+already there.</p>
+<div class="admonition info">
+<p class="admonition-title">Naming resources</p>
+<p>The VM created by <code>gns3-cloud-lab create</code> is named <strong>gns3-lab</strong> by default.
+If you would like to name it something different, run it like this:
+<div class="highlight"><pre><span></span><code>gns3-cloud-lab --instance &lt;your_vm_name&gt; create
+</code></pre></div></p>
+</div>
+<h2 id="4-install-the-gns3-desktop-client">4. Install the GNS3 desktop client</h2>
+<p>See <a href="">Install GNS3 Client</a></p>
+<h2 id="5-start-your-lab-each-session">5. Start your lab, each session</h2>
+<div class="highlight"><pre><span></span><code>gns3-cloud-lab start
+</code></pre></div>
+<p>Every time you start, both your VM's address and your own public IP may
+have changed since last time — this command refreshes both: it starts the
+VM if it's stopped, updates the firewall rule to allow your current
+location, and writes the connection details into your GNS3 client config.
+It prints a summary block with the server IP and other connection details.</p>
+<h2 id="7-stop-when-youre-done">7. Stop when you're done</h2>
+<div class="highlight"><pre><span></span><code>gns3-cloud-lab stop
+</code></pre></div>
+<p><strong>Always stop the VM when you're finished for the session.</strong> You're only
+billed for compute time while it's running; the disk keeps a small charge
+either way (~$3/month), but leaving the VM running unnecessarily will end
+up costing you more that it should.</p>
+<h2 id="checking-on-things">Checking on things</h2>
+<div class="highlight"><pre><span></span><code>gns3-cloud-lab status
+</code></pre></div>
+<p>Prints whether the VM exists, whether it's running, its current IP, and
+(if known) your login details — without starting or stopping anything.</p>
+<h2 id="how-much-will-this-cost-you">How much will this cost you</h2>
+<p>At roughly $0.20/hour for the VM plus ~$3/month for the disk, a typical
+term's usage (a few hours a week) comes to well under $50. 
+Your $300 credit will cover most of it. 
+However, the trial period runs out in 90 days - a week or so shy of the term's end.
+So, expect to cover the remaining balance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do this when your trial runs out</p>
+<ol>
+<li>Open the Google Cloud Billing Console</li>
+<li>Click the billing account dropdown at the top of the page
+and select <strong>Manage billing accounts</strong></li>
+<li>Click <strong>Create Account</strong> near the top left</li>
+<li>Enter a name for the account, select your country
+and currency, and click <strong>Continue</strong></li>
+<li>Set up your payment method and click <strong>Submit and activate billing</strong></li>
+<li>Find your new billing account:
+    <div class="highlight"><pre><span></span><code>gcloud billing accounts list
+</code></pre></div>
+    Copy the <strong>ACCOUNT_ID</strong> (formatted as XXXXXX-XXXXXX-XXXXXX) for your
+    new billing account</li>
+<li>Link your project to the new billing account:
+    <div class="highlight"><pre><span></span><code>gcloud billing projects link YOUR_PROJECT_ID --billing-account=NEW_BILLING_ACCOUNT_ID
+</code></pre></div></li>
+</ol>
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: GNS3 Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                GNS3 Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../install-local-gns3-server/" class="md-footer__link md-footer__link--next" aria-label="Next: Install GNS3 server locally">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Install GNS3 server locally
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

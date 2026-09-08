@@ -1,0 +1,936 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/reading-why-protocol-extensions-die/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Reading — Why protocol extensions die - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reading-why-protocol-extensions-die" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reading — Why protocol extensions die
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-room-that-was-left-on-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The room that was left on purpose
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-forces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Three forces
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-loop-that-finished-them-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The loop that finished them off
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-general-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The general law
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-happened-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        It happened again
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-actually-worked" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What actually worked
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-to-the-two-traceroutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Back to the two traceroutes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="reading-why-protocol-extensions-die">Reading — Why protocol extensions die</h1>
+<p><strong>Not an activity.</strong> Background for <a href="../a8-the-options-nobody-uses/">W4·A8</a>, best read after it.
+No commands, nothing to submit. It takes one dead header field and turns it into the single most
+useful thing you can know about how the internet actually changes.</p>
+<hr />
+<h2 id="the-room-that-was-left-on-purpose">The room that was left on purpose</h2>
+<p>The people who designed the internet's addressing in the 1970s knew they could not foresee what it
+would need. So they left room. Every packet carries a header — a small block of bookkeeping at the
+front — and they made that header able to grow. A packet could carry extra instructions: <em>record the
+address of every router you pass through</em>, or <em>stamp the time at each hop</em>, or <em>take this specific
+route rather than the one you would normally choose</em>.</p>
+<p>This was good design. It meant the network could gain new abilities later without replacing
+everything that already existed.</p>
+<p>And it worked, for a while. Those extras were real, useful, and used.</p>
+<p>Today they are effectively dead. Not removed from the standard — the standard still describes them,
+and the lab network you built in A8 handles them perfectly. They died in the real world, and <em>how</em>
+they died is worth more than the features themselves.</p>
+<h2 id="three-forces">Three forces</h2>
+<p><strong>Speed.</strong> Routers became fast by making the common case predictable. An ordinary packet header is
+always the same size and always laid out the same way, so the decision about where to send it can be
+made by dedicated hardware in a fraction of a microsecond. A packet carrying extras is a different
+shape — variable length, requiring interpretation. It cannot take that fast path. It is handed to a
+general-purpose processor instead, which is not slightly slower but thousands of times slower.</p>
+<p>So a packet using the extension mechanism costs the network far more to carry than a normal one.
+Multiply that by the volume a backbone router handles and it stops being an inefficiency and becomes
+a way to overwhelm expensive equipment using very little effort.</p>
+<p><strong>Space.</strong> The room left for extras was capped at 40 bytes. Record Route spends four bytes per
+router plus a little bookkeeping — nine routers, maximum, which you calculated yourself in A8. When
+the design was written, nine was generous. On today's internet a path of fifteen or twenty hops is
+unremarkable. The feature could not describe the network it was meant to describe.</p>
+<p><strong>Trust.</strong> One of the extras let the <em>sender</em> dictate the route its packet would take. That sounds
+harmless. It is not. Nearly every protection a network has rests on an assumption about where
+traffic came from — this arrived on the outside link, so treat it as untrusted; that arrived on the
+inside link, so trust it more. If the sender controls the path, the sender controls which link the
+packet appears to arrive on, and every one of those assumptions can be deliberately arranged to be
+wrong. Once people noticed, operators switched it off everywhere.</p>
+<h2 id="the-loop-that-finished-them-off">The loop that finished them off</h2>
+<p>Now follow the incentives.</p>
+<p>Each of those three forces gives a network operator a good reason to discard packets carrying
+extras. None of them is a conspiracy. Each is an entirely local, entirely sensible decision made by
+someone with a network to run.</p>
+<p>But once enough operators make it, a packet using extras is no longer reliably deliverable. So
+software stops using them — because software that depends on something unreliable is software that
+fails.</p>
+<p>And once nothing uses them, discarding them costs nothing. There is no longer any traffic to break.
+Which makes the decision easier still for the next operator.</p>
+<p>That loop is the whole story. <strong>The capability was never withdrawn. It was written out of reality by
+a million independent, individually reasonable choices.</strong> The document still says it works. The
+network says otherwise, and the network wins.</p>
+<h2 id="the-general-law">The general law</h2>
+<p>This generalises far beyond one header:</p>
+<blockquote>
+<p><strong>Anything a protocol permits but rarely uses will eventually stop working.</strong></p>
+</blockquote>
+<p>Not by decision. By disuse. Equipment sitting between two computers — firewalls, load balancers,
+carrier gear, home routers — only reliably handles what it sees every day. Anything rare is anything
+untested, and anything untested is, sooner or later, broken. Rarity is not a symptom of the failure.
+It is the cause.</p>
+<p>The name for this is <strong>ossification</strong>: the protocol hardens into the shape of whatever traffic is
+common, and the written specification drifts away from the working one. The internet is not what its
+standards say. It is the intersection of what its standards say and what the equipment in the middle
+happens to tolerate.</p>
+<h2 id="it-happened-again">It happened again</h2>
+<p>When IPv6 was designed, all of this was already understood. The response was structural: make the
+main header a fixed size — always the same, always fast — and move every extension into a separate
+chain behind it, so the fast path stays fast no matter what a packet is carrying.</p>
+<p>Extensions of that kind are now widely discarded in transit. Measurement studies keep finding that a
+meaningful share of the internet simply drops packets that carry them.</p>
+<p>The redesign did not help, and the reason is the important part: <strong>the format was never the problem.</strong>
+The problem was the incentive. Equipment in the middle gains nothing from handling rare traffic and
+loses nothing by discarding it. Change the format and that incentive is untouched.</p>
+<h2 id="what-actually-worked">What actually worked</h2>
+<p>Given all that, only two strategies have succeeded, and both rest on the same insight: <strong>stop asking
+the middle of the network to cooperate.</strong></p>
+<p><strong>Hide the change.</strong> If equipment in the middle cannot see a field, it cannot object to it. So
+encrypt everything you intend to keep evolving. The newest transport protocols encrypt not only your
+data but almost all of their own bookkeeping. Privacy is part of the motivation; the larger part is
+preserving the ability to change things later without needing permission from hardware nobody
+controls.</p>
+<p><strong>Wear a familiar shape.</strong> Build the new thing so it looks exactly like something the network already
+carries in enormous volume and passes without inspection. QUIC — the transport protocol that now
+carries a large share of the web — is a genuinely new design that deliberately presents itself as
+ordinary, unremarkable traffic of a kind every network already forwards without a second look. It
+did not win an argument about what networks ought to support. It arranged for the argument never to
+happen.</p>
+<h2 id="back-to-the-two-traceroutes">Back to the two traceroutes</h2>
+<p>You built the same tool twice. Once as the designed feature — ask the network to record its own path
+— and once as the workaround from A4: send packets rigged to expire one hop earlier each time, and
+collect the complaints.</p>
+<p>The designed feature is elegant, purpose-built, and dead. The workaround is a hack, and it is what
+every network engineer on earth uses.</p>
+<p>The workaround won because <strong>it asks the network for nothing new</strong>. No cooperation, no capability, no
+permission. It needs routers to do the one thing they already do when a packet runs out of hops:
+complain about it. So it works through equipment that has never heard of traceroute and would refuse
+it if asked.</p>
+<p>That is the lesson, in one line:</p>
+<blockquote>
+<p><strong>Mechanisms that require the network to cooperate die. Mechanisms that exploit what the network
+already does survive.</strong></p>
+</blockquote>
+<p>It is why the internet is so hard to improve, and why the improvements that do succeed almost always
+arrive disguised as something that was already there.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

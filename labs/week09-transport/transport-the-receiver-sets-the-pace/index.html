@@ -1,0 +1,1138 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week09-transport/transport-the-receiver-sets-the-pace/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Transport — The receiver sets the pace - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-the-receiver-sets-the-pace" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport — The receiver sets the pace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-how-big-is-a-piece" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — how big is a piece?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — how big is a piece?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-the-receiver-push-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch the receiver push back
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch the receiver push back">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-other-brake" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the other brake
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the other brake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-starve-it-deliberately" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — starve it deliberately
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — starve it deliberately">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="transport-the-receiver-sets-the-pace">Transport — The receiver sets the pace</h1>
+<p><strong>Time:</strong> 50 min · <strong>Needs:</strong> one <strong>OL9 PC</strong>, one <strong>OL9 Server</strong>, one Ethernet switch, Wireshark ·
+<strong>GNS3 project:</strong> <code>tr-a4-window</code></p>
+<p><strong>The question:</strong> a fast server sends a large file to a slow client. Nothing in IP prevents the server
+from sending as fast as its network card allows, and nothing in the network tells it not to. So why
+does the client not simply drown?</p>
+<blockquote>
+<p>Do this after the three-way handshake and the UDP activity. It answers a question those two leave
+open: TCP does not merely deliver reliably, it delivers <em>at a rate somebody agreed to</em>.</p>
+</blockquote>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>A 50 MB file is sent over TCP. How many packets? <strong><em>_</em></strong></li>
+<li>What limits how much the sender may have in flight before hearing back? <strong><em>_</em></strong></li>
+<li>The receiving application stops reading. What happens to the sender? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<p><code>CLIENT</code> <code>.11</code> (an <strong>OL9 PC</strong>) and <code>SRV</code> <code>.12</code> (an <strong>OL9 Server</strong>) on one Ethernet switch. On <code>SRV</code>:</p>
+<div class="highlight"><pre><span></span><code># on SRV
+dd if=/dev/zero of=/tmp/big.bin bs=1M count=50
+cd /tmp &amp;&amp; python3 -m http.server 8080
+</code></pre></div>
+<hr />
+<h2 id="do-this-how-big-is-a-piece">Do this — how big is a piece?</h2>
+<p>Capture the link, then:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+curl -s -o /dev/null http://192.168.10.12:8080/big.bin
+</code></pre></div>
+<p>In the capture, find the SYN and look for the <strong>MSS</strong> option, then look at the size of the data
+packets that follow.</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>The file did not travel as a file. It was cut into thousands of <strong>segments</strong>, each one small enough
+  to fit in a frame — around <strong>1460 bytes</strong> of data apiece.</li>
+<li>That number is not arbitrary: 1500 bytes of Ethernet payload, minus 20 for the IP header, minus 20
+  for the TCP header, leaves 1460. It is announced in the SYN as the <strong>maximum segment size</strong>, so each
+  end learns what the other is prepared to receive before any data moves.</li>
+<li>You have now met this arithmetic three times. W1·A3 counted what headers cost. W3·A4 showed a VLAN
+  tag adding 4 bytes and pushing a frame to 1522. The OSPF activity showed two routers refusing to
+  become neighbours over an MTU disagreement. <strong>Every one of those is the same 1500 bytes</strong>, seen
+  from a different layer.</li>
+<li>Note that MSS is negotiated <em>per connection at setup</em>, and then not revisited. A path that shrinks
+  in the middle later — a tunnel, an extra tag — is the classic cause of a connection that opens
+  perfectly and then hangs the moment real data flows.</li>
+</ul>
+<hr />
+<h2 id="do-this-watch-the-receiver-push-back">Do this — watch the receiver push back</h2>
+<p>Now make the client read slowly. <code>--limit-rate</code> does not slow the network; it slows the rate at which
+<code>curl</code> takes data out of its own socket, which is exactly what a busy application does.</p>
+<p>Capture again, then:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+curl --limit-rate 20k -o /dev/null http://192.168.10.12:8080/big.bin
+</code></pre></div>
+<p>Let it run for thirty seconds. In Wireshark, look at the <strong>Win=</strong> value on packets from <code>CLIENT</code>, and
+watch for packets Wireshark colours and labels <strong><code>TCP ZeroWindow</code></strong> and <strong><code>TCP Window Update</code></strong>.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>Every acknowledgement <code>CLIENT</code> sends carries a <strong>window</strong> — a number saying <em>this is how many more
+  bytes I can accept right now</em>. It is not a setting. It is the free space left in the receive buffer,
+  reported on every packet.</li>
+<li>As <code>curl</code> fell behind, that buffer filled and the advertised window <strong>shrank</strong>, packet by packet.
+  You can watch it count down.</li>
+<li>When it reached zero, <code>CLIENT</code> sent a <strong>ZeroWindow</strong>: <em>stop, I have nothing left</em>. And the server
+  stopped — not because of an error, not because of loss, but because it was told to.</li>
+<li>When <code>curl</code> read some more, <code>CLIENT</code> sent a <strong>Window Update</strong> and transmission resumed.</li>
+<li><strong>This is flow control</strong>, and the important part is who is in charge. The receiver is. The sender may
+  be idle, the network may be empty, and the transfer still proceeds at exactly the rate the slowest
+  participant can absorb. Nothing in the middle of the network was involved in that negotiation, and
+  nothing in the middle even knows it happened.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-other-brake">Do this — the other brake</h2>
+<p>Flow control protects the <em>receiver</em>. There is a second, entirely separate mechanism protecting the
+<em>network</em>, and it is easy to confuse them.</p>
+<div class="highlight"><pre><span></span><code># on CLIENT — run the unlimited download again, and while it runs:
+watch -n0.5 "ss -ti '( dport = :8080 )'"
+</code></pre></div>
+<p>Look for <code>cwnd:</code> and <code>rtt:</code> in the output.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><code>cwnd</code> is the <strong>congestion window</strong> — the sender's own private limit on how much it will put in
+  flight, which no one advertises to it. It starts small, grows while things go well, and collapses
+  when a packet is lost.</li>
+<li>So a TCP sender is limited by <strong>two</strong> numbers at once, and it obeys whichever is smaller:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Set by</th>
+<th>Protects</th>
+<th>Announced?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Receive window</strong></td>
+<td>the receiver</td>
+<td>the receiving machine</td>
+<td>yes, on every packet</td>
+</tr>
+<tr>
+<td><strong>Congestion window</strong></td>
+<td>the sender</td>
+<td>the network in between</td>
+<td>no — inferred from loss</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The second one is inferred, which is worth sitting with. <strong>No router ever tells a sender to slow
+  down.</strong> The sender guesses, from the fact that a packet went missing, that some queue somewhere
+  overflowed, and backs off. The entire internet's stability rests on every sender voluntarily
+  performing that guess.</li>
+<li>That also explains the UDP activity's result from a new angle. UDP has neither window. It sends what
+  the application gives it, as fast as the application gives it, and if that swamps a receiver or a
+  link, nothing in UDP will notice or care.</li>
+</ul>
+<hr />
+<h2 id="do-this-starve-it-deliberately">Do this — starve it deliberately</h2>
+<p>Shrink the receive buffer so the ceiling is visible in one screen:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+sysctl -w net.ipv4.tcp_rmem='4096 8192 8192'
+</code></pre></div>
+<p>Repeat the unlimited download and compare the transfer rate and the <code>Win=</code> values with before. Then
+put it back:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+sysctl -w net.ipv4.tcp_rmem='4096 131072 6291456'
+</code></pre></div>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>The transfer got slower, on an unchanged network, with no loss and no congestion. The receiver
+  simply could not have as much data in flight at once.</li>
+<li>This is the shape of a real and frequently misdiagnosed performance problem: a connection that
+  cannot go fast because the window is too small for the round-trip time. On a long path the sender
+  spends most of its time waiting for permission, and no amount of extra bandwidth helps.</li>
+<li>The product of those two numbers — window size and round-trip time — is the most the connection can
+  ever move at once. Everything else is detail.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MSS announced in the SYN, and the arithmetic behind it</td>
+<td></td>
+</tr>
+<tr>
+<td>Where the window value appears, and how often</td>
+<td></td>
+</tr>
+<tr>
+<td>What <code>TCP ZeroWindow</code> means, and who sent it</td>
+<td></td>
+</tr>
+<tr>
+<td>What restarted the transfer</td>
+<td></td>
+</tr>
+<tr>
+<td>Two windows, who sets each, what each protects</td>
+<td></td>
+</tr>
+<tr>
+<td>How a router tells a sender to slow down</td>
+<td></td>
+</tr>
+<tr>
+<td>Effect of shrinking <code>tcp_rmem</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Two sentences: a download is slow. Give one reason it might be the receiver's fault and one reason it
+might be the network's, and say how you would tell them apart.</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No ZeroWindow in the capture</td>
+<td>the client kept up</td>
+<td>lower <code>--limit-rate</code> to <code>10k</code>, or shrink <code>tcp_rmem</code> first</td>
+</tr>
+<tr>
+<td>No MSS option in the SYN</td>
+<td>you expanded the wrong packet</td>
+<td>it is on the SYN and SYN/ACK only, never on later packets</td>
+</tr>
+<tr>
+<td><code>ss -ti</code> shows no <code>cwnd</code></td>
+<td>connection already finished</td>
+<td>use the 50 MB file and run <code>watch</code> during the transfer</td>
+</tr>
+<tr>
+<td>Window never changes</td>
+<td>window scaling makes the raw value misleading</td>
+<td>Wireshark shows the calculated value; check the scale factor in the SYN</td>
+</tr>
+<tr>
+<td>Transfer speed unchanged after <code>tcp_rmem</code></td>
+<td>existing connection kept its old buffer</td>
+<td>the setting applies to new connections; start a fresh <code>curl</code></td>
+</tr>
+<tr>
+<td>Speeds are unrealistically high throughout</td>
+<td>virtual links have no real bandwidth limit</td>
+<td>add <code>tc qdisc add dev eth0 root tbf rate 10mbit burst 32kbit latency 400ms</code> on <code>SRV</code>, as in W2·A6</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

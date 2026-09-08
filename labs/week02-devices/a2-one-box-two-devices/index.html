@@ -1,0 +1,1111 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/a2-one-box-two-devices/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W2·A2 — One box, two devices ★ - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w2a2-one-box-two-devices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W2·A2 — One box, two devices ★
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-make-it-a-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 1 — Make it a switch
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Make it a switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-make-the-same-box-a-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 2 — Make the same box a router
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Make the same box a router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-prove-which-layer-each-one-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 3 — Prove which layer each one used
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3 — Prove which layer each one used">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sidebar-the-nmcli-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Sidebar — the <code>nmcli</code> form
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w2a2-one-box-two-devices">W2·A2 — One box, two devices ★</h1>
+<p><strong>Time:</strong> 50 min · <strong>Needs:</strong> one <strong>OL9 Lab Node</strong> with 4 adapters, 4 VPCS ·
+<strong>GNS3 project:</strong> <code>w02-a2-one-box</code></p>
+<p><strong>The question:</strong> what makes a device a switch rather than a router? Buy the wrong answer and every
+later week gets harder.</p>
+<hr />
+<h2 id="build-it">Build it</h2>
+<ol>
+<li>Drag out one <strong>OL9 Lab Node</strong>, name it <code>BOX</code>. Right-click → <strong>Configure → Network</strong> →
+   <strong>Adapters = 4</strong>.</li>
+<li>Four VPCS, <code>PC1</code>…<code>PC4</code>, cabled to <code>BOX</code>'s <code>Ethernet0</code>…<code>Ethernet3</code>.</li>
+<li>Start everything. Console into <code>BOX</code> as <code>root</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code># on BOX — before anything else
+for i in eth0 eth1 eth2 eth3; do nmcli device set $i managed no; done
+ip link show
+</code></pre></div>
+<blockquote>
+<p>On a QEMU node, GNS3's <code>EthernetN</code> <strong>is</strong> the guest's <code>ethN</code>, because the lab image boots with
+<code>net.ifnames=0 biosdevname=0</code>. On a marketplace appliance you would have to map them yourself.</p>
+</blockquote>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<p>You have one physical box with four network ports.</p>
+<ol>
+<li>Can it be a switch? ☐ yes ☐ no</li>
+<li>Can it be a router? ☐ yes ☐ no</li>
+<li>Can it be <strong>both, one after the other, without rebooting or rewiring</strong>? ☐ yes ☐ no</li>
+</ol>
+<hr />
+<h2 id="part-1-make-it-a-switch">Part 1 — Make it a switch</h2>
+<div class="highlight"><pre><span></span><code># on BOX
+ip link add name br0 type bridge
+ip link set br0 up
+
+for i in eth0 eth1 eth2 eth3; do
+    ip addr flush dev $i
+    ip link set $i master br0
+    ip link set $i up
+done
+
+bridge link
+ip -d link show br0
+</code></pre></div>
+<p>All four PCs in <strong>one subnet</strong>, no gateway:</p>
+<div class="highlight"><pre><span></span><code># PC1 / PC2 / PC3 / PC4
+ip 192.168.10.11/24        # .12 / .13 / .14
+</code></pre></div>
+<p>From <code>PC1</code>: ping <code>.12</code>, <code>.13</code>, <code>.14</code>. All three work.</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>br0</code> has <strong>no IP address</strong>, and that is correct. This node is not a host on the segment; it is the
+  segment.</li>
+<li>The four interfaces were <strong>stripped</strong> of addresses on purpose. A port carrying an IP is a router
+  leg, not a bridge port — that distinction is the whole activity.</li>
+<li>The PCs share one subnet and need no gateway, because as far as they are concerned they are all on
+  one wire. <code>BOX</code> is invisible to them. Nothing in any PC's configuration mentions it.</li>
+<li><strong>What did the work:</strong> the bridge, reading layer 2 only, forwarding on MAC addresses it learned by
+  watching. It never looked at an IP header.</li>
+</ul>
+<hr />
+<h2 id="part-2-make-the-same-box-a-router">Part 2 — Make the same box a router</h2>
+<p>Tear the switch down and build a router on the same hardware, same cables, same session:</p>
+<div class="highlight"><pre><span></span><code># on BOX
+ip link del br0                       # the switch is gone
+
+ip addr add 192.168.1.1/24  dev eth0
+ip addr add 192.168.2.1/24  dev eth1
+ip addr add 192.168.3.1/24  dev eth2
+ip addr add 192.168.4.1/24  dev eth3
+for i in eth0 eth1 eth2 eth3; do ip link set $i up; done
+
+sysctl -w net.ipv4.ip_forward=1
+
+ip addr show
+ip route show
+</code></pre></div>
+<p>Now re-address the PCs — <strong>four subnets, and each one needs a gateway</strong>:</p>
+<div class="highlight"><pre><span></span><code># PC1
+ip 192.168.1.10/24 192.168.1.1
+# PC2
+ip 192.168.2.10/24 192.168.2.1
+# PC3
+ip 192.168.3.10/24 192.168.3.1
+# PC4
+ip 192.168.4.10/24 192.168.4.1
+</code></pre></div>
+<p>From <code>PC1</code>: <code>ping 192.168.2.10</code>, then <code>192.168.3.10</code>, then <code>192.168.4.10</code>.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><strong>The same box, the same cables, no reboot</strong> — and it is now a router. Nothing physical changed.
+  What changed is which layer's addresses it reads and what it does with them.</li>
+<li><code>ip route show</code> filled itself in with four <strong>connected</strong> routes you never typed. Putting an address
+  on an interface is an implicit claim that the subnet is out that port, and the kernel records it.</li>
+<li><code>ip_forward=1</code> was the switch that made it a router at all. Without it, <code>BOX</code> has four addresses
+  and forwards nothing — it is a host with four legs.</li>
+<li><strong>The PCs' configuration had to change too.</strong> They now need a gateway, because "not my subnet" is
+  now a real category and somebody has to be asked. On the bridge, that category was empty.</li>
+</ul>
+<h2 id="part-3-prove-which-layer-each-one-used">Part 3 — Prove which layer each one used</h2>
+<div class="highlight"><pre><span></span><code># on PC1, after pinging PC2 across the router
+show arp
+</code></pre></div>
+<p>Compare with the Part 1 result, where <code>PC1</code> had pinged <code>PC2</code> through the bridge.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><strong>Through the bridge</strong>, <code>PC1</code>'s ARP cache held <strong><code>PC2</code>'s</strong> MAC. <code>PC1</code> addressed <code>PC2</code> directly at
+  layer 2; the bridge just moved the frame.</li>
+<li><strong>Through the router</strong>, <code>PC1</code>'s ARP cache holds <strong><code>BOX</code>'s</strong> MAC, and <code>PC2</code>'s does not appear at all.
+  <code>PC1</code> has never learned <code>PC2</code>'s MAC and never will — it cannot, and does not need to.</li>
+<li>So the frame <code>PC1</code> sent was addressed to the router at layer 2 and to <code>PC2</code> at layer 3, <strong>at the
+  same time, in the same frame</strong>. The router rewrote the layer-2 addressing and left the layer-3
+  addressing alone.</li>
+<li>That single observation is the most load-bearing fact in weeks 3, 4 and 5. Write it down properly.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>As a bridge</th>
+<th>As a router</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP addresses on <code>BOX</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Subnets in use</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PCs need a gateway?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Entries in <code>ip route show</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MAC in PC1's ARP cache after pinging PC2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Layer it forwards on</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>One sentence: what, exactly, is the difference between a switch and a router?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Only <code>eth0</code> exists</td>
+<td>adapters not set</td>
+<td>right-click → <strong>Configure → Network</strong> → Adapters = 4, then restart the node</td>
+</tr>
+<tr>
+<td>Addresses vanish after seconds</td>
+<td>NetworkManager</td>
+<td><code>nmcli device set ethN managed no</code> on <strong>all four</strong>, first</td>
+</tr>
+<tr>
+<td>Bridge built, pings fail</td>
+<td><code>br_netfilter</code> handing bridged frames to iptables</td>
+<td><code>sysctl -w net.bridge.bridge-nf-call-iptables=0</code></td>
+</tr>
+<tr>
+<td>Router built, pings fail</td>
+<td>forwarding off, or PCs have no gateway</td>
+<td><code>sysctl net.ipv4.ip_forward</code>; <code>show ip</code> on each PC and check the gateway column</td>
+</tr>
+<tr>
+<td>Router pings fail only between some pairs</td>
+<td><code>firewalld</code></td>
+<td><code>systemctl stop firewalld</code> for this activity</td>
+</tr>
+<tr>
+<td><code>ip link del br0</code> refuses</td>
+<td>typo in the name</td>
+<td><code>ip link show type bridge</code> to find it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sidebar-the-nmcli-form">Sidebar — the <code>nmcli</code> form</h2>
+<p>Your course persists interfaces with <code>nmcli</code>. Same kernel objects, written to disk:</p>
+<div class="highlight"><pre><span></span><code># the bridge
+nmcli con add type bridge ifname br0 con-name br0 ipv4.method disabled ipv6.method disabled
+nmcli con add type bridge-slave ifname eth0 master br0
+nmcli con up br0
+
+# the router leg
+nmcli con add type ethernet ifname eth0 con-name eth0 ipv4.method manual \
+      ipv4.addresses 192.168.1.1/24
+nmcli con up eth0
+</code></pre></div>
+<p>The <code>ip</code> forms above are for exploring, because they vanish on reboot and let you undo a mistake by
+restarting the node. Use <code>nmcli</code> when you want it to survive — which is what the project expects.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

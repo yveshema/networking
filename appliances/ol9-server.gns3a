@@ -1,0 +1,43 @@
+{
+  "appliance_id": "b1512a61-8dad-4d90-90e0-34d6bcd6047e",
+  "name": "OL9 Server",
+  "category": "guest",
+  "symbol": ":/symbols/server.svg",
+  "description": "Oracle Linux 9 lab node, server role",
+  "vendor_name": "ACIT 2620",
+  "vendor_url": "https://bcit.ca",
+  "product_name": "Oracle Linux 9",
+  "registry_version": 6,
+  "status": "stable",
+  "maintainer": "Yves R. Shema",
+  "maintainer_email": "yshema@bcit.ca",
+  "usage": "Login admin / P@ssw0rd. admin is in wheel with passwordless sudo",
+  "qemu": {
+    "arch": "x86_64",
+    "adapter_type": "e1000",
+    "adapters": 1,
+    "ram": 1024,
+    "hda_disk_interface": "virtio",
+    "console_type": "telnet",
+    "boot_priority": "c",
+    "kvm": "require",
+    "options": "-nographic -cpu host"
+  },
+  "images": [
+    {
+      "filename": "ol9-lab-1.0.qcow2",
+      "version": "1.0",
+      "md5sum": "df648530784ce2dc6d895cc83c48a607",
+      "filesize": 972423168,
+      "download_url": "https://bcit365-my.sharepoint.com/:u:/g/personal/yshema_bcit_ca/IQAxkdJMgreOQpegsJE0Fy7JAZUDkr48G5bucUGMSSZYhAQ?e=hmSNNl"
+    }
+  ],
+  "versions": [
+    {
+      "name": "1.0",
+      "images": {
+        "hda_disk_image": "ol9-lab-1.0.qcow2"
+      }
+    }
+  ]
+}

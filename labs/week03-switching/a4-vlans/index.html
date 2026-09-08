@@ -1,0 +1,1057 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a4-vlans/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W3·A4 — VLANs cut the segment ★ - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w3a4-vlans-cut-the-segment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W3·A4 — VLANs cut the segment ★
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-cheap-version-first-for-contrast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the cheap version first, for contrast
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-vlans-on-the-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — VLANs on the bridge
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — VLANs on the bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-a-trunk-and-the-tag-itself" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — a trunk, and the tag itself
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — a trunk, and the tag itself">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-question-the-design-leaves-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the question the design leaves open
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the question the design leaves open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w3a4-vlans-cut-the-segment">W3·A4 — VLANs cut the segment ★</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> A1's topology (<strong>OL9 Switch</strong> + 4 VPCS), Wireshark ·
+<strong>GNS3 project:</strong> <code>w03-a1-mac-table</code> (continue in it)</p>
+<p><strong>The question:</strong> A3 showed that every broadcast costs every host in the domain. Split the domain
+without buying a second switch and without changing a single address.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<p>Four hosts, one subnet, one switch, all pinging happily. You are about to put ports 0–1 in VLAN 10
+and ports 2–3 in VLAN 20, <strong>changing no IP address on any host</strong>.</p>
+<ol>
+<li>Can <code>PC1</code> (VLAN 10) still ping <code>PC2</code> (VLAN 10)? ☐ yes ☐ no</li>
+<li>Can <code>PC1</code> still ping <code>PC3</code> (VLAN 20)? ☐ yes ☐ no</li>
+<li>If not — what is wrong with the addressing? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="do-this-the-cheap-version-first-for-contrast">Do this — the cheap version first, for contrast</h2>
+<p>Before building it properly, see the same effect on the built-in switch. If you still have a GNS3
+<strong>Ethernet switch</strong> topology from week 2: right-click it → <strong>Configure</strong>, set ports 0–1 to VLAN 10
+and ports 2–3 to VLAN 20, all type <code>access</code>. Ping <code>.12</code> and then <code>.13</code> from <code>PC1</code>.</p>
+<p><code>.12</code> works. <code>.13</code> fails. Correct behaviour, two mouse clicks, <strong>and no way whatsoever to see why</strong>.
+That is why the rest of this activity is on the bridge.</p>
+<hr />
+<h2 id="do-this-vlans-on-the-bridge">Do this — VLANs on the bridge</h2>
+<div class="highlight"><pre><span></span><code># on SW1
+ip link set dev br0 type bridge vlan_filtering 1
+
+bridge vlan add dev eth0 vid 10 pvid untagged
+bridge vlan add dev eth1 vid 10 pvid untagged
+bridge vlan add dev eth2 vid 20 pvid untagged
+bridge vlan add dev eth3 vid 20 pvid untagged
+
+# remove the default VLAN 1 membership, or nothing is separated
+for i in eth0 eth1 eth2 eth3; do bridge vlan del dev $i vid 1; done
+
+bridge vlan show
+</code></pre></div>
+<p>Start a capture on <code>PC3</code>'s link. From <code>PC1</code>:</p>
+<div class="highlight"><pre><span></span><code>clear arp
+ping 192.168.10.12
+ping 192.168.10.13
+</code></pre></div>
+<p>Then on <code>SW1</code>:</p>
+<div class="highlight"><pre><span></span><code>bridge fdb show br br0 | grep -v permanent
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><strong><code>.12</code> worked. <code>.13</code> failed.</strong> Same subnet, same mask, same switch, correct addressing on both,
+  and no route needed. Nothing at layer 3 can explain this.</li>
+<li><code>PC1</code>'s ARP broadcast <strong>stopped appearing on <code>PC3</code>'s capture</strong>. The broadcast domain has been cut
+  in two, which is the whole objective — A3's cost is now paid by two hosts instead of four.</li>
+<li>Every <code>fdb</code> entry now carries a <strong><code>vlan</code> field</strong>. There is no longer one forwarding table; there is
+  <strong>one table per VLAN</strong>, and a MAC learned in VLAN 10 is invisible to VLAN 20. Two switches, sharing
+  a chassis.</li>
+<li><strong>The switch defines the segment, not the addressing.</strong> That sentence is what the entire week
+  exists to earn, and this is where it is paid.</li>
+<li><strong>Deleting <code>vid 1</code> was not optional.</strong> Ports stay in the default VLAN otherwise, everything remains
+  mutually reachable, and the activity appears not to work.</li>
+</ul>
+<hr />
+<h2 id="do-this-a-trunk-and-the-tag-itself">Do this — a trunk, and the tag itself</h2>
+<p>Add a second <strong>OL9 Switch</strong> <code>SW2</code> (same build as A1), move <code>PC3</code> and <code>PC4</code> onto it, and link
+<code>SW1:eth4</code>↔<code>SW2:eth4</code>. On <strong>both</strong> switches:</p>
+<div class="highlight"><pre><span></span><code># member of both VLANs, and tagged — note the absence of 'pvid untagged'
+bridge vlan add dev eth4 vid 10
+bridge vlan add dev eth4 vid 20
+bridge vlan show
+</code></pre></div>
+<p>Start a capture on the <strong><code>SW1</code>↔<code>SW2</code></strong> link and ping across it within VLAN 10.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>The frames on the trunk carry an <strong>802.1Q tag</strong> — Wireshark shows a <code>802.1Q Virtual LAN</code> layer
+  between Ethernet and IP, with <code>ID: 10</code> in it. Expand it and note that it is <strong>4 bytes</strong>, inserted
+  into the middle of a header you thought you already knew from week 1.</li>
+<li>The same frames on the <strong>access</strong> ports at either end have no tag. The tag exists only between
+  switches, because it exists to answer one question — <em>which VLAN did this arrive in?</em> — that only
+  a switch asks. Hosts neither send nor see it.</li>
+<li><code>pvid untagged</code> on an access port means exactly that: <em>frames arriving here belong to this VLAN,
+  and frames leaving here go out with the tag stripped.</em></li>
+<li><strong>The maximum frame grew by 4 bytes.</strong> Standard Ethernet allows 1518; a tagged frame is 1522. That
+  is a real and recurring source of trouble on equipment that was not told to expect it.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-question-the-design-leaves-open">Do this — the question the design leaves open</h2>
+<p>From <code>PC1</code> in VLAN 10, try to reach <code>PC3</code> in VLAN 20 one more time. Then try to think of any
+configuration on <code>SW1</code> that would let it through.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>There is none. <strong>A bridge cannot move a frame between VLANs</strong>, by construction — that would defeat
+  the separation you built it for.</li>
+<li>Traffic between VLANs must go up to layer 3 and come back down, which means a <strong>router</strong>, which is
+  week 4. Every real network runs this arrangement, and the phrase for it is "router on a stick".</li>
+<li>Notice what you have therefore built: a network that is <em>deliberately</em> broken between two groups of
+  hosts, with the repair postponed to another device. That is a design decision, not a fault, and it
+  is the normal state of every campus network you have used.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC1 → PC2 (both VLAN 10)</td>
+<td></td>
+</tr>
+<tr>
+<td>PC1 → PC3 (VLAN 10 → 20)</td>
+<td></td>
+</tr>
+<tr>
+<td>Any IP address changed?</td>
+<td></td>
+</tr>
+<tr>
+<td>ARP broadcast on PC3's cable, before / after</td>
+<td></td>
+</tr>
+<tr>
+<td>New field in <code>bridge fdb show</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Extra bytes in a tagged frame</td>
+<td></td>
+</tr>
+<tr>
+<td>What is needed to connect VLAN 10 to VLAN 20</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Everything still reachable</td>
+<td><code>vid 1</code> not removed</td>
+<td>the <code>for</code> loop deleting <code>vid 1</code> is mandatory</td>
+</tr>
+<tr>
+<td><strong>All</strong> pings fail, including within a VLAN</td>
+<td>ports missing <code>pvid untagged</code></td>
+<td><code>bridge vlan show</code> — access ports must show <code>PVID Egress Untagged</code></td>
+</tr>
+<tr>
+<td>No 802.1Q layer on the trunk capture</td>
+<td>you captured an access link</td>
+<td>capture the <code>SW1</code>↔<code>SW2</code> link specifically</td>
+</tr>
+<tr>
+<td>Trunk works one way only</td>
+<td>one switch's trunk port is missing a VLAN</td>
+<td>both ends need <strong>both</strong> <code>vid</code> lines</td>
+</tr>
+<tr>
+<td><code>bridge vlan</code> says "Operation not supported"</td>
+<td><code>vlan_filtering</code> still 0</td>
+<td>set it on <code>br0</code> first</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

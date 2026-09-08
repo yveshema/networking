@@ -1,0 +1,1235 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/a8-the-options-nobody-uses/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W4·A8 — The options nobody uses, and why that is the lesson - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w4a8-the-options-nobody-uses-and-why-that-is-the-lesson" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W4·A8 — The options nobody uses, and why that is the lesson
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-make-the-header-grow" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — make the header grow
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — make the header grow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-ceiling-gets-worse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the ceiling gets worse
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the ceiling gets worse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-option-that-got-them-banned" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the option that got them banned
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the option that got them banned">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-lab-is-not-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the lab is not the internet
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the lab is not the internet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-two-traceroutes-one-winner" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — two traceroutes, one winner
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — two traceroutes, one winner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w4a8-the-options-nobody-uses-and-why-that-is-the-lesson">W4·A8 — The options nobody uses, and why that is the lesson</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> A4 finished; a <strong>NAT node</strong> for part 4 · <strong>GNS3 project:</strong> <code>w04-base</code>
+(continue) · <strong>Extension activity</strong></p>
+<p><strong>The question:</strong> The IPv4 header can grow. It was designed to carry extra instructions — record
+your path, timestamp each hop, take a route I choose. Those features still work here and are
+effectively dead everywhere else. Finding out <em>why</em> explains more about how networks evolve than the
+features themselves ever could.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>How large can an IPv4 header be? <strong><em>_</em></strong> How large is the one you have been looking at all week?</li>
+</ol>
+<hr />
+<ol>
+<li>If a packet records the address of every router it passes, how many can it hold? <strong><em>_</em></strong></li>
+<li>Will <code>ping -R</code> work to an address on the real internet? ☐ yes ☐ no · Why? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="do-this-make-the-header-grow">Do this — make the header grow</h2>
+<div class="highlight"><pre><span></span><code># on PC1
+ping -c1 -R 192.168.200.10
+</code></pre></div>
+<p>Capture it. Find the <strong>IHL</strong> field in the IP header of both the request and the reply.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ordinary ping</th>
+<th>With <code>-R</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IHL value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Header length in bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Addresses listed in the option</td>
+<td>—</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>IHL is <strong>4 bits</strong>, counting 32-bit words. Minimum 5 — that is the 20-byte header you have used all
+  week. Maximum 15. So the header can reach 60 bytes and no further: <strong>40 bytes for options, for
+  all time.</strong></li>
+<li>Record Route spends 3 bytes on its own bookkeeping and 4 on each address. <code>(40 − 3) ÷ 4</code> = <strong>9
+  addresses, maximum</strong>, ever, on any path.</li>
+<li>Every router on the path appended its own address as your packet went by. <strong>The network described
+  its own path, as a designed feature</strong> — no tricks, no assumptions, no TTL games.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-ceiling-gets-worse">Do this — the ceiling gets worse</h2>
+<div class="highlight"><pre><span></span><code># on PC1
+ping -c1 -T tsonly    192.168.200.10
+ping -c1 -T tsandaddr 192.168.200.10
+</code></pre></div>
+<p>Entries recorded by <code>tsandaddr</code>: <strong><em>_</em></strong></p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>Address <strong>and</strong> timestamp is 8 bytes per hop, so the same 40-byte budget holds <strong>four</strong>.</li>
+<li>Nine hops was generous in 1981. Four was never generous. A path across the modern internet is
+  routinely fifteen or twenty hops, so these options could not describe the network they were built
+  to describe — even if everything else about them had gone perfectly.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-option-that-got-them-banned">Do this — the option that got them banned</h2>
+<div class="highlight"><pre><span></span><code># on R1 and R2
+sysctl -w net.ipv4.conf.all.accept_source_route=1
+
+# on PC1
+traceroute -g 192.168.100.1 192.168.200.10
+</code></pre></div>
+<p>Then turn it off and repeat:</p>
+<div class="highlight"><pre><span></span><code># on R1 and R2
+sysctl -w net.ipv4.conf.all.accept_source_route=0
+# on PC1
+traceroute -g 192.168.100.1 192.168.200.10
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worked with <code>accept_source_route=1</code>?</td>
+<td>☐ yes ☐ no</td>
+</tr>
+<tr>
+<td>Worked with <code>accept_source_route=0</code>?</td>
+<td>☐ yes ☐ no</td>
+</tr>
+<tr>
+<td>Default value on a fresh system</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><strong>The sender chose the path.</strong> Not the routers — the sender, from outside the network, deciding
+  which links its packet would traverse.</li>
+<li>Nearly every protection a network has rests on an assumption about <em>where traffic came from</em>: this
+  arrived on the outside link so treat it as untrusted; that arrived on the inside link so trust it
+  more. If the sender controls the path, it controls which link its packet appears to arrive on, and
+  every one of those assumptions can be deliberately arranged to be wrong.</li>
+<li>Which is why the default is <code>0</code> on every modern system, and why networks discard these packets on
+  sight rather than trusting anyone's configuration.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-lab-is-not-the-internet">Do this — the lab is not the internet</h2>
+<p>First, store <code>PC1</code>'s address. It has been <code>192.168.100.10</code> since A2, set with <code>ip addr add</code>, which
+means it exists only in <code>PC1</code>'s running kernel. A NAT node hands out addresses, and a card with
+nothing stored can be handed one — which would take <code>w04-base</code>'s addressing apart during an
+extension activity, in a project five other activities depend on.</p>
+<div class="highlight"><pre><span></span><code># on PC1
+nmcli con add type ethernet ifname eth0 con-name lan1 \
+      ipv4.method manual ipv4.addresses 192.168.100.10/24 ipv4.gateway 192.168.100.1
+nmcli con up lan1
+</code></pre></div>
+<p>That distinction — a change to the running machine, versus a stored configuration NetworkManager
+keeps the running machine matching — is W3·A8, part 1.</p>
+<p>Now attach a <strong>NAT</strong> node to <code>SW1</code>, <code>LAN1</code>'s switch, so <code>PC1</code> has a route out, then:</p>
+<div class="highlight"><pre><span></span><code># on PC1
+ping -c1 -R 192.168.200.10        # inside the lab, from part 1
+ping -c1 -R 1.1.1.1               # the real internet
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Inside the lab</th>
+<th>To the internet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reply received?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Addresses recorded</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li><strong>Same command, same protocol, two different worlds.</strong> Your lab implements the standard faithfully.
+  The internet does not, and has not for a long time.</li>
+<li>Nothing is broken and no rule was violated. Every operator between you and that address made a
+  local, individually sensible decision to discard or ignore packets carrying options — and the sum
+  of those decisions removed a documented capability from reality without anyone withdrawing it from
+  the specification.</li>
+<li><strong>This is the activity.</strong> Everything before it was setup for this comparison.</li>
+</ul>
+<hr />
+<h2 id="do-this-two-traceroutes-one-winner">Do this — two traceroutes, one winner</h2>
+<p>You have now built the same thing twice:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A4's traceroute</th>
+<th>A8's Record Route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanism</td>
+<td>rig TTL to expire early, collect the complaints</td>
+<td>ask the network to write its path down</td>
+</tr>
+<tr>
+<td>Designed for this job?</td>
+<td>no — a side effect of a loop-prevention counter</td>
+<td>yes, explicitly</td>
+</tr>
+<tr>
+<td>Hop limit</td>
+<td>none</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Needs routers to do anything new?</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Works on the internet today</td>
+<td><strong>yes, universally</strong></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened_4">What just happened</h3>
+<ul>
+<li>The elegant, purpose-built, standards-blessed mechanism lost completely to a hack that abuses a
+  loop counter.</li>
+<li>It won for one reason: <strong>it asks the network for nothing new.</strong> It requires no cooperation, no
+  capability, no permission. It needs routers to do the single thing they already do when a packet
+  runs out of hops — complain — and it therefore works through equipment that has never heard of
+  traceroute and would refuse it if asked.</li>
+<li>That is the general rule, and it is worth more than any of the options in this activity:
+  <strong>mechanisms that require the network to cooperate die; mechanisms that exploit what the network
+  already does survive.</strong></li>
+</ul>
+<p>Read <a href="../reading-why-protocol-extensions-die/"><code>reading-why-protocol-extensions-die.md</code></a> before the
+next session. It takes this from one header field to the way the whole internet now evolves — and it
+explains why the newest transport protocols encrypt almost everything about themselves.</p>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum IPv4 header size, and why</td>
+<td></td>
+</tr>
+<tr>
+<td>Bytes available for options</td>
+<td></td>
+</tr>
+<tr>
+<td>Addresses Record Route can hold, with working</td>
+<td></td>
+</tr>
+<tr>
+<td>Entries <code>tsandaddr</code> can hold, and why fewer</td>
+<td></td>
+</tr>
+<tr>
+<td>Why source routing is disabled everywhere</td>
+<td></td>
+</tr>
+<tr>
+<td>What <code>ping -R</code> did in the lab vs the internet</td>
+<td></td>
+</tr>
+<tr>
+<td>Why traceroute beat Record Route</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ping -R</code> returns nothing at all</td>
+<td><code>firewalld</code>, or a node discarding options</td>
+<td><code>systemctl stop firewalld</code> on every node</td>
+</tr>
+<tr>
+<td>No addresses recorded, but a reply arrives</td>
+<td>a node dropped the option and forwarded the packet anyway</td>
+<td>expected on some kernels — note it, it is the same effect the internet has</td>
+</tr>
+<tr>
+<td><code>-R</code> not supported</td>
+<td>IPv4-only flag, or a <code>ping</code> built without it</td>
+<td>confirm the target is an IPv4 address; <code>ping --help</code></td>
+</tr>
+<tr>
+<td><code>traceroute -g</code> fails immediately</td>
+<td><code>accept_source_route=0</code> still set somewhere on the path</td>
+<td>set it to 1 on <strong>both</strong> routers</td>
+</tr>
+<tr>
+<td><code>ping -R 1.1.1.1</code> gets no reply at all</td>
+<td>no NAT node, or no default route on <code>PC1</code></td>
+<td><code>ip route show</code>; check the NAT node is cabled to <code>LAN1</code></td>
+</tr>
+<tr>
+<td>Part 4 works identically both ways</td>
+<td>you pinged something still inside the lab</td>
+<td>the target must be a genuine public address</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/a9-forge-the-packet/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W4·A9 — Forge the packet - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w4a9-forge-the-packet" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W4·A9 — Forge the packet
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-build-echo-from-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — build echo from nothing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — build echo from nothing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-reply-nobody-asked-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the reply nobody asked for
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the reply nobody asked for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-forge-an-error-and-change-a-strangers-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — forge an error, and change a stranger's connection
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — forge an error, and change a stranger&#x27;s connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-options-ping-cannot-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — options <code>ping</code> cannot make
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — options ping cannot make">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w4a9-forge-the-packet">W4·A9 — Forge the packet</h1>
+<p><strong>Time:</strong> 50 min · <strong>Needs:</strong> A6 and A7 finished · <strong>GNS3 project:</strong> <code>w04-a9-forge</code> (a fresh
+three-node project — see Topology) · <strong>Extension activity</strong></p>
+<p><strong>The question:</strong> In A6 and A7 you <em>read</em> ICMP. Now build it. When you can assemble a packet field by
+field, two things become obvious that no capture can show you: exactly which fields the protocol
+fixes and which it leaves to you, and that <strong>nothing checks whether you are telling the truth.</strong></p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>Can you send an echo <em>reply</em> that nobody requested? <strong><em>_</em></strong></li>
+<li>If you set the ICMP type to a number IANA never assigned, what happens? <strong><em>_</em></strong></li>
+<li>Can you make one host believe a <em>third</em> host's network path is tiny — without being either of
+   them? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>                10.10.0.0/24
+
+   ATTACK       TARGET       VICTIM (for the last part)
+    .10          .20           .30
+      └────────────┼────────────┘
+                  SW1
+</code></pre></div>
+<p>Three <strong>OL9 PCs</strong> on one Ethernet switch — one broadcast domain, which is what lets a forged reply
+reach a host that never asked for it.</p>
+<p>Run scapy as root (<code>sudo scapy</code>). Capture on <code>TARGET</code>'s link throughout.</p>
+<hr />
+<h2 id="do-this-build-echo-from-nothing">Do this — build echo from nothing</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># on ATTACK, in scapy</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span><span class="o">/</span><span class="sa">b</span><span class="s2">"built by hand"</span>
+<span class="n">sr1</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default ICMP type scapy chose</td>
+<td></td>
+</tr>
+<tr>
+<td>Did a reply come back?</td>
+<td>☐ yes ☐ no</td>
+</tr>
+<tr>
+<td>Type of the reply</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>Three lines built a complete, valid echo request — <code>IP()</code> for the network layer, <code>ICMP()</code> for the
+  message, a payload of your choosing — and a real host answered it. You have now <em>constructed</em> the
+  protocol you spent two activities observing.</li>
+<li><code>ICMP()</code> defaulted to type 8. Change it explicitly and watch the taxonomy hold:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">sr1</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># echo — answered</span>
+<span class="n">sr1</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mi">99</span><span class="p">),</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>    <span class="c1"># unassigned — silence</span>
+</code></pre></div>
+<ul>
+<li>Type 8 is answered. Type 99 is discarded without a word. <strong>The type field is a fixed vocabulary;
+  invent a word and no one understands it.</strong> The payload, by contrast, was whatever you typed. Fixed
+  taxonomy, free payload — exactly the split A7 named.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-reply-nobody-asked-for">Do this — the reply nobody asked for</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># on ATTACK</span>
+<span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mh">0x1234</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="sa">b</span><span class="s2">"unsolicited"</span><span class="p">)</span>
+</code></pre></div>
+<p>Watch <code>TARGET</code> in the capture.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>You sent an echo <em>reply</em> (type 0) that answered no request. <code>TARGET</code> received it and did nothing —
+  it had no outstanding ping with that identifier, so the reply matched nothing and was dropped.</li>
+<li>Harmless here, but note the shape of it: <strong>ICMP messages carry no proof of who sent them or that
+  they were solicited.</strong> The receiver's only defence is "did I ask for this?" — and for error
+  messages, as the next part shows, even that check is weak.</li>
+</ul>
+<hr />
+<h2 id="do-this-forge-an-error-and-change-a-strangers-connection">Do this — forge an error, and change a stranger's connection</h2>
+<p>This is the capstone. Recall A7: a <em>fragmentation needed</em> error (type 3, code 4) carries a next-hop
+MTU, and the receiver caches it per destination. That message is unauthenticated. So you can send it
+yourself.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># on ATTACK — tell TARGET that reaching VICTIM requires tiny packets.</span>
+<span class="c1"># The quoted inner packet must look like traffic TARGET sent to VICTIM.</span>
+<span class="n">inner</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">,</span> <span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.30"</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">forged</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">nexthopmtu</span><span class="o">=</span><span class="mi">296</span><span class="p">)</span><span class="o">/</span><span class="n">inner</span>
+<span class="n">send</span><span class="p">(</span><span class="n">forged</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># on TARGET</span>
+ip<span class="w"> </span>route<span class="w"> </span>get<span class="w"> </span><span class="m">10</span>.10.0.30
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTU TARGET now caches for VICTIM</td>
+<td></td>
+</tr>
+<tr>
+<td>Were you either TARGET or VICTIM?</td>
+<td>☐ no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><code>TARGET</code> believed a complete stranger's claim about a path it is not on, and shrank its packets to
+  <code>VICTIM</code> accordingly. You never touched <code>VICTIM</code>.</li>
+<li>It worked because the forged error <strong>quoted a plausible inner packet</strong> — the source, destination
+  and ports of traffic <code>TARGET</code> might really have sent. That quoted header, from A6, is how a host
+  decides an error is "about" one of its connections. Here it is the whole attack surface: guess the
+  four-tuple, and the error is accepted.</li>
+<li>This is why real stacks now sanity-check the quoted bytes — does this connection exist, is that
+  sequence number in a window I actually sent — before acting on an ICMP error. A6's structural
+  detail and A7's PMTU mechanism were the two halves of a live security problem, and you just
+  assembled it.</li>
+</ul>
+<p>Restore: <code>ip route flush cache</code> on <code>TARGET</code>.</p>
+<hr />
+<h2 id="do-this-options-ping-cannot-make">Do this — options <code>ping</code> cannot make</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># on ATTACK — an IP option set by hand, and a deliberately wrong checksum</span>
+<span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">IPOption_RR</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">39</span><span class="p">,</span> <span class="n">pointer</span><span class="o">=</span><span class="mi">4</span><span class="p">)])</span><span class="o">/</span><span class="n">ICMP</span><span class="p">())</span>
+<span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">"10.10.0.20"</span><span class="p">,</span> <span class="n">chksum</span><span class="o">=</span><span class="mh">0xdead</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span><span class="o">/</span><span class="sa">b</span><span class="s2">"bad checksum"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>You built a Record Route option directly, choosing its size — something <code>ping -R</code> fixes for you.
+  Compare its handling to A8: the lab honours it, and a real path would not.</li>
+<li>The bad-checksum packet was <strong>silently discarded</strong> by <code>TARGET</code>'s IP layer. No error, no reply — a
+  corrupt header has no trustworthy return address to complain to, so the only safe action is to drop
+  it. That is why a checksum failure is invisible from the sending side.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fields scapy fixed vs left to you</td>
+<td></td>
+</tr>
+<tr>
+<td>What happened to type 99, and what that proves</td>
+<td></td>
+</tr>
+<tr>
+<td>Whether an unsolicited echo reply did anything</td>
+<td></td>
+</tr>
+<tr>
+<td>How a forged error reached a stranger's connection</td>
+<td></td>
+</tr>
+<tr>
+<td>What made the forged error acceptable to the target</td>
+<td></td>
+</tr>
+<tr>
+<td>What a real stack checks before trusting an ICMP error</td>
+<td></td>
+</tr>
+<tr>
+<td>Why a bad-checksum packet produced no reply</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sr1</code> hangs, no reply</td>
+<td><code>firewalld</code> on the target</td>
+<td><code>systemctl stop firewalld</code> on <code>TARGET</code></td>
+</tr>
+<tr>
+<td>Permission denied on send</td>
+<td>scapy needs raw sockets</td>
+<td>run as root: <code>sudo scapy</code></td>
+</tr>
+<tr>
+<td>Forged MTU not cached</td>
+<td>kernel ignored it — <code>min_pmtu</code>, or the quote was implausible</td>
+<td>lower <code>nexthopmtu</code> toward 552; match a four-tuple the target would use; check <code>net.ipv4.route.min_pmtu</code></td>
+</tr>
+<tr>
+<td><code>ip route get</code> shows no MTU</td>
+<td>cache expired, or route flushed</td>
+<td>resend the forged error, read immediately</td>
+</tr>
+<tr>
+<td>Reply comes from the wrong host</td>
+<td>more than two nodes answering</td>
+<td>isolate ATTACK and TARGET on their own switch</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

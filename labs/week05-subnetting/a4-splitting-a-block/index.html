@@ -1,0 +1,1089 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week05-subnetting/a4-splitting-a-block/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W5·A4 — Splitting a block - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w5a4-splitting-a-block" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W5·A4 — Splitting a block
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-build-what-you-calculated" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — build what you calculated
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — build what you calculated">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-prove-the-separation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — prove the separation
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — prove the separation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-the-wrong-split" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — the wrong split
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — the wrong split">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w5a4-splitting-a-block">W5·A4 — Splitting a block</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> one <strong>OL9 Router</strong>, 4 hosts (VPCS is fine), 4 Ethernet switches ·
+<strong>GNS3 project:</strong> <code>w05-a4-splitting</code></p>
+<p><strong>The question:</strong> you are given one <code>/24</code> and told to build four separate networks out of it, without
+asking for more addresses. Do it.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<p>You have <code>192.168.50.0/24</code> and need <strong>four</strong> equal subnets.</p>
+<ol>
+<li>What prefix length? <strong><em>_</em></strong></li>
+<li>How many addresses per subnet? <strong><em>_</em></strong> How many usable? <strong><em>_</em></strong></li>
+<li>Write out all four:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Network</th>
+<th>First usable</th>
+<th>Last usable</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Do the arithmetic before building.</strong> The build is the check, not the method.</p>
+<hr />
+<h2 id="do-this-build-what-you-calculated">Do this — build what you calculated</h2>
+<p><code>R1</code> is an <strong>OL9 Router</strong>. Each of its four interfaces is a separate subnet, and each subnet gets
+its own switch with one host on it:</p>
+<div class="highlight"><pre><span></span><code>   PC1 ─── SW1 ─── R1:eth0     192.168.50.1/26
+   PC2 ─── SW2 ─── R1:eth1     192.168.50.65/26
+   PC3 ─── SW3 ─── R1:eth2     192.168.50.129/26
+   PC4 ─── SW4 ─── R1:eth3     192.168.50.193/26
+</code></pre></div>
+<p>Four switches for four hosts is more than this lab strictly needs. It is what the real thing looks
+like, though — a subnet is a LAN, and a LAN has a switch in it — so from here on the diagrams match
+what you would actually build.</p>
+<div class="highlight"><pre><span></span><code># on R1 — use YOUR numbers, not these
+for i in eth0 eth1 eth2 eth3; do nmcli device set $i managed no; done
+ip addr add 192.168.50.1/26   dev eth0 ; ip link set eth0 up
+ip addr add 192.168.50.65/26  dev eth1 ; ip link set eth1 up
+ip addr add 192.168.50.129/26 dev eth2 ; ip link set eth2 up
+ip addr add 192.168.50.193/26 dev eth3 ; ip link set eth3 up
+sysctl -w net.ipv4.ip_forward=1
+ip route show
+</code></pre></div>
+<p>Each host gets an address in its own subnet, with the router's address on that interface as its
+gateway:</p>
+<div class="highlight"><pre><span></span><code># PC1 (VPCS)
+ip 192.168.50.10/26 192.168.50.1
+# PC2
+ip 192.168.50.70/26 192.168.50.65
+# PC3
+ip 192.168.50.140/26 192.168.50.129
+# PC4
+ip 192.168.50.200/26 192.168.50.193
+</code></pre></div>
+<p>Then, from <code>PC1</code>, ping all three others and the router.</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>ip route show</code> holds <strong>four connected routes</strong>, and you typed none of them. Every one is a
+  restatement of an address-plus-mask you assigned.</li>
+<li><strong>The arithmetic is checked by the build.</strong> An off-by-one in a boundary produces a host that cannot
+  reach its own gateway — an immediate, unambiguous failure, in the same session, with no marker
+  involved.</li>
+<li>Four subnets came out of one <code>/24</code> by borrowing <strong>2 bits</strong> from the host portion: <code>/24</code> → <code>/26</code>.
+  Those two bits give exactly four combinations, which is why four subnets and not three or five.</li>
+<li>The cost is visible: 256 addresses became 4 × 62 = <strong>248 usable</strong>. Eight addresses vanished into
+  network and broadcast addresses — two per subnet, and you now have four subnets instead of one.
+  <strong>Subnetting always costs addresses</strong>, and the finer you cut, the more it costs.</li>
+</ul>
+<hr />
+<h2 id="do-this-prove-the-separation">Do this — prove the separation</h2>
+<p>Capture on <code>PC2</code>'s link. From <code>PC1</code>, run a broadcast ping and an ARP:</p>
+<div class="highlight"><pre><span></span><code># on PC1 (or an OL9 host in its place)
+ip neigh flush all
+ping -c1 192.168.50.70
+ping -b -c1 192.168.50.63
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><code>PC2</code>'s cable carried <strong>the routed unicast only</strong> — no ARP from <code>PC1</code>, no broadcast.</li>
+<li><code>PC1</code>'s broadcast to <code>192.168.50.63</code> reached its own subnet and stopped at the router. <strong>Routers do
+  not forward broadcasts</strong>, and that is a large part of what you bought with the split.</li>
+<li>Compare with week 3: VLANs split a broadcast domain <strong>inside one subnet, at layer 2</strong>. Here the
+  split is <strong>at layer 3</strong>, using different subnets and a router. Two mechanisms, similar effect,
+  different layer — and real networks use both together, which is exactly what W4·A5 built.</li>
+</ul>
+<hr />
+<h2 id="do-this-the-wrong-split">Do this — the wrong split</h2>
+<p>Deliberately mis-size one subnet and watch what it does to a neighbour:</p>
+<div class="highlight"><pre><span></span><code># on R1 — eth1 claims a /25 that overlaps eth2's block
+ip addr del 192.168.50.65/26 dev eth1
+ip addr add 192.168.50.65/25 dev eth1
+ip route show
+ip route get 192.168.50.140
+</code></pre></div>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>Two connected routes now overlap: <code>192.168.50.0/25</code> on <code>eth1</code> covers addresses that
+  <code>192.168.50.128/26</code> on <code>eth2</code> also claims — check the arithmetic and see exactly which.</li>
+<li><code>ip route get 192.168.50.140</code> reveals the winner. <strong>Longest prefix decides</strong> (W4·A1), so the more
+  specific <code>/26</code> still wins for <code>PC3</code> — but the router now believes part of <code>eth2</code>'s range is
+  reachable via <code>eth1</code>, and any address in the overlap that is <em>not</em> covered by a longer prefix is
+  sent to the wrong port.</li>
+<li>No error was reported at any point. <strong>Overlapping subnets are accepted silently and fail
+  selectively</strong>, which is why an address plan is a document you check before you configure, not
+  after.</li>
+</ul>
+<p>Restore: <code>ip addr del 192.168.50.65/25 dev eth1; ip addr add 192.168.50.65/26 dev eth1</code>.</p>
+<hr />
+<h2 id="record">Record</h2>
+<p>Your four-subnet table, plus:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bits borrowed</td>
+<td></td>
+</tr>
+<tr>
+<td>Usable addresses per subnet</td>
+<td></td>
+</tr>
+<tr>
+<td>Total usable, before / after the split</td>
+<td></td>
+</tr>
+<tr>
+<td>Addresses lost to the split</td>
+<td></td>
+</tr>
+<tr>
+<td>Did PC2's cable carry PC1's broadcast?</td>
+<td></td>
+</tr>
+<tr>
+<td>Route chosen for <code>.140</code> during the overlap</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>One sentence: what does subnetting cost, and what does it buy?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A host cannot reach its own gateway</td>
+<td>address outside its subnet</td>
+<td>recheck the boundary; <code>ip route get</code> from the host</td>
+</tr>
+<tr>
+<td>Everything reachable from everywhere</td>
+<td>all interfaces still <code>/24</code></td>
+<td>the masks must be <code>/26</code> on both router and hosts</td>
+</tr>
+<tr>
+<td>VPCS rejects the gateway</td>
+<td>gateway outside the host's subnet</td>
+<td><code>ip &lt;addr&gt;/&lt;mask&gt; &lt;gw&gt;</code> — the gateway must be inside</td>
+</tr>
+<tr>
+<td>Router pings work, host-to-host does not</td>
+<td>forwarding off</td>
+<td><code>sysctl net.ipv4.ip_forward</code></td>
+</tr>
+<tr>
+<td>Broadcast crosses to another subnet</td>
+<td>it should not</td>
+<td>check you are watching a link on a <em>different</em> subnet</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

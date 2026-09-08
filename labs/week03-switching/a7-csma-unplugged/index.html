@@ -1,0 +1,1021 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a7-csma-unplugged/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>W3·A7 — CSMA, unplugged (no computers) - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#w3a7-csma-unplugged-no-computers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              W3·A7 — CSMA, unplugged (no computers)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Setup
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-1-no-protocol-aloha" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Round 1 — No protocol (ALOHA)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Round 1 — No protocol (ALOHA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discuss" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Discuss
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-2-csmacd-ethernet-on-a-shared-medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Round 2 — CSMA/CD (Ethernet on a shared medium)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Round 2 — CSMA&#x2f;CD (Ethernet on a shared medium)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discuss_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Discuss
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-3-csmaca-and-the-hidden-node-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Round 3 — CSMA/CA and the hidden node (Wi-Fi)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Round 3 — CSMA&#x2f;CA and the hidden node (Wi-Fi)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discuss_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Discuss
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructor-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Instructor note
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="w3a7-csma-unplugged-no-computers">W3·A7 — CSMA, unplugged <em>(no computers)</em></h1>
+<p><strong>Time:</strong> 40 min · <strong>Needs:</strong> a room, one six-sided die per group, sticky notes ·
+<strong>GNS3 project:</strong> none</p>
+<p><strong>The question:</strong> everything else this week was measured. This one cannot be — <strong>GNS3 models no
+shared medium, so no collision ever happens in it</strong>, and its hub does not collide either. So we run
+the protocol with people.</p>
+<p>This is not a consolation prize. CSMA is a set of rules about <em>timing and hearing</em>, and a room full
+of people is a better instrument for that than any simulator.</p>
+<hr />
+<h2 id="setup">Setup</h2>
+<p>Six to eight students per group, seated in a circle. <strong>The medium is speech in the room</strong>: only one
+person can be understood at a time, and everyone can hear everyone.</p>
+<p>Each student gets three sticky notes — three frames to transmit. Each note has a destination written
+on it (another student's name). The round ends when every note has been delivered.</p>
+<p>One student is the <strong>recorder</strong> and does not transmit. They track: attempts, collisions, successful
+deliveries, and the round's total elapsed time.</p>
+<hr />
+<h2 id="round-1-no-protocol-aloha">Round 1 — No protocol (ALOHA)</h2>
+<p><strong>Rule:</strong> when you have a frame, say <em>"[name], frame one"</em> out loud. Whenever you like.</p>
+<p>A transmission <strong>succeeds</strong> only if nobody else was speaking at any point during it. If two people
+overlap at all, both frames are lost and must be re-sent.</p>
+<p>Recorder: count collisions.</p>
+<h3 id="discuss">Discuss</h3>
+<ul>
+<li>What is the collision count? What fraction of attempts succeeded?</li>
+<li>What happened as the room got busier — did it get gradually worse, or did it fall off a cliff?</li>
+<li>Nobody was doing anything wrong. The failures come from the <em>rules</em>, not the participants.</li>
+</ul>
+<hr />
+<h2 id="round-2-csmacd-ethernet-on-a-shared-medium">Round 2 — CSMA/CD (Ethernet on a shared medium)</h2>
+<p><strong>Rules:</strong></p>
+<ol>
+<li><strong>Carrier Sense</strong> — before speaking, listen. If someone is talking, wait until they stop.</li>
+<li><strong>Multiple Access</strong> — anyone may speak once it is quiet.</li>
+<li><strong>Collision Detection</strong> — you can hear yourself <em>and</em> the room while speaking. If you hear
+   another voice start during yours, <strong>stop immediately, mid-word.</strong> Do not finish.</li>
+<li><strong>Backoff</strong> — after a collision, roll the die. Wait that many seconds before trying again. After a
+   <em>second</em> collision on the same frame, roll and <strong>double</strong> the wait. Then double again. (This is
+   <em>binary exponential backoff</em>, and the doubling is the whole trick.)</li>
+</ol>
+<p>Same three frames each. Recorder: collisions, deliveries, total time.</p>
+<h3 id="discuss_1">Discuss</h3>
+<ul>
+<li>Collisions dropped sharply. Why did carrier sense not eliminate them entirely?</li>
+<li><strong>Answer: two people can both hear silence at the same moment and both start.</strong> Sensing removes
+  collisions <em>during</em> a transmission, not collisions <em>at the start</em> of one. That residual window is
+  irreducible, and it is exactly why detection and backoff are still needed.</li>
+<li>Why stop mid-word? Finishing a frame you know is ruined wastes the medium for everyone. On real
+  Ethernet, a station detecting a collision stops and sends a jam signal — deliberately making the
+  damage unambiguous so every other station also gives up quickly.</li>
+<li>Why <em>double</em> the wait? Repeated collisions mean the room is busy; backing off further is how the
+  stations collectively find a rate the medium can carry, with no coordinator and no one able to
+  count the others.</li>
+<li><strong>Where the "CD" went.</strong> Modern Ethernet is switched and full-duplex: every station has its own
+  cable, and there is no shared medium to collide on. CSMA/CD is <em>disabled</em> on every link you have
+  used this term. You have been learning the rules for a world that mostly ended around 2000 — which
+  is worth knowing precisely, because the exam and the textbook both still assume it.</li>
+</ul>
+<hr />
+<h2 id="round-3-csmaca-and-the-hidden-node-wi-fi">Round 3 — CSMA/CA and the hidden node (Wi-Fi)</h2>
+<p>Rearrange: one student is the <strong>access point</strong> in the centre. Two students sit at opposite ends of
+the room, <strong>facing away from each other</strong>, and are told to behave as though they genuinely cannot
+hear one another. Everyone can hear the AP.</p>
+<p><strong>Round 3a.</strong> Play by CSMA/CD's rules. The two distant students both have frames for the AP.</p>
+<ul>
+<li>Both sense silence — correctly, from where they sit — and both transmit.</li>
+<li><strong>The AP hears a collision. Neither sender does.</strong> Both believe they succeeded.</li>
+<li>This is the <strong>hidden node problem</strong>, and it is why Wi-Fi cannot use CSMA/CD. A radio cannot listen
+  while transmitting on the same channel, and <em>"the medium is quiet here"</em> does not mean <em>"the medium
+  is quiet at the receiver"</em> — which is the only place that matters.</li>
+</ul>
+<p><strong>Round 3b.</strong> Now add the rules Wi-Fi actually uses:</p>
+<ol>
+<li>Before transmitting, wait for silence <strong>plus a random number of slots</strong> (roll the die). Always,
+   even when nothing is in the way.</li>
+<li>Send <strong>RTS</strong> — <em>"AP, may I send?"</em></li>
+<li>The AP replies <strong>CTS</strong> — <em>"go ahead"</em> — and <strong>everyone in range hears the CTS</strong>, including the
+   hidden node, who now stays quiet.</li>
+<li>Transmit.</li>
+<li>The AP sends <strong>ACK</strong>. <strong>No ACK means it did not arrive</strong> — that is the only way the sender ever
+   finds out.</li>
+</ol>
+<h3 id="discuss_2">Discuss</h3>
+<ul>
+<li>Count the messages needed to deliver one frame: RTS, CTS, data, ACK. <strong>Four for one.</strong> That
+  overhead is why advertised Wi-Fi speeds and real Wi-Fi speeds differ so much, and it is not
+  waste — it is the price of not being able to hear a collision.</li>
+<li>Why does CSMA/<strong>CA</strong> stand for <em>Collision Avoidance</em>? Because avoidance is all that is available:
+  detection is impossible, so the protocol spends effort making collisions unlikely instead of
+  cheap.</li>
+<li>Round 2 stations only waited when the medium was busy. Round 3 stations wait <strong>every time</strong>. Why is
+  that necessary here and not there?</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Round 1 (ALOHA)</th>
+<th>Round 2 (CSMA/CD)</th>
+<th>Round 3b (CSMA/CA)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total attempts</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Collisions</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Frames delivered</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Time to deliver all</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Messages per delivered frame</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Then, in your own words:</p>
+<ol>
+<li>Carrier sense reduced collisions but did not eliminate them. Why not?</li>
+<li>Why can Wi-Fi not detect collisions?</li>
+<li>Which of these three protocols runs on the switched links you built this week? <em>(Careful.)</em></li>
+</ol>
+<h2 id="instructor-note">Instructor note</h2>
+<p>Question 3's answer is <strong>none of them</strong> — switched full-duplex Ethernet has no contention at all.
+Students who answer "CSMA/CD" have learned the textbook rather than the week. Let them say it, then
+ask which cable is shared.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

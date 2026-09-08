@@ -1,0 +1,1180 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week10-dns/dns-run-your-own-and-watch-it-cache/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>DNS — Run your own, and find out why changes take a day - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dns-run-your-own-and-find-out-why-changes-take-a-day" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DNS — Run your own, and find out why changes take a day
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-serve-some-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — serve some names
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — serve some names">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-a-cache-fill" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch a cache fill
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch a cache fill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-change-a-record-and-watch-nothing-happen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — change a record and watch nothing happen
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — change a record and watch nothing happen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-plan-a-change-properly" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — plan a change properly
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — plan a change properly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="dns-run-your-own-and-find-out-why-changes-take-a-day">DNS — Run your own, and find out why changes take a day</h1>
+<p><strong>Time:</strong> 55 min · <strong>Needs:</strong> one <strong>OL9 Server</strong>, one <strong>OL9 PC</strong>, one Ethernet switch, a NAT node ·
+<strong>GNS3 project:</strong> <code>dn-a3-cache</code></p>
+<p><strong>The question:</strong> everyone has been told that a DNS change "takes 24 hours to propagate". Nothing
+propagates and nothing takes 24 hours. Serve some names yourself, then change one, and find out what
+that sentence is actually describing.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>You change a record on the authoritative server. How does the old value reach anybody afterwards?</li>
+<li>What decides how long the old value keeps being served? <strong><em>_</em></strong></li>
+<li>You are moving a service next Tuesday. When should you change anything? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>   CLIENT ───── SW ───── SRV ───── (NAT node, for upstream)
+     .11                 .12
+</code></pre></div>
+<p><code>CLIENT</code> is an <strong>OL9 PC</strong>, <code>SRV</code> an <strong>OL9 Server</strong>. <code>SRV</code> will run <code>dnsmasq</code>, which is small enough
+to read in one screen and does both jobs this activity needs: it can be authoritative for names you
+invent, and it caches everything else.</p>
+<p>Address both by <strong>storing</strong> the configuration rather than with <code>ip addr add</code>. The NAT node on this
+wire hands out addresses, and a card with nothing stored can be handed one — which would take
+<code>SRV</code>'s <code>.12</code> away mid-activity, showing up as names failing to resolve rather than as an address
+that changed.</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+nmcli con add type ethernet ifname eth0 con-name lab \
+      ipv4.method manual ipv4.addresses 192.168.10.11/24
+nmcli con up lab
+
+# on SRV
+nmcli con add type ethernet ifname eth0 con-name lab \
+      ipv4.method manual ipv4.addresses 192.168.10.12/24
+nmcli con up lab
+</code></pre></div>
+<p>That distinction — a change to the running machine, versus a stored configuration NetworkManager
+keeps the running machine matching — is W3·A8, part 1. It also gives you the name to use where this
+activity says <code>nmcli con modify &lt;connection&gt;</code> later on: it is <code>lab</code>.</p>
+<hr />
+<h2 id="do-this-serve-some-names">Do this — serve some names</h2>
+<p>On <code>SRV</code>, replace <code>/etc/dnsmasq.conf</code> with:</p>
+<div class="highlight"><pre><span></span><code># answer on this interface only
+interface=eth0
+bind-interfaces
+
+# do not act as a DHCP server — that is a different activity
+no-dhcp-interface=eth0
+
+# names we are authoritative for
+local=/lab.local/
+address=/web.lab.local/192.168.10.20
+address=/db.lab.local/192.168.10.21
+
+# how long anyone may cache our own answers, in seconds
+local-ttl=30
+
+# where to send everything else
+server=1.1.1.1
+</code></pre></div>
+<p>Each block is one decision:</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>The decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interface</code> / <code>bind-interfaces</code></td>
+<td>which wire this server answers on — never all of them by accident</td>
+</tr>
+<tr>
+<td><code>local=/lab.local/</code></td>
+<td><em>this zone is mine</em> — do not ask upstream about it, ever</td>
+</tr>
+<tr>
+<td><code>address=/…/</code></td>
+<td>the records themselves</td>
+</tr>
+<tr>
+<td><code>local-ttl</code></td>
+<td>how long others may reuse our answers before asking again</td>
+</tr>
+<tr>
+<td><code>server=</code></td>
+<td>the resolver to forward everything else to</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code># on SRV
+systemctl restart dnsmasq
+systemctl status dnsmasq
+</code></pre></div>
+<p>Point <code>CLIENT</code> at it and ask:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+nmcli con modify &lt;connection&gt; ipv4.dns 192.168.10.12 ipv4.ignore-auto-dns yes
+nmcli con up &lt;connection&gt;
+
+dig web.lab.local A
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>You are now the authority for a zone. <code>local=/lab.local/</code> is the line that makes it so: it tells
+  <code>dnsmasq</code> that questions about this zone are answered from its own configuration and never
+  forwarded, so a name that does not exist here returns <code>NXDOMAIN</code> rather than being asked of the
+  internet.</li>
+<li>That "never forwarded" property is what makes an internal zone private. Without it, every internal
+  hostname anyone looks up leaks to an upstream resolver as a question.</li>
+<li>Note the TTL in the answer: <strong>30</strong>, exactly as configured, and it does not move however many times
+  you ask. An authoritative server states the TTL; it does not count it down.</li>
+</ul>
+<hr />
+<h2 id="do-this-watch-a-cache-fill">Do this — watch a cache fill</h2>
+<p>Now ask about a name you are <strong>not</strong> authoritative for, twice, and time both:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+dig example.com A | grep -E 'Query time|IN\s+A'
+dig example.com A | grep -E 'Query time|IN\s+A'
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>The first query took tens or hundreds of milliseconds — <code>SRV</code> had to do the whole walk from the
+  previous activity. The second took <strong>essentially zero</strong>.</li>
+<li>Look at the TTL on the two answers. The first shows the full value from the authoritative server;
+  the second shows a <strong>smaller</strong> number. Keep asking every few seconds and watch it count down.</li>
+<li>That countdown <em>is</em> the cache. <code>SRV</code> stored the record along with the moment it expires, and every
+  time it serves the record it reports the time remaining. When the number reaches zero the entry is
+  discarded and the next question triggers a real lookup.</li>
+<li>So a TTL is not a property of a record so much as <strong>a promise about how stale an answer may be</strong>.
+  The owner of the name chooses it, and everyone else is entitled to rely on it for that long.</li>
+</ul>
+<hr />
+<h2 id="do-this-change-a-record-and-watch-nothing-happen">Do this — change a record and watch nothing happen</h2>
+<div class="highlight"><pre><span></span><code># on SRV
+sed -i 's|address=/web.lab.local/192.168.10.20|address=/web.lab.local/192.168.10.99|' /etc/dnsmasq.conf
+systemctl restart dnsmasq
+</code></pre></div>
+<p>Immediately, on <code>CLIENT</code>:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+dig +short web.lab.local A
+</code></pre></div>
+<p>Then ask again every ten seconds until it changes.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>For up to 30 seconds, <code>CLIENT</code> kept getting the <strong>old</strong> address, from a server that no longer holds
+  it and would never say it again. Nothing was broken. The record you changed was already out in the
+  world, with a promise attached, and the promise had not expired.</li>
+<li>Note where the stale copy lived: not on <code>SRV</code>. It is in whatever cached it — here the client's own
+  stub resolver, in the real world a chain of caches you have never heard of and cannot contact.</li>
+<li><strong>This is what "propagation" means, and the word is misleading.</strong> Nothing is pushed anywhere. There
+  is no distribution step, no queue, no synchronisation. There is only a set of caches, each holding
+  an answer until its own timer expires, and the change becoming visible to each one at a different
+  moment.</li>
+<li>Which is why the answer to "how long will this take" is exactly the TTL that was in force <strong>when
+  the old record was last handed out</strong> — not the TTL now, and not any number the person asking would
+  like.</li>
+</ul>
+<hr />
+<h2 id="do-this-plan-a-change-properly">Do this — plan a change properly</h2>
+<p>Set the TTL to a realistic value and think about the consequence:</p>
+<div class="highlight"><pre><span></span><code># on SRV — realistic for a stable record
+local-ttl=86400
+</code></pre></div>
+<h3 id="what-just-happened_3">What just happened</h3>
+<p>Nothing to observe — this one is arithmetic, and it is the operational point the whole activity
+exists for.</p>
+<p>With a 24-hour TTL, an answer handed out one minute before you make a change is valid for another
+24 hours. So the sequence that actually works is:</p>
+<ol>
+<li><strong>A day or more ahead</strong>, lower the TTL — to 60 seconds, say — and wait for the <em>old</em>, long TTL to
+   expire everywhere. Only now is every cached copy short-lived.</li>
+<li><strong>Make the change.</strong> It becomes visible everywhere within about a minute.</li>
+<li><strong>Afterwards</strong>, raise the TTL back up, so you are not paying for a lookup on every request
+   forever.</li>
+</ol>
+<p>The mistake is doing step 2 first and then wondering why it is taking a day. By then it is too late to
+help — the long TTL is already out there, and there is no mechanism to recall it.</p>
+<p>There is a real trade-off in that number and it is worth stating plainly: a <strong>long</strong> TTL means fewer
+queries, faster responses and resilience if your name servers go down; a <strong>short</strong> TTL means more
+queries and more dependence on your servers being up, in exchange for being able to change things
+quickly. Records that never move get long TTLs. Records in front of anything that might fail over get
+short ones.</p>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The line that makes a zone local, and what it prevents</td>
+<td></td>
+</tr>
+<tr>
+<td>TTL in an authoritative answer vs in a cached one</td>
+<td></td>
+</tr>
+<tr>
+<td>Query time, first ask and second</td>
+<td></td>
+</tr>
+<tr>
+<td>How long the old address kept being served, and where it was stored</td>
+<td></td>
+</tr>
+<tr>
+<td>What "propagation" actually is</td>
+<td></td>
+</tr>
+<tr>
+<td>The correct order of operations for a planned change</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Two sentences: give one reason to want a long TTL and one to want a short one, and name a record you
+would give each to.</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dnsmasq</code> will not start</td>
+<td>port 53 already in use</td>
+<td><code>ss -ulnp</code> and look for <code>:53</code>; stop the other resolver, often <code>systemd-resolved</code></td>
+</tr>
+<tr>
+<td><code>lab.local</code> names do not resolve</td>
+<td><code>CLIENT</code> still using its old resolver</td>
+<td><code>cat /etc/resolv.conf</code> — it must show <code>192.168.10.12</code></td>
+</tr>
+<tr>
+<td><code>resolv.conf</code> keeps reverting</td>
+<td>NetworkManager rewriting it</td>
+<td>set <code>ipv4.dns</code> and <code>ipv4.ignore-auto-dns yes</code> on the connection, not the file</td>
+</tr>
+<tr>
+<td>Upstream names fail</td>
+<td>no egress, or <code>server=</code> unreachable</td>
+<td>confirm the NAT node works: <code>ping 1.1.1.1</code> from <code>SRV</code></td>
+</tr>
+<tr>
+<td>TTL never counts down</td>
+<td>you are asking the authoritative server for its own zone</td>
+<td>the countdown only appears on <strong>cached</strong> records — use an external name</td>
+</tr>
+<tr>
+<td>Change visible instantly</td>
+<td>TTL already expired, or the client did not cache</td>
+<td>shorten the window: re-query immediately after the restart</td>
+</tr>
+<tr>
+<td>Old value persists far longer than the TTL</td>
+<td>another cache in the path, or a stub resolver with its own rules</td>
+<td><code>systemd-resolve --flush-caches</code>, or query <code>SRV</code> directly with <code>dig @192.168.10.12</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

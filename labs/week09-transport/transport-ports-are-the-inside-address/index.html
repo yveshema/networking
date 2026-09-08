@@ -1,0 +1,1146 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week09-transport/transport-ports-are-the-inside-address/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>Transport — The address inside the machine - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-the-address-inside-the-machine" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport — The address inside the machine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-two-services-one-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — two services, one address
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — two services, one address">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-where-does-the-clients-port-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — where does the client's port come from?
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — where does the client&#x27;s port come from?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-count-the-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — count the fields
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — count the fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-see-it-in-the-packet" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — see it in the packet
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — see it in the packet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="transport-the-address-inside-the-machine">Transport — The address inside the machine</h1>
+<p><strong>Time:</strong> 45 min · <strong>Needs:</strong> one <strong>OL9 Server</strong>, one <strong>OL9 PC</strong>, one Ethernet switch · <strong>GNS3
+project:</strong> <code>tr-a0-ports</code></p>
+<p><strong>The question:</strong> an IP address gets a packet to a machine. That machine is running a web server, an
+SSH daemon, a DNS resolver and your shell. The packet arrives at one network card, once. Something
+has to decide which program gets it — and it is not IP, because IP has already finished.</p>
+<blockquote>
+<p>This is the first transport activity. Do it before the three-way handshake.</p>
+</blockquote>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>Two programs on one machine, one IP address. What tells them apart? <strong><em>_</em></strong></li>
+<li>You open two browser tabs to the same website. How many connections, and how does the machine keep
+   the replies separate? <strong><em>_</em></strong></li>
+<li>Is a connection identified by one number, or by more than one? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>        192.168.10.0/24
+
+   CLIENT ───── SW ───── SRV
+     .11                 .12
+</code></pre></div>
+<p>An <strong>OL9 PC</strong> and an <strong>OL9 Server</strong> on one Ethernet switch. Capture the link for the last section.</p>
+<hr />
+<h2 id="do-this-two-services-one-address">Do this — two services, one address</h2>
+<div class="highlight"><pre><span></span><code># on SRV — two terminals
+python3 -m http.server 8080
+python3 -m http.server 9090
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># on CLIENT
+curl -s -o /dev/null -w '%{http_code}\n' http://192.168.10.12:8080/
+curl -s -o /dev/null -w '%{http_code}\n' http://192.168.10.12:9090/
+</code></pre></div>
+<p>Now look at what is waiting on <code>SRV</code>:</p>
+<div class="highlight"><pre><span></span><code># on SRV
+ss -tlnp
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>Two servers, one IP address, and every request reached the right one. The IP address was identical
+  in both cases — <strong>the only difference in the packet was a 16-bit number</strong>, and that number is the
+  port.</li>
+<li><code>ss -tlnp</code> lists <strong>listening</strong> sockets: <code>-t</code> TCP, <code>-l</code> listening, <code>-n</code> numeric, <code>-p</code> the process.
+  Read the <code>Local Address:Port</code> column. Each program has claimed a port and the kernel will hand it
+  anything addressed there.</li>
+<li>So a port is not a networking concept so much as a <strong>delivery address inside one machine</strong>. IP gets
+  the packet to the building; the port gets it to the right desk.</li>
+<li>Two programs cannot claim the same port on the same address at the same time. Try it — start a
+  third server on 8080 and read the error. That collision is why "address already in use" is one of
+  the most common messages in all of computing.</li>
+</ul>
+<hr />
+<h2 id="do-this-where-does-the-clients-port-come-from">Do this — where does the client's port come from?</h2>
+<p>Hold two connections open at once. On <code>SRV</code>, make a file worth downloading slowly:</p>
+<div class="highlight"><pre><span></span><code># on SRV
+dd if=/dev/zero of=/tmp/big.bin bs=1M count=50
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># on CLIENT — two terminals, both at once
+curl --limit-rate 20k -o /dev/null http://192.168.10.12:8080/big.bin
+curl --limit-rate 20k -o /dev/null http://192.168.10.12:8080/big.bin
+</code></pre></div>
+<p>While both are running:</p>
+<div class="highlight"><pre><span></span><code># on CLIENT
+ss -tan '( dport = :8080 )'
+
+# on SRV
+ss -tan '( sport = :8080 )'
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>Two connections, to <strong>the same server, on the same port, from the same client</strong>. Everything about
+  them is identical except one field: the client's own port number, which is different for each.</li>
+<li>The client never chose those numbers. The kernel allocated them from the <strong>ephemeral range</strong> — a
+  block of high-numbered ports handed out temporarily for the life of a connection and returned
+  afterwards. Check yours:</li>
+</ul>
+<div class="highlight"><pre><span></span><code># on CLIENT
+sysctl net.ipv4.ip_local_port_range
+</code></pre></div>
+<ul>
+<li>So ports come in two kinds, and the difference is who has to know them in advance. A <strong>server</strong>
+  port is fixed and published, because clients must be able to guess it — 80, 443, 22, 53. A
+  <strong>client</strong> port is temporary and arbitrary, because only the two machines involved ever need to
+  know it.</li>
+</ul>
+<hr />
+<h2 id="do-this-count-the-fields">Do this — count the fields</h2>
+<p>Look at the <code>ss</code> output again and write out everything that distinguishes one of those connections
+from the other.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>A connection is identified by <strong>four</strong> things, not one:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Connection A</th>
+<th>Connection B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source IP</td>
+<td><code>192.168.10.11</code></td>
+<td><code>192.168.10.11</code></td>
+</tr>
+<tr>
+<td>Source port</td>
+<td>e.g. <code>41022</code></td>
+<td>e.g. <code>41024</code></td>
+</tr>
+<tr>
+<td>Destination IP</td>
+<td><code>192.168.10.12</code></td>
+<td><code>192.168.10.12</code></td>
+</tr>
+<tr>
+<td>Destination port</td>
+<td><code>8080</code></td>
+<td><code>8080</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Three of the four are identical. The connections are distinct because the <strong>whole four-tuple</strong> is
+  distinct, and that is the rule: two connections may share any three of those values, never all
+  four.</li>
+<li>This is what makes a web server serving ten thousand people simultaneously possible on one port. The
+  port is not the connection. The port is one field of four.</li>
+<li>Notice the listening socket in <code>ss -tlnp</code> is still there, unchanged, alongside the connected ones.
+  <strong>A listening socket does not turn into a connection</strong> — it stays listening and spawns a separate
+  connected socket for each client. That distinction is invisible until you look, and it explains how
+  a server accepts a second visitor while the first is still reading.</li>
+</ul>
+<hr />
+<h2 id="do-this-see-it-in-the-packet">Do this — see it in the packet</h2>
+<p>Capture the link and start one more <code>curl</code>. Expand the TCP header of any packet.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li><strong>Source port and destination port are the first two fields of the TCP header</strong> — the very first
+  four bytes, before sequence numbers, before flags, before anything else. They are that important.</li>
+<li>Watch them swap between the request and the reply. <code>41022 → 8080</code> going out, <code>8080 → 41022</code> coming
+  back. The pair reversed is how each end recognises the other's half of the conversation.</li>
+<li>Look at where the TCP header sits: after the IP header, which is after the Ethernet header. Week 1
+  took that stack apart; this is the layer you had not yet needed. <strong>IP addresses the machine and TCP
+  addresses the program</strong>, and both are in every single packet because both questions have to be
+  answered on arrival.</li>
+<li>UDP has the same two fields in the same place, for the same reason. The demultiplexing job is
+  common to both, and it is arguably the <em>only</em> thing they have in common.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What distinguishes two servers on one IP address</td>
+<td></td>
+</tr>
+<tr>
+<td>Command that lists listening sockets</td>
+<td></td>
+</tr>
+<tr>
+<td>Where a client's own port number comes from</td>
+<td></td>
+</tr>
+<tr>
+<td>The four fields that identify a connection</td>
+<td></td>
+</tr>
+<tr>
+<td>How many of them differed between your two <code>curl</code>s</td>
+<td></td>
+</tr>
+<tr>
+<td>Position of the port fields in the TCP header</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>One sentence: a server has one IP address and one open port. Explain how it can serve ten thousand
+people at once.</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Second <code>http.server</code> fails to start</td>
+<td>port already claimed</td>
+<td>that is the lesson — read the error, then use a different port</td>
+</tr>
+<tr>
+<td><code>ss</code> shows nothing</td>
+<td>the connections finished too quickly</td>
+<td><code>--limit-rate 20k</code> keeps them open long enough to look</td>
+</tr>
+<tr>
+<td>Both <code>curl</code>s show the same client port</td>
+<td>you ran them one after the other, not together</td>
+<td>ports are reused once released; run them simultaneously</td>
+</tr>
+<tr>
+<td><code>ss -tlnp</code> shows no process name</td>
+<td>not run as root</td>
+<td><code>sudo ss -tlnp</code></td>
+</tr>
+<tr>
+<td>Connections to 8080 refused</td>
+<td>server died with its terminal</td>
+<td>restart it, or background it with <code>&amp;</code></td>
+</tr>
+<tr>
+<td>No TCP header visible in Wireshark</td>
+<td>you expanded an ARP or ICMP frame</td>
+<td>filter with <code>tcp.port == 8080</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>

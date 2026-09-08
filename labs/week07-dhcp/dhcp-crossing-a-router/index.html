@@ -1,0 +1,1195 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Yves Rene Shema">
+      
+      
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week07-dhcp/dhcp-crossing-a-router/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.59">
+    
+    
+      
+        <title>DHCP — Crossing a router, and the field that makes it possible - ACIT 2620: Principles of Enterprise Networking</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      
+      
+
+
+    
+  <style>
+  .md-header__button.md-logo,
+  .md-sidebar--primary .md-logo {
+	  display: none !important;
+  }
+  </style>
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dhcp-crossing-a-router-and-the-field-that-makes-it-possible" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ACIT 2620: Principles of Enterprise Networking
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DHCP — Crossing a router, and the field that makes it possible
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../gns3/" class="md-tabs__link">
+          
+  
+  GNS3
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../appliances/" class="md-tabs__link">
+          
+  
+  Appliances
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../slides/README.md" class="md-tabs__link">
+          
+  
+  Slides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ACIT 2620: Principles of Enterprise Networking
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Welcome
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Overview: Labs
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../gns3/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  GNS3 Overview
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../appliances/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  README
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../slides/README.md" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  none
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-try-it-without-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — try it without help
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — try it without help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-put-a-listener-on-the-clients-wire" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — put a listener on the client's wire
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — put a listener on the client&#x27;s wire">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-find-giaddr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — find <code>giaddr</code>
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — find giaddr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-break-it-in-the-instructive-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — break it in the instructive way
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — break it in the instructive way">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="dhcp-crossing-a-router-and-the-field-that-makes-it-possible">DHCP — Crossing a router, and the field that makes it possible</h1>
+<p><strong>Time:</strong> 60 min · <strong>Needs:</strong> one <strong>OL9 PC</strong> (<code>PC1</code>), one <strong>OL9 Router</strong> (<code>R1</code>), one <strong>OL9 Server</strong>
+(<code>SRV</code>), 2 Ethernet switches, Wireshark ·
+<strong>GNS3 project:</strong> <code>dh-a2-relay</code></p>
+<p><strong>The question:</strong> DHCP works by broadcasting. Routers do not forward broadcasts — you proved that in
+week 3 and relied on it in week 4. So a building with twenty subnets needs twenty DHCP servers. It
+does not have twenty. Find out why not.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li><code>PC1</code> broadcasts a DISCOVER. <code>R1</code> is between it and the server. What reaches the server? <strong><em>_</em></strong></li>
+<li>If something did carry it across, how would the server know which subnet to allocate from? <strong><em>_</em></strong></li>
+<li>And how would the reply get back to a client that still has no address? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="topology">Topology</h2>
+<div class="highlight"><pre><span></span><code>   10.0.10.0/24                        10.0.30.0/24
+
+  PC1 ──── SW1 ──── R1 ──── SW2 ──── SRV
+  (dhcp)          .1  │  .1          .5
+                  eth0│eth1
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R1</code></td>
+<td><code>eth0</code> <code>10.0.10.1/24</code>, <code>eth1</code> <code>10.0.30.1/24</code>, both <strong>stored</strong> (below), <code>sysctl -w net.ipv4.ip_forward=1</code></td>
+</tr>
+<tr>
+<td><code>SRV</code></td>
+<td><code>10.0.30.5/24</code> <strong>stored</strong>, and a route back: <code>ip route add 10.0.10.0/24 via 10.0.30.1</code></td>
+</tr>
+<tr>
+<td><code>PC1</code></td>
+<td>nothing — <code>ipv4.method auto</code></td>
+</tr>
+</tbody>
+</table>
+<p>Store <code>R1</code>'s and <code>SRV</code>'s addresses rather than setting them with <code>ip addr add</code>. A DHCP server is
+about to start serving this network, and <code>R1:eth0</code> sits on the very wire the offers cross — a card
+there with nothing stored can ask for an address and be handed one out of the pool it is supposed to
+be relaying. <code>PC1</code> is the exception, and having nothing stored is the entire point of it.</p>
+<div class="highlight"><pre><span></span><code># on R1
+nmcli con add type ethernet ifname eth0 con-name client-side \
+      ipv4.method manual ipv4.addresses 10.0.10.1/24
+nmcli con add type ethernet ifname eth1 con-name server-side \
+      ipv4.method manual ipv4.addresses 10.0.30.1/24
+nmcli con up client-side ; nmcli con up server-side
+
+# on SRV
+nmcli con add type ethernet ifname eth0 con-name srv \
+      ipv4.method manual ipv4.addresses 10.0.30.5/24
+nmcli con up srv
+</code></pre></div>
+<p>That distinction — a change to the running machine, versus a stored configuration NetworkManager
+keeps the running machine matching — is W3·A8, part 1.</p>
+<p>That route on <code>SRV</code> is not an afterthought. The server is going to have to answer a client on a
+network it is not attached to, and it needs a way back.</p>
+<hr />
+<h2 id="do-this-try-it-without-help">Do this — try it without help</h2>
+<p>Put the Kea config from the previous activities on <code>SRV</code>, but for the <strong>client's</strong> subnet, not its
+own:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"Dhcp4"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"interfaces-config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"interfaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"eth0"</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"lease-database"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memfile"</span><span class="p">,</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/lib/kea/kea-leases4.csv"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"valid-lifetime"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"subnet4"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"subnet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.10.0/24"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"pools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"pool"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.10.100 - 10.0.10.110"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"option-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"routers"</span><span class="p">,</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.0.10.1"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># on SRV
+systemctl restart kea-dhcp4
+</code></pre></div>
+<p>Capture <strong>both</strong> links — <code>PC1</code>–<code>SW1</code> and <code>SW2</code>–<code>SRV</code> — and:</p>
+<div class="highlight"><pre><span></span><code># on PC1
+nmcli con up dh
+</code></pre></div>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>PC1</code>'s capture has DISCOVERs, repeated, getting no answer. <code>SRV</code>'s capture has <strong>nothing at all</strong>.</li>
+<li><code>R1</code> did exactly what a router does: the destination was <code>255.255.255.255</code>, which is not an address
+  on any network it forwards to, so it dropped it. This is not a misconfiguration and there is no
+  setting called "forward broadcasts" that you should be looking for.</li>
+<li>The server, meanwhile, is running correctly, holding a perfectly good pool for <code>10.0.10.0/24</code>, and
+  will never hear anyone ask for it.</li>
+</ul>
+<hr />
+<h2 id="do-this-put-a-listener-on-the-clients-wire">Do this — put a listener on the client's wire</h2>
+<p>The thing that is missing has to be <strong>on <code>PC1</code>'s segment</strong>, because that is where the broadcast is
+audible. It is called a <strong>relay agent</strong>, and its job is to hear DHCP broadcasts locally and forward
+them as ordinary unicast packets to a server somewhere else.</p>
+<p><code>R1</code> already has a leg on that segment, so <code>R1</code> is the natural place for it:</p>
+<div class="highlight"><pre><span></span><code># on R1
+dnsmasq --dhcp-relay=10.0.10.1,10.0.30.5 --keep-in-foreground --log-dhcp
+</code></pre></div>
+<p>Two addresses, and the order matters: <strong>the interface to listen on</strong>, then <strong>the server to forward
+to</strong>. Leave it running in that console.</p>
+<p>With both captures still going:</p>
+<div class="highlight"><pre><span></span><code># on PC1
+nmcli con down dh &amp;&amp; nmcli con up dh
+ip addr show dev eth0 | grep 'inet '
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><code>PC1</code> has an address from a server two networks away, and nothing about <code>PC1</code> changed. It
+  broadcast, exactly as before, and was not aware that anything unusual happened.</li>
+<li>Compare the two captures side by side. This is the whole activity:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>On <code>PC1</code>'s wire</th>
+<th>On <code>SRV</code>'s wire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td><code>0.0.0.0</code></td>
+<td><code>10.0.10.1</code></td>
+</tr>
+<tr>
+<td>Destination</td>
+<td><code>255.255.255.255</code></td>
+<td><code>10.0.30.5</code></td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>broadcast</td>
+<td><strong>unicast</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The relay did not tunnel or encapsulate anything. It <strong>re-sent the request as its own</strong>, from its
+  own address, to a specific server. On <code>SRV</code>'s wire this is an ordinary routable packet that any
+  network can carry.</li>
+</ul>
+<hr />
+<h2 id="do-this-find-giaddr">Do this — find <code>giaddr</code></h2>
+<p>Expand the DISCOVER as it arrives at <code>SRV</code> and find the field named <strong>gateway IP address</strong>, <code>giaddr</code>.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>It contains <code>10.0.10.1</code> — the address of the relay's interface <strong>on the segment the client is on</strong>.
+  Not the relay's other address, and not the server's.</li>
+<li>
+<p>That single field does two jobs at once, and both are indispensable:</p>
+</li>
+<li>
+<p><strong>It tells the server which subnet to allocate from.</strong> <code>SRV</code> has no idea where the client is —
+     the packet arrived on its <code>10.0.30.0/24</code> interface like everything else. It looks at <code>giaddr</code>,
+     finds <code>10.0.10.1</code> inside its declared <code>10.0.10.0/24</code> subnet, and picks from that pool. This is
+     why the config declares the <em>client's</em> subnet and not the server's.</p>
+</li>
+<li>
+<p><strong>It tells the server where to send the reply.</strong> The client still has no address, so the answer
+     goes back to <code>giaddr</code>, and the relay does the last step — broadcasting it onto the client's
+     wire, where a machine with no address can receive it.</p>
+</li>
+<li>
+<p>So the relay's address is not a routing detail. It is <strong>the client's location, written into the
+  packet</strong>, and it is the only thing that lets one server serve twenty subnets correctly.</p>
+</li>
+<li>Add a second subnet to the Kea config and a second relay on another segment, and nothing else has to
+  change. That is how a building with twenty networks has one DHCP server and not twenty.</li>
+</ul>
+<hr />
+<h2 id="do-this-break-it-in-the-instructive-way">Do this — break it in the instructive way</h2>
+<p>Change the relay to announce the wrong interface:</p>
+<div class="highlight"><pre><span></span><code># on R1 — stop the relay, then
+dnsmasq --dhcp-relay=10.0.30.1,10.0.30.5 --keep-in-foreground --log-dhcp
+</code></pre></div>
+<p>Try <code>PC1</code> again.</p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>The request reaches the server and is <strong>refused</strong>, or answered from the wrong pool — because
+  <code>giaddr</code> now claims the client is on <code>10.0.30.0/24</code>, and the server believes it.</li>
+<li>The server has no independent way to check. It cannot see the client, cannot see the topology, and
+  has exactly one piece of evidence about where the request came from. <strong><code>giaddr</code> is trusted
+  absolutely</strong>, which is worth remembering the next time you see a DHCP problem that looks like the
+  server has gone mad.</li>
+</ul>
+<p>Put it back the way it was.</p>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What <code>R1</code> did with the broadcast, and why that is correct</td>
+<td></td>
+</tr>
+<tr>
+<td>Where a relay agent has to run, and why there</td>
+<td></td>
+</tr>
+<tr>
+<td>Source and destination of the request on each of the two wires</td>
+<td></td>
+</tr>
+<tr>
+<td>The two jobs <code>giaddr</code> does</td>
+<td></td>
+</tr>
+<tr>
+<td>Which subnet the config declares, and why not the server's own</td>
+<td></td>
+</tr>
+<tr>
+<td>What happened when <code>giaddr</code> was wrong</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>One sentence: a campus has forty subnets and one DHCP server. What has to exist on each of the forty?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relay starts but nothing is forwarded</td>
+<td>wrong first address</td>
+<td>it must be the relay's address <strong>on the client's segment</strong></td>
+</tr>
+<tr>
+<td>Server receives the request, sends nothing</td>
+<td>no matching subnet for <code>giaddr</code></td>
+<td>the <code>subnet4</code> entry must contain the <code>giaddr</code> address</td>
+</tr>
+<tr>
+<td>Server replies, client never sees it</td>
+<td>no route back to <code>10.0.10.0/24</code> on <code>SRV</code></td>
+<td><code>ip route add 10.0.10.0/24 via 10.0.30.1</code></td>
+</tr>
+<tr>
+<td><code>dnsmasq</code> refuses to start</td>
+<td>it is already running as a service</td>
+<td><code>systemctl stop dnsmasq</code> first; this activity runs it in the foreground on purpose so you can read its log</td>
+</tr>
+<tr>
+<td>Kea ignores the relayed packet</td>
+<td>not listening on the right interface</td>
+<td><code>interfaces-config</code> must name the interface facing <code>R1</code></td>
+</tr>
+<tr>
+<td>Client gets an address from <code>R1</code> itself</td>
+<td>you started a DHCP <em>server</em> rather than a relay</td>
+<td><code>--dhcp-relay</code> and <code>--dhcp-range</code> are different things; do not set both</td>
+</tr>
+<tr>
+<td>Everything works but the client has no gateway</td>
+<td><code>option-data</code> missing</td>
+<td>the <code>routers</code> option is what supplies the default route</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Yves Rene Shema
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      
+    
+  </body>
+</html>
