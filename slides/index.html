@@ -10,20 +10,22 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week05-subnetting/topologies/">
+        <link rel="canonical" href="https://networking.rysapp.com/slides/">
       
+      
+        <link rel="prev" href="../appliances/">
       
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.59">
     
     
       
-        <title>Week 5 topologies - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Slides - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -31,7 +33,7 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.38807bfb.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/classic/main.38807bfb.min.css">
       
       
 
@@ -57,9 +59,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -76,8 +78,7 @@
     <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#week-5-topologies" class="md-skip">
+        <a href="#__skip" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +94,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="./.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -113,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week 5 topologies
+              Slides
             
           </span>
         </div>
@@ -166,7 +167,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="./.." class="md-tabs__link">
           
   
   Home
@@ -196,7 +197,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link">
+        <a href="../labs/" class="md-tabs__link">
           
   
   Labs
@@ -230,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../gns3/" class="md-tabs__link">
+        <a href="../gns3/" class="md-tabs__link">
           
   
   GNS3
@@ -258,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../appliances/" class="md-tabs__link">
+        <a href="../appliances/" class="md-tabs__link">
           
   
   Appliances
@@ -273,6 +274,8 @@
   
   
   
+    
+  
   
     
       
@@ -285,8 +288,8 @@
     
     
     
-      <li class="md-tabs__item">
-        <a href="../../../slides/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="././" class="md-tabs__link">
           
   
   Slides
@@ -314,6 +317,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -325,7 +330,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="./.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -369,7 +374,7 @@
   
   
   
-    <a href="../../.." class="md-nav__link">
+    <a href="./.." class="md-nav__link">
       
   
   
@@ -429,7 +434,7 @@
   
   
   
-    <a href="../../" class="md-nav__link">
+    <a href="../labs/" class="md-nav__link">
       
   
   
@@ -493,7 +498,7 @@
   
   
   
-    <a href="../../../gns3/" class="md-nav__link">
+    <a href="../gns3/" class="md-nav__link">
       
   
   
@@ -551,7 +556,7 @@
   
   
   
-    <a href="../../../appliances/" class="md-nav__link">
+    <a href="../appliances/" class="md-nav__link">
       
   
   
@@ -580,6 +585,8 @@
       
   
   
+    
+  
   
   
     
@@ -593,24 +600,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="../../../slides/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="././" class="md-nav__link md-nav__link--active">
+              
   
   
   <span class="md-ellipsis">
@@ -623,12 +632,24 @@
   
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
   
+  Slides
 
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -641,6 +662,8 @@
               </div>
             
             
+              
+                
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
@@ -655,49 +678,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#export-w05-a2-asymmetric" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Export <code>w05-a2-asymmetric</code>
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a5-export-the-shell-never-the-addressing" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        A5: export the shell, never the addressing
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a4-is-deliberately-not-exported" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        A4 is deliberately not exported
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -710,6 +690,8 @@
               
                 
 
+  
+
 
 
 
@@ -718,58 +700,48 @@
                 
                   
 
-<h1 id="week-5-topologies">Week 5 topologies</h1>
-<table>
-<thead>
-<tr>
-<th>Activity</th>
-<th>Project</th>
-<th>Export?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A1</td>
-<td><code>w05-a1-mask</code></td>
-<td>no — two nodes and a cable</td>
-</tr>
-<tr>
-<td>A2</td>
-<td><code>w05-a2-asymmetric</code></td>
-<td><strong>yes</strong></td>
-</tr>
-<tr>
-<td>A3</td>
-<td><code>w05-a3-boundaries</code></td>
-<td>no</td>
-</tr>
-<tr>
-<td>A4</td>
-<td><code>w05-a4-splitting</code></td>
-<td>no — building it is the activity</td>
-</tr>
-<tr>
-<td>A5</td>
-<td><code>w05-a5-design</code></td>
-<td><strong>the shell only</strong> — see below</td>
-</tr>
-</tbody>
-</table>
-<h2 id="export-w05-a2-asymmetric">Export <code>w05-a2-asymmetric</code></h2>
-<p>The addressing has to be exact for the activity to work: <code>.11</code> with <code>/24</code> must fall <strong>outside</strong> the
-<code>/25</code>, and <code>.200</code> with <code>/25</code> must fall inside it. Students who pick their own numbers often choose
-two that land in the same half, and then nothing happens and the activity appears broken.</p>
-<p>Export it with the fault already in place, including <code>send_redirects=0</code> on <code>R1</code> — with redirects on,
-<code>H2</code> learns a host route after the first ping and the asymmetry vanishes mid-activity.</p>
-<h2 id="a5-export-the-shell-never-the-addressing">A5: export the shell, never the addressing</h2>
-<p><code>w05-a5-design</code> should contain the <strong>nodes and cabling only</strong> — one <strong>OL9 Router</strong>, four hosts,
-four Ethernet switches, no addresses anywhere.</p>
-<p>Choosing the addressing is the entire assignment. An export with any address in it hands out the
-answer, including to the students who would have got there themselves.</p>
-<h2 id="a4-is-deliberately-not-exported">A4 is deliberately not exported</h2>
-<p>Calculating four <code>/26</code> boundaries and then discovering an off-by-one when a host cannot reach its own
-gateway is the activity. A pre-built version removes the feedback loop that makes this week work at
-all.</p>
+  <h1 id="__skip">Slides</h1>
+
+<style>
+.md-typeset .admonition,
+.md-typeset details {
+    font-size: 1rem;
+}
+.md-typeset .admonition-title::before,
+.md-typeset summary::before {
+    display: none !important;
+}
+.md-typeset .abstract > admonition-title,
+.md-typeset .abstract > summary {
+    background-color: transparent;
+}
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract {
+    /*border: none !important;*/
+    border-color: rgb(0, 0, 0, 0.25) !important;
+    box-shadow: none !important;
+}
+.md-typeset .admonition.abstract > summary::after,
+.md-typeset details.abstract > summary::after {
+    color: rgb(0, 0, 0, 0.25) !important;
+}
+</style>
+
+<p>These slides complement the learning obtained through the lab activities 
+by adding theoretical depth and summarizing key takeaways. Not every topic 
+has a dedicated slides deck, and new slides may be added in the future.</p>
+<p>The slides themselves should be considered as living documents as they may be updated 
+to correct errors or add new content. Keep this in mind if you use the download
+button to save PDF versions of the slides for future reference.</p>
+<details class="abstract" open="open">
+<summary>Foundations</summary>
+<ul>
+<li><a href="./introduction.html" target="_blank">Read online</a> </li>
+</ul>
+<p><a :download=":download" class="md-button" href="../download/introduction.pdf" target="_blank">Download <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M96 0C60.7 0 32 28.7 32 64v384c0 35.3 28.7 64 64 64h80V400c0-35.3 28.7-64 64-64h176V170.5c0-17-6.7-33.3-18.7-45.3L290.7 18.7C278.7 6.7 262.5 0 245.5 0zm261.5 176H264c-13.3 0-24-10.7-24-24V58.5zM240 380c-11 0-20 9-20 20v128c0 11 9 20 20 20s20-9 20-20v-28h12c33.1 0 60-26.9 60-60s-26.9-60-60-60zm32 80h-12v-40h12c11 0 20 9 20 20s-9 20-20 20m96-80c-11 0-20 9-20 20v128c0 11 9 20 20 20h32c28.7 0 52-23.3 52-52v-64c0-28.7-23.3-52-52-52zm20 128v-88h12c6.6 0 12 5.4 12 12v64c0 6.6-5.4 12-12 12zm88-108v128c0 11 9 20 20 20s20-9 20-20v-44h28c11 0 20-9 20-20s-9-20-20-20h-28v-24h28c11 0 20-9 20-20s-9-20-20-20h-48c-11 0-20 9-20 20"/></svg></span></a></p>
+</details>
+
+  
 
 
 
@@ -779,8 +751,13 @@ all.</p>
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -804,6 +781,30 @@ all.</p>
       
         <footer class="md-footer">
   
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+        
+          
+          <a href="../appliances/" class="md-footer__link md-footer__link--prev" aria-label="Previous: README">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                README
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -832,10 +833,10 @@ all.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","header.autohide","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.expand","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6970bfe9.min.js"></script>
+      <script src="../assets/javascripts/bundle.6970bfe9.min.js"></script>
       
     
   </body>
