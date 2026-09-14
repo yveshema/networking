@@ -1043,15 +1043,21 @@
 <li>Initialize and authorize the <code>gcloud</code> CLI:
     <div class="highlight"><pre><span></span><code>gcloud init
 </code></pre></div></li>
-<li>Create a project if you haven't yet:
-    <div class="highlight"><pre><span></span><code>gcloud projects create acit-2620-lab
-</code></pre></div>
-    If you would like a human-readable name for your project, do this:
-    <div class="highlight"><pre><span></span><code>gcloud projects update acit-2620-lab --name="ACIT 2620 Networking Lab"
-</code></pre></div></li>
 <li>
-<p>Create a named gcloud configuration and log in:
-    <div class="highlight"><pre><span></span><code>gcloud config configurations create acit-2620 
+<p>Create a project if you haven't yet:
+    <div class="highlight"><pre><span></span><code>gcloud projects create &lt;globally-unique-name&gt;
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">GCP project IDs must be unique</p>
+<p>Google Cloud requires project IDs to be globally unique.
+Use a combination of your first and last names along with the course name
+to create a unique ID.</p>
+</div>
+<p>If you would like a human-readable name for your project, do this:
+<div class="highlight"><pre><span></span><code>gcloud projects update &lt;your_project_id&gt; --name="ACIT 2620 Networking Lab"
+</code></pre></div>
+4. Create a named gcloud configuration and log in:
+<div class="highlight"><pre><span></span><code>gcloud config configurations create acit-2620 
 gcloud auth login
 gcloud config set project acit-2620-lab
 gcloud config set compute/zone us-west1-b
