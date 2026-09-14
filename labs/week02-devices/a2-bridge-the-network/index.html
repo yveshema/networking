@@ -713,6 +713,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -921,6 +925,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -955,6 +987,60 @@
     
   
   Hub vs Switch
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a4-two-legs-in-two-networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Two legs in two networks
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
 
     
   </span>
@@ -1260,6 +1346,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1330,6 +1444,10 @@
       
         
           
+        
+      
+        
+      
         
       
         
@@ -1424,6 +1542,38 @@ ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span
 address to achieve this.</li>
 <li>The physical topology is still mesh, but the logical topology is
 something akin to a star topology</li>
+</ul>
+<hr />
+<h2 id="do-this">Do this</h2>
+<ul>
+<li>Stop all three nodes</li>
+<li>Delete <code>H2</code> and <code>H3</code>, then rename <code>H1</code> as <code>SW</code></li>
+<li>Drag two <strong>VPCS</strong> and cable them on to <code>SW</code></li>
+</ul>
+<p>Lon on to <code>SW</code> as root, then:
+<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>br0<span class="w"> </span>-ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24<span class="w"> </span><span class="se">\</span>
+ipv4.method<span class="w"> </span>disabled<span class="w"> </span>ipv6.method<span class="w"> </span>disabled
+
+nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>br0
+</code></pre></div></p>
+<p>On PC1:
+<div class="highlight"><pre><span></span><code>ip 192.168.10.11/24
+save
+</code></pre></div></p>
+<p>On PC2:
+<div class="highlight"><pre><span></span><code>ip 192.168.10.12/24
+save
+</code></pre></div></p>
+<p>On PC1:
+<div class="highlight"><pre><span></span><code>ping 192.168.10.12 -c 1
+</code></pre></div></p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li><code>SW</code> is just <code>H1</code> in new clothes. We disabled IP to show that a bridge
+is just a link, a medium, and does not need an address</li>
+<li><code>PC1</code> and <code>PC2</code> are cabled to the two ends of the bridge and are able
+to communicate through it.</li>
+<li>You've just created your first "switch"!</li>
 </ul>
 <hr />
 <h2 id="if-it-went-wrong">If it went wrong</h2>
