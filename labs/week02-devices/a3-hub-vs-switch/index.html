@@ -10,31 +10,31 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/a3-hub-vs-switch/">
       
       
-        <link rel="prev" href="../week01-foundations/worksheet/">
+        <link rel="prev" href="../a2-bridge-the-network/">
       
       
-        <link rel="next" href="./a1-dedicated-links/">
+        <link rel="next" href="../../../gns3/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/img/favicon.svg">
+      <link rel="icon" href="../../../assets/img/favicon.svg">
       <meta name="generator" content="zensical-0.0.62">
     
     
       
-        <title>Devices & Topologies - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Hub vs Switch - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.e0592429.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.e0592429.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#goal" class="md-skip">
+        <a href="#w2a3-hub-vs-switch" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Devices & Topologies
+              Hub vs Switch
             
           </span>
         </div>
@@ -162,7 +162,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   Home
@@ -196,7 +196,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   Labs
@@ -230,7 +230,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../gns3/" class="md-tabs__link">
+        <a href="../../../gns3/" class="md-tabs__link">
           
   
   GNS3
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../appliances/" class="md-tabs__link">
+        <a href="../../../appliances/" class="md-tabs__link">
           
   
   Appliances
@@ -286,7 +286,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../slides/" class="md-tabs__link">
+        <a href="../../../slides/" class="md-tabs__link">
           
   
   Slides
@@ -325,7 +325,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
@@ -370,7 +370,7 @@
   
   
   
-    <a href="../.." class="md-nav__link">
+    <a href="../../.." class="md-nav__link">
       
   
   
@@ -434,7 +434,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -514,7 +514,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../week01-foundations/" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -583,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -610,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -664,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/worksheet/" class="md-nav__link">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -735,7 +735,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="././" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -752,7 +752,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./a1-dedicated-links/" class="md-nav__link">
+      <a href="../a1-dedicated-links/" class="md-nav__link">
         
   
   
@@ -804,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./a2-bridge-the-network/" class="md-nav__link">
+      <a href="../a2-bridge-the-network/" class="md-nav__link">
         
   
   
@@ -828,10 +828,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="./a3-hub-vs-switch/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hub vs Switch
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -846,6 +872,129 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it-start-with-a-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it - start with a hub
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-listen-on-as-a-bystander" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — listen on as a bystander
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — listen on as a bystander">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-swap-the-hub-for-a-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — swap the hub for a switch
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — swap the hub for a switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -906,7 +1055,7 @@
   
   
   
-    <a href="../../gns3/" class="md-nav__link">
+    <a href="../../../gns3/" class="md-nav__link">
       
   
   
@@ -965,7 +1114,7 @@
   
   
   
-    <a href="../../appliances/" class="md-nav__link">
+    <a href="../../../appliances/" class="md-nav__link">
       
   
   
@@ -1022,7 +1171,7 @@
   
   
   
-    <a href="../../slides/" class="md-nav__link">
+    <a href="../../../slides/" class="md-nav__link">
       
   
   
@@ -1059,6 +1208,8 @@
                     
                     
                     
+                      
+                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1076,6 +1227,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1084,10 +1237,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
+  <a href="#build-it-start-with-a-hub" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Goal
+        Build it - start with a hub
       </span>
     </span>
   </a>
@@ -1095,10 +1248,88 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deliverable" class="md-nav__link">
+  <a href="#predict-first" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Deliverable
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-listen-on-as-a-bystander" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — listen on as a bystander
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — listen on as a bystander">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-swap-the-hub-for-a-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — swap the hub for a switch
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — swap the hub for a switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1144,7 +1375,7 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1178,7 +1409,7 @@
     
     
       <li class="md-path__item">
-        <a href="././" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1199,17 +1430,146 @@
                 
                   
 
-  <h1 id="__skip">Devices & Topologies</h1>
-
-<h2 id="goal">Goal</h2>
+<h1 id="w2a3-hub-vs-switch">W2·A3 — Hub vs switch</h1>
+<p><strong>Time:</strong> 35 min</p>
+<p><strong>Needs:</strong> 4 VPCS, an Ethernet hub, an Ethernet switch </p>
+<p><strong>GNS3 project:</strong> <code>w02-a3-hub-vs-switch</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What is the difference between a hub and a switch</p>
+</div>
+<hr />
+<h2 id="build-it-start-with-a-hub">Build it - start with a hub</h2>
+<p>Drag four VPCS and and one <strong>Ethernet hub</strong> into the canvas. Connect each VPCS to the hub.</p>
+<p>Give them addresses:</p>
+<div class="highlight"><pre><span></span><code># PC1 / PC2 / PC3 / PC4
+ip 192.168.10.11/24        # .12 / .13 / .14
+save
+</code></pre></div>
+<p>Confirm <code>PC1</code> can ping the other three.</p>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<p>If you listen on <code>PC3</code>'s cable:</p>
+<ol>
+<li>Can you hear the conversation between <code>PC1</code> and <code>PC2</code>? ______</li>
+<li>Same question, but with a switch in place of the hub. ______</li>
+<li>Which layer does a hub operate at? ______</li>
+<li>Which layer does a switch operate at? _____</li>
+<li>Which topology does a hub implement? ______</li>
+<li>Which topology does a switch implement? ______</li>
+</ol>
+<hr />
+<h2 id="do-this-listen-on-as-a-bystander">Do this — listen on as a bystander</h2>
+<ol>
+<li>Right-click the <strong><code>PC3</code></strong> cable → <strong>Start capture</strong>.</li>
+<li>On <code>PC1</code>: <code>ping 192.168.10.12</code></li>
+<li>Read Wireshark. </li>
+</ol>
+<h3 id="what-just-happened">What just happened</h3>
 <ul>
-<li>Understand the different network devices' roles</li>
-<li>Name the layer at which each network device operates</li>
-<li>Describe different network topologies</li>
-<li>Measure bandwidth</li>
+<li><code>PC3</code> was able to hear everything. <ul>
+<li>A hub is an electrical repeater — a signal arriving on one
+port is regenerated out of every other port, and it has no idea what a MAC address is.</li>
+<li>We call this a <strong>broadcast domain</strong>: everybody receives everybody else's traffic.</li>
+<li>We also call this a <strong>collision domain</strong>: only one host can usefully talk at a time </li>
 </ul>
-<h2 id="deliverable">Deliverable</h2>
-<p><a href="worksheet/">Worksheet</a>, sections 1–6. Section 2's device-comparison table is the one students should keep;</p>
+</li>
+<li>A hub may physically look like a star topology, but <strong>it functions as a bus topology</strong>.
+In the early days of networking, nodes on a network communicated by tapping into
+a single cable and taking turns to transmit. The hub improved on this design by 
+shortening the length of the cable, but kept the same functionality.</li>
+</ul>
+<hr />
+<h2 id="do-this-swap-the-hub-for-a-switch">Do this — swap the hub for a switch</h2>
+<ol>
+<li>Delete <code>Hub1</code>. <strong>Browse Switches</strong> → drag an <strong>Ethernet switch</strong> on to the canvas and re-cable
+the VPCS.</li>
+<li>Right-click on <code>PC3</code>'s cable -&gt; <strong>Start capture</strong></li>
+<li>On <code>PC1</code>: <code>ping 192.168.10.12</code></li>
+<li>Read Wireshark</li>
+</ol>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><code>PC3</code> see a little of the traffic, but not everything<ul>
+<li>it can see <strong>ARP</strong> request because they are broadcast</li>
+<li>it sees neither <strong>ARP</strong> responses nor <strong>ICMP</strong> traffic. These are <strong>unicast</strong>, meaning a packet
+is sent to one and only one receiver and the response is sent to one and only one sender.</li>
+</ul>
+</li>
+<li>This is still one <strong>broadcast domain</strong> because the switch forwards broadcast packets to every node</li>
+<li>It is no longer a single <strong>collision domain</strong> because the switch forwards unicast packets to the
+intended destination and no one else. This is what makes a switch a <strong>star topology</strong></li>
+<li>The switch <strong>learns</strong> the location of each node on the network by reading inbound source MAC addresses</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<p>Mark with a <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"/></svg></span> what PC3 sees after the first
+ping from <code>PC1</code> to <code>PC2</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ping on a hub</th>
+<th>ping on a switch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARP request on PC3's wire</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ARP reply on PC3's wire</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ICMP request on PC3's wire</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ICMP reply on PC3's wire</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>In one sentence: what does the switch know after the first ping from <code>PC1</code> to <code>PC2</code> 
+that it did not know before?</p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No packets at all on PC3's link</td>
+<td>capture started after the ping</td>
+<td>start the capture first</td>
+</tr>
+<tr>
+<td><code>ping</code> fails with Host unreachable</td>
+<td>You're trying to ping an address that does not exist</td>
+<td>check the destination address</td>
+</tr>
+<tr>
+<td><code>ping</code> fails with Network unreachable</td>
+<td>Wrong subnet</td>
+<td>Ensure all addresses match 192.168.10.x</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1218,9 +1578,6 @@
 
 
 
-
-  
-  
 
 
 
@@ -1252,7 +1609,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../week01-foundations/worksheet/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Worksheet">
+          <a href="../a2-bridge-the-network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bridge the network">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1262,20 +1619,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Worksheet
+                Bridge the network
               </div>
             </div>
           </a>
         
         
           
-          <a href="./a1-dedicated-links/" class="md-footer__link md-footer__link--next" aria-label="Next: Dedicated links">
+          <a href="../../../gns3/" class="md-footer__link md-footer__link--next" aria-label="Next: GNS3 Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dedicated links
+                GNS3 Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1317,12 +1674,12 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

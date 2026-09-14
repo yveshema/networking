@@ -10,31 +10,31 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/a1-dedicated-links/">
       
       
-        <link rel="prev" href="../week01-foundations/worksheet/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="./a1-dedicated-links/">
+        <link rel="next" href="../a2-bridge-the-network/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/img/favicon.svg">
+      <link rel="icon" href="../../../assets/img/favicon.svg">
       <meta name="generator" content="zensical-0.0.62">
     
     
       
-        <title>Devices & Topologies - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Dedicated links - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.e0592429.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.e0592429.min.css">
       
       
 
@@ -53,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#goal" class="md-skip">
+        <a href="#w2a1-dedicated-links" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-header__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Devices & Topologies
+              Dedicated links
             
           </span>
         </div>
@@ -162,7 +162,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   Home
@@ -196,7 +196,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   Labs
@@ -230,7 +230,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../gns3/" class="md-tabs__link">
+        <a href="../../../gns3/" class="md-tabs__link">
           
   
   GNS3
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../appliances/" class="md-tabs__link">
+        <a href="../../../appliances/" class="md-tabs__link">
           
   
   Appliances
@@ -286,7 +286,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../slides/" class="md-tabs__link">
+        <a href="../../../slides/" class="md-tabs__link">
           
   
   Slides
@@ -325,7 +325,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
+    <a href="../../.." title="ACIT 2620: Principles of Enterprise Networking" class="md-nav__button md-logo" aria-label="ACIT 2620: Principles of Enterprise Networking" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
@@ -370,7 +370,7 @@
   
   
   
-    <a href="../.." class="md-nav__link">
+    <a href="../../.." class="md-nav__link">
       
   
   
@@ -434,7 +434,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -514,7 +514,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../week01-foundations/" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -583,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -610,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -664,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../week01-foundations/worksheet/" class="md-nav__link">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -735,7 +735,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="././" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -752,7 +752,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -774,10 +774,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="./a1-dedicated-links/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dedicated links
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -792,6 +818,135 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - fix it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - fix it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-try-to-eavesdrop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - try to eavesdrop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - try to eavesdrop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -804,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./a2-bridge-the-network/" class="md-nav__link">
+      <a href="../a2-bridge-the-network/" class="md-nav__link">
         
   
   
@@ -831,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./a3-hub-vs-switch/" class="md-nav__link">
+      <a href="../a3-hub-vs-switch/" class="md-nav__link">
         
   
   
@@ -906,7 +1061,7 @@
   
   
   
-    <a href="../../gns3/" class="md-nav__link">
+    <a href="../../../gns3/" class="md-nav__link">
       
   
   
@@ -965,7 +1120,7 @@
   
   
   
-    <a href="../../appliances/" class="md-nav__link">
+    <a href="../../../appliances/" class="md-nav__link">
       
   
   
@@ -1022,7 +1177,7 @@
   
   
   
-    <a href="../../slides/" class="md-nav__link">
+    <a href="../../../slides/" class="md-nav__link">
       
   
   
@@ -1059,6 +1214,8 @@
                     
                     
                     
+                      
+                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1076,6 +1233,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1084,10 +1243,94 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#goal" class="md-nav__link">
+  <a href="#build-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Goal
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - fix it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - fix it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-try-to-eavesdrop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - try to eavesdrop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - try to eavesdrop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
       </span>
     </span>
   </a>
@@ -1095,10 +1338,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deliverable" class="md-nav__link">
+  <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Deliverable
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1144,7 +1387,7 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1178,7 +1421,7 @@
     
     
       <li class="md-path__item">
-        <a href="././" class="md-path__link">
+        <a href="../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1199,17 +1442,152 @@
                 
                   
 
-  <h1 id="__skip">Devices & Topologies</h1>
-
-<h2 id="goal">Goal</h2>
+<h1 id="w2a1-dedicated-links">W2·A1 — Dedicated links</h1>
+<p><strong>Time:</strong> 20 min </p>
+<p><strong>Needs:</strong> three <strong>OL9 PC</strong> nodes</p>
+<p><strong>GNS3 project:</strong> <code>w02-a1-dedicated-links</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>One cable is enough to connect two nodes.</p>
+<p>How many <strong>dedicated</strong> cables do you need to connect three nodes?</p>
+</div>
+<hr />
+<h2 id="build-it">Build it</h2>
 <ul>
-<li>Understand the different network devices' roles</li>
-<li>Name the layer at which each network device operates</li>
-<li>Describe different network topologies</li>
-<li>Measure bandwidth</li>
+<li>Drag three <strong>OL9 PC</strong> nodes on to the canvas. Name them <code>H1</code>, <code>H2</code>, and <code>H3</code></li>
+<li>Run a cable between each pair</li>
+<li>Did that work?</li>
 </ul>
-<h2 id="deliverable">Deliverable</h2>
-<p><a href="worksheet/">Worksheet</a>, sections 1–6. Section 2's device-comparison table is the one students should keep;</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>Currently each node is configured with a single network interface, which means
+it can only take one cable</li>
+<li>A network interface card is the most fundamental network device. <strong>It is what makes
+a node a node</strong>, i.e., the component that enables a host to talk on a network. </li>
+<li>Each network interface supports one and only one physical connection.</li>
+</ul>
+<hr />
+<h2 id="do-this-fix-it">Do this - fix it</h2>
+<ul>
+<li>Right-click each host, go to <strong>Configure -&gt; Network -&gt; Adapters</strong> and set the number of
+adapters to 2.</li>
+<li>Run a cable between each pair of nodes. <code>H1</code> <strong>Ethernet0</strong> - <code>H2</code> <strong>Ethernet0</strong>, 
+<code>H1</code> <strong>Ethernet1</strong> - <code>H3</code> <strong>Ethernet0</strong>, <code>H2</code> <strong>Ethernet1</strong> - <code>H3</code> <strong>Ethernet1</strong></li>
+<li>Start all three and click on the <strong><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M9.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L146.7 256zM224 384h256c17.7 0 32 14.3 32 32s-14.3 32-32 32H224c-17.7 0-32-14.3-32-32s14.3-32 32-32"/></svg></span></strong> icon in the main toolbar to
+access the nodes' consoles.</li>
+</ul>
+<p>On <code>H1</code>, log in as <em>root</em>, then:
+<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="err">'</span>System<span class="w"> </span>eth0<span class="sb">`</span><span class="w"> </span>con-name<span class="w"> </span>eth0<span class="w"> </span><span class="se">\</span>
+ipv4.method<span class="w"> </span>manual<span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24
+nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>eth0
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s1">'Wired connection 1'</span><span class="w"> </span>con-name<span class="w"> </span>eth1<span class="w"> </span><span class="se">\</span>
+ipv4.method<span class="w"> </span>manual<span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.20.1/24
+nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>eth1
+</code></pre></div></p>
+<p>Do the same for <code>H2</code> and <code>H3</code>:</p>
+<ul>
+<li><code>H2</code>: eth0 = 192.168.10.2/24, eth1 = 192.168.30.2/24</li>
+<li><code>H3</code>: eth0 = 192.168.20.3/24, eth1 = 192.168.30.3/24</li>
+</ul>
+<p>On <code>H1</code>:
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.2
+ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.20.3
+</code></pre></div></p>
+<p>On <code>H2</code>:
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.1
+ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.30.3
+</code></pre></div></p>
+<p>On <code>H3</code>:
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.20.1
+ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.30.2
+</code></pre></div></p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>You needed three links to connect three nodes<ul>
+<li>How many links would you need to connect 4, 5, 6, 10 nodes?</li>
+</ul>
+</li>
+<li>Each connection necessitated its own pair of interfaces and a distinct IP range (192.168.10.x, 192.168.20.x, 192.168.30.x)</li>
+</ul>
+<hr />
+<h2 id="do-this-try-to-eavesdrop">Do this - try to eavesdrop</h2>
+<p>Start a capture on <code>H2</code>- <code>H3</code> link. </p>
+<p>On <code>H1</code>:
+<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.2
+ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.20.3
+</code></pre></div></p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>Even though <code>H1</code> talked to both <code>H2</code> and <code>H3</code>, Wireshark heard nothing</li>
+<li>Each conversation is private, i.e., seen only by the <strong>interfaces</strong> involved in the conversation.</li>
+<li><strong>This is essentially what a mesh topology is</strong>. </li>
+<li>A full mesh topology requires <span class="arithmatex">\(n(n - 1)^2\)</span> links to connect <code>n</code> nodes</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td># of dedicated links for 3 nodes</td>
+<td></td>
+</tr>
+<tr>
+<td># of interfaces required on each node</td>
+<td></td>
+</tr>
+<tr>
+<td># of IP addresses required on each node</td>
+<td></td>
+</tr>
+<tr>
+<td># of links required to connect 4, 5, and 10 nodes</td>
+<td></td>
+</tr>
+<tr>
+<td>Can <code>H2</code> hear the conversation between <code>H1</code> and <code>H3</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cannot attach cable to node</td>
+<td>too few interfaces</td>
+<td>Configure -&gt; Network -&gt; Adapters</td>
+</tr>
+<tr>
+<td><code>ping</code> fails</td>
+<td>address mismatch</td>
+<td>ensure each pair of interfaces on the connection have matching subnets</td>
+</tr>
+<tr>
+<td><code>nmcli</code> fails</td>
+<td>not enough permissions</td>
+<td>log in as root or use <code>sudo</code></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1218,9 +1596,6 @@
 
 
 
-
-  
-  
 
 
 
@@ -1252,7 +1627,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../week01-foundations/worksheet/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Worksheet">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Devices &amp; Topologies">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1262,20 +1637,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Worksheet
+                Devices & Topologies
               </div>
             </div>
           </a>
         
         
           
-          <a href="./a1-dedicated-links/" class="md-footer__link md-footer__link--next" aria-label="Next: Dedicated links">
+          <a href="../a2-bridge-the-network/" class="md-footer__link md-footer__link--next" aria-label="Next: Bridge the network">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Dedicated links
+                Bridge the network
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1317,12 +1692,12 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
