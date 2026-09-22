@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week01-foundations/worksheet/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a2-broadcast-domain/">
       
       
-        <link rel="prev" href="../a4-speak-a-protocol-by-hand/">
+        <link rel="prev" href="../a1-transparent-bridging/">
       
       
-        <link rel="next" href="../../week02-devices/">
+        <link rel="next" href="../a3-spanning-tree-protocol/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Worksheet - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Broadcast Domain - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-1-worksheet-foundations" class="md-skip">
+        <a href="#w3a2-ethernet-broadcast" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Worksheet
+              Broadcast Domain
             
           </span>
         </div>
@@ -478,8 +478,6 @@
                   
   
   
-    
-  
   
   
     
@@ -513,15 +511,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -545,7 +543,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -564,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -591,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -618,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -645,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -669,36 +667,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Worksheet
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -713,73 +685,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        1 — Two nodes, one cable
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — Where are the layers
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        4 — Speak a protocol by hand
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1023,8 +928,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1056,15 +963,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week03-switching/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1088,7 +995,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1107,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+      <a href="../a1-transparent-bridging/" class="md-nav__link">
         
   
   
@@ -1131,10 +1038,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Broadcast Domain
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1149,6 +1082,140 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adjust-the-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Adjust the topology
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-force-a-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — force a broadcast
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — force a broadcast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — Clean up
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-send-a-real-broadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Send a real broadcast
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Send a real broadcast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1161,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+      <a href="../a3-spanning-tree-protocol/" class="md-nav__link">
         
   
   
@@ -1188,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a4-vlans/" class="md-nav__link">
+      <a href="../a4-vlans/" class="md-nav__link">
         
   
   
@@ -1215,7 +1282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1474,10 +1541,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
+  <a href="#adjust-the-topology" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        1 — Two nodes, one cable
+        Adjust the topology
       </span>
     </span>
   </a>
@@ -1485,10 +1552,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
+  <a href="#do-this-force-a-broadcast" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
+        Do this — force a broadcast
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — force a broadcast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — Clean up
       </span>
     </span>
   </a>
@@ -1496,10 +1602,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
+  <a href="#do-this-send-a-real-broadcast" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        3 — Where are the layers
+        Do this - Send a real broadcast
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Send a real broadcast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
       </span>
     </span>
   </a>
@@ -1507,10 +1641,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
+  <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        4 — Speak a protocol by hand
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1600,7 +1734,7 @@
           
   
   <span class="md-ellipsis">
-    Foundations
+    Ethernet & Switching
   </span>
 
         </a>
@@ -1617,198 +1751,186 @@
                 
                   
 
-<h1 id="week-1-worksheet-foundations">Week 1 worksheet — Foundations</h1>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Date</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-two-nodes-one-cable">1 — Two nodes, one cable</h2>
-<p><strong>Predict.</strong> Are two computers and one cable enough to make a network? ☐ yes ☐ no</p>
-<p>Why: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PC1 IP / MAC</td>
-<td></td>
-</tr>
-<tr>
-<td>PC2 IP / MAC</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, before addressing</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, after addressing</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, with PC1 on <code>/25</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Why did the <code>/25</code> break it?</p>
+<h1 id="w3a2-ethernet-broadcast">W3·A2 — Ethernet broadcast</h1>
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> A1's topology, with <code>PC1</code> replaced by an <strong>OL9 PC</strong> ·</p>
+<p><strong>GNS3 project:</strong> <code>w03-a1-mac-table</code> (continue in it)</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What does a switch do with a frame whose destination it does not know?</p>
+</div>
 <hr />
+<h2 id="adjust-the-topology">Adjust the topology</h2>
+<p>Replace <code>PC1</code> with an <strong>OL9 PC</strong> node renamed <code>PC1</code>.</p>
+<p>Log on to <code>PC1</code> as <em>admin</em>, then:
+<div class="highlight"><pre><span></span><code>sudo nmcli con mod 'System eth0` con-name eth0
+sudo nmcli con mod eth0 ipv4.method manual ipv4.addresses 192.168.10.11/24
+sudo nmcli con up eth0
+
+ping -c1 192.168.10.12
+</code></pre></div></p>
 <hr />
-<hr />
-<h2 id="2-client-server-vs-peer-to-peer">2 — Client-server vs peer-to-peer</h2>
-<p><strong>Predict.</strong> Between client-server and peer-to-peer, which is more vulnerable 
-to in single node failure? </p>
-<hr />
-<p><strong>Observe.</strong></p>
+<h2 id="do-this-force-a-broadcast">Do this — force a broadcast</h2>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip neigh replace 192.168.10.12 lladdr &lt;PC2-MAC&gt; dev eth0 nud permanent
+ip neigh show
+</code></pre></div></p>
+<p>On <code>SW1</code>:
+<div class="highlight"><pre><span></span><code>bridge fdb del &lt;PC2-MAC&gt; dev eth1 master
+bridge fdb show br br0 | grep -v permanent 
+</code></pre></div></p>
+<p>Start a capture on the <strong><code>PC3</code>↔<code>SW1</code></strong> link. Then on <code>PC1</code>:</p>
+<div class="highlight"><pre><span></span><code>ping -c1 192.168.10.12
+</code></pre></div>
+<p>Read the capture. Then run the ping a <strong>second</strong> time and read it again.</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>PC3</code> saw the packet, yet this was not a broadcast:<ul>
+<li>Look at the destination address. It is <code>PC2</code>'s real address, not <code>ff:ff:ff:ff:ff:ff</code>. </li>
+<li><code>PC3</code> received a frame  addressed to somebody else.</li>
+<li>There was no reply from <code>PC3</code>. It ignored the frame since it was not the intended recipient</li>
+</ul>
+</li>
+<li>This is called <strong>flooding</strong>. The switch did not know where to send the frame, <strong>so it sent it 
+out of every port except the port it came from</strong>.</li>
+<li>By the time the second ping arrive, the switch knew where <code>PC2</code> was, so it sent it there directly. <code>PC3</code> saw nothing.</li>
+</ul>
+<h3 id="summary">Summary</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Client-server</th>
-<th>Peer-to-peer</th>
+<th>Broadcast</th>
+<th>Unknown-unicast</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nodes with a listening socket</td>
-<td></td>
-<td></td>
+<td>Destination MAC</td>
+<td><code>ff:ff:ff:ff:ff:ff</code></td>
+<td>a real host's address</td>
 </tr>
 <tr>
-<td>Conversations lost when H1 fails</td>
-<td></td>
-<td></td>
+<td>Why it floods</td>
+<td>the address <em>means</em> "everyone"</td>
+<td>the switch does not know where to send the frame</td>
 </tr>
 <tr>
-<td>Conversations lost when H2 fails</td>
-<td></td>
-<td></td>
+<td>Stops when</td>
+<td>never — always floods</td>
+<td>the switch learns that MAC</td>
+</tr>
+<tr>
+<td>Who processes it</td>
+<td>every host</td>
+<td>one host; the rest discard</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Apply.</strong>  What one command would you run on an unknown machine to tell you whether it is acting as a
-server and why?</p>
 <hr />
+<h2 id="do-this-clean-up">Do this — Clean up</h2>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip neigh del 192.168.10.12 dev eth0
+</code></pre></div></p>
+<p>On <code>SW1</code>:
+<div class="highlight"><pre><span></span><code>bridge fdb flush dev br0
+bridge fdb | grep -v permanent
+</code></pre></div></p>
 <hr />
-<h2 id="3-where-are-the-layers">3 — Where are the layers</h2>
-<p><strong>Predict.</strong> How many different kinds of metadata does a request need to carry 
-to retrieve a web page?</p>
+<h2 id="do-this-send-a-real-broadcast">Do this - Send a real broadcast</h2>
+<p>Replace the remaining three <strong>VPCS</strong> with <strong>OL9 PC</strong> nodes, rename them accordingly,
+then re-cable.</p>
+<p>Assign the same addresses as before.</p>
+<p>By default Linux ignores broadcast pings. Turn that off on our recipients:</p>
+<div class="highlight"><pre><span></span><code># on PC2, PC3 and PC4
+sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=0
+</code></pre></div>
+<p>Start a capture on <code>PC4</code>'s link. Then on <code>PC1</code>:</p>
+<div class="highlight"><pre><span></span><code>ping -b -c2 192.168.10.255
+</code></pre></div>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>The <strong>broadcast domain</strong> is the set of hosts that answer a broadcast, which is a fancy
+way of saying the entire network. Each one of our three recipients received the broadcast,
+processed it and answered. Contract that to the <strong>flooding</strong> scenario.</li>
+<li>Power off one of the recipients and do the ping again. The switch will still forward the frame
+<strong>regardless of whether anything is listening</strong>.</li>
+<li>The switch's job is to forward the frames. That's all Layer 2 does. What the recipients do with
+the frame is their business.<ul>
+<li>if we had kept the <code>icmp_echo_ignore_broadcasts</code> default, one one would have answered the broadcast. The switch doesn't care either way.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Why did we use L2 broadcast address?</p>
+<p><code>255.255.255.255</code> is Layer 2 broadcast address, i.e. works only
+within the same link. In contrast, <code>192.168.10.255</code> is Layer 3
+broadcast (more on this in <em>week 4</em>).</p>
+<p>To ping <code>255.255.255.255</code>, you have to tell the kernel which
+interface to use:</p>
+<div class="highlight"><pre><span></span><code>ping -b -I eth0 255.255.255.255
+</code></pre></div>
+</div>
 <hr />
-<p>Can you name them?</p>
-<hr />
-<hr />
-<p><strong>Observe — the PDU table.</strong> <em>(Referred back to in weeks 3, 4 and beyond. Keep it.)</em></p>
+<h2 id="record">Record</h2>
 <table>
 <thead>
 <tr>
-<th>Wireshark layer</th>
-<th>Layer #</th>
-<th>Layer name</th>
-<th>PDU name</th>
-<th>Addresses here</th>
-<th>Bytes</th>
+<th></th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Ethernet II</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Destination MAC of the flooded frame</td>
 <td></td>
 </tr>
 <tr>
-<td>IPv4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Destination MAC of broadcast frame</td>
 <td></td>
 </tr>
 <tr>
-<td>TCP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>What stopped the flooding</td>
 <td></td>
 </tr>
 <tr>
-<td>HTTP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Data</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>What stops a real broadcast</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="4-speak-a-protocol-by-hand">4 — Speak a protocol by hand</h2>
-<p><strong>Predict.</strong> You mistype <code>GET</code> as <code>GIT</code>. Who notices? ☐ your computer ☐ the server ☐ neither</p>
-<p><strong>Observe.</strong></p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th>Attempt</th>
-<th>Exact server response</th>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>no <code>Host:</code> header</td>
-<td></td>
+<td>ARP frames still appear</td>
+<td>static entry not applied</td>
+<td><code>ip neigh show</code> — the line must read <code>PERMANENT</code></td>
 </tr>
 <tr>
-<td>nonexistent file</td>
-<td></td>
+<td><code>ping -b</code> refuses</td>
+<td>you must be root</td>
+<td>use <code>sudo</code> or log in as <code>root</code></td>
 </tr>
 <tr>
-<td><code>GIT</code> instead of <code>GET</code></td>
-<td></td>
-</tr>
-<tr>
-<td>no HTTP version</td>
-<td></td>
+<td>Zero replies to broadcast frame</td>
+<td><code>icmp_echo_ignore_broadcasts</code> still <code>1</code></td>
+<td><code>sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=0</code> on the <em>recipients</em></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Explain.</strong> Your computer transmitted <code>GIT</code> without complaint. What does that tell you about where
-a protocol is enforced?</p>
-<hr />
-<hr />
 
 
 
@@ -1848,7 +1970,7 @@ a protocol is enforced?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a4-speak-a-protocol-by-hand/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Speak a protocol by hand">
+          <a href="../a1-transparent-bridging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Transparent Bridging">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1858,20 +1980,20 @@ a protocol is enforced?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Speak a protocol by hand
+                Transparent Bridging
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../week02-devices/" class="md-footer__link md-footer__link--next" aria-label="Next: Devices &amp; Topologies">
+          <a href="../a3-spanning-tree-protocol/" class="md-footer__link md-footer__link--next" aria-label="Next: Spanning Tree">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Devices & Topologies
+                Spanning Tree
               </div>
             </div>
             <div class="md-footer__button md-icon">

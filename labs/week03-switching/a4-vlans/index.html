@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week01-foundations/worksheet/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a4-vlans/">
       
       
-        <link rel="prev" href="../a4-speak-a-protocol-by-hand/">
+        <link rel="prev" href="../a3-spanning-tree-protocol/">
       
       
-        <link rel="next" href="../../week02-devices/">
+        <link rel="next" href="../worksheet/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Worksheet - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>VLANs - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-1-worksheet-foundations" class="md-skip">
+        <a href="#w3a4-split-the-network" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Worksheet
+              VLANs
             
           </span>
         </div>
@@ -478,8 +478,6 @@
                   
   
   
-    
-  
   
   
     
@@ -513,15 +511,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -545,7 +543,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -564,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -591,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -618,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -645,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -669,36 +667,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Worksheet
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -713,73 +685,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        1 — Two nodes, one cable
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — Where are the layers
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        4 — Speak a protocol by hand
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1023,8 +928,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1056,15 +963,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week03-switching/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1088,7 +995,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1107,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+      <a href="../a1-transparent-bridging/" class="md-nav__link">
         
   
   
@@ -1134,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+      <a href="../a2-broadcast-domain/" class="md-nav__link">
         
   
   
@@ -1161,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+      <a href="../a3-spanning-tree-protocol/" class="md-nav__link">
         
   
   
@@ -1185,10 +1092,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week03-switching/a4-vlans/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VLANs
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1203,6 +1136,163 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-add-another-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Add another switch
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Add another switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-build-it-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Build it by hand
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Build it by hand">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-add-a-management-lane" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Add a management lane
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Add a management lane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1215,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1474,10 +1564,122 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
+  <a href="#build-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        1 — Two nodes, one cable
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-add-another-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Add another switch
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Add another switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-build-it-by-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Build it by hand
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Build it by hand">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-add-a-management-lane" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Add a management lane
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Add a management lane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
       </span>
     </span>
   </a>
@@ -1485,32 +1687,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
+  <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — Where are the layers
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        4 — Speak a protocol by hand
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1600,7 +1780,7 @@
           
   
   <span class="md-ellipsis">
-    Foundations
+    Ethernet & Switching
   </span>
 
         </a>
@@ -1617,25 +1797,178 @@
                 
                   
 
-<h1 id="week-1-worksheet-foundations">Week 1 worksheet — Foundations</h1>
+<h1 id="w3a4-split-the-network">W3·A4 — Split the network</h1>
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> One <strong>Ethernet Switch</strong> + 4 VPCS, one <strong>OL9 Switch</strong>, one <strong>OL9 PC</strong></p>
+<p><strong>GNS3 project:</strong> <code>w03-a4-vlans</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>All that broadcast traffic will slow down the network as it grows to hundreds
+of hosts. Additionally, you may need to control access to certain resources
+in the network such that such that only authorized personnel have access.</p>
+<p>How can you configure this without changing the physical network?</p>
+</div>
+<hr />
+<h2 id="build-it">Build it</h2>
+<ul>
+<li>Drag an <strong>Ethernet Switch</strong> on to the canvas and cable 4 VPCs to it.</li>
+<li>Assign addresses in the <code>192.168.10.x</code> range</li>
+<li>Run some pings to ensure all PCs can each the other three</li>
+<li>Record which PC is cabled to which port on the switch, then:<ul>
+<li>Right-click on the switch -&gt; Configure</li>
+<li>put <code>PC1</code> and <code>PC4</code> in VLAN 10</li>
+<li>put <code>PC2</code> and <code>PC3</code> in VLAN 20</li>
+</ul>
+</li>
+<li>Start a capture on <code>PC4</code> cable</li>
+<li>Run the same pings as before. </li>
+</ul>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>After configuring the VLANs, the network is no longer universally reachable. <code>PC1</code> can only 
+reach <code>PC4</code>, and <code>PC2</code> can only reach <code>PC3</code>.</li>
+<li>Broadcasts are no longer delivered to everybody on the network, but only to those in the same
+VLAN.</li>
+<li>You changed who can hear whom without changing the physical network</li>
+</ul>
+<hr />
+<h2 id="do-this-add-another-switch">Do this - Add another switch</h2>
+<ul>
+<li>Add a second <strong>Ethernet Switch</strong> and re-cable <code>PC3</code> and <code>PC4</code> to the second switch</li>
+<li>Put <code>PC3</code> and <code>PC4</code> in the same VLANs as before</li>
+<li>Run a cable between the two switches and note the ports on either end of this cable</li>
+<li>On each switch, right-click -&gt; Configure, find the <code>SW1</code>-<code>SW2</code> port and change it type to <code>dot1q</code></li>
+<li>Start a capture on <code>SW1</code>-<code>SW2</code> cable</li>
+<li>Run the same pings as before and ensure <code>PC4</code> can still hear <code>PC1</code> and <code>PC3</code> can still hear <code>PC2</code>.</li>
+</ul>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>VLANs work across switches. </li>
+<li>The switch-to-switch cable <strong>must carry VLAN information</strong> to ensure the other switch
+know how to deliver the frame.<ul>
+<li>Frames that carry VLAN information are called <strong>Tagged Frames</strong> and the tags are injected
+into the frames by the switch</li>
+<li>The port on the switch that carries tagged frames is called a <strong>trunk</strong> port (which is what
+the <code>dot1q</code> type was in the configuration step above). </li>
+<li>The ports that deliver the frames to end hosts are called <strong>access</strong> ports. They do not carry 
+tagged frames. The switch removes the tags before delivering it to the recipient.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="do-this-build-it-by-hand">Do this - Build it by hand</h2>
+<p>Replace <code>SW2</code> with an <strong>OL9 Switch</strong> and record which ports are connected to what:</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Date</th>
+<th></th>
+<th>port</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><code>PC3</code></td>
 <td></td>
+</tr>
+<tr>
+<td><code>PC4</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SW1</code></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="1-two-nodes-one-cable">1 — Two nodes, one cable</h2>
-<p><strong>Predict.</strong> Are two computers and one cable enough to make a network? ☐ yes ☐ no</p>
-<p>Why: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
-<p><strong>Observe.</strong></p>
+<p>Configure similar to how you configured the bridge in A1. Then:</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod br0 bridge.vlan-filtering yes bridge.vlan-default-pvid 0
+</code></pre></div>
+<p>The following assumes <code>PC3</code> is connected to <code>port-eth1</code>, <code>PC4</code> on <code>port-eth2</code> and <code>SW1</code> on <code>port-eth0</code>. If your setup is different, adjust the commands accordingly:</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod port-eth1 bridge-port.vlans "20 pvid untagged"
+
+nmcli con mod port-eth2 bridge-port.vlans "10 pvid untagged"
+
+nmcli con mod port-eth0 bridge-port.vlans "10,20"
+
+bridge vlan show
+</code></pre></div>
+<p>Run the pings as before and ensure the topology behaves the same.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>You built a VLAN-enabled switch by hand.</li>
+<li><code>vlan-filtering</code> tells the bridge to filter traffic based on VLAN ids</li>
+<li><code>vlan-default-pvid</code> ensure the bridge ports are not placed in a VLAN by default. The default is <code>1</code>, which tells the port to carry all VLANs</li>
+<li>An access port is defined by setting its ID with <code>pvid untagged</code> because access ports don't carry tagged frames</li>
+<li>Unline the built-in switch, a Linux bridge requires you to specify all VLAN IDs a trunk port is expected to carry.</li>
+</ul>
+<hr />
+<h2 id="do-this-add-a-management-lane">Do this - Add a management lane</h2>
+<p>A management VLAN is an administrative channel allowing you to access devices you need to manage
+(switches, routers, servers, firewalls, etc) while keeping them inaccessible by other users on 
+the network.</p>
+<p>We will use this to manage <code>SW2</code> remotely.</p>
+<p>We will use VLAN 99 for management.</p>
+<p>First, configure the management PC. </p>
+<ul>
+<li>Add an <strong>OL9 PC</strong> node to <code>SW1</code>, rename it <code>PC-MGMT</code> and put it in VLAN 99</li>
+</ul>
+<p>Now, we have to tell the trunk port on <code>SW2</code> to carry VLAN 99 too:
+<div class="highlight"><pre><span></span><code>nmcli con mod port-eth0 bridge-port.vlans "10,20,99"
+
+bridge vlan show
+</code></pre></div></p>
+<p>Give <code>SW1</code> an IP address so that it can be reached remotely. This is a two-step dance. </p>
+<p>First you have to tell the bridge that it's in VLAN 99 itself:
+<div class="highlight"><pre><span></span><code>nmcli con mod br0 bridge.vlans "99"
+nmcli con up br0
+
+bridge vlan show
+</code></pre></div></p>
+<p>But we can't assign the IP address to the bridge itself, otherwise the frames it sends won't be tagged. 
+<code>br0</code> with an address behaves just like any other host, and hosts don't tag; only switches do.
+So instead, we create a VLAN interface on the bridge and assign the address to it:</p>
+<div class="highlight"><pre><span></span><code>nmcli con add type vlan ifname br0.99 con-name mgmt dev br0 id 99
+nmcli con mod mgmt ipv4.method manual ipv4.addresses 192.168.10.200/24 ipv6.method disabled
+
+nmcli con up mgmt
+</code></pre></div>
+<p>On <code>PC-MGMT</code>:
+<div class="highlight"><pre><span></span><code>ping -c1 192.168.10.200
+</code></pre></div></p>
+<p>Make sure the ping succeeds before continuing.</p>
+<p>On <code>PC-MGMT</code>, create SSH keys and upload the public key to <code>SW2</code>:
+<div class="highlight"><pre><span></span><code>ssh-keygen -t ed25519 -C "Management keys" -f ~/.ssh/mgmt-ed25519
+
+ssh-copy-id -i ~/.ssh/mgmt-ed25519.pub admin@192.168.10.200
+</code></pre></div></p>
+<p>Edit <code>~/.ssh.config</code> on <code>PC-MGMT</code> and add the following content:</p>
+<div class="highlight"><pre><span></span><code>Host *
+    User admin
+    IdentityFile ~/.ssh/mgmt-ed25519
+
+Host sw1
+    HostName 192.168.10.200
+</code></pre></div>
+<p>Run a management command. On <code>PC-MGMT</code>:
+<div class="highlight"><pre><span></span><code>ssh sw1 "bridge vlan show"
+</code></pre></div></p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>The management VLAN is a separate lane reserved for administrative remote access. Nobody 
+else is allowed in this VLAN</li>
+<li>We needed to use an <strong>OL9 Switch</strong> to demonstrate accessing a switch remotely, as the 
+built-in <strong>Ethernet Switch</strong> does not expose a management interface</li>
+<li>The SSH configuration is important. Remote access is almost always achieved this way, 
+not just because it is convenient, but because it is more secure as well. You don't have
+to worry as much about compromised passwords (but you should probably rotate your keys).
+This is industry standard.</li>
+</ul>
+<h2 id="record">Record</h2>
 <table>
 <thead>
 <tr>
@@ -1645,170 +1978,59 @@
 </thead>
 <tbody>
 <tr>
-<td>PC1 IP / MAC</td>
+<td>The 4 PCs VLAN ids</td>
 <td></td>
 </tr>
 <tr>
-<td>PC2 IP / MAC</td>
+<td>ARP broadcast from PC1 on PC3's cable, before / after VLAN</td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, before addressing</td>
+<td>New field in <code>bridge fdb show</code></td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, after addressing</td>
+<td>Extra bytes in a tagged frame</td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, with PC1 on <code>/25</code></td>
+<td>What would be needed to connect VLAN 10 to VLAN 20</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Explain.</strong> Why did the <code>/25</code> break it?</p>
-<hr />
-<hr />
-<hr />
-<h2 id="2-client-server-vs-peer-to-peer">2 — Client-server vs peer-to-peer</h2>
-<p><strong>Predict.</strong> Between client-server and peer-to-peer, which is more vulnerable 
-to in single node failure? </p>
-<hr />
-<p><strong>Observe.</strong></p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Client-server</th>
-<th>Peer-to-peer</th>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nodes with a listening socket</td>
-<td></td>
-<td></td>
+<td>Everything still reachable</td>
+<td><code>vid 1</code> not removed</td>
+<td><code>bridge.vlan-default-pvid 0</code></td>
 </tr>
 <tr>
-<td>Conversations lost when H1 fails</td>
-<td></td>
-<td></td>
+<td><strong>All</strong> pings fail, including within a VLAN</td>
+<td>ports missing <code>pvid untagged</code></td>
+<td><code>bridge vlan show</code> — access ports must show <code>PVID Egress Untagged</code></td>
 </tr>
 <tr>
-<td>Conversations lost when H2 fails</td>
-<td></td>
-<td></td>
+<td>No 802.1Q layer on the trunk capture</td>
+<td>you captured an access link</td>
+<td>capture the <code>SW1</code>↔<code>SW2</code> link specifically</td>
+</tr>
+<tr>
+<td><code>bridge vlan</code> says "Operation not supported"</td>
+<td><code>vlan_filtering</code> still 0</td>
+<td><code>bridge.vlan-filtering yes</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Apply.</strong>  What one command would you run on an unknown machine to tell you whether it is acting as a
-server and why?</p>
-<hr />
-<hr />
-<h2 id="3-where-are-the-layers">3 — Where are the layers</h2>
-<p><strong>Predict.</strong> How many different kinds of metadata does a request need to carry 
-to retrieve a web page?</p>
-<hr />
-<p>Can you name them?</p>
-<hr />
-<hr />
-<p><strong>Observe — the PDU table.</strong> <em>(Referred back to in weeks 3, 4 and beyond. Keep it.)</em></p>
-<table>
-<thead>
-<tr>
-<th>Wireshark layer</th>
-<th>Layer #</th>
-<th>Layer name</th>
-<th>PDU name</th>
-<th>Addresses here</th>
-<th>Bytes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ethernet II</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>IPv4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>TCP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>HTTP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Data</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-speak-a-protocol-by-hand">4 — Speak a protocol by hand</h2>
-<p><strong>Predict.</strong> You mistype <code>GET</code> as <code>GIT</code>. Who notices? ☐ your computer ☐ the server ☐ neither</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Attempt</th>
-<th>Exact server response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no <code>Host:</code> header</td>
-<td></td>
-</tr>
-<tr>
-<td>nonexistent file</td>
-<td></td>
-</tr>
-<tr>
-<td><code>GIT</code> instead of <code>GET</code></td>
-<td></td>
-</tr>
-<tr>
-<td>no HTTP version</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Your computer transmitted <code>GIT</code> without complaint. What does that tell you about where
-a protocol is enforced?</p>
-<hr />
-<hr />
 
 
 
@@ -1848,7 +2070,7 @@ a protocol is enforced?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a4-speak-a-protocol-by-hand/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Speak a protocol by hand">
+          <a href="../a3-spanning-tree-protocol/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spanning Tree">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1858,20 +2080,20 @@ a protocol is enforced?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Speak a protocol by hand
+                Spanning Tree
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../week02-devices/" class="md-footer__link md-footer__link--next" aria-label="Next: Devices &amp; Topologies">
+          <a href="../worksheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Worksheet">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Devices & Topologies
+                Worksheet
               </div>
             </div>
             <div class="md-footer__button md-icon">

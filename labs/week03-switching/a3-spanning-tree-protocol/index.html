@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week01-foundations/worksheet/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a3-spanning-tree-protocol/">
       
       
-        <link rel="prev" href="../a4-speak-a-protocol-by-hand/">
+        <link rel="prev" href="../a2-broadcast-domain/">
       
       
-        <link rel="next" href="../../week02-devices/">
+        <link rel="next" href="../a4-vlans/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Worksheet - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Spanning Tree - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-1-worksheet-foundations" class="md-skip">
+        <a href="#w3a3-stopping-broadcast-storms" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Worksheet
+              Spanning Tree
             
           </span>
         </div>
@@ -478,8 +478,6 @@
                   
   
   
-    
-  
   
   
     
@@ -513,15 +511,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -545,7 +543,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -564,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -591,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -618,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -645,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -669,36 +667,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Worksheet
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -713,73 +685,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        1 — Two nodes, one cable
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — Where are the layers
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        4 — Speak a protocol by hand
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1023,8 +928,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1056,15 +963,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week03-switching/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1088,7 +995,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1107,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+      <a href="../a1-transparent-bridging/" class="md-nav__link">
         
   
   
@@ -1134,7 +1041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+      <a href="../a2-broadcast-domain/" class="md-nav__link">
         
   
   
@@ -1158,10 +1065,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spanning Tree
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1176,6 +1109,124 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Fix it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Fix it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-bring-the-full-network-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — Bring the full network up
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — Bring the full network up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1188,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a4-vlans/" class="md-nav__link">
+      <a href="../a4-vlans/" class="md-nav__link">
         
   
   
@@ -1215,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1474,43 +1525,94 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
+  <a href="#build-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        1 — Two nodes, one cable
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
       </span>
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
+  <a href="#do-this-fix-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
+        Do this - Fix it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Fix it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
       </span>
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
+  <a href="#do-this-bring-the-full-network-up" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        3 — Where are the layers
+        Do this — Bring the full network up
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — Bring the full network up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
       </span>
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
+  <a href="#if-it-went-wrong" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        4 — Speak a protocol by hand
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1600,7 +1702,7 @@
           
   
   <span class="md-ellipsis">
-    Foundations
+    Ethernet & Switching
   </span>
 
         </a>
@@ -1617,198 +1719,141 @@
                 
                   
 
-<h1 id="week-1-worksheet-foundations">Week 1 worksheet — Foundations</h1>
+<h1 id="w3a3-stopping-broadcast-storms">W3·A3 — Stopping broadcast storms</h1>
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> two <strong>OL9 Switches</strong> + 4 VPCS</p>
+<p><strong>GNS3 project:</strong> <code>w03-a3-stp</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What happens when you introduce a physical loop in the network?</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>This activity deliberately creates a broadcast storm</strong>. Nothing is damaged,
+but the topology may become unusable if kept running for a long time. Know how
+to stop the nodes from the toolbar before you start.</p>
+</div>
+<hr />
+<h2 id="build-it">Build it</h2>
+<ul>
+<li>Start by running two cables between them, using their first two interfaces, i.e.:<ul>
+<li><code>SW1</code>.Ethernet0 -&gt; <code>SW2</code>.Ethernet0</li>
+<li><code>SW1</code>.Ethernet1 -&gt; <code>SW3</code>.Ethernet1</li>
+<li><strong>Don't cable the PCs yet</strong>. You will do that in the next step</li>
+</ul>
+</li>
+<li>
+<p><strong>With <code>SW2</code> still down</strong>, start and configure <code>SW1</code> similar to how you configured the bridge in A1</p>
+<ul>
+<li>
+<p><strong>STP</strong> is enabled by default. Disable it:</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod br0 bridge.stp no
+</code></pre></div>
+</li>
+<li>
+<p>Then, disable one of the links: </p>
+<p><div class="highlight"><pre><span></span><code>ip link set dev eth0 down
+</code></pre></div>
+- Now start and configure <code>SW2</code> similar to how you configured the bridge in A1
+    - Disable <strong>STP</strong>:</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod br0 bridge.stp no
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Start a capture on the <code>SW1</code>.Ethernet1-<code>SW2</code>.Ethernet1 cable</p>
+</li>
+</ul>
+<p>On <code>SW1</code>, enable the first cable, while still watching the capture:
+<div class="highlight"><pre><span></span><code>ip link set dev eth0 up
+</code></pre></div></p>
+<p>Immediately, right-click on <code>SW2</code> and pause it.</p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li>The moment we enabled the second link, the network was flooded by a single packet 
+that bounced between the two switches at a very high rate. The packet itself was 
+a multicast which behaves similar to broadcast in Layer 2. </li>
+<li><strong>Stop</strong> the topology if you haven't done so already, otherwise Wireshark might fill your
+disk very quickly.</li>
+<li>This is a serious problem. On the one hand, we need redundant links so that one link 
+going down doesn't take the entire network with it. On the other hand, the broadcast storm 
+we just witnessed.</li>
+<li>This is what the <strong>Spanning Tree Protocol</strong> is designed to solve.</li>
+</ul>
+<hr />
+<h2 id="do-this-fix-it">Do this - Fix it</h2>
+<p>First, take the link down, temporarily. On <code>SW1</code>:
+<div class="highlight"><pre><span></span><code>ip link set eth0 down
+</code></pre></div></p>
+<p>Then, on both <code>SW1</code> and <code>SW2</code>, enable <strong>STP</strong>:
+<div class="highlight"><pre><span></span><code>nmcli con mod br0 bridge.stp yes
+</code></pre></div></p>
+<p>Re-enable the link. On <code>SW1</code>:
+<div class="highlight"><pre><span></span><code>ip link set eth0 up
+
+bridge link show
+</code></pre></div></p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li>With <strong>STP</strong> enabled, the storm stopped.</li>
+<li>Look closer at the output of <code>bridge link show</code> on <code>SW1</code>. One of the link is in <strong>blocking</strong> state. <ul>
+<li><strong>STP</strong> prevents broadcast storms by detecting redundant links and <strong>proactively</strong> disabling 
+them while still keeping the network as whole reachable.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="do-this-bring-the-full-network-up">Do this — Bring the full network up</h2>
+<p>Cable the four PCs:</p>
+<ul>
+<li><code>PC1</code> and <code>PC2</code> on <code>SW1</code></li>
+<li><code>PC3</code> and <code>PC4</code> on <code>SW2</code></li>
+</ul>
+<p>Start them and assign them addresses in the <code>192.168.10.x</code> range.</p>
+<p>Run a few pings to ensure they can all reach the other three.</p>
+<p>On <code>SW1</code>, bring one link down again:
+<div class="highlight"><pre><span></span><code>ip link set dev eth0 down
+bridge link show
+</code></pre></div></p>
+<p>Run the pings again and verify that traffic is still going through</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>We deliberately bring one link down and traffic keeps going through<ul>
+<li>Look closely at the output of <code>bridge link show</code>. The link that was in <strong>blocking</strong> 
+state earlier is not now <strong>forwarding</strong>.</li>
+<li>This is <strong>STP</strong> at work, and it happens instantly.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Date</th>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
+<td>GNS3 unresponsive during Part 2</td>
+<td>broadcast storm</td>
+<td>clic the big red button in the toolbar to stop the topology, then bring one link down before you restart it</td>
+</tr>
+<tr>
+<td>No storm at all</td>
+<td>STP still enabled</td>
+<td><code>nmcli con mod br0 bridge.stp no</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="1-two-nodes-one-cable">1 — Two nodes, one cable</h2>
-<p><strong>Predict.</strong> Are two computers and one cable enough to make a network? ☐ yes ☐ no</p>
-<p>Why: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PC1 IP / MAC</td>
-<td></td>
-</tr>
-<tr>
-<td>PC2 IP / MAC</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, before addressing</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, after addressing</td>
-<td></td>
-</tr>
-<tr>
-<td>Ping, with PC1 on <code>/25</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Why did the <code>/25</code> break it?</p>
-<hr />
-<hr />
-<hr />
-<h2 id="2-client-server-vs-peer-to-peer">2 — Client-server vs peer-to-peer</h2>
-<p><strong>Predict.</strong> Between client-server and peer-to-peer, which is more vulnerable 
-to in single node failure? </p>
-<hr />
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Client-server</th>
-<th>Peer-to-peer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nodes with a listening socket</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Conversations lost when H1 fails</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Conversations lost when H2 fails</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Apply.</strong>  What one command would you run on an unknown machine to tell you whether it is acting as a
-server and why?</p>
-<hr />
-<hr />
-<h2 id="3-where-are-the-layers">3 — Where are the layers</h2>
-<p><strong>Predict.</strong> How many different kinds of metadata does a request need to carry 
-to retrieve a web page?</p>
-<hr />
-<p>Can you name them?</p>
-<hr />
-<hr />
-<p><strong>Observe — the PDU table.</strong> <em>(Referred back to in weeks 3, 4 and beyond. Keep it.)</em></p>
-<table>
-<thead>
-<tr>
-<th>Wireshark layer</th>
-<th>Layer #</th>
-<th>Layer name</th>
-<th>PDU name</th>
-<th>Addresses here</th>
-<th>Bytes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ethernet II</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>IPv4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>TCP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>HTTP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Data</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-speak-a-protocol-by-hand">4 — Speak a protocol by hand</h2>
-<p><strong>Predict.</strong> You mistype <code>GET</code> as <code>GIT</code>. Who notices? ☐ your computer ☐ the server ☐ neither</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Attempt</th>
-<th>Exact server response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no <code>Host:</code> header</td>
-<td></td>
-</tr>
-<tr>
-<td>nonexistent file</td>
-<td></td>
-</tr>
-<tr>
-<td><code>GIT</code> instead of <code>GET</code></td>
-<td></td>
-</tr>
-<tr>
-<td>no HTTP version</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Your computer transmitted <code>GIT</code> without complaint. What does that tell you about where
-a protocol is enforced?</p>
-<hr />
-<hr />
 
 
 
@@ -1848,7 +1893,7 @@ a protocol is enforced?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a4-speak-a-protocol-by-hand/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Speak a protocol by hand">
+          <a href="../a2-broadcast-domain/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Broadcast Domain">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1858,20 +1903,20 @@ a protocol is enforced?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Speak a protocol by hand
+                Broadcast Domain
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../week02-devices/" class="md-footer__link md-footer__link--next" aria-label="Next: Devices &amp; Topologies">
+          <a href="../a4-vlans/" class="md-footer__link md-footer__link--next" aria-label="Next: VLANs">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Devices & Topologies
+                VLANs
               </div>
             </div>
             <div class="md-footer__button md-icon">

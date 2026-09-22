@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week01-foundations/worksheet/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week03-switching/a1-transparent-bridging/">
       
       
-        <link rel="prev" href="../a4-speak-a-protocol-by-hand/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../week02-devices/">
+        <link rel="next" href="../a2-broadcast-domain/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Worksheet - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Transparent Bridging - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-1-worksheet-foundations" class="md-skip">
+        <a href="#w3a1-the-mac-address-table" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Worksheet
+              Transparent Bridging
             
           </span>
         </div>
@@ -478,8 +478,6 @@
                   
   
   
-    
-  
   
   
     
@@ -513,15 +511,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -545,7 +543,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -564,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -591,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a2-client-server-vs-p2p/" class="md-nav__link">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -618,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -645,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -669,36 +667,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Worksheet
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -713,73 +685,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        1 — Two nodes, one cable
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — Where are the layers
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        4 — Speak a protocol by hand
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1023,8 +928,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1056,15 +963,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week03-switching/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1088,7 +995,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1104,10 +1011,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transparent Bridging
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1122,6 +1055,196 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-collect-the-macs-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — collect the MACs first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-read-the-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — read the table
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — read the table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-it-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch it forget
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch it forget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-move-a-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — move a host
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — move a host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1134,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+      <a href="../a2-broadcast-domain/" class="md-nav__link">
         
   
   
@@ -1161,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+      <a href="../a3-spanning-tree-protocol/" class="md-nav__link">
         
   
   
@@ -1188,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/a4-vlans/" class="md-nav__link">
+      <a href="../a4-vlans/" class="md-nav__link">
         
   
   
@@ -1215,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week03-switching/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1474,10 +1597,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-two-nodes-one-cable" class="md-nav__link">
+  <a href="#build-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        1 — Two nodes, one cable
+        Build it
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this
       </span>
     </span>
   </a>
@@ -1485,10 +1636,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-client-server-vs-peer-to-peer" class="md-nav__link">
+  <a href="#predict-first" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        2 — Client-server vs peer-to-peer
+        Predict first
       </span>
     </span>
   </a>
@@ -1496,10 +1647,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-where-are-the-layers" class="md-nav__link">
+  <a href="#do-this-collect-the-macs-first" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        3 — Where are the layers
+        Do this — collect the MACs first
       </span>
     </span>
   </a>
@@ -1507,10 +1658,105 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-speak-a-protocol-by-hand" class="md-nav__link">
+  <a href="#do-this-read-the-table" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        4 — Speak a protocol by hand
+        Do this — read the table
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — read the table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-watch-it-forget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — watch it forget
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — watch it forget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-move-a-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — move a host
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — move a host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
       </span>
     </span>
   </a>
@@ -1600,7 +1846,7 @@
           
   
   <span class="md-ellipsis">
-    Foundations
+    Ethernet & Switching
   </span>
 
         </a>
@@ -1617,198 +1863,233 @@
                 
                   
 
-<h1 id="week-1-worksheet-foundations">Week 1 worksheet — Foundations</h1>
+<h1 id="w3a1-the-mac-address-table">W3·A1 — The MAC address table</h1>
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> one <strong>OL9 Switch</strong> + 4 VPCS </p>
+<p><strong>GNS3 project:</strong> <code>w03-a1-mac-table</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Times listed are approximate and provided as timing guidelines only. 
+Take as much time as you need to complete the activity.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>How does a switch learn the location of each node on the network?</p>
+</div>
+<hr />
+<h2 id="build-it">Build it</h2>
+<ul>
+<li>Drag an <strong>Ethernet Switch</strong> and 4 <strong>VPCS</strong> on to the canvas and cable them</li>
+<li>Run the topology and assign address to each PC:</li>
+</ul>
+<p>On <code>PC1</code>/ <code>PC2</code> / <code>PC3</code> / <code>PC4</code>:
+<div class="highlight"><pre><span></span><code>ip 192.168.10.11/24     # .12 / .13 / .14
+save
+</code></pre></div></p>
+<p>Start a capture on <code>PC4</code> cable. </p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ping 192.168.10.12
+</code></pre></div></p>
+<h3 id="what-just-happened">What just happened</h3>
+<ul>
+<li><code>PC1</code> starts by sending an ARP broadcast which everyone sees, including <code>PC4</code>. <ul>
+<li>Everyone processes the broadcast, but only one, <code>PC2</code>, answers</li>
+</ul>
+</li>
+<li>The ICMP packet is then sent unicast to <code>PC2</code>, and to no one else. How did the switch know where <code>PC2</code> is located?</li>
+<li>In Wireshark, select the ICMP packet and click on the Ethernet row in the details pane. The frame consists of the <strong>source</strong> MAC address, <strong>destination</strong> MAC address and a <strong>type</strong> (what the frame is carrying).</li>
+<li>In Wireshark, select the ARP packet and click on the Ethernet row in the details pane. In addition to the aforementioned fields, there is some padding and the <strong>FCS</strong>.<ul>
+<li>Ethernet requires a minimum size of 64 bytes. </li>
+<li>The frame headers themselves cost 14 bytes (6 for each MAC address, and 2 for the type), plus <strong>FCS</strong>'s 4 bytes. </li>
+<li>The ARP payload is too small to satisfy the minimum size requirement, so Ethernet pads the remaining bytes with zeros.</li>
+</ul>
+</li>
+<li>That, in a nutshell, is what an Ethernet frame is. Layer 2 devices (switch, NIC) only process frames and never read the payload content.</li>
+</ul>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>GNS3 built-in Ethernet Switch offers not means to pick inside and "watch" what it is doing.
+We will build our own custom switch using the <strong>OL9</strong> appliance in order to directly 
+observe how it learns the network in real time.</p>
+</div>
+<h2 id="do-this">Do this</h2>
+<ul>
+<li>Start by importing the <a href="/appliances/ol9-switch.gns3a">OL9 Switch</a> appliance.</li>
+<li>Delete <code>SW1</code> and replace it with an <strong>OL9 Switch 1.0</strong>, renaming it <code>SW1</code>. Then re-cable the 4 VPCS.</li>
+<li>Configure the bridge</li>
+</ul>
+<p>Log on to <code>SW1</code> as <em>root</em>, then:
+<div class="highlight"><pre><span></span><code>nmcli con add type bridge con-name br0 ifname br0 connection.autoconnect-slaves 1
+nmcli con mod br0 ipv4.method disabled ipv6.method disabled
+
+for i in eth0 eth1 eth2 eth3; do
+    nmcli con add type bridge-slave ifname $i con-name port-$i master br0
+done
+
+nmcli con up br0
+
+bridge link show
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Disable IP on the bridge</p>
+<p>IP must be disabled on the bridge interface, otherwise NetworkManager
+will attempt to find an address through DHCP, and when that fails, bring
+the bridge down.</p>
+</div>
+<hr />
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>Before any traffic, how many entries are in the bridge's table? <strong><em>_</em></strong></li>
+<li>After <code>PC1</code> pings <code>PC2</code>, what does the bridge know (i.e. whose address is in its table)? <strong><em>_</em></strong></li>
+<li>Which packet taught the switch where <code>PC2</code> is — <code>PC1</code>'s request or <code>PC2</code>'s reply? <strong><em>_</em></strong></li>
+</ol>
+<hr />
+<h2 id="do-this-collect-the-macs-first">Do this — collect the MACs first</h2>
+<p>Run <code>show ip</code> on each VPCS and record its MAC. Without these, the MAC table will be unreadable.</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Date</th>
+<th>Node</th>
+<th>MAC address</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>PC1</td>
 <td></td>
+</tr>
+<tr>
+<td>PC2</td>
+<td></td>
+</tr>
+<tr>
+<td>PC3</td>
+<td></td>
+</tr>
+<tr>
+<td>PC4</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="1-two-nodes-one-cable">1 — Two nodes, one cable</h2>
-<p><strong>Predict.</strong> Are two computers and one cable enough to make a network? ☐ yes ☐ no</p>
-<p>Why: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></p>
-<p><strong>Observe.</strong></p>
+<h2 id="do-this-read-the-table">Do this — read the table</h2>
+<ul>
+<li>First, ensure <code>PC1</code> can ping the other three</li>
+</ul>
+<p>On <code>SW1</code>, flush the MAC table:
+<div class="highlight"><pre><span></span><code>bridge fdb flush dev br0
+</code></pre></div></p>
+<p>Read the table:
+<div class="highlight"><pre><span></span><code>bridge fdb | grep -v permanent
+</code></pre></div></p>
+<p>We're ignoring entries marked as "permanent" since these are the bridge's own port addresses, not learned ones.</p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>clear arp
+ping 192.168.10.12 -c 1
+</code></pre></div></p>
+<p>And immediately on <code>SW1</code>, show the MAC table again.</p>
+<h3 id="what-just-happened_1">What just happened</h3>
+<ul>
+<li><strong>Two entries</strong>, and only two: <code>PC1</code>'s MAC on <code>eth0</code>, <code>PC2</code>'s on <code>eth1</code> (verify them against your
+own table recorded earlier). Notice that <code>PC3</code> and <code>PC4</code> are absent from the table for now.<ul>
+<li>a bridge <strong>learns</strong> from the <strong>source</strong> address of frames that arrive, and <strong>forwards</strong> on 
+the <strong>destination</strong>. </li>
+<li><code>PC2</code> entry came from <strong><code>PC2</code>'s reply</strong>, not from <code>PC1</code> request. The request taught it only
+about <code>PC1</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="do-this-watch-it-forget">Do this — watch it forget</h2>
+<p>Entries in a bridge's MAC table have an expiry date. Ageing is in <strong>centiseconds</strong>, so 30 seconds is <code>3000</code>. The default is <code>30000</code></p>
+<p>On <code>SW1</code>:
+<div class="highlight"><pre><span></span><code>ip link set dev br0 type bridge ageing_time 1000
+</code></pre></div></p>
+<p>Then ping from <code>PC1</code> and read the table. The entries should disappear after 10 seconds.</p>
+<p>Put it back: <code>ip link set dev br0 type bridge ageing_time 30000</code>.</p>
+<h3 id="what-just-happened_2">What just happened</h3>
+<ul>
+<li>The dynamic entries <strong>vanished on their own</strong>. Nothing deleted them and nothing went wrong.</li>
+<li><strong>A MAC table is a cache</strong> and caches expire. What this means is that nothing the switch knows
+is correct forever; it is only <strong>recently</strong> correct. Also, a switch that has been idle knows nothing.
+There is a parallel to be made with ARP caches. The general idea is that networks are dynamic and 
+the discovery mechanisms reflect this.</li>
+<li>There is a balancing act is choosing the right ageing time: too short and the switch floods constantly; too long and it  keeps sending frames to the wrong port.</li>
+</ul>
+<hr />
+<h2 id="do-this-move-a-host">Do this — move a host</h2>
+<p>With ageing back at 300 s:</p>
+<ul>
+<li>ping from <code>PC4</code> so the switch learns it. Then swap <code>PC4</code> and <code>PC3</code></li>
+<li><strong>without sending any traffic from it</strong> - check the table. Then ping from <code>PC4</code> and check again.</li>
+</ul>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>The entry still named the <strong>old port</strong>, and would have until it aged out. A switch cannot detect a
+  move; it can only be told by sending traffic through it.</li>
+<li>The switch is constantly updating its table on every arriving frame. That's why <code>PC4</code> arriving frame
+<strong>corrected</strong> its entry instantly.</li>
+</ul>
+<hr />
+<h2 id="record">Record</h2>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Value</th>
+<th>value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>PC1 IP / MAC</td>
+<td>Entries before any traffic</td>
 <td></td>
 </tr>
 <tr>
-<td>PC2 IP / MAC</td>
+<td>Entries after PC1 → PC2</td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, before addressing</td>
+<td>Which frame taught the switch about PC2</td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, after addressing</td>
+<td>Port recorded for PC4 after moving it, before it transmits</td>
 <td></td>
 </tr>
 <tr>
-<td>Ping, with PC1 on <code>/25</code></td>
+<td>Port after PC4 transmits</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Explain.</strong> Why did the <code>/25</code> break it?</p>
-<hr />
-<hr />
-<hr />
-<h2 id="2-client-server-vs-peer-to-peer">2 — Client-server vs peer-to-peer</h2>
-<p><strong>Predict.</strong> Between client-server and peer-to-peer, which is more vulnerable 
-to in single node failure? </p>
-<hr />
-<p><strong>Observe.</strong></p>
+<h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Client-server</th>
-<th>Peer-to-peer</th>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nodes with a listening socket</td>
-<td></td>
-<td></td>
+<td>bridge interface disappears</td>
+<td>NetworkManager is attempting to assign an address</td>
+<td><code>nmcli con mod br0 ipv4.method disabled ipv6.method disabled</code></td>
 </tr>
 <tr>
-<td>Conversations lost when H1 fails</td>
-<td></td>
-<td></td>
+<td><code>bridge fdb show</code> lists only <code>permanent</code> rows</td>
+<td>no traffic yet</td>
+<td>ping first; drop the <code>grep -v</code> to see everything</td>
 </tr>
 <tr>
-<td>Conversations lost when H2 fails</td>
-<td></td>
-<td></td>
+<td>Table never ages</td>
+<td>you set <code>ageing_time</code> too high</td>
+<td><code>cat /sys/class/net/br0/bridge/ageing_time</code> and compare</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Apply.</strong>  What one command would you run on an unknown machine to tell you whether it is acting as a
-server and why?</p>
-<hr />
-<hr />
-<h2 id="3-where-are-the-layers">3 — Where are the layers</h2>
-<p><strong>Predict.</strong> How many different kinds of metadata does a request need to carry 
-to retrieve a web page?</p>
-<hr />
-<p>Can you name them?</p>
-<hr />
-<hr />
-<p><strong>Observe — the PDU table.</strong> <em>(Referred back to in weeks 3, 4 and beyond. Keep it.)</em></p>
-<table>
-<thead>
-<tr>
-<th>Wireshark layer</th>
-<th>Layer #</th>
-<th>Layer name</th>
-<th>PDU name</th>
-<th>Addresses here</th>
-<th>Bytes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ethernet II</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>IPv4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>TCP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>HTTP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Data</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-speak-a-protocol-by-hand">4 — Speak a protocol by hand</h2>
-<p><strong>Predict.</strong> You mistype <code>GET</code> as <code>GIT</code>. Who notices? ☐ your computer ☐ the server ☐ neither</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Attempt</th>
-<th>Exact server response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no <code>Host:</code> header</td>
-<td></td>
-</tr>
-<tr>
-<td>nonexistent file</td>
-<td></td>
-</tr>
-<tr>
-<td><code>GIT</code> instead of <code>GET</code></td>
-<td></td>
-</tr>
-<tr>
-<td>no HTTP version</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Your computer transmitted <code>GIT</code> without complaint. What does that tell you about where
-a protocol is enforced?</p>
-<hr />
-<hr />
 
 
 
@@ -1848,7 +2129,7 @@ a protocol is enforced?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a4-speak-a-protocol-by-hand/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Speak a protocol by hand">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ethernet &amp; Switching">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1858,20 +2139,20 @@ a protocol is enforced?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Speak a protocol by hand
+                Ethernet & Switching
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../week02-devices/" class="md-footer__link md-footer__link--next" aria-label="Next: Devices &amp; Topologies">
+          <a href="../a2-broadcast-domain/" class="md-footer__link md-footer__link--next" aria-label="Next: Broadcast Domain">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Devices & Topologies
+                Broadcast Domain
               </div>
             </div>
             <div class="md-footer__button md-icon">
