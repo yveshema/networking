@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week01-foundations/a2-client-server-vs-p2p/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/a1-the-routing-table/">
       
       
-        <link rel="prev" href="../a1-two-nodes-one-cable/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../a3-where-are-the-layers/">
+        <link rel="next" href="../a2-the-next-hop/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Client-server vs P2P - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>The Routing Table - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#w1a2-client-server-vs-peer-to-peer" class="md-skip">
+        <a href="#build-it" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Client-server vs P2P
+              The Routing Table
             
           </span>
         </div>
@@ -482,8 +482,6 @@
                   
   
   
-    
-  
   
   
     
@@ -517,15 +515,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week01-foundations/" class="md-nav__link ">
               
   
   
@@ -549,7 +547,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -568,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-two-nodes-one-cable/" class="md-nav__link">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
         
   
   
@@ -592,36 +590,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Client-server vs P2P
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
         
   
   
@@ -636,168 +608,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#import-the-appliance" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Import the appliance
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Build it
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#predict-first" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Predict first
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-client-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this — client-server
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this — client-server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-kill-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this — kill it
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this — kill it">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this — peer-to-peer
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this — peer-to-peer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#record" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Record
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-it-went-wrong" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        If it went wrong
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -810,7 +620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-where-are-the-layers/" class="md-nav__link">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
         
   
   
@@ -837,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-speak-a-protocol-by-hand/" class="md-nav__link">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
         
   
   
@@ -864,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../worksheet/" class="md-nav__link">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
         
   
   
@@ -1347,8 +1157,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1374,15 +1186,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week04-ipv4-routing/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1406,7 +1218,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1422,10 +1234,34 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a1-the-routing-table/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Routing Table
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1440,6 +1276,206 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Predict first">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-add-a-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — add a route
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — add a route">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-lan2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - LAN2
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - LAN2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-use-the-network-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Use the network ID
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Use the network ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-make-it-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this - Make it global
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Make it global">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-how-decisions-are-made" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — how decisions are made
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — how decisions are made">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1452,7 +1488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a2-the-next-hop/" class="md-nav__link">
+      <a href="../a2-the-next-hop/" class="md-nav__link">
         
   
   
@@ -1682,8 +1718,6 @@
                     
                     
                     
-                      
-                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1701,25 +1735,12 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#import-the-appliance" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Import the appliance
-      </span>
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#build-it" class="md-nav__link">
@@ -1741,18 +1762,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-client-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this — client-server
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this — client-server">
+    <nav class="md-nav" aria-label="Predict first">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1772,15 +1782,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-this-kill-it" class="md-nav__link">
+  <a href="#do-this-add-a-route" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this — kill it
+        Do this — add a route
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this — kill it">
+    <nav class="md-nav" aria-label="Do this — add a route">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1800,15 +1810,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-this-peer-to-peer" class="md-nav__link">
+  <a href="#do-this-lan2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this — peer-to-peer
+        Do this - LAN2
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this — peer-to-peer">
+    <nav class="md-nav" aria-label="Do this - LAN2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1828,24 +1838,86 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#record" class="md-nav__link">
+  <a href="#do-this-use-the-network-id" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Record
+        Do this - Use the network ID
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this - Use the network ID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
       </span>
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#if-it-went-wrong" class="md-nav__link">
+  <a href="#do-this-make-it-global" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        If it went wrong
+        Do this - Make it global
       </span>
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Do this - Make it global">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-how-decisions-are-made" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — how decisions are made
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — how decisions are made">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1919,12 +1991,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -1934,7 +2000,7 @@
           
   
   <span class="md-ellipsis">
-    Foundations
+    IPv4 Routing
   </span>
 
         </a>
@@ -1951,10 +2017,11 @@
                 
                   
 
-<h1 id="w1a2-client-server-vs-peer-to-peer">W1·A2 — Client-server vs peer-to-peer</h1>
-<p><strong>Time:</strong> 30 min</p>
-<p><strong>Needs:</strong> three <strong>OL9 PC</strong> nodes + one Ethernet switch</p>
-<p><strong>GNS3 project:</strong> <code>w01-a2-roles</code></p>
+  <h1 id="__skip">The Routing Table</h1>
+
+<p><strong>Time:</strong> 60 min</p>
+<p><strong>Needs:</strong> one <strong>OL9 Router</strong>, one <strong>OL9 PC</strong>, 2 VPCS and  two Ethernet switch</p>
+<p><strong>GNS3 project:</strong> <code>w04-a1-routing-table</code></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Times listed are approximate and provided as timing guidelines only. 
@@ -1962,180 +2029,232 @@ Take as much time as you need to complete the activity.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>Where is the server?</p>
+<p>How does a host on a LAN reach arbitrary destinations on the internet whilst knowing
+nothing about where they are located?</p>
 </div>
 <hr />
-<h2 id="import-the-appliance">Import the appliance</h2>
-<ul>
-<li>Download the <a href="/appliances" target="_blank">OL9 PC appliance</a></li>
-<li>In GNS3, go to <strong>File -&gt; Import appliance</strong> then click through the import wizard.</li>
-<li>
-<p>When you reach <strong>Required files</strong>, click the <strong>Download</strong> button to download the disk image.
-This will take a minute. </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>You only need to download the OL9 disk image once. All remaining appliances
-in this course reference the same disk image.</p>
-</div>
-</li>
-<li>
-<p>Complete the remaining steps</p>
-</li>
-</ul>
 <h2 id="build-it">Build it</h2>
-<ul>
-<li><em>Browse Switches</em> and drag an <em>Ethernet switch</em> on to the canvas</li>
-<li><em>Browse End Devices</em> and drag three <em>OL9 PC 1.0</em> onto the canvas</li>
-<li>Right-click each PC node, go to <strong>Change hostname</strong> and rename them to <code>H1</code>, <code>H2</code>, <code>H3</code> respectively.</li>
-<li>Run a cable between each host and the switch.</li>
-<li>Click the green start button to run the topology</li>
-<li>Click on the console button to bring up a console window for your hosts</li>
-</ul>
-<div class="admonition tip">
-<p class="admonition-title">Login credentials</p>
-<p>Hover each PC to see the login credentials.</p>
-<p>All OL9 nodes use the same login credentials.</p>
-</div>
-<p>Log on to <code>H1</code>:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span><span class="s1">'System eth0'</span><span class="w"> </span>con-name<span class="w"> </span>eth0
-sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>eth0<span class="w"> </span>ipv4.method<span class="w"> </span>manual<span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.11/24
-sudo<span class="w"> </span>nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>eth0
+<div class="highlight"><pre><span></span><code>  LAN1 192.168.100.0/24      10.0.0.0/30
+
+  PC1 ─── SW1 ─── R1 ───────────
+  .10             .1  10.0.0.1
 </code></pre></div>
-<p>Log on to <code>H2</code> and <code>H3</code> and do the same. Their addresses are <code>192.168.10.12/24</code> 
-and <code>192.168.10.13/24</code> respectively.</p>
+<p><code>R1</code> is an <strong>OL9 Router</strong>, <code>PC1</code> an <strong>OL9 PC</strong>, and <code>SW1</code> a plain Ethernet switch — the LAN needs
+one, even with a single host on it. Nothing is cabled to <code>R1:eth1</code>; the subnet on it exists purely
+to be somewhere <code>PC1</code> is <em>not</em> attached.</p>
+<p>Log on to R1 as root, then:
+<div class="highlight"><pre><span></span><code>nmcli con add type ethernet ifname eth0 con-name eth0
+nmcli con add type ethernet ifname eth1 con-name eth1
+
+nmcli con mod eth0 ipv4.method manual ipv4.addresses 192.168.100.1/24
+nmcli con mod eth1 ipv4.method manual ipv4.addresses 10.0.0.1/29
+
+nmcli con up eth0
+nmcli con up eth1
+
+sysctl -w net.ipv4.ip_forward=1
+</code></pre></div></p>
+<p>Log on to PC1 as root, then:
+<div class="highlight"><pre><span></span><code>nmcli con add type ethernet ifname eth0 con-name eth0 \
+    ipv4.method manual ipv4.addresses 192.168.100.10/24
+
+nmcli con up eth0
+</code></pre></div></p>
 <hr />
 <h2 id="predict-first">Predict first</h2>
 <ol>
-<li>In a client-server network of three machines, how many are running server software?</li>
-<li>If one machine fails, how many conversations stop? </li>
+<li>Without routing, PC1 can only reach its neighbors. How does PC1 determine who is a neighbor? ___</li>
 </ol>
-<hr />
-<h2 id="do-this-client-server">Do this — client-server</h2>
-<p>On <code>H1</code> only:</p>
-<div class="highlight"><pre><span></span><code>echo 'the only copy of anything' &gt; /tmp/index.html
-cd /tmp &amp;&amp; python3 -m http.server 8080 &amp;
+<div class="highlight"><pre><span></span><code># On PC1
+ip route show
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Background processes</p>
-<p>The <code>&amp;</code> at the end of the previous command is significant.
-It tells the shell to run the process in the background 
-and give you back the prompt.</p>
-<p>Press <strong>Enter</strong> to get the prompt back.</p>
-<p>Run <code>jobs</code> to see what's running in the background.
-Each running job has a number.</p>
-<p>Run <code>fg</code> to bring it in the foreground.</p>
-<p>Run <code>Ctrl+Z</code> followed by <code>bg</code> to put it back in the background.</p>
-<p>Run <code>kill %&lt;job_id&gt;</code> to stop it. E.g. <code>kill %1</code></p>
-</div>
-<p>On <code>H2</code> <strong>and</strong> <code>H3</code>:</p>
-<div class="highlight"><pre><span></span><code>curl http://192.168.10.11:8080/index.html
+<ol>
+<li>Can it reach <code>192.168.100.50</code>? ___ </li>
+<li>Can it reach <code>10.0.0.1</code>? ___</li>
+</ol>
+<p>Start a capture on <code>PC1</code> cable.</p>
+<div class="highlight"><pre><span></span><code># On PC1
+ping -c1 192.168.100.1
+ping -c1 10.0.0.1
 </code></pre></div>
-<p>Run the next command on each of the three nodes:</p>
-<div class="highlight"><pre><span></span><code>ss -tln
-</code></pre></div>
-<p>See any differences?</p>
-<div class="admonition info">
-<p class="admonition-title">Socket statistics</p>
-<p>The <code>ss</code> command is a Linux command-line utility for monitoring
-network connections.</p>
-<p><code>-tln</code> means "show me the port numbers (<code>-n</code>) of any listening (<code>-l</code>) 
-<strong>tcp</strong> (<code>-t</code>) processes on this system".</p>
-<p>We will meet it again.</p>
-</div>
 <h3 id="what-just-happened">What just happened</h3>
 <ul>
-<li><code>ss -tln</code> shows <code>H1</code> <strong>listening</strong> on <code>0.0.0.0:8080</code>. <code>H2</code> and <code>H3</code> listen for nothing. That
-  asymmetry is the entire definition — one process waits, two initiate.</li>
-<li><strong>The server is a process, not a box.</strong> All three nodes are identical OL9 images with identical
-  hardware. <code>H1</code> is the server because of one command you ran on it, and it stops being one the
-  moment you press <code>Ctrl-C</code>.</li>
+<li><code>PC1</code>'s routing table has only one entry. The entry was auto-generated. When you assign an address
+   to an interface, you make an implicit claim that the whole subnet the address is part of can be reached
+   out of that interface, and the kernel records that claim as a route.</li>
+<li>The <code>/24</code> defines the subnet. It identifies the <strong>leading</strong> 24 bits in the address as the subnet
+  previx. That maps to the three octets <code>192.168.100</code> (the dots mark byte boundary)</li>
+<li><strong>The address <code>192.168.100.0/24</code> is special. It is the first address in this subnet and it is used
+  in routing as the address of the whole subnet.</strong></li>
+<li>The ping  to <code>192.168.100.1</code> succeeded because it sits withing <code>PC1</code>'s subnet.</li>
+<li>The ping to <code>10.0.0.1</code> failed. The reason given was <strong>Network is unreachable</strong> and <code>PC1</code> put 
+  nothing on the wire, not even ARP (verify that in Wireshark), because the error came 
+  from <code>PC1</code>'s own kernel <ul>
+<li>It didn't matter that <code>10.0.0.1</code> is owned by a host on the same LAN. <code>PC1</code> instantly determined
+the address to be on a different subnet, and finding no matching route to try, gave up.</li>
 </ul>
-<h2 id="do-this-kill-it">Do this — kill it</h2>
-<p>On <code>H1</code>: <code>kill %1</code>. </p>
-<p>Then on <code>H2</code> and <code>H3</code>:</p>
-<div class="highlight"><pre><span></span><code>curl http://192.168.10.11:8080/index.html
+</li>
+</ul>
+<hr />
+<h2 id="do-this-add-a-route">Do this — add a route</h2>
+<div class="highlight"><pre><span></span><code># on PC1
+ip route add 10.0.0.1 via 192.168.100.1
+ip route show
+ping -c1 10.0.0.1
 </code></pre></div>
 <h3 id="what-just-happened_1">What just happened</h3>
 <ul>
-<li>Both clients dead, simultaneously, from one failure. <code>H2</code> and <code>H3</code> are up, cabled, and can still
-  ping each other — but neither is able to get what it wants, which is the web page that is no longer
-  being served by anybody.</li>
-<li><strong>The dependency is on the role, not the link.</strong> Nothing about the network broke.</li>
-<li><strong>The key idea:</strong> Simplicity, but <strong>single point of failure</strong></li>
+<li><code>PC1</code> now has a route to a destination outside its subnet, and the ping succeeds.</li>
 </ul>
 <hr />
-<h2 id="do-this-peer-to-peer">Do this — peer-to-peer</h2>
-<p>On <strong>all three</strong>, each hosting its own content:</p>
-<div class="highlight"><pre><span></span><code>echo "content from $(hostname)" &gt; /tmp/index.html
-cd /tmp &amp;&amp; python3 -m http.server 8080 &amp;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code># on H1
-curl http://192.168.10.12:8080/index.html
-curl http://192.168.10.13:8080/index.html
-</code></pre></div>
-<p>Then check the listeners again on each node:</p>
-<p>Now kill the server on <code>H2</code> and repeat every fetch.</p>
+<h2 id="do-this-lan2">Do this - LAN2</h2>
+<ul>
+<li>Drag a second Ethernet Switch on to the canvas, named it <code>SW2</code>, and cable <code>R1:eth1</code> to it</li>
+<li>Connecg two VPCS to <code>SW2</code></li>
+<li>Start a capture on <code>R1-SW2</code> cable</li>
+</ul>
+<p>On PC2 / PC3:
+<div class="highlight"><pre><span></span><code>ip 10.0.0.2/29      # .3
+</code></pre></div></p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ping -c1 10.0.0.1
+ping -c1 10.0.0.2
+</code></pre></div></p>
+<p>The ping to <code>10.0.0.2</code> fails. Let's add a route to it:</p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip route add 10.0.0.2 via 192.168.100.1
+
+ping -c1 10.0.0.2
+</code></pre></div></p>
+<p>There is no error this time, and Wireshark shows the packet was delivered, but there is no answer.</p>
+<p>On <code>PC2</code>:
+<div class="highlight"><pre><span></span><code>ip 10.0.0.2/29 10.0.0.1
+</code></pre></div></p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ping -c1 10.0.0.2
+ping -c1 10.0.0.3
+</code></pre></div></p>
 <h3 id="what-just-happened_2">What just happened</h3>
 <ul>
-<li><strong>Every node listens and every node initiates.</strong> There is no structural difference between the
-  machines, which is precisely what "peer" means.</li>
-<li>Pulling <code>H2</code> down made its content unavailable, but the rest of the network continued to function.
-  Compare that to  the client-server outage, where one failure took out every conversation on the network.</li>
-<li><strong>Nothing about the topology changed between the two halves of this activity.</strong> Same three nodes,
-  same switch, same cables, same addresses. The model is a property of <em>how the software is
-  arranged</em>, not of how the network is wired</li>
-<li>On the flip side, this is more costly. You have three copies to keep in sync, three machines to 
-secure, three addresses to keep track of.</li>
-<li><strong>The key idea:</strong> flexibility, but <strong>distribution</strong> burden.</li>
+<li>There were a couple of failures, and each had a different cause:<ul>
+<li>The first ping failed because <code>PC1</code> had no route to <code>PC2</code>, so we add the route</li>
+<li>The second ping was duly delivered to <code>PC2</code> but it had no route back to <code>PC1</code>, so it
+stayed silent. <code>PC1</code> waited for an answer that never came and eventually gave up waiting.</li>
+<li>The solution to the second failure was to tell <code>PC2</code> to use <code>R1</code> as its gateway. More on
+that in the next section.</li>
+</ul>
+</li>
+<li>The ping to <code>PC2</code> now succeeds, but <code>PC3</code> fails. We can add a route to it, but that would mean
+  adding an entry to <code>PC1</code> routing table each time <em>LAN2</em> gain a host, not to mention you would
+  need to do that for each host that joins <em>LAN1</em> as well. <strong>This is what network addresses exist
+  to solve</strong>.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">The power of 2 rule</p>
+<p>IPv4 subnet sizes are calculated as <span class="arithmatex">\(size = n^2\)</span>, where <code>n</code> is the number 
+of <em>host</em> bits. This is 32 minus the prefix length.</p>
+<p>So, for <code>/29</code>, the numbers break down as follows:</p>
+<ul>
+<li>Prefix length: <span class="arithmatex">\(29\)</span></li>
+<li>Host bits: <span class="arithmatex">\(32 - 29 = 3\)</span></li>
+<li>size: <span class="arithmatex">\(2^3 = 8\)</span></li>
+</ul>
+<p>This also means that the first address in any subnet must land on a power of 2
+and must be a multiple of the subnet size. More on this in the next module.</p>
+</div>
+<hr />
+<h2 id="do-this-use-the-network-id">Do this - Use the network ID</h2>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip route del 10.0.0.1
+ip route del 10.0.0.2
+
+ip route add 10.0.0.0/29 via 192.168.100.1
+ip route show
+</code></pre></div></p>
+<p>On <code>PC3</code>:
+<div class="highlight"><pre><span></span><code>ip 10.0.0.3/29 10.0.0.1
+</code></pre></div></p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ping -c1 10.0.0.2
+ping -c1 10.0.0.3
+</code></pre></div></p>
+<h3 id="what-just-happened_3">What just happened</h3>
+<ul>
+<li>Instead of routes to individual hosts, we now have one route for the entire <em>LAN2</em>, identified
+using the address <code>10.0.0.0/29</code>. This is called <strong>subnet ID</strong> or <strong>network ID</strong> and every 
+subnet has one. It is always the first address in the range, and it is <strong>reserved</strong>, i.e. 
+cannot be assigned to an interface.</li>
+<li>At this point, <code>PC1</code> can reach every host within <em>LAN1</em> and <em>LAN2</em>, and nothing more.</li>
 </ul>
 <hr />
-<h2 id="record">Record</h2>
-<p>Worksheet section 22:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Client-server</th>
-<th>Peer-to-peer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nodes with a listening socket</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Conversations lost when H1 fails</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Conversations lost when H2 fails</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Plus one sentence: what command would you run on an unknown machine to decide whether it is acting
-as a server?</p>
-<h2 id="if-it-went-wrong">If it went wrong</h2>
-<table>
-<thead>
-<tr>
-<th>Symptom</th>
-<th>Cause</th>
-<th>Fix</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Connection failed</code> but the server is running</td>
-<td>typo in either IP or port</td>
-<td>check any typos and rerun <code>curl</code></td>
-</tr>
-</tbody>
-</table>
+<h2 id="do-this-make-it-global">Do this - Make it global</h2>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip route del 10.0.0.3/29
+
+ip route add default via 192.168.100.1
+ip route show
+</code></pre></div></p>
+<h3 id="what-just-happened_4">What just happened</h3>
+<ul>
+<li>Instead of a specific route, we added a catch-all route, known as the <strong>default</strong> route. This means <code>PC1</code> can now attempt every destination in the world without having to be told about specific subnets.</li>
+<li>A default route (a.k.a default gateway) makes no claim about whether the destination exists. 
+It just tells you where to send packets whose destination is unknown. Every failure from here
+is somewhere else's problem.</li>
+</ul>
+<hr />
+<h2 id="do-this-how-decisions-are-made">Do this — how decisions are made</h2>
+<p>On <code>R1</code>:
+<div class="highlight"><pre><span></span><code>ip addr add 192.168.100.2/24 dev eth0
+ip addr add 192.168.100.3/24 dev eth0
+ip addr show eth0
+</code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Multiple addresses for one interface</p>
+<p>An interface is not limited to one address. <code>R1:eth0</code> now answers to three
+different addresses. This can be useful in a couple of scenarios:</p>
+<ul>
+<li>one server hosting several services that each need their own address rather
+than sharing one</li>
+<li><strong>renumbering</strong> — a router holding the old and the new gateway address simultaneously, 
+so that hosts can move across a few at a time instead of all at the instant of the change.</li>
+<li>a <strong>management</strong> address kept apart from the service address, so that the server stays
+reachable when the service address moves elsewhere</li>
+</ul>
+</div>
+<p>On PC1
+<div class="highlight"><pre><span></span><code>ip route get 192.168.100.50
+ip route get 10.0.0.2
+ip route get 8.8.8.8
+
+ip route add 10.0.0.0/24 via 192.168.100.2
+ip route get 10.0.0.2
+
+ip route add 10.0.0.0/29 via 192.168.100.3
+ip route get 10.0.0.2
+
+ip route get 10.0.0.9
+ip route show match 10.0.0.2
+ip route show
+</code></pre></div></p>
+<h3 id="what-just-happened_5">What just happened</h3>
+<ul>
+<li>
+<p>We used <code>ip route get</code> to ask the router how it would decide what to do given a concrete
+destination. The <strong>decision</strong> consists of a <strong>next hop</strong>, an outgoing interface and a source address.</p>
+<ul>
+<li>The <strong>next hop</strong> indicates a direction and makes not claim about the outcome</li>
+<li>The routing table's answer does not report <em>which entry</em> produced the decision</li>
+</ul>
+</li>
+<li>
+<p>Look at the <code>10.0.0.2</code> decision. <code>ip route show match 10.0.0.2</code> showed three candidate routes,
+and the one that won was the <strong>most specific</strong> — <code>/29</code> is more specific that <code>/24</code>.</p>
+<ul>
+<li>This mechanism matters for flexibility. It lets you define a broad routing statement
+and a narrow exception at once, with no conflict.</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -2144,6 +2263,9 @@ as a server?</p>
 
 
 
+
+  
+  
 
 
 
@@ -2175,7 +2297,7 @@ as a server?</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a1-two-nodes-one-cable/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Two nodes, one cable">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: IPv4 Routing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2185,20 +2307,20 @@ as a server?</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Two nodes, one cable
+                IPv4 Routing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../a3-where-are-the-layers/" class="md-footer__link md-footer__link--next" aria-label="Next: Where are the layers">
+          <a href="../a2-the-next-hop/" class="md-footer__link md-footer__link--next" aria-label="Next: The Next Hop">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Where are the layers
+                The Next Hop
               </div>
             </div>
             <div class="md-footer__button md-icon">

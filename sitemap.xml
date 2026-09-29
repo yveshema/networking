@@ -4,7 +4,25 @@
         <loc>https://networking.rysapp.com/</loc>
       </url>
       <url>
+        <loc>https://networking.rysapp.com/appliances/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/gns3/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/gns3/install-cloud-gns3-server/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/gns3/install-gns3-client/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/gns3/install-local-gns3-server/</loc>
+      </url>
+      <url>
         <loc>https://networking.rysapp.com/labs/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/info-duration/</loc>
       </url>
       <url>
         <loc>https://networking.rysapp.com/labs/week01-foundations/</loc>
@@ -61,19 +79,28 @@
         <loc>https://networking.rysapp.com/labs/week03-switching/worksheet/</loc>
       </url>
       <url>
-        <loc>https://networking.rysapp.com/gns3/</loc>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/</loc>
       </url>
       <url>
-        <loc>https://networking.rysapp.com/gns3/install-cloud-gns3-server/</loc>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a1-the-routing-table/</loc>
       </url>
       <url>
-        <loc>https://networking.rysapp.com/gns3/install-local-gns3-server/</loc>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a2-the-next-hop/</loc>
       </url>
       <url>
-        <loc>https://networking.rysapp.com/gns3/install-gns3-client/</loc>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a3-inter-vlan-routing/</loc>
       </url>
       <url>
-        <loc>https://networking.rysapp.com/appliances/</loc>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a4-ipv4-options/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a4-the-error-channel/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/a5-address-translation/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week04-ipv4-routing/worksheet/</loc>
       </url>
       <url>
         <loc>https://networking.rysapp.com/slides/</loc>

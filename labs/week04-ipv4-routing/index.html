@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/gns3/install-local-gns3-server/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/">
       
       
-        <link rel="prev" href="../install-cloud-gns3-server/">
+        <link rel="prev" href="../week03-switching/worksheet/">
       
       
-        <link rel="next" href="../install-gns3-client/">
+        <link rel="next" href="./a1-the-routing-table/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Install GNS3 server locally - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>IPv4 Routing - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-the-vm" class="md-skip">
+        <a href="#goal" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install GNS3 server locally
+              IPv4 Routing
             
           </span>
         </div>
@@ -177,42 +177,6 @@
   
   
   
-  
-    
-      
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../labs/" class="md-tabs__link">
-          
-  
-  Labs
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
     
   
   
@@ -221,6 +185,8 @@
       
         
           
+        
+      
         
       
         
@@ -235,6 +201,40 @@
     
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
+          
+  
+  Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../gns3/" class="md-tabs__link">
           
   
   GNS3
@@ -317,8 +317,6 @@
         <div class="md-main__inner md-grid">
           
             
-              
-                
               
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
@@ -403,6 +401,8 @@
       
   
   
+    
+  
   
   
     
@@ -412,6 +412,906 @@
           
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Labs
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Labs
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../week01-foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Foundations
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Foundations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Two nodes, one cable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Client-server vs P2P
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Where are the layers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Speak a protocol by hand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01-foundations/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../week02-devices/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Devices & Topologies
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Devices & Topologies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-devices/a1-dedicated-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dedicated links
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-devices/a2-bridge-the-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bridge the network
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-devices/a3-hub-vs-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hub vs Switch
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-devices/a4-two-legs-in-two-networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Two legs in two networks
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02-devices/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../week03-switching/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ethernet & Switching
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Ethernet & Switching
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transparent Bridging
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Broadcast Domain
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spanning Tree
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-switching/a4-vlans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VLANs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03-switching/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="././" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  IPv4 Routing
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  IPv4 Routing
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./a1-the-routing-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Routing Table
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./a2-the-next-hop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Next Hop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
         
       
         
@@ -441,14 +1341,14 @@
   
   
   
-    <a href="../../labs/" class="md-nav__link">
+    <a href="../../gns3/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
     
   
-  Labs
+  GNS3
 
     
   </span>
@@ -461,252 +1361,6 @@
     </a>
   
 
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  GNS3
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        
-          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-            <label class="md-nav__title" for="__nav_3">
-              <span class="md-nav__icon md-icon"></span>
-              
-  
-  GNS3
-
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix>
-              
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../install-cloud-gns3-server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Install a cloud server (recommended)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Install GNS3 server locally
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Install GNS3 server locally
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install-the-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Install the VM
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-the-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Configure the VM
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Verify setup
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-                
-              
-                
-                  
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../install-gns3-client/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Install GNS3 client
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                
-              
-            </ul>
-          </nav>
-        
       
     </li>
   
@@ -834,8 +1488,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   
@@ -867,10 +1519,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-the-vm" class="md-nav__link">
+  <a href="#goal" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Install the VM
+        Goal
       </span>
     </span>
   </a>
@@ -878,21 +1530,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-the-vm" class="md-nav__link">
+  <a href="#deliverable" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Configure the VM
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Verify setup
+        Deliverable
       </span>
     </span>
   </a>
@@ -912,202 +1553,103 @@
               
                 
 
+
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+
+        </a>
+      </li>
+    
   
 
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    IPv4 Routing
+  </span>
 
+        </a>
+      </li>
+    
+  
 
+      
+    </ol>
+  </nav>
 
               
               <article class="md-content__inner md-typeset">
                 
                   
 
-  <h1 id="__skip">Install GNS3 server locally</h1>
+  <h1 id="__skip">IPv4 Routing</h1>
 
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Do this only if you have enough memory to spare. The GNS3 server
-requires you to dedicate a static amount of memory for its use. 
-Each device (switch, router, vpcs) is an emulated instance with its own
-full copy of an operating system running in memory. A topology with 
-a doze nodes needs a dozen OS' worth of RAM running simultaneously.</p>
-<p>Budget for a minimum of 8GB RAM for GNS3 use.</p>
-<div class="admonition warning">
-<p class="admonition-title">Nested virtualization</p>
-<p>Ensure your system supports nested virtualization, otherwise GNS3 will
-run painfully slow no matter how much RAM you set aside for its use.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Version compatibility</p>
-<p>The <strong>client</strong> and <strong>server</strong> must be the same version.
-This course uses <strong>v2.2.61</strong></p>
-</div>
-</div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="windows" name="__tabbed_1" type="radio" /><input id="mac" name="__tabbed_1" type="radio" /><input id="linux" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="windows">Windows</label><label for="mac">Mac</label><label for="linux">Linux</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<h2 id="install-the-vm">Install the VM</h2>
+<h2 id="goal">Goal</h2>
 <ul>
-<li>Download installer: <a href="https://github.com/gns3/gns3-gui/releases">GNS3.VM.Hyper-V.2.2.61.zip from GNS3 GUI Github repo</a></li>
-<li>Extract the GNS3 VM zip file</li>
-<li>Open the extract folder, and double-click on the <code>install-vm.bat</code> file. A console window will flash on the screen for a while and close automatically. </li>
-<li>verify that the GNS3 VM installation completed. Open <strong>Hyper-V Manager</strong> and you should see it listed under "Virtual Machines".</li>
+<li>Describe the routing table</li>
+<li>Diagnose routing failures</li>
+<li>Connect two VLANs with a router</li>
+<li>Explain Layer 3 control and error channel</li>
 </ul>
-<h2 id="configure-the-vm">Configure the VM</h2>
+<h2 id="deliverable">Deliverable</h2>
 <ul>
-<li>still inside <strong>Hyper-V Manager</strong>, go to GNS3 VM -&gt; Settings and set Memory to a minimum of 8192 MB</li>
-<li>Enable nested Virtualization: open a Powershell console as <strong>Administrator</strong>. 
-  Run the following commands one after the other:
-    <div class="highlight"><pre><span></span><code>Stop-VM -Name "GNS3 VM"
-Set-VMProcessor -VMName "GNS3 VM" -ExposeVirtualizationExtensions $true
-Set-VMMemory -VMName "GNS3 VM" -DynamicMemoryEnabled $false
-Start-VM -Name "GNS3 VM"
-</code></pre></div></li>
+<li><a href="worksheet/">Worksheet</a></li>
+<li>Assignment II: IPv4 Routing</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Hyper-V conflict with the VM</p>
-<p>Hyper-V puts GNS3 VM on a <em>vSwitch</em> so that the controller, which runs
-locally on the machine can communicate with the VM. The <em>vSwitch</em> owns
-the <code>172.16.0.0/12</code> address space. This is the same address space used 
-by the VM's <strong>docker0</strong> interface.</p>
-<p>You must move the VM's docker's addressing out of this range to avoid potential
-conflict:</p>
-<ul>
-<li>Access the GNS3 VM. Go to <strong>Hyper-V Manager</strong> and select GNS3 VM. Start it if not running.<ul>
-<li>Go to <strong>GNS3 VM</strong> -&gt; Connect. This will launch a console window.</li>
-<li>Press <strong>Enter</strong> and use your keyboard arrows to select <strong>Shell</strong> and press <strong>Enter</strong></li>
-<li>You should now have a shell prompt. When you're done, close the console window.</li>
-</ul>
-</li>
-<li>
-<p>Edit <code>/etc/docker/daemon.json</code>:</p>
-<p>First, backup the existing configuration so you can recover it if anything goes wrong:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span>/etc/docker/daemon.json.bak
-</code></pre></div>
-<p>Then, edit the file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">"data-root"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/opt/docker"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"bip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.199.0.1/24"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"default-address-pools"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.200.0.0/16"</span><span class="p">,</span><span class="w"> </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-</li>
-<li>
-<p>Then restart docker:
-    <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool<span class="w"> </span>/etc/docker/daemon.json<span class="w">   </span><span class="c1"># ensure the json is well formed</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
-</code></pre></div></p>
-</li>
-</ul>
-</div>
-<h2 id="verify-setup">Verify setup</h2>
-<ul>
-<li>Launch GNS3</li>
-<li>check "Enable the GNS3 VM"<ul>
-<li>Virtualization engine: Hyper-V</li>
-<li>Action when closing GNS3: stop the GNS3 VM</li>
-</ul>
-</li>
-<li>Open a project and drag a few devices and cables onto the canvas</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<div class="admonition warning">
-<p class="admonition-title">Attention</p>
-<p>Only Intel Mac is supported</p>
-</div>
-<ul>
-<li>Install VMware Fusion</li>
-<li>Download GNS3 VM: <a href="https://github.com/gns3/gns3-gui/releases">GNS3.VM.VMware.Workstation.2.2.61.zip</a></li>
-<li>Extract the zip file</li>
-<li>Launch VMware Fusion, got to <strong>File -&gt; Import</strong> then select the GNS3 <code>.ova</code></li>
-<li>Install Wireshark. Get the <a href="https://www.wireshark.org/#download">installer</a></li>
-<li>Launch GNS3. Go to <strong>Edit -&gt; Preferences -&gt; GNS3 VM</strong>:<ul>
-<li>Ensure it's enabled</li>
-<li>Look for <strong>RAM</strong> input field and type in desired allocation (8192 MB minimum)</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="tabbed-block">
-<div class="admonition warning">
-<p class="admonition-title">Attention</p>
-<p>This assumes you've already install the client</p>
-</div>
-<ul>
-<li>Install the server: <code>pipx install gns3-server==2.2.61</code></li>
-<li>
-<p>Install <strong>ubridge</strong>. Required to create raw interfaces GNS3 needs:
-    <div class="highlight"><pre><span></span><code>git clone --depth 1 --branch v1.2.1 https://github.com/GNS3/ubridge.git
-make -C ubridge
-sudo install -m 755 ubridge/ubridge /usr/local/bin/ubridge
-sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/ubridge
-</code></pre></div>
-    The setcap step is required — without it uBridge can't create the raw 
-    interfaces GNS3 needs.</p>
-<div class="admonition failure">
-<p class="admonition-title">If it fails</p>
-<p>You may need to install dependencies:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="ubuntudebian" name="__tabbed_2" type="radio" /><input id="fedorarhel" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="ubuntudebian">Ubuntu/Debian</label><label for="fedorarhel">Fedora/RHEL</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><code>sudo apt install build-essential libpcap-dev git</code></p>
-</div>
-<div class="tabbed-block">
-<p><code>sudo dnf groupinstall "Development Tools" &amp;&amp; sudo dnf install libpcap-devel git</code></p>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>install <strong>dynamips</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="ubuntudebian_1" name="__tabbed_3" type="radio" /><input id="fedorarhel_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="ubuntudebian_1">Ubuntu/Debian</label><label for="fedorarhel_1">Fedora/RHEL</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><code>sudo apt install dynamips</code></p>
-</div>
-<div class="tabbed-block">
-<p><code>sudo dnf install dynamips</code></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requires RPM Fusion's nonfree repo</p>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p>Install <strong>vpcs</strong>:
-    Build from source (v0.6.2). 
-    Details at <a href="https://github.com/GNS3/vpcs.git">https://github.com/GNS3/vpcs.git</a></p>
-</li>
-<li>
-<p>Install <strong>Wireshark</strong>: </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="ubuntudebian_2" name="__tabbed_4" type="radio" /><input id="fedorarhel_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="ubuntudebian_2">Ubuntu/Debian</label><label for="fedorarhel_2">Fedora/RHEL</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo apt get install wireshark
-sudo dpkg-reconfigure wireshark-common  # answer "Yes" to non-superuser capture
-sudo usermod -aG wireshark $USER
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>```
-sudo dnf install wireshark
-sudo usermod -aG wireshark $USER</p>
-</div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-  
 
 
 
@@ -1122,8 +1664,6 @@ sudo usermod -aG wireshark $USER</p>
 
 
 
-
-  
 
 
 
@@ -1149,12 +1689,10 @@ sudo usermod -aG wireshark $USER</p>
   
     
       
-        
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../install-cloud-gns3-server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Install a cloud server (recommended)">
+          <a href="../week03-switching/worksheet/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Worksheet">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1164,20 +1702,20 @@ sudo usermod -aG wireshark $USER</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Install a cloud server (recommended)
+                Worksheet
               </div>
             </div>
           </a>
         
         
           
-          <a href="../install-gns3-client/" class="md-footer__link md-footer__link--next" aria-label="Next: Install GNS3 client">
+          <a href="./a1-the-routing-table/" class="md-footer__link md-footer__link--next" aria-label="Next: The Routing Table">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Install GNS3 client
+                The Routing Table
               </div>
             </div>
             <div class="md-footer__button md-icon">
