@@ -2126,7 +2126,7 @@ nothing about where they are located?</p>
 </div>
 <hr />
 <h2 id="build-it">Build it</h2>
-<div class="highlight"><pre><span></span><code>  LAN1 192.168.100.0/24      10.0.0.0/30
+<div class="highlight"><pre><span></span><code>  LAN1 192.168.100.0/24      10.0.0.0/29
 
   PC1 ─── SW1 ─── R1 ───────────
   .10             .1  10.0.0.1
@@ -2202,7 +2202,7 @@ ping -c1 10.0.0.1
 <h2 id="do-this-lan2">Do this - LAN2</h2>
 <ul>
 <li>Drag a second Ethernet Switch on to the canvas, named it <code>SW2</code>, and cable <code>R1:eth1</code> to it</li>
-<li>Connecg two VPCS to <code>SW2</code></li>
+<li>Connect two VPCS to <code>SW2</code></li>
 <li>Start a capture on <code>R1-SW2</code> cable</li>
 </ul>
 <p>On PC2 / PC3:
