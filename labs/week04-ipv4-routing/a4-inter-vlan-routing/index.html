@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/a2-bridge-the-network/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/a4-inter-vlan-routing/">
       
       
-        <link rel="prev" href="../a1-dedicated-links/">
+        <link rel="prev" href="../a3-the-error-channel/">
       
       
-        <link rel="next" href="../a3-hub-vs-switch/">
+        <link rel="next" href="../worksheet/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Bridge the network - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Inter-VLAN Routing - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bridge the network
+              Inter-VLAN Routing
             
           </span>
         </div>
@@ -704,8 +704,6 @@
                   
   
   
-    
-  
   
   
     
@@ -739,15 +737,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week02-devices/" class="md-nav__link ">
               
   
   
@@ -771,7 +769,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
               
@@ -790,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-dedicated-links/" class="md-nav__link">
+      <a href="../../week02-devices/a1-dedicated-links/" class="md-nav__link">
         
   
   
@@ -814,36 +812,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Bridge the network
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a2-bridge-the-network/" class="md-nav__link">
         
   
   
@@ -858,124 +830,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-build-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this - build it
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this - build it">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-test-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this - test it
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this - test it">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-it-went-wrong" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        If it went wrong
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -988,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-hub-vs-switch/" class="md-nav__link">
+      <a href="../../week02-devices/a3-hub-vs-switch/" class="md-nav__link">
         
   
   
@@ -1015,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-two-legs-in-two-networks/" class="md-nav__link">
+      <a href="../../week02-devices/a4-two-legs-in-two-networks/" class="md-nav__link">
         
   
   
@@ -1042,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../worksheet/" class="md-nav__link">
+      <a href="../../week02-devices/worksheet/" class="md-nav__link">
         
   
   
@@ -1300,8 +1154,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1333,15 +1189,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week04-ipv4-routing/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1365,7 +1221,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1384,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a1-the-routing-table/" class="md-nav__link">
+      <a href="../a1-the-routing-table/" class="md-nav__link">
         
   
   
@@ -1411,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a2-the-next-hop/" class="md-nav__link">
+      <a href="../a2-the-next-hop/" class="md-nav__link">
         
   
   
@@ -1438,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a3-the-error-channel/" class="md-nav__link">
+      <a href="../a3-the-error-channel/" class="md-nav__link">
         
   
   
@@ -1462,10 +1318,34 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a4-inter-vlan-routing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Inter-VLAN Routing
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1480,6 +1360,105 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build it
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-change-the-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 1 — Change the addressing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Change the addressing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-configure-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 2 — Configure routing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2 — Configure routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1492,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1722,8 +1701,6 @@
                     
                     
                     
-                      
-                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1741,8 +1718,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1751,15 +1726,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#do-this-build-it" class="md-nav__link">
+  <a href="#build-it" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this - build it
+        Build it
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this - build it">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-change-the-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Part 1 — Change the addressing
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1 — Change the addressing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1779,47 +1765,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-this-test-it" class="md-nav__link">
+  <a href="#part-2-configure-routing" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this - test it
+        Part 2 — Configure routing
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this - test it">
+    <nav class="md-nav" aria-label="Part 2 — Configure routing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#what-just-happened_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_2" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         What just happened
@@ -1930,7 +1888,7 @@
           
   
   <span class="md-ellipsis">
-    Devices & Topologies
+    IPv4 Routing
   </span>
 
         </a>
@@ -1949,10 +1907,11 @@
                   
 
 
-<h1 id="w2a2-bridge-the-network">W2·A2 - Bridge the network</h1>
-<p><strong>Time:</strong> 20 min</p>
-<p><strong>Needs:</strong>: A1's topology</p>
-<p><strong>GNS3 project:</strong>: <code>w02-a1-dedicated-links</code> (reuse it)</p>
+  <h1>Inter-VLAN Routing</h1>
+
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> one Ethernet switch, one <strong>OL9 PC</strong>, 4 VPCS</p>
+<p><strong>GNS3 project:</strong> <code>w04-a4-intervlan</code></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Times listed are approximate and provided as timing guidelines only. 
@@ -1960,113 +1919,209 @@ Take as much time as you need to complete the activity.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>How do you collapse three distinct links into a single network</p>
+<p>How do you enable hosts belonging to separate VLANs to communicate
+while maintaining broadcast isolation</p>
 </div>
 <hr />
-<h2 id="do-this-build-it">Do this - build it</h2>
-<p>On <code>H1</code>:
-<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge<span class="w"> </span>ifname<span class="w"> </span>br0<span class="w"> </span>con-name<span class="w"> </span>br0<span class="w"> </span>connection.autoconnect-slaves<span class="w"> </span><span class="m">1</span>
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>eth0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge-slave<span class="w"> </span>master<span class="w"> </span>br0
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>eth1<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge-slave<span class="w"> </span>master<span class="w"> </span>br0
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>br0<span class="w"> </span>ipv4.method<span class="w"> </span>manual<span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24
-nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>br0
+<h2 id="build-it">Build it</h2>
+<p>Drag an <strong>Ethernet Switch</strong> on to GNS3 canvas, name it <code>SW1</code>. Right-click it → <strong>Configure</strong>, 
+and configure the ports:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Type</th>
+<th>VLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 and 1</td>
+<td>access</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2 and 3</td>
+<td>access</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>Cable <code>PC1</code>  and <code>PC2</code> to the VLAN 10 ports; assign them <code>192.168.10.11/24</code> 
+and <code>192.168.10.12/24</code> respectively.</p>
+<p>Cable <code>PC3</code> and <code>PC4</code> to the VLAN 20 ports; assign them <code>192.168.10.13/24</code> 
+and <code>192.168.10.14/24</code> respectively.</p>
+<p>Confirm <code>PC1</code> can reach <code>PC2</code> but not the other two.</p>
+<hr />
+<h2 id="part-1-change-the-addressing">Part 1 — Change the addressing</h2>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ip 192.168.10.11/24 192.168.10.1
+save
 </code></pre></div></p>
-<p>Give the bridge a few moments to activate, then:
-<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>-brief<span class="w"> </span>addr<span class="w"> </span>show
+<p>On <code>PC2</code>:
+<div class="highlight"><pre><span></span><code>ip 192.168.10.12/24 192.168.10.1
+save
 </code></pre></div></p>
-<p>Do the same on <code>H2</code> and assign 192.168.10.2/24 to <code>br0</code></p>
-<p>Do the same on <code>H3</code> and assign 192.168.10.3/24 to <code>br0</code></p>
+<p>On <code>PC3</code>:
+<div class="highlight"><pre><span></span><code>ip 192.168.20.13/24 192.168.20.1
+save
+</code></pre></div></p>
+<p>On <code>PC4</code>:
+<div class="highlight"><pre><span></span><code>ip 192.168.20.14/24 192.168.20.1
+save
+</code></pre></div></p>
 <h3 id="what-just-happened">What just happened</h3>
 <ul>
-<li><code>nmcli con add type bridge ifname br0</code> creates a new type of interface called
-a bridge and gives it the name <code>br0</code>. <ul>
-<li><code>con-name br0</code>: tells NetworkManager to save this interfaces configuration under
-the name <strong>br0</strong></li>
-<li><code>connection.autoconnect-slaves 1</code>: tells NetworkManager to start the associated
-physical interfaces when this interface is activated.</li>
-</ul>
-</li>
-<li><code>nmcli con mod eth0 type bridge-slave master br0</code> tells NetworkManager to treat the
-physical interface named <code>eth0</code> as a port of <strong>br0</strong>. The next command does the same
-for <code>eth1</code><ul>
-<li>the result is that the devices on the other ends of both <code>eth0</code> (<code>H2</code> Ethernet0)
-and <code>eth1</code> (<code>H3</code> Ethernet0) are now <strong>on the same link</strong></li>
-</ul>
-</li>
-<li>We then assign an address to the bridge interface itself</li>
-<li>Repeating this on <code>H2</code> and <code>H3</code> essentially places the three nodes on the same link, 
-instead of the three distinct links we had previously.</li>
+<li>Routing works at <em>Layer 3</em>. A router forwards between <em>networks</em>. If the hosts
+are in the same subnet, they will never consult a gateway at all.</li>
+<li>Thus, VLAN 10 and VLAN 20 now map to two separate subnets.</li>
+<li>Note the direction of the dependency: the layer-2 decision (which VLAN) forces the layer-3 decision
+  (which subnet), and not the other way round.</li>
 </ul>
 <hr />
-<h2 id="do-this-test-it">Do this - test it</h2>
-<p>On <code>H1</code>:
-<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.2
-ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.3
+<h2 id="part-2-configure-routing">Part 2 — Configure routing</h2>
+<p>Add an <strong>OL9 PC</strong> (we are using a PC node because we require only one physical interface)
+named <code>R1</code> and cable it to <code>SW1:Ethernet4</code>. That port has to carry
+both VLANs, so set it configure it accordingly:</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Type</th>
+<th>VLAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>dot1q</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Log on to <code>R1</code> as root, then:
+<div class="highlight"><pre><span></span><code>nmcli con mod 'System eth0' con-name eth0 \
+ipv4.method disabled ipv6.method disabled
+
+nmcli con up eth0
+
+nmcli con add type vlan ifname eth0.10 con-name eth0.10 dev eth0 id 10 \
+ipv4.method manual ipv4.addresses 192.168.10.1/24
+
+nmcli con add type vlan ifname eth0.20 con-name eth0.20 dev eth0 id 20 \
+ipv4.method manual ipv4.addresses 192.168.20.1/24
+
+nmcli con up eth0.10
+nmcli con up eth0.20
+
+echo 'net.ipv4.ip_forward=1' | tee -a /etc/sysctl.d/99-ipv4-routing.conf
+
+ip addr show
+ip route show
 </code></pre></div></p>
+<p>Start three captures simultaneously on <code>PC1</code>, <code>R1</code> and <code>PC3</code> cables.</p>
+<p>From <code>PC1</code>: <code>ping 192.168.20.13</code>.</p>
+<p>Fill in the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Capture</th>
+<th>Source MAC</th>
+<th>Destination MAC</th>
+<th>VLAN id in tag</th>
+<th>Source IP</th>
+<th>Destination IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PC1</code> cable -&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PC1</code> cable &lt;-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>R1</code> cable -&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>R1</code> cable &lt;-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PC3</code> cable -&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>PC3</code> cable &lt;-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="what-just-happened_1">What just happened</h3>
 <ul>
-<li><code>H1</code> is still able to reach <code>H2</code> and <code>H3</code>, but it now needs just one
-address to achieve this.</li>
-<li>The physical topology is still mesh, but the logical topology is
-something akin to a star topology</li>
-</ul>
-<hr />
-<h2 id="do-this">Do this</h2>
-<ul>
-<li>Stop all three nodes</li>
-<li>Delete <code>H2</code> and <code>H3</code>, then rename <code>H1</code> as <code>SW</code></li>
-<li>Drag two <strong>VPCS</strong> and cable them on to <code>SW</code></li>
-</ul>
-<p>Log on to <code>SW</code> as root, then:
-<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>br0<span class="w"> </span>-ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24<span class="w"> </span><span class="se">\</span>
-ipv4.method<span class="w"> </span>disabled<span class="w"> </span>ipv6.method<span class="w"> </span>disabled
-
-nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>br0
-</code></pre></div></p>
-<p>On PC1:
-<div class="highlight"><pre><span></span><code>ip 192.168.10.11/24
-save
-</code></pre></div></p>
-<p>On PC2:
-<div class="highlight"><pre><span></span><code>ip 192.168.10.12/24
-save
-</code></pre></div></p>
-<p>On PC1:
-<div class="highlight"><pre><span></span><code>ping 192.168.10.12 -c 1
-</code></pre></div></p>
-<h3 id="what-just-happened_2">What just happened</h3>
-<ul>
-<li><code>SW</code> is just <code>H1</code> in new clothes. We disabled IP to show that a bridge
-is just a link, a medium, and does not need an address</li>
-<li><code>PC1</code> and <code>PC2</code> are cabled to the two ends of the bridge and are able
-to communicate through it.</li>
-<li>You've just created your first "switch"!</li>
+<li><code>R1</code> was able to forward the packets across both VLANs.</li>
+<li><code>eth0.10</code> and <code>eth0.20</code> are two <strong>sub-interfaces</strong> on a single physical port,
+distinguished entirely by their 802.1Q (VLAN) tag. The router can tag the 
+frames just as the switch does. It needs to be able to do so because 
+routing involves re-framing the packet.</li>
 </ul>
 <hr />
 <h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th>Sympton</th>
+<th>Symptom</th>
 <th>Cause</th>
 <th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>bridge fails to activate</td>
-<td>the attached interfaces (ports) are down</td>
-<td>start each interface manually, or enable <code>connection.autoconnect-slaves</code></td>
+<td>Router reachable in one VLAN only</td>
+<td><code>Ethernet4</code> is still an access port</td>
+<td><strong>Configure → Ports</strong> — it must be type <code>dot1q</code></td>
 </tr>
 <tr>
-<td><code>ping</code> fails with Destination unreachable</td>
-<td>incorrect address</td>
-<td>ensure the address you are trying to ping exists</td>
+<td><code>R1</code> <code>eth0</code> fails to restart</td>
+<td>Network manager refuses to restart an interface without an address</td>
+<td><code>nmcli con mod eth0 ipv4.method disabled ipv6.method disabled</code></td>
 </tr>
 <tr>
-<td><code>ping</code> fails with Network unreachable</td>
-<td>incorrect subnet</td>
-<td>check the address at destination and ensure it matches 192.168.10.x</td>
+<td>Hosts reach the router but not each other</td>
+<td>forwarding off</td>
+<td>enable IP forward</td>
+</tr>
+<tr>
+<td>Trunk capture shows one VLAN untagged</td>
+<td>the trunk's VLAN is set to 10 or 20</td>
+<td>set <code>Ethernet4</code> to VLAN <strong>1</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2078,6 +2133,9 @@ to communicate through it.</li>
 
 
 
+
+  
+  
 
 
 
@@ -2109,7 +2167,7 @@ to communicate through it.</li>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a1-dedicated-links/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dedicated links">
+          <a href="../a3-the-error-channel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Error Channel">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2119,20 +2177,20 @@ to communicate through it.</li>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Dedicated links
+                The Error Channel
               </div>
             </div>
           </a>
         
         
           
-          <a href="../a3-hub-vs-switch/" class="md-footer__link md-footer__link--next" aria-label="Next: Hub vs Switch">
+          <a href="../worksheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Worksheet">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Hub vs Switch
+                Worksheet
               </div>
             </div>
             <div class="md-footer__button md-icon">

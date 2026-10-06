@@ -10,13 +10,13 @@
         <meta name="author" content="Yves Rene Shema">
       
       
-        <link rel="canonical" href="https://networking.rysapp.com/labs/week02-devices/a2-bridge-the-network/">
+        <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/a3-the-error-channel/">
       
       
-        <link rel="prev" href="../a1-dedicated-links/">
+        <link rel="prev" href="../a2-the-next-hop/">
       
       
-        <link rel="next" href="../a3-hub-vs-switch/">
+        <link rel="next" href="../a4-inter-vlan-routing/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Bridge the network - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>The Error Channel - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bridge the network
+              The Error Channel
             
           </span>
         </div>
@@ -704,8 +704,6 @@
                   
   
   
-    
-  
   
   
     
@@ -739,15 +737,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../week02-devices/" class="md-nav__link ">
               
   
   
@@ -771,7 +769,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
               
@@ -790,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a1-dedicated-links/" class="md-nav__link">
+      <a href="../../week02-devices/a1-dedicated-links/" class="md-nav__link">
         
   
   
@@ -814,36 +812,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Bridge the network
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a2-bridge-the-network/" class="md-nav__link">
         
   
   
@@ -858,124 +830,6 @@
   
 
       </a>
-      
-        
-
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-build-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this - build it
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this - build it">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this-test-it" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this - test it
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this - test it">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-this" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do this
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Do this">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-it-went-wrong" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        If it went wrong
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -988,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a3-hub-vs-switch/" class="md-nav__link">
+      <a href="../../week02-devices/a3-hub-vs-switch/" class="md-nav__link">
         
   
   
@@ -1015,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../a4-two-legs-in-two-networks/" class="md-nav__link">
+      <a href="../../week02-devices/a4-two-legs-in-two-networks/" class="md-nav__link">
         
   
   
@@ -1042,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../worksheet/" class="md-nav__link">
+      <a href="../../week02-devices/worksheet/" class="md-nav__link">
         
   
   
@@ -1300,8 +1154,10 @@
                   
   
   
+    
   
   
+  
     
     
       
@@ -1333,15 +1189,15 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../week04-ipv4-routing/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1365,7 +1221,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1384,7 +1240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a1-the-routing-table/" class="md-nav__link">
+      <a href="../a1-the-routing-table/" class="md-nav__link">
         
   
   
@@ -1411,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a2-the-next-hop/" class="md-nav__link">
+      <a href="../a2-the-next-hop/" class="md-nav__link">
         
   
   
@@ -1435,10 +1291,34 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a3-the-error-channel/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Error Channel
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1453,6 +1333,116 @@
   
 
       </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Predict first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-locate-the-source-of-the-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — locate the source of the error messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — locate the source of the error messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-examine-icmp-error-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — Examine ICMP error contents
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — Examine ICMP error contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-just-happened_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What just happened
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Record
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-it-went-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If it went wrong
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1465,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/a4-inter-vlan-routing/" class="md-nav__link">
+      <a href="../a4-inter-vlan-routing/" class="md-nav__link">
         
   
   
@@ -1492,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week04-ipv4-routing/worksheet/" class="md-nav__link">
+      <a href="../worksheet/" class="md-nav__link">
         
   
   
@@ -1722,8 +1712,6 @@
                     
                     
                     
-                      
-                    
                     
                       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
                       <div class="md-sidebar-button__wrapper">
@@ -1741,8 +1729,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1751,15 +1737,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#do-this-build-it" class="md-nav__link">
+  <a href="#predict-first" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this - build it
+        Predict first
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this - build it">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-this-locate-the-source-of-the-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Do this — locate the source of the error messages
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Do this — locate the source of the error messages">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1779,15 +1776,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-this-test-it" class="md-nav__link">
+  <a href="#do-this-examine-icmp-error-contents" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this - test it
+        Do this — Examine ICMP error contents
       </span>
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Do this - test it">
+    <nav class="md-nav" aria-label="Do this — Examine ICMP error contents">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1807,30 +1804,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#do-this" class="md-nav__link">
+  <a href="#record" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Do this
+        Record
       </span>
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Do this">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-just-happened_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        What just happened
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1930,7 +1910,7 @@
           
   
   <span class="md-ellipsis">
-    Devices & Topologies
+    IPv4 Routing
   </span>
 
         </a>
@@ -1949,10 +1929,11 @@
                   
 
 
-<h1 id="w2a2-bridge-the-network">W2·A2 - Bridge the network</h1>
-<p><strong>Time:</strong> 20 min</p>
-<p><strong>Needs:</strong>: A1's topology</p>
-<p><strong>GNS3 project:</strong>: <code>w02-a1-dedicated-links</code> (reuse it)</p>
+  <h1>The Error Channel</h1>
+
+<p><strong>Time:</strong> 30 min</p>
+<p><strong>Needs:</strong> A2's topology</p>
+<p><strong>GNS3 project:</strong> <code>w04-next-hop</code> (continue)</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Times listed are approximate and provided as timing guidelines only. 
@@ -1960,113 +1941,269 @@ Take as much time as you need to complete the activity.</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>How do you collapse three distinct links into a single network</p>
+<p>How does the network communicate <em>what</em> went wrong</p>
 </div>
 <hr />
-<h2 id="do-this-build-it">Do this - build it</h2>
-<p>On <code>H1</code>:
-<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge<span class="w"> </span>ifname<span class="w"> </span>br0<span class="w"> </span>con-name<span class="w"> </span>br0<span class="w"> </span>connection.autoconnect-slaves<span class="w"> </span><span class="m">1</span>
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>eth0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge-slave<span class="w"> </span>master<span class="w"> </span>br0
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>eth1<span class="w"> </span><span class="nb">type</span><span class="w"> </span>bridge-slave<span class="w"> </span>master<span class="w"> </span>br0
-nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>br0<span class="w"> </span>ipv4.method<span class="w"> </span>manual<span class="w"> </span>ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24
-nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>br0
+<h2 id="predict-first">Predict first</h2>
+<ol>
+<li>You are on <code>PC1</code> and are attempting to ping a destination for which it has no route. How many packets leave <code>PC1</code>? ___</li>
+<li>You sent a request to a remote service that isn't running. What comes back, and from whom? ___</li>
+<li>You sent a packet to a host that is switched off. You get back a "host unreachable" error. 
+Who sent it? ___</li>
+</ol>
+<hr />
+<h2 id="do-this-locate-the-source-of-the-error-messages">Do this — locate the source of the error messages</h2>
+<p>Start a capture on the <code>PC1</code> cable.</p>
+<p>Fill out the following table based on your observations:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Packets seen leaving <code>PC1</code></th>
+<th>Reply came from</th>
+<th>Type</th>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Everything below is run on <code>PC1</code>, unless indicated otherwise</strong></p>
+<p><strong>Case 1:</strong> no route on host</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod eth0 ipv4.gateway ""
+nmcli con up eth0
+
+ping -c1 203.0.113.1
+</code></pre></div>
+<p><strong>Case 2:</strong> no route on the router</p>
+<div class="highlight"><pre><span></span><code>nmcli con mod eth0 ipv4.gateway 192.168.100.1
+nmcli con up eth0
+
+ping -c1 203.0.113.1
+</code></pre></div>
+<p><strong>Case 3:</strong> the route exists, but the host is switched off or absent</p>
+<div class="highlight"><pre><span></span><code>ping -c1 192.168.200.99
+</code></pre></div>
+<p><strong>Case 4:</strong> the host exists, but the requested service isn't running</p>
+<div class="highlight"><pre><span></span><code>echo hello | ncat -u -w1 192.168.200.10 9999
+</code></pre></div>
+<p><strong>Case 5:</strong> low link capacity</p>
+<p>On <code>R2</code> (find the interface connected to <code>SW2</code>. Here it's assumed to be <code>eth0</code>:
+<div class="highlight"><pre><span></span><code>ip link set dev eth0 mtu 500
 </code></pre></div></p>
-<p>Give the bridge a few moments to activate, then:
-<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>-brief<span class="w"> </span>addr<span class="w"> </span>show
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>ping 192.168.200.10 -M do -s 1000 -c1
 </code></pre></div></p>
-<p>Do the same on <code>H2</code> and assign 192.168.10.2/24 to <code>br0</code></p>
-<p>Do the same on <code>H3</code> and assign 192.168.10.3/24 to <code>br0</code></p>
+<p>On <code>R2</code>, restore the original MTU:
+<div class="highlight"><pre><span></span><code>ip link set dev eth0 mtu 1500
+</code></pre></div></p>
+<p><strong>Case 6:</strong> traceroute</p>
+<p>On <code>PC1</code>:
+<div class="highlight"><pre><span></span><code>traceroute -I -q 1 -N 1 192.168.200.10
+</code></pre></div></p>
 <h3 id="what-just-happened">What just happened</h3>
 <ul>
-<li><code>nmcli con add type bridge ifname br0</code> creates a new type of interface called
-a bridge and gives it the name <code>br0</code>. <ul>
-<li><code>con-name br0</code>: tells NetworkManager to save this interfaces configuration under
-the name <strong>br0</strong></li>
-<li><code>connection.autoconnect-slaves 1</code>: tells NetworkManager to start the associated
-physical interfaces when this interface is activated.</li>
-</ul>
-</li>
-<li><code>nmcli con mod eth0 type bridge-slave master br0</code> tells NetworkManager to treat the
-physical interface named <code>eth0</code> as a port of <strong>br0</strong>. The next command does the same
-for <code>eth1</code><ul>
-<li>the result is that the devices on the other ends of both <code>eth0</code> (<code>H2</code> Ethernet0)
-and <code>eth1</code> (<code>H3</code> Ethernet0) are now <strong>on the same link</strong></li>
-</ul>
-</li>
-<li>We then assign an address to the bridge interface itself</li>
-<li>Repeating this on <code>H2</code> and <code>H3</code> essentially places the three nodes on the same link, 
-instead of the three distinct links we had previously.</li>
+<li><strong>Case 1:</strong> <em>Network is unreachable</em>.
+    <code>PC1</code> never sent anything. It found no route to the destination and 
+    simply refused to transmit. Thus, "Network is unreachable" in this case is a <strong>local error</strong>.</li>
+<li><strong>Case 2:</strong> <em>Destination net Unreachable</em>.
+    The error was reported by <code>R1</code> which was the first place where the 
+    lack of a route to the destination was detected.</li>
+<li><strong>Case 3:</strong> <em>Destination Host Unreachable</em>.
+    Only <code>R2</code> could discover that the host was absent after ARP timed out. 
+    This is why it took longer than the previous two errors</li>
+<li><strong>Case 4:</strong> <em>Port Unreachable</em>.
+    Note that this error appears in the capture but not in the terminal. Up to now the
+    errors were handled by the kernel. Errors at the <em>Transport</em> layer are handled
+    by the originating process.</li>
+<li><strong>Case 5:</strong> <em>Fragmentation needed</em>.
+    The packet was sent with the <code>DF</code> (Don't fragment) bit set. <code>R2</code> was unable to forward it
+    and instead notified the sender about it. The error header contains a <em>MTU of next hop</em> 
+    field letting <code>PC1</code> know exactly how to size the packets on next attempt</li>
+<li><strong>Case 6:</strong> <em>Time to live exceeded in transit</em>.
+    The <strong>TTL</strong> parameter controls how far a packet can go on the internet. Each router the 
+    packet transit through decrements its value and when it reaches <code>0</code>, the packet is droped
+    and a notification is sent back to the sender.
+    <code>traceroute</code> "abuses" this to discover the entire path to any destination on the internet.</li>
 </ul>
 <hr />
-<h2 id="do-this-test-it">Do this - test it</h2>
-<p>On <code>H1</code>:
-<div class="highlight"><pre><span></span><code>ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.2
-ping<span class="w"> </span>-c1<span class="w"> </span><span class="m">192</span>.168.10.3
-</code></pre></div></p>
+<h2 id="do-this-examine-icmp-error-contents">Do this — Examine ICMP error contents</h2>
+<p>Pick any of the Type 3 messages in Wireshark and expand it fully.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bytes of the original packet quoted back</td>
+<td></td>
+</tr>
+<tr>
+<td>Can you see the destination port you sent to?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="what-just-happened_1">What just happened</h3>
 <ul>
-<li><code>H1</code> is still able to reach <code>H2</code> and <code>H3</code>, but it now needs just one
-address to achieve this.</li>
-<li>The physical topology is still mesh, but the logical topology is
-something akin to a star topology</li>
+<li>Every ICMP error carries <strong>the original IP header plus at least the first 8 bytes of the datagram that
+  caused it</strong>. </li>
+<li>For TCP and UDP, the first 8 bytes contain the source and destination ports. This is what enables 
+the host receiving the error to attribute it to <strong>a specific socket</strong>.</li>
+<li>The ICMP header totals <strong>8 bytes</strong>, one byte each for the type and code, 2 bytes for the checksum. 
+The remaining 4 bytes are type-dependent are unused, with a few exceptions, in error types.</li>
+<li>Error types are 3, 4, 5, 11, and 12, 3 (undeliverable) being the most common</li>
+<li>Other notable types include <code>0</code> (Echo Reply) and <code>8</code>(Echo Request), <code>13</code> and <code>14</code> (Timestamp/Timestamp Reply), etc</li>
+<li>ICMP codes narrow a message type to a specific reason. A packet can fail to be delivered for various reasons, including absence of a route, host absent, unavailable service, insufficient link capacity, etc.</li>
 </ul>
 <hr />
-<h2 id="do-this">Do this</h2>
-<ul>
-<li>Stop all three nodes</li>
-<li>Delete <code>H2</code> and <code>H3</code>, then rename <code>H1</code> as <code>SW</code></li>
-<li>Drag two <strong>VPCS</strong> and cable them on to <code>SW</code></li>
-</ul>
-<p>Log on to <code>SW</code> as root, then:
-<div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>con<span class="w"> </span>mod<span class="w"> </span>br0<span class="w"> </span>-ipv4.addresses<span class="w"> </span><span class="m">192</span>.168.10.1/24<span class="w"> </span><span class="se">\</span>
-ipv4.method<span class="w"> </span>disabled<span class="w"> </span>ipv6.method<span class="w"> </span>disabled
-
-nmcli<span class="w"> </span>con<span class="w"> </span>up<span class="w"> </span>br0
-</code></pre></div></p>
-<p>On PC1:
-<div class="highlight"><pre><span></span><code>ip 192.168.10.11/24
-save
-</code></pre></div></p>
-<p>On PC2:
-<div class="highlight"><pre><span></span><code>ip 192.168.10.12/24
-save
-</code></pre></div></p>
-<p>On PC1:
-<div class="highlight"><pre><span></span><code>ping 192.168.10.12 -c 1
-</code></pre></div></p>
-<h3 id="what-just-happened_2">What just happened</h3>
-<ul>
-<li><code>SW</code> is just <code>H1</code> in new clothes. We disabled IP to show that a bridge
-is just a link, a medium, and does not need an address</li>
-<li><code>PC1</code> and <code>PC2</code> are cabled to the two ends of the bridge and are able
-to communicate through it.</li>
-<li>You've just created your first "switch"!</li>
-</ul>
-<hr />
+<h2 id="record">Record</h2>
+<table>
+<thead>
+<tr>
+<th>Failure</th>
+<th>Anything on the wire?</th>
+<th>Reported by</th>
+<th>Type/Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No route locally</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>No route at a router</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Host absent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Port closed</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fragmentation needed</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TTL exceeded</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Why case 3 took seconds</td>
+<td></td>
+</tr>
+<tr>
+<td>What an ICMP error carries, and why</td>
+<td></td>
+</tr>
+<tr>
+<td>IP protocol number for ICMP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="if-it-went-wrong">If it went wrong</h2>
 <table>
 <thead>
 <tr>
-<th>Sympton</th>
+<th>Symptom</th>
 <th>Cause</th>
 <th>Fix</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>bridge fails to activate</td>
-<td>the attached interfaces (ports) are down</td>
-<td>start each interface manually, or enable <code>connection.autoconnect-slaves</code></td>
+<td>Case 1 error came from <code>R1</code></td>
+<td><code>PC1</code> has a default route</td>
+<td><code>nmcli con mod eth0 ipv4.gateway ""</code></td>
 </tr>
 <tr>
-<td><code>ping</code> fails with Destination unreachable</td>
-<td>incorrect address</td>
-<td>ensure the address you are trying to ping exists</td>
+<td>Case 5 no error</td>
+<td>You forgot to reduce <code>R2</code>.eth0 MTU</td>
+<td><code>ip link set dev eth0 mtu 500</code></td>
 </tr>
 <tr>
-<td><code>ping</code> fails with Network unreachable</td>
-<td>incorrect subnet</td>
-<td>check the address at destination and ensure it matches 192.168.10.x</td>
+<td>Case 6 too many probes</td>
+<td>probes not serialized</td>
+<td>Ensure to use both the <code>-q 1</code> and <code>-N 1</code> options</td>
 </tr>
 </tbody>
 </table>
@@ -2078,6 +2215,9 @@ to communicate through it.</li>
 
 
 
+
+  
+  
 
 
 
@@ -2109,7 +2249,7 @@ to communicate through it.</li>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../a1-dedicated-links/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dedicated links">
+          <a href="../a2-the-next-hop/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Next Hop">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2119,20 +2259,20 @@ to communicate through it.</li>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Dedicated links
+                The Next Hop
               </div>
             </div>
           </a>
         
         
           
-          <a href="../a3-hub-vs-switch/" class="md-footer__link md-footer__link--next" aria-label="Next: Hub vs Switch">
+          <a href="../a4-inter-vlan-routing/" class="md-footer__link md-footer__link--next" aria-label="Next: Inter-VLAN Routing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Hub vs Switch
+                Inter-VLAN Routing
               </div>
             </div>
             <div class="md-footer__button md-icon">

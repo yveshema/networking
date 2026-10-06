@@ -13,24 +13,28 @@
         <link rel="canonical" href="https://networking.rysapp.com/labs/week04-ipv4-routing/worksheet/">
       
       
+        <link rel="prev" href="../a4-inter-vlan-routing/">
+      
+      
+        <link rel="next" href="../../../gns3/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/img/favicon.svg">
-      <meta name="generator" content="zensical-0.0.66">
+      <meta name="generator" content="zensical-0.0.68">
     
     
       
-        <title>Week 4 worksheet — IPv4, the network layer and static routing - ACIT 2620: Principles of Enterprise Networking</title>
+        <title>Worksheet - ACIT 2620: Principles of Enterprise Networking</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.5da0f285.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/classic/main.3d7537f3.min.css">
       
       
 
@@ -65,14 +69,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#week-4-worksheet-ipv4-the-network-layer-and-static-routing" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week 4 worksheet — IPv4, the network layer and static routing
+              Worksheet
             
           </span>
         </div>
@@ -173,6 +174,8 @@
   
   
   
+    
+  
   
     
       
@@ -193,7 +196,7 @@
     
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -395,6 +398,8 @@
       
   
   
+    
+  
   
   
     
@@ -416,25 +421,26 @@
     
     
       
+        
+        
+      
       
         
       
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-  
-  
-    <a href="../../" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -447,12 +453,1049 @@
   
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Labs
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
+          
+        
       
-    </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../week01-foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Foundations
+
+    
+  </span>
+  
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Foundations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/a1-two-nodes-one-cable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Two nodes, one cable
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/a2-client-server-vs-p2p/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Client-server vs P2P
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/a3-where-are-the-layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Where are the layers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/a4-speak-a-protocol-by-hand/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Speak a protocol by hand
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week01-foundations/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../week02-devices/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Devices & Topologies
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Devices & Topologies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a1-dedicated-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dedicated links
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a2-bridge-the-network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bridge the network
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a3-hub-vs-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Hub vs Switch
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week02-devices/a4-two-legs-in-two-networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Two legs in two networks
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week02-devices/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../week03-switching/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ethernet & Switching
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Ethernet & Switching
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week03-switching/a1-transparent-bridging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transparent Bridging
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week03-switching/a2-broadcast-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Broadcast Domain
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week03-switching/a3-spanning-tree-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spanning Tree
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week03-switching/a4-vlans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  VLANs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../week03-switching/worksheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  IPv4 Routing
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  IPv4 Routing
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a1-the-routing-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Routing Table
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a2-the-next-hop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Next Hop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a3-the-error-channel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  The Error Channel
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a4-inter-vlan-routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Inter-VLAN Routing
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Worksheet
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-next-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2 — The Next Hop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 — The Next Hop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-at-each-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What changes at each hop
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-error-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3 — The Error Channel
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 — The Error Channel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locating-the-source-of-the-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Locating the source of the error messages
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-inter-vlan-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4 — Inter-VLAN Routing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -680,109 +1723,66 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-the-routing-table" class="md-nav__link">
+  <a href="#2-the-next-hop" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        1 — The routing table
+        2 — The Next Hop
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 — The Next Hop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-at-each-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What changes at each hop
       </span>
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#2-the-one-way-route" class="md-nav__link">
+  <a href="#3-the-error-channel" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        2 — The one-way route
+        3 — The Error Channel
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 — The Error Channel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locating-the-source-of-the-error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Locating the source of the error messages
       </span>
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3-what-changes-at-each-hop" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        3 — What changes at each hop
-      </span>
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-ttl-and-traceroute" class="md-nav__link">
+  <a href="#4-inter-vlan-routing" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        4 — TTL and traceroute
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-routing-between-vlans" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        5 — Routing between VLANs
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-the-error-channel" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        6 — The error channel
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-echo-and-what-ping-does-not-prove" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        7 — Echo, and what ping does not prove
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-the-options-nobody-uses" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        8 — The options nobody uses
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-forge-the-packet-extension" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        9 — Forge the packet <em>(extension)</em>
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-into-milestone-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        10 — Into milestone 2
+        4 — Inter-VLAN Routing
       </span>
     </span>
   </a>
@@ -805,117 +1805,116 @@
 
 
 
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    IPv4 Routing
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
 
+
 <h1 id="week-4-worksheet-ipv4-the-network-layer-and-static-routing">Week 4 worksheet — IPv4, the network layer and static routing</h1>
-<p>Name: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_  Date: <strong><em>_</em></strong>_____</p>
-<p><strong>Keep your week 1 PDU table beside you.</strong> Sections 3 and 4 refer to it.</p>
-<hr />
-<h2 id="1-the-routing-table">1 — The routing table</h2>
-<p><strong>Predict.</strong> A host with one address and no routes you typed. Entries in its table: ____</p>
-<p><strong>Observe.</strong></p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th><strong>Name</strong></th>
+<th><strong>ID</strong></th>
+<th><strong>Date</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Entries before you added any</td>
 <td></td>
-</tr>
-<tr>
-<td>Where the <code>Network is unreachable</code> error came from</td>
-<td></td>
-</tr>
-<tr>
-<td>Prefix length of <code>default</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Next hop chosen for <code>10.0.0.1</code> / <code>10.0.0.9</code> / <code>8.8.8.8</code></td>
-<td></td>
-</tr>
-<tr>
-<td>The one thing <code>ip route get</code> does <em>not</em> tell you</td>
-<td></td>
-</tr>
-<tr>
-<td>Destinations still reachable with no default route</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> <code>10.0.0.1</code> was on a router your host was cabled to, and the ping failed before any
-packet was transmitted. What does that tell you about how forwarding decisions are made?</p>
-<hr />
-<p><strong>Apply.</strong> In week 1 you broke a working link by changing a mask to <code>/25</code>. Restate that failure using
-this week's vocabulary.</p>
-<hr />
-<hr />
-<h2 id="2-the-one-way-route">2 — The one-way route</h2>
-<p><strong>Predict.</strong> R1 knows LAN2; R2 knows nothing about LAN1. Where does PC1's ping stop? <strong><em>_</em></strong>_____</p>
-<p>What error will PC1 report? <strong><em>_</em></strong>_____</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Link</th>
-<th>Echo request seen?</th>
-<th>Echo reply seen?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PC1 ↔ R1</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>R2 ↔ PC2</td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><code>ip route get 192.168.100.10</code> on R2, before the fix: <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device holding the fault</td>
-<td></td>
-</tr>
-<tr>
-<td>Devices that reported an error</td>
-<td></td>
-</tr>
-<tr>
-<td>Static routes for one two-router conversation</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Neither endpoint could diagnose this. Why not, and what did you need instead?</p>
 <hr />
-<hr />
-<p><strong>Apply — part 4.</strong> A <em>missing</em> route and a <em>wrong</em> route fail differently. Describe each failure and
-say which is harder to find.</p>
-<hr />
-<hr />
-<hr />
-<h2 id="3-what-changes-at-each-hop">3 — What changes at each hop</h2>
-<p><strong>Predict, then observe.</strong> Echo request, all three links:</p>
+<h2 id="2-the-next-hop">2 — The Next Hop</h2>
+<h3 id="what-changes-at-each-hop">What changes at each hop</h3>
+<p>Fill the following table based on your observations from the 
+<strong>echo request</strong> in the three captures.</p>
 <table>
 <thead>
 <tr>
@@ -924,203 +1923,51 @@ say which is harder to find.</p>
 <th>Dst MAC</th>
 <th>Src IP</th>
 <th>Dst IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PC1↔R1 <em>(predicted)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>PC1↔R1 <em>(observed)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>R1↔R2 <em>(predicted)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>R1↔R2 <em>(observed)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>R2↔PC2 <em>(predicted)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>R2↔PC2 <em>(observed)</em></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Times the source IP changed</td>
-<td></td>
-</tr>
-<tr>
-<td>Times the source MAC changed</td>
-<td></td>
-</tr>
-<tr>
-<td>MAC in PC1's ARP cache for PC2</td>
-<td></td>
-</tr>
-<tr>
-<td>TTL, link 1 / 2 / 3</td>
-<td></td>
-</tr>
-<tr>
-<td>Header fields a router modified</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> One sentence each:</p>
-<p>Layer-3 addressing is for <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
-<p>Layer-2 addressing is for <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>__</p>
-<hr />
-<h2 id="4-ttl-and-traceroute">4 — TTL and traceroute</h2>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
 <th>TTL</th>
-<th>Responder</th>
-<th>Message</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
+<td>PC1 ↔ SW1</td>
 <td></td>
 <td></td>
-</tr>
-<tr>
-<td>2</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>3</td>
+<td>R1 ↔ R2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PC2 ↔ SW2</td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>What TTL is actually for</td>
-<td></td>
-</tr>
-<tr>
-<td>What happened to the looping IP packet</td>
-<td></td>
-</tr>
-<tr>
-<td>Two reasons a traceroute hop shows <code>*</code></td>
-<td></td>
-</tr>
-<tr>
-<td>R1's address as seen from PC1 / from PC2</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> A loop at layer 3 was self-limiting; the layer-2 loop in week 3 was not. Using your week
-1 PDU table, name the field responsible and the header it lives in.</p>
 <hr />
-<hr />
-<h2 id="5-routing-between-vlans">5 — Routing between VLANs</h2>
-<p><strong>Predict.</strong> Attach a router to the VLAN'd switch. Does PC1 → PC3 work? ☐ yes ☐ no
-What else must change? <strong><em>_</em></strong>_____</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PC1 → PC3 before the router</td>
-<td></td>
-</tr>
-<tr>
-<td>Address changes required</td>
-<td></td>
-</tr>
-<tr>
-<td>Connected routes on R1, and who added them</td>
-<td></td>
-</tr>
-<tr>
-<td>VLAN tag on the trunk, request / reply</td>
-<td></td>
-</tr>
-<tr>
-<td>Traffic on PC2's cable during VLAN 20 activity</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Why must two VLANs be two subnets?</p>
-<hr />
-<p><strong>Apply.</strong> The router connected the two VLANs. What did it <em>not</em> merge, and why does that matter to
-whoever runs the network?</p>
-<hr />
-<hr />
-<h2 id="6-the-error-channel">6 — The error channel</h2>
-<p><strong>Predict.</strong> <code>ping 203.0.113.1</code>, to which you have no route. Packets leaving your machine: ____</p>
-<p>Who reports "host unreachable" for a switched-off host? <strong><em>_</em></strong>_____</p>
-<p><strong>Observe.</strong></p>
+<h2 id="3-the-error-channel">3 — The Error Channel</h2>
+<h3 id="locating-the-source-of-the-error-messages">Locating the source of the error messages</h3>
 <table>
 <thead>
 <tr>
 <th>Failure</th>
 <th>Anything on the wire?</th>
 <th>Reported by</th>
-<th>Type</th>
-<th>Code</th>
+<th>Type/Code</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>No route locally</td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1130,11 +1977,9 @@ whoever runs the network?</p>
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>Host absent</td>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1144,230 +1989,86 @@ whoever runs the network?</p>
 <td></td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td>Fragmentation needed</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><code>reject</code> rule</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>drop</code> rule</td>
-<td></td>
+<td>TTL exceeded</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="4-inter-vlan-routing">4 — Inter-VLAN Routing</h2>
 <table>
 <thead>
 <tr>
-<th></th>
-<th></th>
+<th>Capture</th>
+<th>Source MAC</th>
+<th>Destination MAC</th>
+<th>VLAN id in tag</th>
+<th>Source IP</th>
+<th>Destination IP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Why the "host absent" case took seconds</td>
+<td><code>PC1</code> cable -&gt;</td>
 <td></td>
-</tr>
-<tr>
-<td>Bytes of your packet quoted inside an ICMP error</td>
 <td></td>
-</tr>
-<tr>
-<td>IP protocol number carrying ICMP</td>
 <td></td>
-</tr>
-<tr>
-<td>ICMP type seen when <em>nothing</em> went wrong</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> One case produced no packet at all. Where did the error come from, and why does that
-distinction matter before you touch anything else?</p>
-<hr />
-<p><strong>Apply.</strong> A colleague says "ICMP means something broke." Give a counterexample you observed, and say
-what ICMP is actually for.</p>
-<hr />
-<hr />
-<h2 id="7-echo-and-what-ping-does-not-prove">7 — Echo, and what ping does not prove</h2>
-<p><strong>Predict.</strong> Two pings to one host, at once. How does each recognise its own replies? <strong><em>_</em></strong>_____</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Request</th>
-<th>Reply</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>Identifier</td>
+<td><code>PC1</code> cable &lt;-</td>
 <td></td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Who computes the round-trip time</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>What you put in the payload, and what came back</td>
+<td><code>R1</code> cable -&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>Type/Code carrying the next-hop MTU</td>
+<td><code>R1</code> cable &lt;-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>MTU cached by PC1 afterwards</td>
+<td><code>PC3</code> cable -&gt;</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td>Result of the HTTP transfer with ICMP errors dropped</td>
+<td><code>PC3</code> cable &lt;-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Explain.</strong> ICMP has no ports, yet two simultaneous pings never confuse each other. What did the
-protocol invent, and what does that tell you about why ports exist?</p>
 <hr />
-<p><strong>Apply.</strong> Give one thing a successful ping proves, and two things it does not.</p>
-<hr />
-<hr />
-<h2 id="8-the-options-nobody-uses">8 — The options nobody uses</h2>
-<p><strong>Predict.</strong> Largest possible IPv4 header: <strong><em>_ bytes. Bytes available for options: </em></strong>_</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IHL: ordinary ping / with <code>-R</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Addresses Record Route held — show the arithmetic</td>
-<td></td>
-</tr>
-<tr>
-<td>Entries <code>tsandaddr</code> held, and why fewer</td>
-<td></td>
-</tr>
-<tr>
-<td><code>traceroute -g</code> with <code>accept_source_route</code> 1 / 0</td>
-<td></td>
-</tr>
-<tr>
-<td><code>ping -R</code> inside the lab / to the internet</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Nothing on the internet is misconfigured, and no rule was broken, yet the feature does
-not work there. Describe the loop that produced that outcome.</p>
-<hr />
-<hr />
-<p><strong>Apply.</strong> Record Route was designed for the job; traceroute is a hack that abuses a loop counter.
-The hack won. State the general rule this illustrates.</p>
-<hr />
-<hr />
-<h2 id="9-forge-the-packet-extension">9 — Forge the packet <em>(extension)</em></h2>
-<p><strong>Predict.</strong> Set the ICMP type to a number IANA never assigned. What happens? <strong><em>_</em></strong>_____</p>
-<p>Can you make one host shrink its packets to a <em>third</em> host, being neither? ☐ yes ☐ no</p>
-<p><strong>Observe.</strong></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Fields scapy fixed vs left you to set</td>
-<td></td>
-</tr>
-<tr>
-<td>What happened to type 99</td>
-<td></td>
-</tr>
-<tr>
-<td>Did an unsolicited echo reply do anything?</td>
-<td></td>
-</tr>
-<tr>
-<td>MTU the target cached for the victim, after your forged error</td>
-<td></td>
-</tr>
-<tr>
-<td>What made the forged error acceptable to the target</td>
-<td></td>
-</tr>
-<tr>
-<td>Result of the deliberately wrong checksum</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Explain.</strong> Your forged <em>fragmentation-needed</em> error changed a connection you were not part of. What
-made the target accept it, and what does a hardened stack check before trusting such a message?</p>
-<hr />
-<p><strong>Apply.</strong> Name one thing this proves about ICMP that reading captures in A6 and A7 could not show.</p>
-<hr />
-<hr />
-<h2 id="10-into-milestone-2">10 — Into milestone 2</h2>
-<p>Milestone 2 opens this week and builds on the network you were graded on in milestone 1.</p>
-<table>
-<thead>
-<tr>
-<th>You will need to</th>
-<th>Activity that taught it</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>prove a path works in <em>both</em> directions</td>
-<td></td>
-</tr>
-<tr>
-<td>find a fault that neither endpoint can see</td>
-<td></td>
-</tr>
-<tr>
-<td>give each VLAN its own subnet and connect them</td>
-<td></td>
-</tr>
-<tr>
-<td>show which route the kernel would actually choose</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 
 
@@ -1403,6 +2104,44 @@ made the target accept it, and what does a hardened stack check before trusting 
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../a4-inter-vlan-routing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inter-VLAN Routing">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Inter-VLAN Routing
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../gns3/" class="md-footer__link md-footer__link--next" aria-label="Next: GNS3 Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                GNS3 Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1420,11 +2159,12 @@ made the target accept it, and what does a hardened stack check before trusting 
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+      
+<div class="md-progress" data-md-component="progress" role="progressbar" aria-label="Loading"></div>
     
     
     
@@ -1434,10 +2174,10 @@ made the target accept it, and what does a hardened stack check before trusting 
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["header.autohide","announce.dismiss","navigation.instant","navigation.instant.prefetch","navigation.instant.progress","navigation.tracking","navigation.tabs","navigation.tabs.sticky","navigation.sections","navigation.path","navigation.indexes","navigation.top","navigation.prune","navigation.footer","toc.follow","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b7d3f789.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3c842f4c.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
