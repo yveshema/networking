@@ -112,6 +112,21 @@
         <loc>https://networking.rysapp.com/labs/week05-subnetting/worksheet/</loc>
       </url>
       <url>
+        <loc>https://networking.rysapp.com/labs/week06-ipv6-routing/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week06-ipv6-routing/a1-ipv6-link-local/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week06-ipv6-routing/a2-ipv6-ndp/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week06-ipv6-routing/a3-ipv6-slaac/</loc>
+      </url>
+      <url>
+        <loc>https://networking.rysapp.com/labs/week06-ipv6-routing/worksheet/</loc>
+      </url>
+      <url>
         <loc>https://networking.rysapp.com/slides/</loc>
       </url>
 </urlset>
